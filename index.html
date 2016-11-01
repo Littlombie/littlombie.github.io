@@ -297,6 +297,15 @@
 
           
           
+             <span id="/2016/11/01/my-blog/" class="leancloud_visitors" data-flag-title="javascript基本运动框架">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
 
           
         </div>
@@ -411,6 +420,15 @@
           
 
           
+          
+             <span id="/2016/10/31/my-new-post-0/" class="leancloud_visitors" data-flag-title="hexo 在github上部署成功">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
           
 
           
@@ -534,6 +552,15 @@
 
           
           
+             <span id="/2016/10/21/My-New-Post/" class="leancloud_visitors" data-flag-title="这是我的第一篇Hexo博客">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
 
           
         </div>
@@ -548,16 +575,16 @@
 
       
         
-          
-            <blockquote><p>一天不独处，我就会变得虚弱。我不以孤独为荣，但我以此为生。</p>
+          <blockquote><p>一天不独处，我就会变得虚弱。我不以孤独为荣，但我以此为生。</p>
 <footer><strong>布考斯基</strong><cite>————</cite></footer></blockquote>
-<p><br></p>
-<p> 这是我的第一篇博客，我现在正在熟悉Hexo,所使用的主题是NexT,我觉得这个主题简洁大方，而且里边的缓动效果特别舒服。</p>
+<p><br/><br> <img src="/images/20140111004002.jpg" class="[full-image]"><br> 这是我的第一篇博客，我现在正在熟悉Hexo,所使用的主题是NexT,我觉得这个主题简洁大方，而且里边的缓动效果特别舒服。</p>
 <p> 我以后会不定时的在这上边更新一些博客，什么类型的都有，写给自己看，写给多年后的自己看。</p>
-<p> 加油， 每天进步一点，不断努力，终会取得不错的成绩！<br> <img src="/images/20140111004002.jpg" class="[full-image]" title="[500] [auto] [title text [alt text]]"></p>
-<p><img src="/images/bg_web.jpg" class="full-image"></p>
-
-          
+<p> 加油， 每天进步一点，不断努力，终会取得不错的成绩！<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/10/21/My-New-Post/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
         
       
     </div>
@@ -633,6 +660,15 @@
           
 
           
+          
+             <span id="/2016/10/21/hello-world/" class="leancloud_visitors" data-flag-title="Hello World">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
           
 
           
@@ -892,6 +928,113 @@
   
 
   
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("AhAgTGIB4YSsIlzXefOEmLWC-gzGzoHsz", "93jem4NOxPhB3na34Xt3OvAo");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
 
   
 
