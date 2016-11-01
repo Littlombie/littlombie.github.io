@@ -84,34 +84,16 @@
 
 
 
-<meta name="description" content="终于把本地hexo部署到github上了，之前不知为什么 就是不成功，今天重新试了一下命令 就成功了 命令为：
-123hexo g //生成静态文件hexo s  //在本地预览效果hexo d //同步到github 上
-发布新文章
-在Git Bash 上执行下列命令：
-
-1hexo new &quot;my new post&quot;
-在hexo文件夹下 source_post 中打开my-new-post.m">
+<meta name="description" content="Hexo创建文章，发布文章，以及部署到github">
 <meta property="og:type" content="article">
 <meta property="og:title" content="hexo 在github上部署成功">
 <meta property="og:url" content="http://yoursite.com/2016/10/31/my-new-post-0/index.html">
 <meta property="og:site_name" content="Littlombie">
-<meta property="og:description" content="终于把本地hexo部署到github上了，之前不知为什么 就是不成功，今天重新试了一下命令 就成功了 命令为：
-123hexo g //生成静态文件hexo s  //在本地预览效果hexo d //同步到github 上
-发布新文章
-在Git Bash 上执行下列命令：
-
-1hexo new &quot;my new post&quot;
-在hexo文件夹下 source_post 中打开my-new-post.m">
-<meta property="og:updated_time" content="2016-10-31T10:27:55.681Z">
+<meta property="og:description" content="Hexo创建文章，发布文章，以及部署到github">
+<meta property="og:updated_time" content="2016-11-01T08:30:04.580Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hexo 在github上部署成功">
-<meta name="twitter:description" content="终于把本地hexo部署到github上了，之前不知为什么 就是不成功，今天重新试了一下命令 就成功了 命令为：
-123hexo g //生成静态文件hexo s  //在本地预览效果hexo d //同步到github 上
-发布新文章
-在Git Bash 上执行下列命令：
-
-1hexo new &quot;my new post&quot;
-在hexo文件夹下 source_post 中打开my-new-post.m">
+<meta name="twitter:description" content="Hexo创建文章，发布文章，以及部署到github">
 
 
 
@@ -324,16 +306,25 @@
       
 
       
-        <p>终于把本地hexo部署到github上了，之前不知为什么 就是不成功，今天重新试了一下命令 就成功了 命令为：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo g //生成静态文件</div><div class="line">hexo s  //在本地预览效果</div><div class="line">hexo d //同步到github 上</div></pre></td></tr></table></figure>
+        <p>终于把本地Hexo部署到github上了，之前不知为什么 就是不成功，今天重新试了一下命令 就成功了 命令为：</p>
 <h3 id="发布新文章"><a href="#发布新文章" class="headerlink" title="发布新文章"></a>发布新文章</h3><ul>
-<li>在Git Bash 上执行下列命令：</li>
+<li>首先打开文件夹 <code>hexo</code>，再右键打开Git Bash， 在Git Bash 上执行下列命令：</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new <span class="string">"my new post"</span></div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo new <span class="string">"my new post"</span> //<span class="string">"my new post"</span>为文件名</div></pre></td></tr></table></figure>
 <p>在hexo文件夹下 <code>source_post</code> 中打开<code>my-new-post.md</code>进行编辑</p>
 <p>或者在存放博客的目录下</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo n <span class="string">"新建博客的名字"</span></div></pre></td></tr></table></figure>
-<p>详情见<a href="http://blog.csdn.net/qq_15807167/article/details/51601234" target="_blank" rel="external">文章</a></p>
+<h3 id="Front-matter"><a href="#Front-matter" class="headerlink" title="Front-matter"></a>Front-matter</h3><p>Front-matter 是文件最上方以 — 分隔的区域，用于指定个别文件的变量，举例来说：<br><figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">title: Hello World</div><div class="line"><span class="section">date: 2013/7/13 20:46:25</span></div><div class="line">---</div></pre></td></tr></table></figure></p>
+<p>以下是预先定义的参数，您可在模板中使用这些参数值并加以利用。</p>
+<p>参数    描述    默认值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">layout:	    布局	</div><div class="line"></div><div class="line">title:	    标题	</div><div class="line"></div><div class="line">date:	    建立日期	文件建立日期</div><div class="line"></div><div class="line">updated	:	更新日期	文件更新日期</div><div class="line"></div><div class="line">comments:	开启文章的评论功能	true</div><div class="line"></div><div class="line">tags:	    标签（不适用于分页）	</div><div class="line"></div><div class="line">categories:	分类（不适用于分页）	</div><div class="line"></div><div class="line">permalink:	覆盖文章网址</div></pre></td></tr></table></figure>
+<p>举例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">title: 标题</div><div class="line">date: 2016-11-01 11:42:21</div><div class="line">categories: web</div><div class="line">tags: [javascript,css] //多个标签用[,]标记</div><div class="line">description: 这是说明，在首页显示的文字</div><div class="line">---</div></pre></td></tr></table></figure>
+<h3 id="本地预览"><a href="#本地预览" class="headerlink" title="本地预览"></a>本地预览</h3><p>hexo 本地环境查看时首先打开文件夹 <code>hexo</code>， 在内执行以下命令</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo s -p 5000 //后边的-p 5000是修改端口</div></pre></td></tr></table></figure>
+<p>然后打开浏览器 输如<code>http://localhost:5000/</code>即可查看</p>
+<h3 id="部署到GitHub"><a href="#部署到GitHub" class="headerlink" title="部署到GitHub"></a>部署到GitHub</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">hexo g //生成静态文件</div><div class="line">hexo s  //在本地预览效果</div><div class="line">hexo d //同步到github 上</div></pre></td></tr></table></figure>
+<p>-&gt; <a href="http://blog.csdn.net/qq_15807167/article/details/51601234" target="_blank" rel="external">参考</a>&lt;:</p>
 
       
     </div>
@@ -491,7 +482,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#发布新文章"><span class="nav-number">1.</span> <span class="nav-text">发布新文章</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#发布新文章"><span class="nav-number">1.</span> <span class="nav-text">发布新文章</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Front-matter"><span class="nav-number">2.</span> <span class="nav-text">Front-matter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#本地预览"><span class="nav-number">3.</span> <span class="nav-text">本地预览</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#部署到GitHub"><span class="nav-number">4.</span> <span class="nav-text">部署到GitHub</span></a></li></ol></div>
             
           </div>
         </section>
