@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title><![CDATA[Loading]]></title>
+      <title><![CDATA[数字化Loading]]></title>
       <url>2016%2F11%2F07%2FLoading-Page%2F</url>
       <content type="text"><![CDATA[js页面从0~100%的loading； javascript代码： 12345678910111213141516171819function setSB(v, el) &#123; //判断页面是否加载完成 if (document.readyState == "complete") &#123; valueEl = el.children[0]; valueEl.innerText = v + "%"; &#125; &#125; function fakeProgress(v, el) &#123; if (v &gt; 100)&#123; document.querySelector('#text').innerHTML="加载完成"; setTimeout(function()&#123; document.querySelector('#sb').style.display="none"; &#125;,200); &#125; else &#123; setSB(v, el); window.setTimeout("fakeProgress(" + (++v) + ", document.all['" + el.id + "'])", 20); &#125; &#125; html代码： 12345678910&lt;body onload="fakeProgress(0, sb)"&gt; &lt;center&gt; &lt;p id="text"&gt;正在载入中，请稍侯……&lt;/p&gt; &lt;span id='sb' style="width: 302px"&gt;&lt;!-- &lt;div style="filter: Alpha(Opacity=0, FinishOpacity=60, style=1, StartX=0, StartY=0, FinishX=100, FinishY=0); width: 0%; height: 12px; position: absolute; background: #0066cc"&gt;&lt;/div&gt; --&gt;&lt;div&gt;&lt;/div&gt;&lt;div style="font-size: 9pt; width: 100%; text-align: center"&gt;&lt;/div&gt;&lt;/span&gt; &lt;/center&gt;&lt;/body&gt; 显示效果：]]></content>
     </entry>
