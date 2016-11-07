@@ -380,13 +380,9 @@
 
       
         
-          <ul>
-<li>js页面从0~100%的loading；</li>
-</ul>
-<p>javascript代码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">setSB</span>(<span class="params">v, el</span>) </span>&#123;</div><div class="line">        <span class="comment">//判断页面是否加载完成</span></div><div class="line">        <span class="keyword">if</span> (<span class="built_in">document</span>.readyState == <span class="string">"complete"</span>) &#123;</div><div class="line">            valueEl = el.children[<span class="number">0</span>];</div><div class="line">            valueEl.innerText = v + <span class="string">"%"</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fakeProgress</span>(<span class="params">v, el</span>) </span>&#123;</div><div class="line">        <span class="keyword">if</span> (v &gt; <span class="number">100</span>)&#123;</div><div class="line">            <span class="built_in">document</span>.querySelector(<span class="string">'#text'</span>).innerHTML=<span class="string">"加载完成"</span>;</div><div class="line">            setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">                <span class="built_in">document</span>.querySelector(<span class="string">'#sb'</span>).style.display=<span class="string">"none"</span>;</div><div class="line">            &#125;,<span class="number">200</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">else</span> &#123;</div><div class="line">            setSB(v, el);</div><div class="line">            <span class="built_in">window</span>.setTimeout(<span class="string">"fakeProgress("</span> + (++v) + <span class="string">", document.all['"</span> + el.id + <span class="string">"'])"</span>, <span class="number">20</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+          js页面从0~100%的loading；用`document.readyState == "complete"`判断页面是否加载完成。
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/07/Loading-Page/#more" rel="contents">
+            <a class="btn" href="/2016/11/07/Loading-Page/">
               阅读全文 &raquo;
             </a>
           </div>
