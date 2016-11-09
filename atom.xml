@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-11-09T11:08:19.588Z</updated>
+  <updated>2016-11-09T11:11:17.292Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>css3旋转导航</title>
+    <title>css3导航动画切换</title>
     <link href="http://yoursite.com/2016/11/09/Rotate-the-navigation/"/>
     <id>http://yoursite.com/2016/11/09/Rotate-the-navigation/</id>
     <published>2016-11-09T10:14:22.000Z</published>
-    <updated>2016-11-09T11:08:19.588Z</updated>
+    <updated>2016-11-09T11:11:17.292Z</updated>
     
     <content type="html"><![CDATA[<p>我们浏览有些手机网站时，有时会发现页面的导航打开动画很有意思，类似下图这种：</p>
 <p><img src="http://littlombie.github.io/images/nav.gif" alt="nav"></p>
