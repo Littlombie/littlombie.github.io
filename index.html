@@ -386,13 +386,12 @@
 <ul>
 <li><p>html为用<code>input</code> 与<code>label</code>表单，<code>label</code>下边三个<code>div</code>表示导航的三条横线；</p>
 </li>
-<li><p>当点击<code>label</code>时，<code>input</code>会选中,与之对应的<code>label</code>下边三个<code>div</code>执行动画,其中第二个div让宽度为0，位置发生变化，<br>第一个与第三个div执行旋转动画，形成<code>×</code>；</p>
+<li><p>当点击<code>label</code>时，<code>input</code>会选中,与之对应的<code>label</code>下边三个<code>div</code>执行动画,其中第二个div让宽度为0，位置发生变化，第一个与第三个div执行旋转动画，形成<code>×</code>；</p>
 </li>
 <li><p>再次点击取消选中时，利用<code>input</code>的属性，恢复到选中之前的状态。</p>
 </li>
 </ul>
 <p>html代码如下：</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"nav_bar"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">id</span>=<span class="string">"nemu_button"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">label</span> <span class="attr">for</span>=<span class="string">"nemu_button"</span>&gt;</span></div><div class="line">         <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"line_top transition"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">         <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"line_meddle transition"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">         <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"line_bottom transition"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/11/09/Rotate-the-navigation/#more" rel="contents">
               阅读全文 &raquo;
