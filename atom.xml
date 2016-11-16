@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-11-09T11:11:17.292Z</updated>
+  <updated>2016-11-16T07:46:40.995Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>周末随拍（2016.11.13）</title>
+    <link href="http://yoursite.com/2016/11/16/the-Accompanying-photograph/"/>
+    <id>http://yoursite.com/2016/11/16/the-Accompanying-photograph/</id>
+    <published>2016-11-16T07:42:07.000Z</published>
+    <updated>2016-11-16T07:46:40.995Z</updated>
+    
+    <content type="html"><![CDATA[<img class="[full-image] littlombie.github.io/images/20161113/P61113-164941.jpg P">
+<a id="more"></a>]]></content>
+    
+    <summary type="html">
+    
+      &lt;img class=&quot;[full-image] littlombie.github.io/images/20161113/P61113-164941.jpg P&quot;&gt;
+    
+    </summary>
+    
+      <category term="个人随写" scheme="http://yoursite.com/categories/%E4%B8%AA%E4%BA%BA%E9%9A%8F%E5%86%99/"/>
+    
+    
+      <category term="Photo" scheme="http://yoursite.com/tags/Photo/"/>
+    
+  </entry>
   
   <entry>
     <title>css3导航动画切换</title>
