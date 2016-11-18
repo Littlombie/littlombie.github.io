@@ -86,7 +86,7 @@
 <link href="/css/main.css?v=5.0.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="javascript," />
 
 
 
@@ -104,31 +104,28 @@
 
 
 
-<meta name="description" content="一天不独处，我就会变得虚弱。我不以孤独为荣，但我以此为生。
-————布考斯基
-  这是我的第一篇博客，我现在正在熟悉Hexo,所使用的主题是NexT,我觉得这个主题简洁大方，而且里边的缓动效果特别舒服。
- 我以后会不定时的在这上边更新一些博客，什么类型的都有，写给自己看，写给多年后的自己看。
- 加油， 每天进步一点，不断努力，终会取得不错的成绩！">
+<meta name="description" content="常用的几种对象创建模式
+使用new关键字创建
+
+最基础的对象创建方式，无非就是和其他多数语言一样说的一样：没对象，你new一个呀！123456var gf = new Object();gf.name = &quot;tangwei&quot;;gf.bar = &quot;c++&quot;;gf.sayWhat = function() &amp;#123;    console.log(this.name + &quot;said:love you">
 <meta property="og:type" content="article">
-<meta property="og:title" content="这是我的第一篇Hexo博客">
-<meta property="og:url" content="http://yoursite.com/2016/10/21/My-New-Post/index.html">
+<meta property="og:title" content="深入javascript——构造函数和原型对象">
+<meta property="og:url" content="http://yoursite.com/2016/11/18/javascript-Object/index.html">
 <meta property="og:site_name" content="Littlombie's Nirvana">
-<meta property="og:description" content="一天不独处，我就会变得虚弱。我不以孤独为荣，但我以此为生。
-————布考斯基
-  这是我的第一篇博客，我现在正在熟悉Hexo,所使用的主题是NexT,我觉得这个主题简洁大方，而且里边的缓动效果特别舒服。
- 我以后会不定时的在这上边更新一些博客，什么类型的都有，写给自己看，写给多年后的自己看。
- 加油， 每天进步一点，不断努力，终会取得不错的成绩！">
-<meta property="og:image" content="http://yoursite.com/images/20140111004002.jpg">
-<meta property="og:image" content="http://yoursite.com/images/bg_web.jpg">
-<meta property="og:updated_time" content="2016-11-08T03:00:24.731Z">
+<meta property="og:description" content="常用的几种对象创建模式
+使用new关键字创建
+
+最基础的对象创建方式，无非就是和其他多数语言一样说的一样：没对象，你new一个呀！123456var gf = new Object();gf.name = &quot;tangwei&quot;;gf.bar = &quot;c++&quot;;gf.sayWhat = function() &amp;#123;    console.log(this.name + &quot;said:love you">
+<meta property="og:image" content="http://yoursite.com/images/post/post2.png">
+<meta property="og:image" content="http://yoursite.com/images/post/bVcG98.png">
+<meta property="og:updated_time" content="2016-11-18T07:20:57.910Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="这是我的第一篇Hexo博客">
-<meta name="twitter:description" content="一天不独处，我就会变得虚弱。我不以孤独为荣，但我以此为生。
-————布考斯基
-  这是我的第一篇博客，我现在正在熟悉Hexo,所使用的主题是NexT,我觉得这个主题简洁大方，而且里边的缓动效果特别舒服。
- 我以后会不定时的在这上边更新一些博客，什么类型的都有，写给自己看，写给多年后的自己看。
- 加油， 每天进步一点，不断努力，终会取得不错的成绩！">
-<meta name="twitter:image" content="http://yoursite.com/images/20140111004002.jpg">
+<meta name="twitter:title" content="深入javascript——构造函数和原型对象">
+<meta name="twitter:description" content="常用的几种对象创建模式
+使用new关键字创建
+
+最基础的对象创建方式，无非就是和其他多数语言一样说的一样：没对象，你new一个呀！123456var gf = new Object();gf.name = &quot;tangwei&quot;;gf.bar = &quot;c++&quot;;gf.sayWhat = function() &amp;#123;    console.log(this.name + &quot;said:love you">
+<meta name="twitter:image" content="http://yoursite.com/images/post/post2.png">
 
 
 
@@ -149,10 +146,10 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2016/10/21/My-New-Post/"/>
+  <link rel="canonical" href="http://yoursite.com/2016/11/18/javascript-Object/"/>
 
 
-  <title> 这是我的第一篇Hexo博客 | Littlombie's Nirvana </title>
+  <title> 深入javascript——构造函数和原型对象 | Littlombie's Nirvana </title>
 </head>
 
 <body itemscope itemtype="//schema.org/WebPage" lang="zh-Hans">
@@ -315,7 +312,7 @@
             
             
               
-                这是我的第一篇Hexo博客
+                深入javascript——构造函数和原型对象
               
             
           </h1>
@@ -327,8 +324,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-10-21T10:59:40+08:00" content="2016-10-21">
-              2016-10-21
+            <time itemprop="dateCreated" datetime="2016-11-18T15:00:10+08:00" content="2016-11-18">
+              2016-11-18
             </time>
           </span>
 
@@ -341,8 +338,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/个人随写/" itemprop="url" rel="index">
-                    <span itemprop="name">个人随写</span>
+                  <a href="/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
                   </a>
                 </span>
 
@@ -357,8 +354,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/10/21/My-New-Post/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/21/My-New-Post/" itemprop="commentsCount"></span>
+                <a href="/2016/11/18/javascript-Object/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/18/javascript-Object/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -368,7 +365,7 @@
 
           
           
-             <span id="/2016/10/21/My-New-Post/" class="leancloud_visitors" data-flag-title="这是我的第一篇Hexo博客">
+             <span id="/2016/11/18/javascript-Object/" class="leancloud_visitors" data-flag-title="深入javascript——构造函数和原型对象">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -390,12 +387,50 @@
       
 
       
-        <blockquote><p>一天不独处，我就会变得虚弱。我不以孤独为荣，但我以此为生。</p>
-<footer><strong>————</strong><cite>布考斯基</cite></footer></blockquote>
-<p><br><br> <img src="/images/20140111004002.jpg" class="[full-image]"><br> 这是我的第一篇博客，我现在正在熟悉Hexo,所使用的主题是NexT,我觉得这个主题简洁大方，而且里边的缓动效果特别舒服。</p>
-<p> 我以后会不定时的在这上边更新一些博客，什么类型的都有，写给自己看，写给多年后的自己看。</p>
-<p> 加油， 每天进步一点，不断努力，终会取得不错的成绩！<br> <a id="more"></a></p>
-<p><img src="/images/bg_web.jpg" class="full-image"></p>
+        <h4 id="常用的几种对象创建模式"><a href="#常用的几种对象创建模式" class="headerlink" title="常用的几种对象创建模式"></a>常用的几种对象创建模式</h4><ul>
+<li>使用new关键字创建</li>
+</ul>
+<p>最基础的对象创建方式，无非就是和其他多数语言一样说的一样：没对象，你new一个呀！<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gf = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">gf.name = <span class="string">"tangwei"</span>;</div><div class="line">gf.bar = <span class="string">"c++"</span>;</div><div class="line">gf.sayWhat = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">"said:love you forever"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>使用字面量创建</li>
+</ul>
+<p>这样似乎妥妥的了，但是宅寂的geek们岂能喜欢如此复杂和low土的定义变量的方式，作为一门脚本语言那应该有和其他兄弟们一样的范儿，于是出现了对象字面量的定义方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var gf = &#123;</div><div class="line">    name : &quot;tangwei&quot;,</div><div class="line">    bar : &quot;c++&quot;,</div><div class="line">    sayWhat : function() &#123;</div><div class="line">        console.log(this.name + &quot;said:love you forever&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<ul>
+<li>工厂模式</li>
+</ul>
+<p>实际上这是我们在实际中最常用的对象定义方式，但是我要有好多拥有相似属性的对象（想想都让人激动。。。）怎么办呢？那要是一个个的定义，就会产生 大量的代码，何不建个工厂，批量的生产出我们的对象呢，于是，javascript世界中第一个充气娃。。。不，“工厂模式”诞生了！<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createGf</span>(<span class="params">name, bar</span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">    o.name = name;</div><div class="line">    o.bar = bar;</div><div class="line">    o.sayWhat = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        alert(<span class="keyword">this</span>.name + <span class="string">"said:love you forever"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> o;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> gf1 = createGf(<span class="string">"bingbing"</span>,<span class="string">"d"</span>);</div><div class="line"><span class="keyword">var</span> gf2 = createGf(<span class="string">"mimi"</span>,<span class="string">"a"</span>);</div></pre></td></tr></table></figure></p>
+<ul>
+<li>构造函数</li>
+</ul>
+<p>工厂模式解决了多个相似对象的创建问题，但是问题又来了，这些对象都是Object整出来的，怎么区分它们的对象具体类型呢？这时候我们就需要切换到另一种模式了，构造函数模式：<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Gf</span>(<span class="params">name,bar</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.bar = bar;</div><div class="line">    <span class="keyword">this</span>.sayWhat = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        alert(<span class="keyword">this</span>.name + <span class="string">"said:love you forever"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> gf1 = <span class="keyword">new</span> Gf(<span class="string">"vivian"</span>,<span class="string">"f"</span>);</div><div class="line"><span class="keyword">var</span> gf2 = <span class="keyword">new</span> Gf(<span class="string">"vivian2"</span>,<span class="string">"f"</span>);</div><div class="line"><span class="string">`</span></div></pre></td></tr></table></figure></p>
+<p>这里我们使用一个大写字母开头的构造函数替代了上例中的createGf，注意按照约定构造函数的首字母要大写。在这里我们创建一个新对象，然后将构造函数的作用域赋给新对象，调用构造函数中的方法。</p>
+<p>上面的方式似乎没什么不妥，但是我们可以发现，两个实例中调用的构造函数中的sayWhat方法不是同一个Function实例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">console</span>.log(gf1.sayWhat == gf2.sayWhat); <span class="comment">//false</span></div></pre></td></tr></table></figure></p>
+<p>调用同一个方法，却声明了不同的实例，实在浪费资源。我们可以优化一下将sayWhat函数放到构造函数外面声明：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Gf</span>(<span class="params">name,bar</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.bar = bar;</div><div class="line">    <span class="keyword">this</span>.sayWhat = sayWhat</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayWhat</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    alert(<span class="keyword">this</span>.name + <span class="string">"said:love you forever"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这样解决了，多个实例多次定义同一个方法实例的问题，但是新问题又来了，我们定义的sayWhat是一个全局作用域的方法，但这个方法其实是没法直接调用的，这就有点矛盾了。如何更优雅的定义一个具备一定封装性的对象呢？我们来看一下javascript原型对象模式。</p>
+<h4 id="原型对象模式"><a href="#原型对象模式" class="headerlink" title="原型对象模式"></a>原型对象模式</h4><ul>
+<li>理解原型对象</li>
+</ul>
+<p><img src="/images/post/post2.png" alt="ss"></p>
+<p>当我们创建一个函数时，该函数就会具备一个prototype属性，这个属性指向通过构造函数创建的那个函数的原型对象。通俗点讲原型对象就是内存中为其他对象提供共享属性和方法的对象。</p>
+<p>在原型模式中，不必再构造函数中定义实例属性，可以将属性信息直接赋予原型对象：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Gf</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    Gf.prototype.name = <span class="string">"vivian"</span>;</div><div class="line">    Gf.prototype.bar = <span class="string">"c++"</span>;</div><div class="line">    Gf.prototype.sayWhat = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        alert(<span class="keyword">this</span>.name + <span class="string">"said:love you forever"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> gf1 = <span class="keyword">new</span> Gf();</div><div class="line">gf1.sayWhat();</div><div class="line"><span class="keyword">var</span> gf2 = <span class="keyword">new</span> Gf();</div></pre></td></tr></table></figure></p>
+<p>和构造函数不同的是这里新对象的属性和方法是所有实例都可以共享的，换句话说gf1和gf2访问的是同一份属性和方法。原型对象中除了我们赋予的属性外，还有一些内置的属性，所有原型对象都具备一个constructor属性，这个属性是一个指向包含prototype属性函数的一个指针（敢不敢再绕点！）。通过一幅图我们来清楚的理一下这个绕口的流程：</p>
+<p><img src="/images/post/bVcG98.png" alt="ss"></p>
+<p>所有的对象都有一个原型对象（prototype），原型对象中有一个constructor属性指向包含prototype属性的函数，Gf的实例gf1和gf2都包含一个内部属性指向原型对象（在firefox浏览器中表现为私有属性proto），当我们访问一个对象中的属性时，首先会询问实例对象中有没有该属性，如果没有则继续查找原型对象。</p>
+<ul>
+<li>使用原型对象</li>
+</ul>
+<p>在前面的示例中，我们注意到在为原型对象添加属性时，需要每个都增加Gf.prototype，这个工作很重复，在上面对象的创建模式中，我们知道可以通过字面量的形式创建一个对象，这里我们也可以改进一下：<br> <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Gf</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">Gf.prototype = &#123;</div><div class="line">    <span class="attr">name</span> : <span class="string">"vivian"</span>,</div><div class="line">    <span class="attr">bar</span> : <span class="string">"c++"</span>,</div><div class="line">    <span class="attr">sayWhat</span> : <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        alert(<span class="keyword">this</span>.name + <span class="string">"said:love you forever"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这里有一个地方需要特别注意下，constructor属性不再指向对象Gf，因为每定义一个函数，就会同时为其创建一个prototype对象，这个对象也会自动获取一个新的constructor属性，这个地方我们使用Gf.prototype本质上覆写了原有的prototype对象，因此constructor也变成了新对象的constructor属性，不再指向Gf，而是Object:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gf1 = <span class="keyword">new</span> Gf();</div><div class="line"><span class="built_in">console</span>.log(gf1.constructor == Gf);<span class="comment">//false</span></div><div class="line"><span class="built_in">console</span>.log(gf1.constructor == <span class="built_in">Object</span>)<span class="comment">//true</span></div></pre></td></tr></table></figure></p>
+<p>一般情况下，这个微妙的改变是不会对我们造成影响的，但如果你对constructor有特殊的需求，我们也可以显式的指定下Gf.prototype的constructor属性：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Gf.prototype = &#123;</div><div class="line">    <span class="attr">constructor</span> : Gf,</div><div class="line">    <span class="attr">name</span> : <span class="string">"vivian"</span>,</div><div class="line">    <span class="attr">bar</span> : <span class="string">"c++"</span>,</div><div class="line">    <span class="attr">sayWhat</span> : <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        alert(<span class="keyword">this</span>.name + <span class="string">"said:love you forever"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> gf1 = <span class="keyword">new</span> Gf();</div><div class="line"><span class="built_in">console</span>.log(gf1.constructor == Gf);<span class="comment">//true</span></div></pre></td></tr></table></figure></p>
+<p>通过对原型对象模式的初步了解，我们发现所有的实例对象都共享相同的属性，这是原型模式的基本特点，但往往对于开发者来说这是把“双刃剑”，在实际开发中，我们希望的实例应该是具备自己的属性，这也是在实际开发中很少有人单独使用原型模式的主要原因。</p>
+<ul>
+<li>构造函数和原型组合模式</li>
+</ul>
+<p>在实际开发中，我们可以使用构造函数来定义对象的属性，使用原型来定义共享的属性和方法，这样我们就可以传递不同的参数来创建出不同的对象，同时又拥有了共享的方法和属性。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Gf</span>(<span class="params">name,bar</span>)</span>&#123;</div><div class="line">    <span class="keyword">this</span>.name = name;</div><div class="line">    <span class="keyword">this</span>.bar = bar;</div><div class="line">&#125;</div><div class="line">Gf.prototype = &#123;</div><div class="line">    <span class="attr">constructor</span> : Gf,</div><div class="line">    <span class="attr">sayWhat</span> : <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        alert(<span class="keyword">this</span>.name + <span class="string">"said:love you forever"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> gf1 = <span class="keyword">new</span> Gf(<span class="string">"vivian"</span>, <span class="string">"f"</span>);</div><div class="line"><span class="keyword">var</span> gf2 = <span class="keyword">new</span> Gf(<span class="string">"vivian1"</span>, <span class="string">"c"</span>);</div></pre></td></tr></table></figure>
+<p>在这个例子中，我们再构造函数中定义了对象各自的属性值，在原型对象中定义了constructor属性和sayWhat函数，这样gf1和gf2属性之 间就不会产生影响了。这种模式也是实际开发中最常用的对象定义方式，包括很多js库（bootstrap等）默认的采用的模式。</p>
+<p>*文章来自网络，如有侵权请联系进行删除，谢谢</p>
 
       
     </div>
@@ -416,22 +451,24 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/javascript/" rel="tag">#javascript</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/21/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2016/11/16/the-Accompanying-photograph/" rel="next" title="周末随拍（2016.11.13）">
+                <i class="fa fa-chevron-left"></i> 周末随拍（2016.11.13）
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/10/31/my-new-post-0/" rel="prev" title="hexo 在github上部署成功">
-                hexo 在github上部署成功 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -446,10 +483,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/10/21/My-New-Post/"
-     data-title="这是我的第一篇Hexo博客"
+        <div class="ds-share flat" data-thread-key="2016/11/18/javascript-Object/"
+     data-title="深入javascript——构造函数和原型对象"
      data-content=""
-     data-url="http://yoursite.com/2016/10/21/My-New-Post/">
+     data-url="http://yoursite.com/2016/11/18/javascript-Object/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -479,8 +516,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/10/21/My-New-Post/"
-           data-title="这是我的第一篇Hexo博客" data-url="http://yoursite.com/2016/10/21/My-New-Post/">
+      <div class="ds-thread" data-thread-key="2016/11/18/javascript-Object/"
+           data-title="深入javascript——构造函数和原型对象" data-url="http://yoursite.com/2016/11/18/javascript-Object/">
       </div>
     
   </div>
@@ -616,7 +653,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用的几种对象创建模式"><span class="nav-number">1.</span> <span class="nav-text">常用的几种对象创建模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原型对象模式"><span class="nav-number">2.</span> <span class="nav-text">原型对象模式</span></a></li></ol></div>
             
           </div>
         </section>
