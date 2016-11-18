@@ -107,7 +107,7 @@
 <meta name="description" content="常用的几种对象创建模式
 使用new关键字创建
 
-最基础的对象创建方式，无非就是和其他多数语言一样说的一样：没对象，你new一个呀！123456var gf = new Object();gf.name = &quot;tangwei&quot;;gf.bar = &quot;c++&quot;;gf.sayWhat = function() &amp;#123;    console.log(this.name + &quot;said:love you">
+最基础的对象创建方式，无非就是和其他多数语言一样说的一样：没对象，你new一个呀！123456var gf = new Object();gf.name = &quot;zhangSan&quot;;gf.bar = &quot;c++&quot;;gf.sayWhat = function() &amp;#123;    console.log(this.name + &quot;said:love yo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="深入javascript——构造函数和原型对象">
 <meta property="og:url" content="http://yoursite.com/2016/11/18/javascript-Object/index.html">
@@ -115,16 +115,16 @@
 <meta property="og:description" content="常用的几种对象创建模式
 使用new关键字创建
 
-最基础的对象创建方式，无非就是和其他多数语言一样说的一样：没对象，你new一个呀！123456var gf = new Object();gf.name = &quot;tangwei&quot;;gf.bar = &quot;c++&quot;;gf.sayWhat = function() &amp;#123;    console.log(this.name + &quot;said:love you">
+最基础的对象创建方式，无非就是和其他多数语言一样说的一样：没对象，你new一个呀！123456var gf = new Object();gf.name = &quot;zhangSan&quot;;gf.bar = &quot;c++&quot;;gf.sayWhat = function() &amp;#123;    console.log(this.name + &quot;said:love yo">
 <meta property="og:image" content="http://yoursite.com/images/post/post2.png">
 <meta property="og:image" content="http://yoursite.com/images/post/bVcG98.png">
-<meta property="og:updated_time" content="2016-11-18T07:20:57.910Z">
+<meta property="og:updated_time" content="2016-11-18T07:31:10.923Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深入javascript——构造函数和原型对象">
 <meta name="twitter:description" content="常用的几种对象创建模式
 使用new关键字创建
 
-最基础的对象创建方式，无非就是和其他多数语言一样说的一样：没对象，你new一个呀！123456var gf = new Object();gf.name = &quot;tangwei&quot;;gf.bar = &quot;c++&quot;;gf.sayWhat = function() &amp;#123;    console.log(this.name + &quot;said:love you">
+最基础的对象创建方式，无非就是和其他多数语言一样说的一样：没对象，你new一个呀！123456var gf = new Object();gf.name = &quot;zhangSan&quot;;gf.bar = &quot;c++&quot;;gf.sayWhat = function() &amp;#123;    console.log(this.name + &quot;said:love yo">
 <meta name="twitter:image" content="http://yoursite.com/images/post/post2.png">
 
 
@@ -390,11 +390,12 @@
         <h4 id="常用的几种对象创建模式"><a href="#常用的几种对象创建模式" class="headerlink" title="常用的几种对象创建模式"></a>常用的几种对象创建模式</h4><ul>
 <li>使用new关键字创建</li>
 </ul>
-<p>最基础的对象创建方式，无非就是和其他多数语言一样说的一样：没对象，你new一个呀！<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gf = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">gf.name = <span class="string">"tangwei"</span>;</div><div class="line">gf.bar = <span class="string">"c++"</span>;</div><div class="line">gf.sayWhat = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">"said:love you forever"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>最基础的对象创建方式，无非就是和其他多数语言一样说的一样：没对象，你new一个呀！<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gf = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">gf.name = <span class="string">"zhangSan"</span>;</div><div class="line">gf.bar = <span class="string">"c++"</span>;</div><div class="line">gf.sayWhat = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">"said:love you forever"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <ul>
 <li>使用字面量创建</li>
 </ul>
-<p>这样似乎妥妥的了，但是宅寂的geek们岂能喜欢如此复杂和low土的定义变量的方式，作为一门脚本语言那应该有和其他兄弟们一样的范儿，于是出现了对象字面量的定义方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">var gf = &#123;</div><div class="line">    name : &quot;tangwei&quot;,</div><div class="line">    bar : &quot;c++&quot;,</div><div class="line">    sayWhat : function() &#123;</div><div class="line">        console.log(this.name + &quot;said:love you forever&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这样似乎妥妥的了，但是宅寂的geek们岂能喜欢如此复杂和low土的定义变量的方式，作为一门脚本语言那应该有和其他兄弟们一样的范儿，于是出现了对象字面量的定义方式：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> gf = &#123;</div><div class="line">    <span class="attr">name</span> : <span class="string">"zhangSan"</span>,</div><div class="line">    <span class="attr">bar</span> : <span class="string">"c++"</span>,</div><div class="line">    <span class="attr">sayWhat</span> : <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">"said:love you forever"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <a id="more"></a>
 <ul>
 <li>工厂模式</li>
