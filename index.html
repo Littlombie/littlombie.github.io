@@ -716,8 +716,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/11/09/Rotate-the-navigation/" itemprop="url">
-                  css3导航动画切换
+                <a class="post-title-link" href="/2016/11/12/upload-git-for-github/" itemprop="url">
+                  git 上传本地文件到github
                 </a>
               
             
@@ -730,8 +730,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-09T18:14:22+08:00" content="2016-11-09">
-              2016-11-09
+            <time itemprop="dateCreated" datetime="2016-11-12T12:55:48+08:00" content="2016-11-12">
+              2016-11-12
             </time>
           </span>
 
@@ -744,8 +744,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/css/" itemprop="url" rel="index">
-                    <span itemprop="name">css</span>
+                  <a href="/categories/web/" itemprop="url" rel="index">
+                    <span itemprop="name">web</span>
                   </a>
                 </span>
 
@@ -760,8 +760,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/11/09/Rotate-the-navigation/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/09/Rotate-the-navigation/" itemprop="commentsCount"></span>
+                <a href="/2016/11/12/upload-git-for-github/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/12/upload-git-for-github/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -771,7 +771,7 @@
 
           
           
-             <span id="/2016/11/09/Rotate-the-navigation/" class="leancloud_visitors" data-flag-title="css3导航动画切换">
+             <span id="/2016/11/12/upload-git-for-github/" class="leancloud_visitors" data-flag-title="git 上传本地文件到github">
                &nbsp; | &nbsp;
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -794,23 +794,37 @@
 
       
         
-          <p>我们浏览有些手机网站时，有时会发现页面的导航打开动画很有意思，类似下图这种：</p>
-<p><img src="http://littlombie.github.io/images/nav.gif" alt="nav"></p>
-<p>现在我们用<code>html</code> <code>input</code>表单以及<code>css3</code>实现这个功能，原理如下：</p>
-<ul>
-<li><p>html为用<code>input</code> 与<code>label</code>表单，<code>label</code>下边三个<code>div</code>表示导航的三条横线；</p>
-</li>
-<li><p>当点击<code>label</code>时，<code>input</code>会选中,与之对应的<code>label</code>下边三个<code>div</code>执行动画,其中第二个div让宽度为0，位置发生变化，第一个与第三个div执行旋转动画，形成<code>×</code>；</p>
-</li>
-<li><p>再次点击取消选中时，利用<code>input</code>的属性，恢复到选中之前的状态。</p>
-</li>
-</ul>
-<p>html代码如下：</p>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/09/Rotate-the-navigation/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+          
+            <blockquote>
+<p>Git 上传本地文件到github</p>
+</blockquote>
+<p>1 git config –global user.name “Your Real Name” </p>
+<p>2 git config –global user.email you@email.address</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">git init</div><div class="line"></div><div class="line">git add .</div><div class="line"></div><div class="line">git commit -m 'Test'</div><div class="line"></div><div class="line">git remote add origin git@github.com:XXX/XXX.git 3 git push -u origin master</div></pre></td></tr></table></figure>
+<p>一些可能遇到的问题解决：</p>
+<p>如果输入$ git remote add origin<br>git@github.com:djqiang（github帐号名）/gitdemo（项目名）.git<br>提示出错信息：fatal: remote origin already exists.</p>
+<p>解决办法如下：</p>
+<p>1、先输入<code>$ git remote rm origin</code></p>
+<p>2、再输入<code>$ git remote add origin git@github.com:djqiang/gitdemo.git</code> 就不会报错了！</p>
+<p>3、如果输入<code>$ git remote rm origin</code> 还是报错的话，<code>error: Could not remove config section ‘remote.origin’.</code>我们需要修改gitconfig文件的内容</p>
+<p>4、找到你的github的安装路径，我的是C:\Users\ASUS\AppData\Local\GitHub\PortableGit_ca477551eeb4aea0e4ae9fcd3358bd96720bb5c8\etc</p>
+<p>5、找到一个名为gitconfig的文件，打开它把里面的[remote “origin”]那一行删掉就好了！<br>如果输入$ ssh -T git@github.com</p>
+<p>出现错误提示：<code>Permission denied</code>(publickey).因为新生成的key不能加入ssh就会导致连接不上github。</p>
+<p>解决办法如下：</p>
+<p>1、先输入$ ssh-agent，再输入$ ssh-add ~/.ssh/id_key，这样就可以了。</p>
+<p>2、如果还是不行的话，输入<code>ssh-add ~/.ssh/id_key</code> 命令后出现报错<code>Could not open a connection to your authentication agent.</code>解决方法是key用Git<br>Gui的ssh工具生成，这样生成的时候key就直接保存在ssh中了，不需要再ssh-add命令加入了，其它的user，token等配置都用命令行来做。</p>
+<p>3、最好检查一下在你复制id_rsa.pub文件的内容时有没有产生多余的空格或空行，有些编辑器会帮你添加这些的。</p>
+<p>如果输入<code>$ git push origin master</code></p>
+<p>提示出错信息：<code>error:failed to push som refs to …….</code></p>
+<p>解决办法如下：</p>
+<p>1、先输入<code>$ git pull origin master</code> //先把远程服务器github上面的文件拉下来</p>
+<p>2、再输入<code>$ git push origin master</code></p>
+<p>3、如果出现报错 <code>fatal: Couldn’t find remote ref master</code>或者<code>fatal: ‘origin’ does not appear to be a git repository</code>以及<code>fatal: Could not read from remote repository.</code></p>
+<p>4、则需要重新输<code>入$ git remote add origingit@github.com:djqiang/gitdemo.git</code></p>
+<p>使用git在本地创建一个项目的过程<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ makdir ~/hello-world    //创建一个项目hello-world</div><div class="line">$ cd ~/hello-world       //打开这个项目</div><div class="line">$ git init             //初始化</div><div class="line">$ touch README</div><div class="line">$ git add README        //更新README文件</div><div class="line">$ git commit -m ‘first commit’     //提交更新，并注释信息“first commit”</div><div class="line">$ git remote add origin git@github.com:defnngj/hello-world.git     //连接远程github项目</div><div class="line">$ git push -u origin master     //将本地项目更新到github项目上去</div></pre></td></tr></table></figure></p>
+<p>我的github 同步测试：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">echo "# text" &gt;&gt; README.md</div><div class="line">git init</div><div class="line">git add README.md</div><div class="line">git commit -m "first commit"</div><div class="line">git remote add origin https://github.com/Littlombie/text.git</div><div class="line">git push -u origin master</div><div class="line">…or push an existing repository from the command line</div><div class="line"></div><div class="line"></div><div class="line">git remote add origin https://github.com/Littlombie/text.git</div><div class="line">git push -u origin master</div></pre></td></tr></table></figure>
+          
         
       
     </div>
@@ -882,7 +896,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -899,7 +913,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
