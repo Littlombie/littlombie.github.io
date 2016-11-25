@@ -297,7 +297,7 @@
     <link href="http://yoursite.com/2016/11/12/upload-git-for-github/"/>
     <id>http://yoursite.com/2016/11/12/upload-git-for-github/</id>
     <published>2016-11-12T04:55:48.000Z</published>
-    <updated>2016-11-25T04:57:09.817Z</updated>
+    <updated>2016-11-25T05:00:49.567Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>Git 上传本地文件到github</p>
@@ -307,12 +307,14 @@
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">git init</div><div class="line"></div><div class="line">git add .</div><div class="line"></div><div class="line">git commit -m 'Test'</div><div class="line"></div><div class="line">git remote add origin git@github.com:XXX/XXX.git 3 git push -u origin master</div></pre></td></tr></table></figure>
 <p>一些可能遇到的问题解决：</p>
 <p>如果输入$ git remote add origin<br>git@github.com:djqiang（github帐号名）/gitdemo（项目名）.git<br>提示出错信息：fatal: remote origin already exists.</p>
+<a id="more"></a>
 <p>解决办法如下：</p>
 <p>1、先输入<code>$ git remote rm origin</code></p>
 <p>2、再输入<code>$ git remote add origin git@github.com:djqiang/gitdemo.git</code> 就不会报错了！</p>
 <p>3、如果输入<code>$ git remote rm origin</code> 还是报错的话，<code>error: Could not remove config section ‘remote.origin’.</code>我们需要修改gitconfig文件的内容</p>
-<p>4、找到你的github的安装路径，我的是C:\Users\ASUS\AppData\Local\GitHub\PortableGit_ca477551eeb4aea0e4ae9fcd3358bd96720bb5c8\etc</p>
-<p>5、找到一个名为gitconfig的文件，打开它把里面的[remote “origin”]那一行删掉就好了！<br>如果输入$ ssh -T git@github.com</p>
+<p>4、找到你的github的安装路径，我的是</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">C:\Users\ASUS\AppData\Local\GitHub\PortableGit_ca477551eeb4aea0e4ae9fcd3358bd96720bb5c8\etc</div></pre></td></tr></table></figure>
+<p>5、找到一个名为gitconfig的文件，打开它把里面的<code>[remote &quot;origin&quot;]</code>那一行删掉就好了！<br>如果输入$ ssh -T git@github.com</p>
 <p>出现错误提示：<code>Permission denied</code>(publickey).因为新生成的key不能加入ssh就会导致连接不上github。</p>
 <p>解决办法如下：</p>
 <p>1、先输入$ ssh-agent，再输入$ ssh-add ~/.ssh/id_key，这样就可以了。</p>
@@ -335,7 +337,10 @@
 &lt;p&gt;Git 上传本地文件到github&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;1 git config –global user.name “Your Real Name” &lt;/p&gt;
-&lt;p&gt;2 git config –global user.ema
+&lt;p&gt;2 git config –global user.email you@email.address&lt;/p&gt;
+&lt;figure class=&quot;highlight markdown&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;git init&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;git add .&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;git commit -m &#39;Test&#39;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;git remote add origin git@github.com:XXX/XXX.git 3 git push -u origin master&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;一些可能遇到的问题解决：&lt;/p&gt;
+&lt;p&gt;如果输入$ git remote add origin&lt;br&gt;git@github.com:djqiang（github帐号名）/gitdemo（项目名）.git&lt;br&gt;提示出错信息：fatal: remote origin already exists.&lt;/p&gt;
     
     </summary>
     
