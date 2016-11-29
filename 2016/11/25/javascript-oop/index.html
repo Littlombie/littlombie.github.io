@@ -104,40 +104,22 @@
 
 
 
-<meta name="description" content="JavaScript中没有类的概念，只有对象。
-在JavaScript中定义对象可以采用以下几种方式：
-1.基于已有对象扩充其属性和方法
-2.工厂方式
-3.构造函数方式
-4.原型(“prototype”)方式
-5.动态原型方式
+<meta name="description" content="JavaScript中没有类的概念，只有对象。在JavaScript中定义对象可以采用以下几种方式：1.基于已有对象扩充其属性和方法2.工厂方式3.构造函数方式4.原型(“prototype”)方式5.动态原型方式
 
-基于已有对象扩充其属性和方法12345678    var object = new Object();    object.name = &quot;zhangsan&quot;;">
+基于已有对象扩充其属性和方法12345678    var object = new Object();    object.name = &quot;zhangsan&quot;;    objec">
 <meta property="og:type" content="article">
 <meta property="og:title" content="javascript中定义对象的几种方式">
 <meta property="og:url" content="http://yoursite.com/2016/11/25/javascript-oop/index.html">
 <meta property="og:site_name" content="Littlombie's Nirvana">
-<meta property="og:description" content="JavaScript中没有类的概念，只有对象。
-在JavaScript中定义对象可以采用以下几种方式：
-1.基于已有对象扩充其属性和方法
-2.工厂方式
-3.构造函数方式
-4.原型(“prototype”)方式
-5.动态原型方式
+<meta property="og:description" content="JavaScript中没有类的概念，只有对象。在JavaScript中定义对象可以采用以下几种方式：1.基于已有对象扩充其属性和方法2.工厂方式3.构造函数方式4.原型(“prototype”)方式5.动态原型方式
 
-基于已有对象扩充其属性和方法12345678    var object = new Object();    object.name = &quot;zhangsan&quot;;">
-<meta property="og:updated_time" content="2016-11-25T11:06:12.869Z">
+基于已有对象扩充其属性和方法12345678    var object = new Object();    object.name = &quot;zhangsan&quot;;    objec">
+<meta property="og:updated_time" content="2016-11-29T05:13:52.537Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript中定义对象的几种方式">
-<meta name="twitter:description" content="JavaScript中没有类的概念，只有对象。
-在JavaScript中定义对象可以采用以下几种方式：
-1.基于已有对象扩充其属性和方法
-2.工厂方式
-3.构造函数方式
-4.原型(“prototype”)方式
-5.动态原型方式
+<meta name="twitter:description" content="JavaScript中没有类的概念，只有对象。在JavaScript中定义对象可以采用以下几种方式：1.基于已有对象扩充其属性和方法2.工厂方式3.构造函数方式4.原型(“prototype”)方式5.动态原型方式
 
-基于已有对象扩充其属性和方法12345678    var object = new Object();    object.name = &quot;zhangsan&quot;;">
+基于已有对象扩充其属性和方法12345678    var object = new Object();    object.name = &quot;zhangsan&quot;;    objec">
 
 
 
@@ -410,13 +392,7 @@
 
       
         <blockquote>
-<p>JavaScript中没有类的概念，只有对象。</p>
-<p>在JavaScript中定义对象可以采用以下几种方式：</p>
-<p>1.基于已有对象扩充其属性和方法</p>
-<p>2.工厂方式</p>
-<p>3.构造函数方式</p>
-<p>4.原型(“prototype”)方式</p>
-<p>5.动态原型方式</p>
+<p>JavaScript中没有类的概念，只有对象。<br>在JavaScript中定义对象可以采用以下几种方式：<br>1.基于已有对象扩充其属性和方法<br>2.工厂方式<br>3.构造函数方式<br>4.原型(“prototype”)方式<br>5.动态原型方式</p>
 </blockquote>
 <h3 id="基于已有对象扩充其属性和方法"><a href="#基于已有对象扩充其属性和方法" class="headerlink" title="基于已有对象扩充其属性和方法"></a>基于已有对象扩充其属性和方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">    <span class="keyword">var</span> object = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">    object.name = <span class="string">"zhangsan"</span>;</div><div class="line">    object.sayName = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">        alert(<span class="keyword">this</span>.name);</div><div class="line">    &#125;</div><div class="line">    object.sayName(<span class="string">"lisi"</span>);</div><div class="line"><span class="string">`</span></div></pre></td></tr></table></figure>
 <p>这种方式的弊端：这种对象的可复用性不强，如果需要使用多个对象，还需要重新扩展其属性和方法。</p>
