@@ -106,20 +106,20 @@
 
 <meta name="description" content="JavaScript中没有类的概念，只有对象。在JavaScript中定义对象可以采用以下几种方式：1.基于已有对象扩充其属性和方法2.工厂方式3.构造函数方式4.原型(“prototype”)方式5.动态原型方式
 
-基于已有对象扩充其属性和方法12345678    var object = new Object();    object.name = &quot;zhangsan&quot;;    objec">
+基于已有对象扩充其属性和方法123456789    var object = new Object();    object.name = &quot;zhangsan&quot;;    obje">
 <meta property="og:type" content="article">
 <meta property="og:title" content="javascript中定义对象的几种方式">
 <meta property="og:url" content="http://yoursite.com/2016/11/25/javascript-oop/index.html">
 <meta property="og:site_name" content="Littlombie's Nirvana">
 <meta property="og:description" content="JavaScript中没有类的概念，只有对象。在JavaScript中定义对象可以采用以下几种方式：1.基于已有对象扩充其属性和方法2.工厂方式3.构造函数方式4.原型(“prototype”)方式5.动态原型方式
 
-基于已有对象扩充其属性和方法12345678    var object = new Object();    object.name = &quot;zhangsan&quot;;    objec">
-<meta property="og:updated_time" content="2016-11-29T06:33:11.884Z">
+基于已有对象扩充其属性和方法123456789    var object = new Object();    object.name = &quot;zhangsan&quot;;    obje">
+<meta property="og:updated_time" content="2016-12-07T02:31:29.790Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript中定义对象的几种方式">
 <meta name="twitter:description" content="JavaScript中没有类的概念，只有对象。在JavaScript中定义对象可以采用以下几种方式：1.基于已有对象扩充其属性和方法2.工厂方式3.构造函数方式4.原型(“prototype”)方式5.动态原型方式
 
-基于已有对象扩充其属性和方法12345678    var object = new Object();    object.name = &quot;zhangsan&quot;;    objec">
+基于已有对象扩充其属性和方法123456789    var object = new Object();    object.name = &quot;zhangsan&quot;;    obje">
 
 
 
@@ -384,7 +384,7 @@
         <blockquote>
 <p>JavaScript中没有类的概念，只有对象。<br>在JavaScript中定义对象可以采用以下几种方式：<br>1.基于已有对象扩充其属性和方法<br>2.工厂方式<br>3.构造函数方式<br>4.原型(“prototype”)方式<br>5.动态原型方式</p>
 </blockquote>
-<h3 id="基于已有对象扩充其属性和方法"><a href="#基于已有对象扩充其属性和方法" class="headerlink" title="基于已有对象扩充其属性和方法"></a>基于已有对象扩充其属性和方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">    <span class="keyword">var</span> object = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">    object.name = <span class="string">"zhangsan"</span>;</div><div class="line">    object.sayName = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">        alert(<span class="keyword">this</span>.name);</div><div class="line">    &#125;</div><div class="line">    object.sayName(<span class="string">"lisi"</span>);</div><div class="line"><span class="string">`</span></div></pre></td></tr></table></figure>
+<h3 id="基于已有对象扩充其属性和方法"><a href="#基于已有对象扩充其属性和方法" class="headerlink" title="基于已有对象扩充其属性和方法"></a>基于已有对象扩充其属性和方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">    <span class="keyword">var</span> object = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">    object.name = <span class="string">"zhangsan"</span>;</div><div class="line">    object.sayName = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">        alert(<span class="keyword">this</span>.name);</div><div class="line">    &#125;</div><div class="line">    object.sayName(<span class="string">"lisi"</span>);</div><div class="line">    </div><div class="line"><span class="string">`</span></div></pre></td></tr></table></figure>
 <p>这种方式的弊端：这种对象的可复用性不强，如果需要使用多个对象，还需要重新扩展其属性和方法。</p>
  <a id="more"></a>
 <h3 id="工厂方式"><a href="#工厂方式" class="headerlink" title="工厂方式"></a>工厂方式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createObject</span>(<span class="params"></span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> object = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">    object.username = <span class="string">"zhangsan"</span>;</div><div class="line">    object.password = <span class="string">"123"</span>;</div><div class="line"></div><div class="line">    object.get = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        alert(<span class="keyword">this</span>.username + <span class="string">", "</span> + <span class="keyword">this</span>.password);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> object;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> object1 = createObject();</div><div class="line"><span class="keyword">var</span> object2 = createObject();</div><div class="line"></div><div class="line">object1.get();</div><div class="line"><span class="string">`</span></div></pre></td></tr></table></figure>
@@ -458,6 +458,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/08/css-overflow/" rel="prev" title="CSS实现多行文本溢出显示省略号">
+                CSS实现多行文本溢出显示省略号 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -551,7 +555,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -559,7 +563,7 @@
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>

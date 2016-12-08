@@ -302,6 +302,140 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/08/css-overflow/" itemprop="url">
+                  CSS实现多行文本溢出显示省略号
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-08T17:36:47+08:00" content="2016-12-08">
+              2016-12-08
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/css3/" itemprop="url" rel="index">
+                    <span itemprop="name">css3</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/08/css-overflow/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/08/css-overflow/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/12/08/css-overflow/" class="leancloud_visitors" data-flag-title="CSS实现多行文本溢出显示省略号">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="单行文本溢出显示省略号"><a href="#单行文本溢出显示省略号" class="headerlink" title="单行文本溢出显示省略号"></a>单行文本溢出显示省略号</h3><p>单行文本溢出隐藏显示出省略号，前提是要先定文本的宽度<br>实现方法<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.text1</span>&#123;</div><div class="line">    <span class="attribute">display</span>: block;</div><div class="line">    <span class="attribute">width</span>:<span class="number">100px</span>;</div><div class="line">    <span class="attribute">font-size</span>:<span class="number">14px</span>;</div><div class="line">    <span class="attribute">line-height</span>:<span class="number">1.5</span>;</div><div class="line">    <span class="attribute">overflow</span>: hidden;<span class="comment">/*溢出隐藏*/</span></div><div class="line">    <span class="attribute">white-space</span>: nowrap;<span class="comment">/*禁止换行*/</span></div><div class="line">    <span class="attribute">text-overflow</span>: ellipsis;<span class="comment">/*超出文字以省略号显示*/</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>显示效果<br><img src="images/2016120801.jpg" alt="单行文本溢出隐藏显示出省略号"></p>
+<h3 id="多行文本溢出显示省略号"><a href="#多行文本溢出显示省略号" class="headerlink" title="多行文本溢出显示省略号"></a>多行文本溢出显示省略号</h3><p>实现方法<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.text2</span> &#123;</div><div class="line">    <span class="attribute">width</span>:<span class="number">100px</span>;</div><div class="line">    <span class="attribute">display</span>: -webkit-box;<span class="comment">/*课伸缩盒子、弹性盒子*/</span></div><div class="line">    <span class="attribute">-webkit-box-orient</span>: vertical;<span class="comment">/*从上往下垂直排列子元素*/</span></div><div class="line">    <span class="attribute">-webkit-line-clamp</span>:<span class="number">3</span>;<span class="comment">/*限制在一块元素显示的文本的行数（超出三行显示省略号）*/</span></div><div class="line">    <span class="attribute">overflow</span>: hidden;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>显示效果<br><img src="images/2016120802.jpg" alt="单行文本溢出隐藏显示出省略号">  </p>
+<h6 id="因使用了WebKit的CSS扩展属性，所以该方法只适用于WebKit浏览器及移动端"><a href="#因使用了WebKit的CSS扩展属性，所以该方法只适用于WebKit浏览器及移动端" class="headerlink" title="因使用了WebKit的CSS扩展属性，所以该方法只适用于WebKit浏览器及移动端"></a><strong>因使用了WebKit的CSS扩展属性，所以该方法只适用于WebKit浏览器及移动端</strong></h6><h3 id="兼容写法-（通过定为实现）"><a href="#兼容写法-（通过定为实现）" class="headerlink" title="兼容写法:（通过定为实现）"></a>兼容写法:（通过定为实现）</h3><p>实现方法<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.text3</span> &#123;</div><div class="line">    <span class="attribute">width</span>:<span class="number">100px</span>;<span class="comment">/*自己定义高度*/</span></div><div class="line">    <span class="attribute">position</span>:relative;</div><div class="line">    <span class="attribute">line-height</span>:<span class="number">20px</span>;<span class="comment">/*行高*/</span></div><div class="line">    <span class="attribute">max-height</span>:<span class="number">80px</span>;<span class="comment">/*这里是行高的几倍就表示显示几行文本*/</span></div><div class="line">    <span class="attribute">overflow</span>:hidden;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.text3</span><span class="selector-pseudo">::after</span> &#123;</div><div class="line">    <span class="attribute">content</span>:<span class="string">'...'</span>;</div><div class="line">    <span class="attribute">position</span>:absolute;</div><div class="line">    <span class="attribute">bottom</span>:<span class="number">0</span>;</div><div class="line">    <span class="attribute">right</span>:<span class="number">0</span>;</div><div class="line">    <span class="attribute">padding-left</span>:<span class="number">40px</span>;</div><div class="line">    <span class="attribute">background</span>:<span class="built_in">-webkit-linear-gradient</span>(left,transparent,#fff 55%);</div><div class="line">    <span class="attribute">background</span>:<span class="built_in">-o-linear-gradient</span>(right,transparent,#fff 55%);</div><div class="line">    <span class="attribute">background</span>:<span class="built_in">-moz-linear-gradient</span>(right,transparent,#fff 55%);</div><div class="line">    <span class="attribute">background</span>:<span class="built_in">linear-gradient</span>(to right,transparent,#fff 55%);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>现实效果<br><img src="images/2016120803.jpg" alt="单行文本溢出隐藏显示出省略号">  </p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/25/javascript-oop/" itemprop="url">
                   javascript中定义对象的几种方式
                 </a>
@@ -383,7 +517,7 @@
           <blockquote>
 <p>JavaScript中没有类的概念，只有对象。<br>在JavaScript中定义对象可以采用以下几种方式：<br>1.基于已有对象扩充其属性和方法<br>2.工厂方式<br>3.构造函数方式<br>4.原型(“prototype”)方式<br>5.动态原型方式</p>
 </blockquote>
-<h3 id="基于已有对象扩充其属性和方法"><a href="#基于已有对象扩充其属性和方法" class="headerlink" title="基于已有对象扩充其属性和方法"></a>基于已有对象扩充其属性和方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">    <span class="keyword">var</span> object = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">    object.name = <span class="string">"zhangsan"</span>;</div><div class="line">    object.sayName = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">        alert(<span class="keyword">this</span>.name);</div><div class="line">    &#125;</div><div class="line">    object.sayName(<span class="string">"lisi"</span>);</div><div class="line"><span class="string">`</span></div></pre></td></tr></table></figure>
+<h3 id="基于已有对象扩充其属性和方法"><a href="#基于已有对象扩充其属性和方法" class="headerlink" title="基于已有对象扩充其属性和方法"></a>基于已有对象扩充其属性和方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">    <span class="keyword">var</span> object = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">    object.name = <span class="string">"zhangsan"</span>;</div><div class="line">    object.sayName = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">        alert(<span class="keyword">this</span>.name);</div><div class="line">    &#125;</div><div class="line">    object.sayName(<span class="string">"lisi"</span>);</div><div class="line">    </div><div class="line"><span class="string">`</span></div></pre></td></tr></table></figure>
 <p>这种方式的弊端：这种对象的可复用性不强，如果需要使用多个对象，还需要重新扩展其属性和方法。</p>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/11/25/javascript-oop/#more" rel="contents">
@@ -699,137 +833,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/16/the-Accompanying-photograph/" itemprop="url">
-                  周末随拍（2016.11.13）
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-16T15:42:07+08:00" content="2016-11-16">
-              2016-11-16
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/个人随写/" itemprop="url" rel="index">
-                    <span itemprop="name">个人随写</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/11/16/the-Accompanying-photograph/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/16/the-Accompanying-photograph/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-             <span id="/2016/11/16/the-Accompanying-photograph/" class="leancloud_visitors" data-flag-title="周末随拍（2016.11.13）">
-               &nbsp; | &nbsp;
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               <span class="post-meta-item-text">阅读次数 </span>
-               <span class="leancloud-visitors-count"></span>
-              </span>
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <img src="/images/20161113/8.jpg" class="[full-image]">
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/11/16/the-Accompanying-photograph/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -875,7 +878,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -883,7 +886,7 @@
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">5</span>
                 <span class="site-state-item-name">分类</span>
               
             </div>
