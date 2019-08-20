@@ -1,16 +1,114 @@
 <!DOCTYPE html>
-<html  lang="zh">
-<head>
-    <meta charset="utf-8" />
-
-<meta name="generator" content="Hexo 3.9.0" />
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-
-<title>vue深度学习（6）- render 函数 - Littlombie&#39;s Nirvana</title>
 
 
-    <meta name="description" content="render 研究方向  render机制   研究方法  条件渲染、列表渲染、update、模板、服务器渲染、渲染性能，如何编译，ast是什么">
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.4.2" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico?v=6.4.2">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico?v=6.4.2">
+
+
+  <link rel="mask-icon" href="/favicon.ico?v=6.4.2" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '6.4.2',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="render 研究方向  render机制   研究方法  条件渲染、列表渲染、update、模板、服务器渲染、渲染性能，如何编译，ast是什么">
 <meta name="keywords" content="vue,render">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue深度学习（6）- render 函数">
@@ -18,164 +116,347 @@
 <meta property="og:site_name" content="Littlombie&#39;s Nirvana">
 <meta property="og:description" content="render 研究方向  render机制   研究方法  条件渲染、列表渲染、update、模板、服务器渲染、渲染性能，如何编译，ast是什么">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/images/og_image.png">
 <meta property="og:updated_time" content="2018-10-25T15:43:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue深度学习（6）- render 函数">
 <meta name="twitter:description" content="render 研究方向  render机制   研究方法  条件渲染、列表渲染、update、模板、服务器渲染、渲染性能，如何编译，ast是什么">
-<meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Littlombie's Nirvana" type="application/atom+xml">
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/25/render-function/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>vue深度学习（6）- render 函数 | Littlombie's Nirvana</title>
+  
 
 
 
 
 
 
-
-<link rel="icon" href="/favicon.ico">
-
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
-
-
-    
-    
-    
-    <style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
-    
-
-    
-    
-    
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
-    
-
-    
-    
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?02385e4da1a886f08796521e750abf36";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
-    
-    
-    
-    
-
-<link rel="stylesheet" href="/css/back-to-top.css">
 
 
-    
-    
-
-    
-    
-    
-    
-
-    
-    
-<link rel="stylesheet" href="/css/progressbar.css">
-<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
-
-    
-    
-    
 
 
-<link rel="stylesheet" href="/css/style.css">
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
 </head>
-<body class="is-3-column">
-    <nav class="navbar navbar-main">
-    <div class="container">
-        <div class="navbar-brand is-flex-center">
-            <a class="navbar-item navbar-logo" href="/">
-            
-                <img src="/favicon.ico" alt="vue深度学习（6）- render 函数" height="28">
-            
-            </a>
-        </div>
-        <div class="navbar-menu">
-            
-            <div class="navbar-start">
-                
-                <a class="navbar-item"
-                href="/">Home</a>
-                
-                <a class="navbar-item"
-                href="/archives">Archives</a>
-                
-                <a class="navbar-item"
-                href="/categories">Categories</a>
-                
-                <a class="navbar-item"
-                href="/tags">Tags</a>
-                
-                <a class="navbar-item"
-                href="/about">About</a>
-                
-                <a class="navbar-item"
-                href="https://littlombie.github.io/website/">Nirvana</a>
-                
-            </div>
-            
-            <div class="navbar-end">
-                
-                    
-                    
-                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/Littlombie/">
-                        
-                        <i class="fab fa-github"></i>
-                        
-                    </a>
-                    
-                
-                
-                
-                <a class="navbar-item search" title="Search" href="javascript:;">
-                    <i class="fas fa-search"></i>
-                </a>
-                
-            </div>
-        </div>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Littlombie's Nirvana</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
     </div>
+    
+      
+        <p class="site-subtitle">Novelty is the great parent of pleasure.</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>Startseite</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>Archiv</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>Über</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-nirvana">
+    <a href="https:/littlombie.github.io/website/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>nirvana</a>
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>Suche</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
 </nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
     
-    <section class="section">
-        <div class="container">
-            <div class="columns">
-                <div class="column is-8-tablet is-8-desktop is-6-widescreen has-order-2 column-main"><div class="card">
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
     
-    <div class="card-content article ">
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/25/render-function/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Littlombie">
+      <meta itemprop="description" content="Said less to do more！">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Littlombie's Nirvana">
+    </span>
+
+    
+      <header class="post-header">
+
         
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2018-10-25T15:27:58.000Z">2018-10-25</time>
+        
+          <h1 class="post-title" itemprop="name headline">vue深度学习（6）- render 函数
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+
+              
                 
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/vue/">vue</a>
-                </div>
+              
+
+              <time title="Post created: 2018-10-25 23:27:58 / Updated at: 23:43:00" itemprop="dateCreated datePublished" datetime="2018-10-25T23:27:58+08:00">2018-10-25</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">in</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/vue/" itemprop="url" rel="index"><span itemprop="name">vue</span></a></span>
+
                 
                 
-                <span class="level-item has-text-grey">
-                    
-                    
-                    24 minutes read (About 3664 words)
-                </span>
-                
-                
-            </div>
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
         </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                vue深度学习（6）- render 函数
-            
-        </h1>
-        <div class="content">
-            <h1 id="render"><a href="#render" class="headerlink" title="render"></a>render</h1><ul>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="render"><a href="#render" class="headerlink" title="render"></a>render</h1><ul>
 <li><p>研究方向</p>
 <ul>
 <li>render机制</li>
@@ -215,32 +496,32 @@
 <blockquote>
 <p>在之前的Vue1.X版本中没有Virtual DOM,Vue2.0之后添加了此功能，而Virtual DOM 最后是通过<code>render</code>函数来生成模板页面<br>vue  在new Vue()最后的渲染只认render 函数 所有的东西 html,template 都会编译成render函数  </p>
 </blockquote>
-<h3 id="createElement-参数"><a href="#createElement-参数" class="headerlink" title="createElement 参数"></a>createElement 参数</h3><p>demo：<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">render (h) &#123;</span><br><span class="line">  return h(&apos;div&apos;, &#123;&#125;, this.text)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="createElement-参数"><a href="#createElement-参数" class="headerlink" title="createElement 参数"></a>createElement 参数</h3><p>demo：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">render (h) &#123;</span><br><span class="line">  return h(&apos;div&apos;, &#123;&#125;, this.text)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p><code>render</code>函数里面的传参h就是Vue里面的<code>createElement</code>方法，<code>return</code>返回一个<code>createElement</code>方法，（官方文档：返回的其实不是一个实际的 DOM 元素。它更准确的名字可能是 createNodeDescription，因为它所包含的信息会告诉 Vue 页面上需要渲染什么样的节点，及其子节点。我们把这样的节点描述为“虚拟节点 (Virtual Node)”，也常简写它为“VNode”。“虚拟 DOM”是我们对由 Vue 组件树建立起来的整个 VNode 树的称呼。）</p>
 <p>其中可以传三个参数：</p>
 <ul>
 <li>第一个参数 {String | Object | Function} 表示可以传一个 HTML 标签字符串，组件选项对象，或者解析上述任何一种的一个 async 异步函数。必需参数；</li>
 <li><p>第二个参数 {Object} 一个包含模板相关属性的数据对象，对象里面可以是我们组件上面的props，或者是事件之类的东西，你可以在 template 中使用这些特性。可选参数；<br>data的对象：</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">  &#123;</span><br><span class="line">  <span class="hljs-comment">// 和`v-bind:class`一样的 API</span></span><br><span class="line">  <span class="hljs-comment">// 接收一个字符串、对象或字符串和对象组成的数组</span></span><br><span class="line">  <span class="hljs-string">'class'</span>: &#123;</span><br><span class="line">    foo: <span class="hljs-literal">true</span>,</span><br><span class="line">    bar: <span class="hljs-literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="hljs-comment">// 和`v-bind:style`一样的 API</span></span><br><span class="line">  <span class="hljs-comment">// 接收一个字符串、对象或对象组成的数组</span></span><br><span class="line">  style: &#123;</span><br><span class="line">    color: <span class="hljs-string">'red'</span>,</span><br><span class="line">    fontSize: <span class="hljs-string">'14px'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="hljs-comment">// 普通的 HTML 特性</span></span><br><span class="line">  attrs: &#123;</span><br><span class="line">    id: <span class="hljs-string">'foo'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="hljs-comment">// 组件 props</span></span><br><span class="line">  props: &#123;</span><br><span class="line">    myProp: <span class="hljs-string">'bar'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="hljs-comment">// DOM 属性</span></span><br><span class="line">  domProps: &#123;</span><br><span class="line">    innerHTML: <span class="hljs-string">'baz'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="hljs-comment">// 事件监听器基于 `on`</span></span><br><span class="line">  <span class="hljs-comment">// 所以不再支持如 `v-on:keyup.enter` 修饰器</span></span><br><span class="line">  <span class="hljs-comment">// 需要手动匹配 keyCode。</span></span><br><span class="line">  on: &#123;</span><br><span class="line">    click: <span class="hljs-keyword">this</span>.clickHandler</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="hljs-comment">// 仅用于组件，用于监听原生事件，而不是组件内部使用</span></span><br><span class="line">  <span class="hljs-comment">// `vm.$emit` 触发的事件。</span></span><br><span class="line">  nativeOn: &#123;</span><br><span class="line">    click: <span class="hljs-keyword">this</span>.nativeClickHandler</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="hljs-comment">// 自定义指令。注意，你无法对 `binding` 中的 `oldValue`</span></span><br><span class="line">  <span class="hljs-comment">// 赋值，因为 Vue 已经自动为你进行了同步。</span></span><br><span class="line">  directives: [</span><br><span class="line">    &#123;</span><br><span class="line">      name: <span class="hljs-string">'my-custom-directive'</span>,</span><br><span class="line">      value: <span class="hljs-string">'2'</span>,</span><br><span class="line">      expression: <span class="hljs-string">'1 + 1'</span>,</span><br><span class="line">      arg: <span class="hljs-string">'foo'</span>,</span><br><span class="line">      modifiers: &#123;</span><br><span class="line">        bar: <span class="hljs-literal">true</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="hljs-comment">// 作用域插槽格式</span></span><br><span class="line">  <span class="hljs-comment">// &#123; name: props =&gt; VNode | Array&lt;VNode&gt; &#125;</span></span><br><span class="line">  scopedSlots: &#123;</span><br><span class="line">    <span class="hljs-keyword">default</span>: <span class="hljs-function"><span class="hljs-params">props</span> =&gt;</span> createElement(<span class="hljs-string">'span'</span>, props.text)</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="hljs-comment">// 如果组件是其他组件的子组件，需为插槽指定名称</span></span><br><span class="line">  slot: <span class="hljs-string">'name-of-slot'</span>,</span><br><span class="line">  <span class="hljs-comment">// 其他特殊顶层属性</span></span><br><span class="line">  key: <span class="hljs-string">'myKey'</span>,</span><br><span class="line">  ref: <span class="hljs-string">'myRef'</span>,</span><br><span class="line">  <span class="hljs-comment">// 如果你在渲染函数中向多个元素都应用了相同的 ref 名，</span></span><br><span class="line">  <span class="hljs-comment">// 那么 `$refs.myRef` 会变成一个数组。</span></span><br><span class="line">  refInFor: <span class="hljs-literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">  &#123;</span><br><span class="line">  <span class="comment">// 和`v-bind:class`一样的 API</span></span><br><span class="line">  <span class="comment">// 接收一个字符串、对象或字符串和对象组成的数组</span></span><br><span class="line">  <span class="string">'class'</span>: &#123;</span><br><span class="line">    foo: <span class="literal">true</span>,</span><br><span class="line">    bar: <span class="literal">false</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 和`v-bind:style`一样的 API</span></span><br><span class="line">  <span class="comment">// 接收一个字符串、对象或对象组成的数组</span></span><br><span class="line">  style: &#123;</span><br><span class="line">    color: <span class="string">'red'</span>,</span><br><span class="line">    fontSize: <span class="string">'14px'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 普通的 HTML 特性</span></span><br><span class="line">  attrs: &#123;</span><br><span class="line">    id: <span class="string">'foo'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 组件 props</span></span><br><span class="line">  props: &#123;</span><br><span class="line">    myProp: <span class="string">'bar'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// DOM 属性</span></span><br><span class="line">  domProps: &#123;</span><br><span class="line">    innerHTML: <span class="string">'baz'</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 事件监听器基于 `on`</span></span><br><span class="line">  <span class="comment">// 所以不再支持如 `v-on:keyup.enter` 修饰器</span></span><br><span class="line">  <span class="comment">// 需要手动匹配 keyCode。</span></span><br><span class="line">  on: &#123;</span><br><span class="line">    click: <span class="keyword">this</span>.clickHandler</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 仅用于组件，用于监听原生事件，而不是组件内部使用</span></span><br><span class="line">  <span class="comment">// `vm.$emit` 触发的事件。</span></span><br><span class="line">  nativeOn: &#123;</span><br><span class="line">    click: <span class="keyword">this</span>.nativeClickHandler</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 自定义指令。注意，你无法对 `binding` 中的 `oldValue`</span></span><br><span class="line">  <span class="comment">// 赋值，因为 Vue 已经自动为你进行了同步。</span></span><br><span class="line">  directives: [</span><br><span class="line">    &#123;</span><br><span class="line">      name: <span class="string">'my-custom-directive'</span>,</span><br><span class="line">      value: <span class="string">'2'</span>,</span><br><span class="line">      expression: <span class="string">'1 + 1'</span>,</span><br><span class="line">      arg: <span class="string">'foo'</span>,</span><br><span class="line">      modifiers: &#123;</span><br><span class="line">        bar: <span class="literal">true</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  ],</span><br><span class="line">  <span class="comment">// 作用域插槽格式</span></span><br><span class="line">  <span class="comment">// &#123; name: props =&gt; VNode | Array&lt;VNode&gt; &#125;</span></span><br><span class="line">  scopedSlots: &#123;</span><br><span class="line">    <span class="keyword">default</span>: <span class="function"><span class="params">props</span> =&gt;</span> createElement(<span class="string">'span'</span>, props.text)</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">// 如果组件是其他组件的子组件，需为插槽指定名称</span></span><br><span class="line">  slot: <span class="string">'name-of-slot'</span>,</span><br><span class="line">  <span class="comment">// 其他特殊顶层属性</span></span><br><span class="line">  key: <span class="string">'myKey'</span>,</span><br><span class="line">  ref: <span class="string">'myRef'</span>,</span><br><span class="line">  <span class="comment">// 如果你在渲染函数中向多个元素都应用了相同的 ref 名，</span></span><br><span class="line">  <span class="comment">// 那么 `$refs.myRef` 会变成一个数组。</span></span><br><span class="line">  refInFor: <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>第三个参数 {String | Array} 子虚拟节点 (VNodes)，由 <code>createElement()</code> 构建而成， 也可以使用字符串来生成“文本虚拟节点”。可选参数。<br>如：</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  <span class="hljs-string">'先写一些文字'</span>,</span><br><span class="line">  createElement(<span class="hljs-string">'h1'</span>, <span class="hljs-string">'一则头条'</span>),</span><br><span class="line">  createElement(MyComponent, &#123;</span><br><span class="line">    props: &#123;</span><br><span class="line">      someProp: <span class="hljs-string">'foobar'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">  <span class="string">'先写一些文字'</span>,</span><br><span class="line">  createElement(<span class="string">'h1'</span>, <span class="string">'一则头条'</span>),</span><br><span class="line">  createElement(MyComponent, &#123;</span><br><span class="line">    props: &#123;</span><br><span class="line">      someProp: <span class="string">'foobar'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>使用render函数的结果和我们之前使用<code>template</code>解析出来的结果是一样的。<code>render</code>函数是发生在<code>beforeMount</code>和<code>mounted</code>之间的，这也从侧面说明了，在<code>beforeMount</code>的时候，<code>$el</code>还只是我们在HTML里面写的节点，然后到<code>mounted</code>的时候，它就把渲染出来的内容挂载到了<code>DOM</code>节点上。这中间的过程其实是执行了<code>render function</code>的内容。    </p>
 <p>在使用<code>.vue</code>文件开发的过程当中，我们在里面写了<code>template</code>模板，在经过了<code>vue-loader</code>的处理之后，就变成了<code>render function</code>，最终放到了<code>vue-loader</code>解析过的文件里面。这样做有什么好处呢？原因是由于在解析<code>template</code>变成<code>render function</code>的过程，是一个非常耗时的过程，<code>vue-loader</code>帮我们处理了这些内容之后，当我们在页面上执行<code>vue</code>代码的时候，效率会变得更高。  </p>
-<p>VNodes必须唯一<br>组件树中的所有 VNodes 必须是唯一的。这意味着，下面的 render function 是无效的：<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">render: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">createElement</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> myParagraphVNode = createElement(<span class="hljs-string">'p'</span>, <span class="hljs-string">'hi'</span>)</span><br><span class="line">  <span class="hljs-keyword">return</span> createElement(<span class="hljs-string">'div'</span>, [</span><br><span class="line">    <span class="hljs-comment">// 错误-重复的 VNodes</span></span><br><span class="line">    myParagraphVNode, myParagraphVNode</span><br><span class="line">  ])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>如果你真的需要重复很多次的元素/组件，你可以使用工厂函数来实现。例如，下面这个例子 render 函数完美有效地渲染了 20 个相同的段落：<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  render: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">createElement</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> createElement(<span class="hljs-string">'div'</span>,</span><br><span class="line">    <span class="hljs-built_in">Array</span>.apply(<span class="hljs-literal">null</span>, &#123; <span class="hljs-attr">length</span>: <span class="hljs-number">20</span> &#125;).map(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> createElement(<span class="hljs-string">'p'</span>, <span class="hljs-string">'hi'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="使用JavaScript-代替模板功能"><a href="#使用JavaScript-代替模板功能" class="headerlink" title="使用JavaScript 代替模板功能"></a>使用JavaScript 代替模板功能</h3><p>只要在原生的 JavaScript 中可以轻松完成的操作，Vue 的 render 函数就不会提供专有的替代方法。比如，在 template 中使用的 v-if 和 v-for：<br><figure class="highlight html hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">v-if</span>=<span class="hljs-string">"items.length"</span>&gt;</span></span><br><span class="line">  <span class="hljs-tag">&lt;<span class="hljs-name">li</span> <span class="hljs-attr">v-for</span>=<span class="hljs-string">"item in items"</span>&gt;</span>&#123;&#123; item.name &#125;&#125;<span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span><br><span class="line"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">v-else</span>&gt;</span>No items found.<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>这些都会在 render 函数中被 JavaScript 的 if/else 和 map 重写：<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">props: [<span class="hljs-string">'items'</span>],</span><br><span class="line">render: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">createElement</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.items.length) &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> createElement(<span class="hljs-string">'ul'</span>, <span class="hljs-keyword">this</span>.items.map(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">item</span>) </span>&#123;</span><br><span class="line">      <span class="hljs-keyword">return</span> createElement(<span class="hljs-string">'li'</span>, item.name)</span><br><span class="line">    &#125;))</span><br><span class="line">  &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> createElement(<span class="hljs-string">'p'</span>, <span class="hljs-string">'No items found.'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>v-model<br>render 函数中没有与 v-model 的直接对应 - 你必须自己实现相应的逻辑：<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">props: [<span class="hljs-string">'value'</span>],</span><br><span class="line">render: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">createElement</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span></span><br><span class="line">  <span class="hljs-keyword">return</span> createElement(<span class="hljs-string">'input'</span>, &#123;</span><br><span class="line">    domProps: &#123;</span><br><span class="line">      value: self.value</span><br><span class="line">    &#125;,</span><br><span class="line">    on: &#123;</span><br><span class="line">      input: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">event</span>) </span>&#123;</span><br><span class="line">        self.$emit(<span class="hljs-string">'input'</span>, event.target.value)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>VNodes必须唯一<br>组件树中的所有 VNodes 必须是唯一的。这意味着，下面的 render function 是无效的：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">render: <span class="function"><span class="keyword">function</span> (<span class="params">createElement</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> myParagraphVNode = createElement(<span class="string">'p'</span>, <span class="string">'hi'</span>)</span><br><span class="line">  <span class="keyword">return</span> createElement(<span class="string">'div'</span>, [</span><br><span class="line">    <span class="comment">// 错误-重复的 VNodes</span></span><br><span class="line">    myParagraphVNode, myParagraphVNode</span><br><span class="line">  ])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果你真的需要重复很多次的元素/组件，你可以使用工厂函数来实现。例如，下面这个例子 render 函数完美有效地渲染了 20 个相同的段落：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  render: <span class="function"><span class="keyword">function</span> (<span class="params">createElement</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> createElement(<span class="string">'div'</span>,</span><br><span class="line">    <span class="built_in">Array</span>.apply(<span class="literal">null</span>, &#123; <span class="attr">length</span>: <span class="number">20</span> &#125;).map(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> createElement(<span class="string">'p'</span>, <span class="string">'hi'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="使用JavaScript-代替模板功能"><a href="#使用JavaScript-代替模板功能" class="headerlink" title="使用JavaScript 代替模板功能"></a>使用JavaScript 代替模板功能</h3><p>只要在原生的 JavaScript 中可以轻松完成的操作，Vue 的 render 函数就不会提供专有的替代方法。比如，在 template 中使用的 v-if 和 v-for：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">v-if</span>=<span class="string">"items.length"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"item in items"</span>&gt;</span>&#123;&#123; item.name &#125;&#125;<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">v-else</span>&gt;</span>No items found.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>这些都会在 render 函数中被 JavaScript 的 if/else 和 map 重写：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">props: [<span class="string">'items'</span>],</span><br><span class="line">render: <span class="function"><span class="keyword">function</span> (<span class="params">createElement</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">this</span>.items.length) &#123;</span><br><span class="line">    <span class="keyword">return</span> createElement(<span class="string">'ul'</span>, <span class="keyword">this</span>.items.map(<span class="function"><span class="keyword">function</span> (<span class="params">item</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> createElement(<span class="string">'li'</span>, item.name)</span><br><span class="line">    &#125;))</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> createElement(<span class="string">'p'</span>, <span class="string">'No items found.'</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>v-model<br>render 函数中没有与 v-model 的直接对应 - 你必须自己实现相应的逻辑：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">props: [<span class="string">'value'</span>],</span><br><span class="line">render: <span class="function"><span class="keyword">function</span> (<span class="params">createElement</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> self = <span class="keyword">this</span></span><br><span class="line">  <span class="keyword">return</span> createElement(<span class="string">'input'</span>, &#123;</span><br><span class="line">    domProps: &#123;</span><br><span class="line">      value: self.value</span><br><span class="line">    &#125;,</span><br><span class="line">    on: &#123;</span><br><span class="line">      input: <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">        self.$emit(<span class="string">'input'</span>, event.target.value)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这就是深入底层的代价，但与 v-model 相比，这可以让你更好地控制交互细节。</p>
 <h4 id="事件-amp-案件修饰符"><a href="#事件-amp-案件修饰符" class="headerlink" title="事件&amp;案件修饰符"></a>事件&amp;案件修饰符</h4><p>对于 .passive、.capture 和 .once事件修饰符, Vue 提供了相应的前缀可以用于 on：<br>Modifier(s) |    Prefix<br>|-|-|<br>.passive |    &amp;<br>.capture|    !<br>.once|    ~<br>.capture.once or .once.capture    | ~!</p>
-<p>例如:<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">on: &#123;</span><br><span class="line">  <span class="hljs-string">'!click'</span>: <span class="hljs-keyword">this</span>.doThisInCapturingMode,</span><br><span class="line">  <span class="hljs-string">'~keyup'</span>: <span class="hljs-keyword">this</span>.doThisOnce,</span><br><span class="line">  <span class="hljs-string">'~!mouseover'</span>: <span class="hljs-keyword">this</span>.doThisOnceInCapturingMode</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>对于其他的修饰符，前缀不是很重要，因为你可以在事件处理函数中使用事件方法：<br>Modifier(s) |    Equivalent in Handler<br>|-|-|<br>.stop |    event.stopPropagation()<br>.prevent|    event.preventDefault()<br>.self |    if (event.target !== event.currentTarget) return<br>Keys: .enter, .13     | if (event.keyCode !== 13) return (change 13 to another key code for other key modifiers)<br>Modifiers Keys: .ctrl, .alt, .shift, .meta |    if (!event.ctrlKey) return (change ctrlKey to altKey, shiftKey, or metaKey, respectively)<br>这里是一个使用所有修饰符的例子：<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">on: &#123;</span><br><span class="line">  keyup: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">event</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-comment">// 如果触发事件的元素不是事件绑定的元素</span></span><br><span class="line">    <span class="hljs-comment">// 则返回</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (event.target !== event.currentTarget) <span class="hljs-keyword">return</span></span><br><span class="line">    <span class="hljs-comment">// 如果按下去的不是 enter 键或者</span></span><br><span class="line">    <span class="hljs-comment">// 没有同时按下 shift 键</span></span><br><span class="line">    <span class="hljs-comment">// 则返回</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (!event.shiftKey || event.keyCode !== <span class="hljs-number">13</span>) <span class="hljs-keyword">return</span></span><br><span class="line">    <span class="hljs-comment">// 阻止 事件冒泡</span></span><br><span class="line">    event.stopPropagation()</span><br><span class="line">    <span class="hljs-comment">// 阻止该元素默认的 keyup 事件</span></span><br><span class="line">    event.preventDefault()</span><br><span class="line">    <span class="hljs-comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h4 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h4><p>你可以通过 this.$slots 访问静态插槽的内容，得到的是一个 VNodes 数组：<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">render: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">createElement</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// `&lt;div&gt;&lt;slot&gt;&lt;/slot&gt;&lt;/div&gt;`</span></span><br><span class="line">  <span class="hljs-keyword">return</span> createElement(<span class="hljs-string">'div'</span>, <span class="hljs-keyword">this</span>.$slots.default)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>也可以通过 this.$scopedSlots 访问作用域插槽，得到的是一个返回 VNodes 的函<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">props: [<span class="hljs-string">'message'</span>],</span><br><span class="line">render: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">createElement</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// `&lt;div&gt;&lt;slot :text="message"&gt;&lt;/slot&gt;&lt;/div&gt;`</span></span><br><span class="line">  <span class="hljs-keyword">return</span> createElement(<span class="hljs-string">'div'</span>, [</span><br><span class="line">    <span class="hljs-keyword">this</span>.$scopedSlots.default(&#123;</span><br><span class="line">      text: <span class="hljs-keyword">this</span>.message</span><br><span class="line">    &#125;)</span><br><span class="line">  ])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>如果要用渲染函数向子组件中传递作用域插槽，可以利用 <code>VNode</code> 数据对象中的 <code>scopedSlots</code> 域：<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">render: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">createElement</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">return</span> createElement(<span class="hljs-string">'div'</span>, [</span><br><span class="line">    createElement(<span class="hljs-string">'child'</span>, &#123;</span><br><span class="line">      <span class="hljs-comment">// 在数据对象中传递 `scopedSlots`</span></span><br><span class="line">      <span class="hljs-comment">// 格式：&#123; name: props =&gt; VNode | Array&lt;VNode&gt; &#125;</span></span><br><span class="line">      scopedSlots: &#123;</span><br><span class="line">        <span class="hljs-keyword">default</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">props</span>) </span>&#123;</span><br><span class="line">          <span class="hljs-keyword">return</span> createElement(<span class="hljs-string">'span'</span>, props.text)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  ])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>例如:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">on: &#123;</span><br><span class="line">  <span class="string">'!click'</span>: <span class="keyword">this</span>.doThisInCapturingMode,</span><br><span class="line">  <span class="string">'~keyup'</span>: <span class="keyword">this</span>.doThisOnce,</span><br><span class="line">  <span class="string">'~!mouseover'</span>: <span class="keyword">this</span>.doThisOnceInCapturingMode</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>对于其他的修饰符，前缀不是很重要，因为你可以在事件处理函数中使用事件方法：<br>Modifier(s) |    Equivalent in Handler<br>|-|-|<br>.stop |    event.stopPropagation()<br>.prevent|    event.preventDefault()<br>.self |    if (event.target !== event.currentTarget) return<br>Keys: .enter, .13     | if (event.keyCode !== 13) return (change 13 to another key code for other key modifiers)<br>Modifiers Keys: .ctrl, .alt, .shift, .meta |    if (!event.ctrlKey) return (change ctrlKey to altKey, shiftKey, or metaKey, respectively)<br>这里是一个使用所有修饰符的例子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">on: &#123;</span><br><span class="line">  keyup: <span class="function"><span class="keyword">function</span> (<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 如果触发事件的元素不是事件绑定的元素</span></span><br><span class="line">    <span class="comment">// 则返回</span></span><br><span class="line">    <span class="keyword">if</span> (event.target !== event.currentTarget) <span class="keyword">return</span></span><br><span class="line">    <span class="comment">// 如果按下去的不是 enter 键或者</span></span><br><span class="line">    <span class="comment">// 没有同时按下 shift 键</span></span><br><span class="line">    <span class="comment">// 则返回</span></span><br><span class="line">    <span class="keyword">if</span> (!event.shiftKey || event.keyCode !== <span class="number">13</span>) <span class="keyword">return</span></span><br><span class="line">    <span class="comment">// 阻止 事件冒泡</span></span><br><span class="line">    event.stopPropagation()</span><br><span class="line">    <span class="comment">// 阻止该元素默认的 keyup 事件</span></span><br><span class="line">    event.preventDefault()</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="插槽"><a href="#插槽" class="headerlink" title="插槽"></a>插槽</h4><p>你可以通过 this.$slots 访问静态插槽的内容，得到的是一个 VNodes 数组：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">render: <span class="function"><span class="keyword">function</span> (<span class="params">createElement</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// `&lt;div&gt;&lt;slot&gt;&lt;/slot&gt;&lt;/div&gt;`</span></span><br><span class="line">  <span class="keyword">return</span> createElement(<span class="string">'div'</span>, <span class="keyword">this</span>.$slots.default)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>也可以通过 this.$scopedSlots 访问作用域插槽，得到的是一个返回 VNodes 的函<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">props: [<span class="string">'message'</span>],</span><br><span class="line">render: <span class="function"><span class="keyword">function</span> (<span class="params">createElement</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// `&lt;div&gt;&lt;slot :text="message"&gt;&lt;/slot&gt;&lt;/div&gt;`</span></span><br><span class="line">  <span class="keyword">return</span> createElement(<span class="string">'div'</span>, [</span><br><span class="line">    <span class="keyword">this</span>.$scopedSlots.default(&#123;</span><br><span class="line">      text: <span class="keyword">this</span>.message</span><br><span class="line">    &#125;)</span><br><span class="line">  ])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如果要用渲染函数向子组件中传递作用域插槽，可以利用 <code>VNode</code> 数据对象中的 <code>scopedSlots</code> 域：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">render: <span class="function"><span class="keyword">function</span> (<span class="params">createElement</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> createElement(<span class="string">'div'</span>, [</span><br><span class="line">    createElement(<span class="string">'child'</span>, &#123;</span><br><span class="line">      <span class="comment">// 在数据对象中传递 `scopedSlots`</span></span><br><span class="line">      <span class="comment">// 格式：&#123; name: props =&gt; VNode | Array&lt;VNode&gt; &#125;</span></span><br><span class="line">      scopedSlots: &#123;</span><br><span class="line">        <span class="keyword">default</span>: <span class="function"><span class="keyword">function</span> (<span class="params">props</span>) </span>&#123;</span><br><span class="line">          <span class="keyword">return</span> createElement(<span class="string">'span'</span>, props.text)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">  ])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h3 id="AST"><a href="#AST" class="headerlink" title="AST"></a><a href="http://www.php.cn/js-tutorial-407382.html" target="_blank" rel="noopener">AST</a></h3><p>AST是指抽象语法树（abstract syntax tree），或者语法树（syntax tree），是源代码的抽象语法结构的树状表现形式。Vue在mount过程中，template会被编译成AST语法树。<br>然后，经过generate（将AST语法树转化成render function字符串的过程）得到render函数，返回VNode。</p>
 <h3 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h3><p>编译相关的代码都在 compiler文件中</p>
 <p>core/instance / render.js 中</p>
@@ -248,14 +529,14 @@
 <p>(视频2-5， 2-6)<br>platform/util/index.js  判断是否是render 还是template</p>
 <p>new watcher() 渲染 watcher (observer/watcher.js ) </p>
 <p>#</p>
-<p>Vue 的 _render 方法是实例的一个私有方法，它用来把实例渲染成一个虚拟 Node。它的定义在 src/core/instance/render.js 文件中：<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//再此定义一个render私有方法  返回一个vnode，通过vm.$options拿到render函数</span></span><br><span class="line">Vue.prototype._render = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>): <span class="hljs-title">VNode</span> </span>&#123;</span><br><span class="line">  <span class="hljs-keyword">const</span> vm: Component = <span class="hljs-keyword">this</span></span><br><span class="line">  <span class="hljs-keyword">const</span> &#123; render, _parentVnode &#125; = vm.$options </span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 复位_render标志在插槽上用于重复的插槽检查</span></span><br><span class="line">  <span class="hljs-keyword">if</span> (process.env.NODE_ENV !== <span class="hljs-string">'production'</span>) &#123;</span><br><span class="line">    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> key <span class="hljs-keyword">in</span> vm.$slots) &#123;</span><br><span class="line">      <span class="hljs-comment">// $flow-disable-line</span></span><br><span class="line">      vm.$slots[key]._rendered = <span class="hljs-literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">if</span> (_parentVnode) &#123;</span><br><span class="line">    vm.$scopedSlots = _parentVnode.data.scopedSlots || emptyObject</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 设置父vnode。这允许呈现函数访问占位符节点上的数据。</span></span><br><span class="line">  vm.$vnode = _parentVnode</span><br><span class="line">  <span class="hljs-comment">// render self</span></span><br><span class="line">  <span class="hljs-keyword">let</span> vnode</span><br><span class="line">  <span class="hljs-keyword">try</span> &#123;</span><br><span class="line">    <span class="hljs-comment">//利用call的方法 参数一当前上下文，vm._renderProxy再生产环境下 就是vm，也就是this 本身，开发环境是一个proxy 对象</span></span><br><span class="line">    vnode = render.call(vm._renderProxy, vm.$createElement)</span><br><span class="line">  &#125; <span class="hljs-keyword">catch</span> (e) &#123;</span><br><span class="line">    handleError(e, vm, <span class="hljs-string">`render`</span>)</span><br><span class="line">    <span class="hljs-comment">// 返回错误呈现结果，</span></span><br><span class="line">    <span class="hljs-comment">// 或先前的vnode，以防止呈现错误导致空白组件</span></span><br><span class="line">    <span class="hljs-comment">/* istanbul ignore else */</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (process.env.NODE_ENV !== <span class="hljs-string">'production'</span>) &#123;</span><br><span class="line">      <span class="hljs-keyword">if</span> (vm.$options.renderError) &#123;</span><br><span class="line">        <span class="hljs-keyword">try</span> &#123;</span><br><span class="line">          vnode = vm.$options.renderError.call(vm._renderProxy, vm.$createElement, e)</span><br><span class="line">        &#125; <span class="hljs-keyword">catch</span> (e) &#123;</span><br><span class="line">          handleError(e, vm, <span class="hljs-string">`renderError`</span>)</span><br><span class="line">          vnode = vm._vnode</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        vnode = vm._vnode</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">      vnode = vm._vnode</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="hljs-comment">// 上边 会返回一个 vnode ， $options 这个函数可以自己写 ，也可以通过编译生成</span></span><br><span class="line">  <span class="hljs-comment">// 如果呈现函数出错，返回空vnode</span></span><br><span class="line">  <span class="hljs-keyword">if</span> (!(vnode <span class="hljs-keyword">instanceof</span> VNode)) &#123;</span><br><span class="line">    <span class="hljs-keyword">if</span> (process.env.NODE_ENV !== <span class="hljs-string">'production'</span> &amp;&amp; <span class="hljs-built_in">Array</span>.isArray(vnode)) &#123;</span><br><span class="line">      warn(</span><br><span class="line">        <span class="hljs-string">'Multiple root nodes returned from render function. Render function '</span> +</span><br><span class="line">        <span class="hljs-string">'should return a single root node.'</span>,</span><br><span class="line">        vm</span><br><span class="line">      )</span><br><span class="line">    &#125;</span><br><span class="line">    vnode = createEmptyVNode()</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="hljs-comment">// set parent</span></span><br><span class="line">  vnode.parent = _parentVnode</span><br><span class="line">  <span class="hljs-keyword">return</span> vnode</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Vue 的 _render 方法是实例的一个私有方法，它用来把实例渲染成一个虚拟 Node。它的定义在 src/core/instance/render.js 文件中：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//再此定义一个render私有方法  返回一个vnode，通过vm.$options拿到render函数</span></span><br><span class="line">Vue.prototype._render = <span class="function"><span class="keyword">function</span> (<span class="params"></span>): <span class="title">VNode</span> </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> vm: Component = <span class="keyword">this</span></span><br><span class="line">  <span class="keyword">const</span> &#123; render, _parentVnode &#125; = vm.$options </span><br><span class="line"></span><br><span class="line">  <span class="comment">// 复位_render标志在插槽上用于重复的插槽检查</span></span><br><span class="line">  <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">const</span> key <span class="keyword">in</span> vm.$slots) &#123;</span><br><span class="line">      <span class="comment">// $flow-disable-line</span></span><br><span class="line">      vm.$slots[key]._rendered = <span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (_parentVnode) &#123;</span><br><span class="line">    vm.$scopedSlots = _parentVnode.data.scopedSlots || emptyObject</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 设置父vnode。这允许呈现函数访问占位符节点上的数据。</span></span><br><span class="line">  vm.$vnode = _parentVnode</span><br><span class="line">  <span class="comment">// render self</span></span><br><span class="line">  <span class="keyword">let</span> vnode</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">//利用call的方法 参数一当前上下文，vm._renderProxy再生产环境下 就是vm，也就是this 本身，开发环境是一个proxy 对象</span></span><br><span class="line">    vnode = render.call(vm._renderProxy, vm.$createElement)</span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    handleError(e, vm, <span class="string">`render`</span>)</span><br><span class="line">    <span class="comment">// 返回错误呈现结果，</span></span><br><span class="line">    <span class="comment">// 或先前的vnode，以防止呈现错误导致空白组件</span></span><br><span class="line">    <span class="comment">/* istanbul ignore else */</span></span><br><span class="line">    <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span>) &#123;</span><br><span class="line">      <span class="keyword">if</span> (vm.$options.renderError) &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">          vnode = vm.$options.renderError.call(vm._renderProxy, vm.$createElement, e)</span><br><span class="line">        &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">          handleError(e, vm, <span class="string">`renderError`</span>)</span><br><span class="line">          vnode = vm._vnode</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        vnode = vm._vnode</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      vnode = vm._vnode</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 上边 会返回一个 vnode ， $options 这个函数可以自己写 ，也可以通过编译生成</span></span><br><span class="line">  <span class="comment">// 如果呈现函数出错，返回空vnode</span></span><br><span class="line">  <span class="keyword">if</span> (!(vnode <span class="keyword">instanceof</span> VNode)) &#123;</span><br><span class="line">    <span class="keyword">if</span> (process.env.NODE_ENV !== <span class="string">'production'</span> &amp;&amp; <span class="built_in">Array</span>.isArray(vnode)) &#123;</span><br><span class="line">      warn(</span><br><span class="line">        <span class="string">'Multiple root nodes returned from render function. Render function '</span> +</span><br><span class="line">        <span class="string">'should return a single root node.'</span>,</span><br><span class="line">        vm</span><br><span class="line">      )</span><br><span class="line">    &#125;</span><br><span class="line">    vnode = createEmptyVNode()</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// set parent</span></span><br><span class="line">  vnode.parent = _parentVnode</span><br><span class="line">  <span class="keyword">return</span> vnode</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这段代码最关键的是 <code>render</code> 方法的调用，我们在平时的开发工作中手写 <code>render</code> 方法的场景比较少，而写的比较多的是 <code>template</code> 模板，在之前的 mounted 方法的实现中，会把 <code>template</code> 编译成 <code>render</code> 方法，但这个编译过程是非常复杂的，我们不打算在这里展开讲，之后会专门花一个章节来分析 <code>Vue</code> 的编译过程。  </p>
 <p>在 Vue 的官方文档中介绍了 <code>render</code> 函数的第一个参数是 <code>createElement</code>，那么结合之前的例子：</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="hljs-string">"app"</span>&gt;</span><br><span class="line">  &#123;&#123; message &#125;&#125;</span><br><span class="line">&lt;<span class="hljs-regexp">/div&gt;</span></span><br></pre></td></tr></table></figure>
-<p>相当于我们编写如下 <code>render</code> 函数：<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> vm = <span class="hljs-keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="hljs-string">'#app'</span>,</span><br><span class="line">  render (createElement) &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> createElement(<span class="hljs-string">'div'</span>, &#123;</span><br><span class="line">      attrs: &#123;</span><br><span class="line">        id: <span class="hljs-string">'app'</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;, <span class="hljs-keyword">this</span>.message)</span><br><span class="line">  &#125;,</span><br><span class="line">  data () &#123;</span><br><span class="line">    <span class="hljs-keyword">return</span> message: <span class="hljs-string">'Hello Vue!'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">  &#123;&#123; message &#125;&#125;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br></pre></td></tr></table></figure>
+<p>相当于我们编写如下 <code>render</code> 函数：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> vm = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">  el: <span class="string">'#app'</span>,</span><br><span class="line">  render (createElement) &#123;</span><br><span class="line">    <span class="keyword">return</span> createElement(<span class="string">'div'</span>, &#123;</span><br><span class="line">      attrs: &#123;</span><br><span class="line">        id: <span class="string">'app'</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;, <span class="keyword">this</span>.message)</span><br><span class="line">  &#125;,</span><br><span class="line">  data () &#123;</span><br><span class="line">    <span class="keyword">return</span> message: <span class="string">'Hello Vue!'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure></p>
 <p>再回到 <code>_render</code> 函数中的 <code>render</code>方法的调用：</p>
-<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vnode = render.call(vm._renderProxy, vm.$createElement)</span><br></pre></td></tr></table></figure>
-<p>可以看到，<code>render</code> 函数中的 <code>createElement</code> 方法就是 <code>vm.$createElement</code> 方法：<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">initRender</span> (<span class="hljs-params">vm: Component</span>) </span>&#123;</span><br><span class="line">  <span class="hljs-comment">// ...</span></span><br><span class="line">  <span class="hljs-comment">//将createElement fn绑定到这个实例，这样我们就可以在其中获得适当的呈现上下文。</span></span><br><span class="line">  <span class="hljs-comment">// args顺序:标签、数据、子元素、normalizationType、alwaysNormalize内部版本由模板编译的呈现函数使用</span></span><br><span class="line">  vm._c = <span class="hljs-function">(<span class="hljs-params">a, b, c, d</span>) =&gt;</span> createElement(vm, a, b, c, d, <span class="hljs-literal">false</span>)</span><br><span class="line">  <span class="hljs-comment">//规范化通常应用于公共版本，用于用户编写的呈现函数。</span></span><br><span class="line">  <span class="hljs-comment">//手写render函数 创建的方法</span></span><br><span class="line">  vm.$createElement = <span class="hljs-function">(<span class="hljs-params">a, b, c, d</span>) =&gt;</span> createElement(vm, a, b, c, d, <span class="hljs-literal">true</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vnode = render.call(vm._renderProxy, vm.$createElement)</span><br></pre></td></tr></table></figure>
+<p>可以看到，<code>render</code> 函数中的 <code>createElement</code> 方法就是 <code>vm.$createElement</code> 方法：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">initRender</span> (<span class="params">vm: Component</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">  <span class="comment">//将createElement fn绑定到这个实例，这样我们就可以在其中获得适当的呈现上下文。</span></span><br><span class="line">  <span class="comment">// args顺序:标签、数据、子元素、normalizationType、alwaysNormalize内部版本由模板编译的呈现函数使用</span></span><br><span class="line">  vm._c = <span class="function">(<span class="params">a, b, c, d</span>) =&gt;</span> createElement(vm, a, b, c, d, <span class="literal">false</span>)</span><br><span class="line">  <span class="comment">//规范化通常应用于公共版本，用于用户编写的呈现函数。</span></span><br><span class="line">  <span class="comment">//手写render函数 创建的方法</span></span><br><span class="line">  vm.$createElement = <span class="function">(<span class="params">a, b, c, d</span>) =&gt;</span> createElement(vm, a, b, c, d, <span class="literal">true</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>实际上，<code>vm.$createElement</code> 方法定义是在执行 <code>initRender</code> 方法的时候，可以看到除了 <code>vm.$createElement</code> 方法，还有一个 <code>vm._c</code> 方法，它是被模板编译成的 <code>render</code> 函数使用，而 <code>vm.$createElement</code> 是用户手写 <code>render</code> 方法使用的， 这俩个方法支持的参数相同，并且内部都调用了 <code>createElement</code> 方法。</p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
 <li>render方法的实质就是生成template模板； </li>
@@ -268,1638 +549,506 @@
 <p><code>vm._render</code>最终是通过执行 <code>createElement</code> 方法并返回的是 <code>vnode</code>，它是一个虚拟 <code>Node</code>。Vue 2.0 相比 Vue 1.0 最大的升级就是利用了 <code>Virtual DOM</code>。因此在分析 <code>createElement</code> 的实现前，我们先了解一下 <code>Virtual DOM</code> 的概念。</p>
 <h3 id="参考博客"><a href="#参考博客" class="headerlink" title="[参考博客]"></a>[参考博客]</h3><p><a href="https://blog.csdn.net/wngzhem/article/details/54291024" target="_blank" rel="noopener">vue Render函数进阶</a><br><a href="https://www.cnblogs.com/tugenhua0707/p/7528621.html" target="_blank" rel="noopener">理解Vue中的Render渲染函数</a><br><a href="https://blog.csdn.net/weixin_42229553/article/details/80444919" target="_blank" rel="noopener">(一) Vue基础个人总结，条件渲染，列表渲染，组件等</a><br><a href="https://www.jb51.net/article/122424.htm" target="_blank" rel="noopener">如何理解Vue的render函数的具体用法</a><br><a href="https://www.cnblogs.com/leungUwah/p/6921873.html" target="_blank" rel="noopener">Vue2.x中的Render函数</a><br><a href="http://www.alloyteam.com/2017/07/12918/" target="_blank" rel="noopener">用jsx写vue组件</a></p>
 
-        </div>
-        
-        <div class="level is-size-7 is-uppercase">
-            <div class="level-start">
-                <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/render/">render</a>, <a class="has-link-grey -link" href="/tags/vue/">vue</a>
-                </div>
-            </div>
-        </div>
-        
-        
-        
-        <div class="social-share"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
-<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
-        
+      
     </div>
-</div>
 
-
-
-<div class="card">
-    <div class="card-content">
-        <h3 class="menu-label has-text-centered">Like this article? Support the author with</h3>
-        <div class="buttons is-centered">
-            
-                
-<a class="button is-info donate">
-    <span class="icon is-small">
-        <i class="fab fa-alipay"></i>
-    </span>
-    <span>Alipay</span>
-    <div class="qrcode"><img src="/images/alipay.png" alt="Alipay"></div>
-</a>
-
-                
-                
-<a class="button is-success donate">
-    <span class="icon is-small">
-        <i class="fab fa-weixin"></i>
-    </span>
-    <span>Wechat</span>
-    <div class="qrcode"><img src="/images/wechatpay.png" alt="Wechat"></div>
-</a>
-
-                
-        </div>
-    </div>
-</div>
-
-
-
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
-        
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2019/08/20/ES6-01-let-const/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">ES6学习（1）-let,const</span>
-            </a>
-        </div>
-        
-        
-        <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2018/10/20/vue-lifeCycle-2/">
-                <span class="level-item">vue深度学习（2）- 生命周期</span>
-                <i class="level-item fas fa-chevron-right"></i>
-            </a>
-        </div>
-        
-    </div>
-</div>
-
-
-
-<div class="card">
-    <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">Comments</h3>
-        
-<script>
-    var disqus_config = function () {
-        this.page.url = 'http://yoursite.com/2018/10/25/render-function/';
-        this.page.identifier = '2018/10/25/render-function/';
-    };
-    (function() {
-        var d = document, s = d.createElement('script');  
-        s.src = '//' + '不能为空' + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-</script>
-
-<div id="disqus_thread">
     
-    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-</div>
-    </div>
-</div>
-</div>
-                
 
-
-
-
-<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
     
-        
-<div class="card widget">
-    <div class="card-content">
-        <nav class="level">
-            <div class="level-item has-text-centered" style="flex-shrink: 1">
-                <div>
-                    
-                        <img class="image is-128x128 has-mb-6" src="/images/avatar.jpg" alt="Littlombie">
-                    
-                    
-                    <p class="is-size-4 is-block">
-                        Littlombie
-                    </p>
-                    
-                    
-                    <p class="is-size-6 is-block">
-                        swordsman
-                    </p>
-                    
-                    
-                    <p class="is-size-6 is-flex is-flex-center has-text-grey">
-                        <i class="fas fa-map-marker-alt has-mr-7"></i>
-                        <span>ShenZhen China</span>
-                    </p>
-                    
-                </div>
-            </div>
-        </nav>
-        <nav class="level is-mobile">
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        Posts
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        54
-                    </p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        Categories
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        11
-                    </p>
-                </div>
-            </div>
-            <div class="level-item has-text-centered is-marginless">
-                <div>
-                    <p class="heading">
-                        Tags
-                    </p>
-                    <p class="title has-text-weight-normal">
-                        31
-                    </p>
-                </div>
-            </div>
-        </nav>
-        <div class="level">
-            <a class="level-item button is-link is-rounded" href="https://github.com/Littlombie" target="_blank">
-                Follow</a>
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/vue/" rel="tag"># vue</a>
+          
+            <a href="/tags/render/" rel="tag"># render</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/20/vue-lifeCycle-2/" rel="next" title="vue深度学习（2）- 生命周期">
+                <i class="fa fa-chevron-left"></i> vue深度学习（2）- 生命周期
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/20/ES6-01-let-const/" rel="prev" title="ES6学习（1）-let,const">
+                ES6学习（1）-let,const <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
         </div>
         
-        
-        <div class="level is-mobile">
-            
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="Github" href="https://github.com/Littlombie">
-                
-                <i class="fab fa-github"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="Weibo" href="http://weibo.com/2500884952/profile?topnav=1&amp;wvr=6&amp;is_all=1">
-                
-                <i class="fab fa-weibo"></i>
-                
-            </a>
-            
-            <a class="level-item button is-white is-marginless" target="_blank"
-                title="Website" href="https://littlombie.github.io/website/">
-                
-                <i class="fab fa-chrome"></i>
-                
-            </a>
-            
-        </div>
-        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
     </div>
-</div>
-    
-        
-    
-        
+  </div>
 
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            Links
-        </h3>
-        <ul class="menu-list">
-        
-            <li>
-                <a class="level is-mobile" href="https://littlombie.github.io/website/my-resume.html" target="_blank">
-                    <span class="level-left">
-                        <span class="level-item">myResume</span>
-                    </span>
-                    <span class="level-right">
-                        <span class="level-item tag">littlombie.github.io</span>
-                    </span>
-                </a>
-            </li>
-        
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
         </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Littlombie">
+            
+              <p class="site-author-name" itemprop="name">Littlombie</p>
+              <p class="site-description motion-element" itemprop="description">Said less to do more！</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">53</span>
+                    <span class="site-state-item-name">Artikel</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
+                    <span class="site-state-item-name">Kategorien</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">31</span>
+                    <span class="site-state-item-name">Tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/Littlombie" target="_blank" title="GitHub"><i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://weibo.com/2500884952/profile?topnav=1&wvr=6&is_all=1" target="_blank" title="Weibo"><i class="fa fa-fw fa-globe"></i>Weibo</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://littlombie.github.io/website/" target="_blank" title="webSite"><i class="fa fa-fw fa-globe"></i>webSite</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+            <div class="cc-license motion-element" itemprop="license">
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" target="_blank">
+                <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons">
+              </a>
+            </div>
+          
+
+          
+          
+
+          
+            
+          
+          
+
         </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#render"><span class="nav-number">1.</span> <span class="nav-text">render</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是render函数"><span class="nav-number">1.0.1.</span> <span class="nav-text">什么是render函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#createElement-参数"><span class="nav-number">1.0.2.</span> <span class="nav-text">createElement 参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用JavaScript-代替模板功能"><span class="nav-number">1.0.3.</span> <span class="nav-text">使用JavaScript 代替模板功能</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#事件-amp-案件修饰符"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">事件&amp;案件修饰符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#插槽"><span class="nav-number">1.0.3.2.</span> <span class="nav-text">插槽</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AST"><span class="nav-number">1.0.4.</span> <span class="nav-text">AST</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#源码分析"><span class="nav-number">1.0.5.</span> <span class="nav-text">源码分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.0.6.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考博客"><span class="nav-number">1.0.7.</span> <span class="nav-text">[参考博客]</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
     </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright"> &copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Littlombie</span>
+
+  
+
+  
 </div>
 
 
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Categories
-            </h3>
-            <ul class="menu-list">
-            <li>
-        <a class="level is-marginless" href="/categories/Angularjs/">
-            <span class="level-start">
-                <span class="level-item">Angularjs</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/ES6/">
-            <span class="level-start">
-                <span class="level-item">ES6</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">18</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/css/">
-            <span class="level-start">
-                <span class="level-item">css</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/css3/">
-            <span class="level-start">
-                <span class="level-item">css3</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/http/">
-            <span class="level-start">
-                <span class="level-item">http</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/jQuery/">
-            <span class="level-start">
-                <span class="level-item">jQuery</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/javascript/">
-            <span class="level-start">
-                <span class="level-item">javascript</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">11</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/nodejs/">
-            <span class="level-start">
-                <span class="level-item">nodejs</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">1</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/vue/">
-            <span class="level-start">
-                <span class="level-item">vue</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">3</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/web/">
-            <span class="level-start">
-                <span class="level-item">web</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">9</span>
-            </span>
-        </a></li><li>
-        <a class="level is-marginless" href="/categories/个人随写/">
-            <span class="level-start">
-                <span class="level-item">个人随写</span>
-            </span>
-            <span class="level-end">
-                <span class="level-item tag">2</span>
-            </span>
-        </a></li>
-            </ul>
-        </div>
-    </div>
-</div>
-    
-        
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            Tag Cloud
-        </h3>
-        <a href="/tags/Deferred/" style="font-size: 10px;">$.Deferred()</a> <a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/Angularjs/" style="font-size: 12px;">Angularjs</a> <a href="/tags/ES6/" style="font-size: 18px;">ES6</a> <a href="/tags/Photo/" style="font-size: 10px;">Photo</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/cross/" style="font-size: 10px;">cross</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/css3/" style="font-size: 14px;">css3</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 12px;">github</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 14px;">http</a> <a href="/tags/jQuery/" style="font-size: 12px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/map/" style="font-size: 10px;">map</a> <a href="/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/tags/ng-if/" style="font-size: 10px;">ng-if</a> <a href="/tags/ng-model/" style="font-size: 10px;">ng-model</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/rem/" style="font-size: 10px;">rem</a> <a href="/tags/render/" style="font-size: 10px;">render</a> <a href="/tags/vue/" style="font-size: 14px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/web/" style="font-size: 16px;">web</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/依赖注入/" style="font-size: 10px;">依赖注入</a> <a href="/tags/模块/" style="font-size: 10px;">模块</a> <a href="/tags/路由/" style="font-size: 10px;">路由</a>
-    </div>
-</div>
 
-    
-    
-        <div class="column-right-shadow is-hidden-widescreen ">
-        
-            
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            Recent
-        </h3>
-        
-        <article class="media">
-            
-            <a href="/2019/08/21/ES6-18-module/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Module模块化">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:09:52.000Z">2019-08-21</time></div>
-                    <a href="/2019/08/21/ES6-18-module/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Module模块化</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/08/21/ES6-17-decorators/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Decorators">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:08:31.000Z">2019-08-21</time></div>
-                    <a href="/2019/08/21/ES6-17-decorators/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Decorators</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/08/21/ES6-16-generator/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Generator">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:34.000Z">2019-08-21</time></div>
-                    <a href="/2019/08/21/ES6-16-generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Generator</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/08/21/ES6-16-Generator/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:16.734Z">2019-08-21</time></div>
-                    <a href="/2019/08/21/ES6-16-Generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/08/21/ES6-15-iterator/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（15）- Iterator">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:02:46.000Z">2019-08-21</time></div>
-                    <a href="/2019/08/21/ES6-15-iterator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（15）- Iterator</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
 
-        
-            <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            Archives
-        </h3>
-        <ul class="menu-list">
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2019/08/">
-                <span class="level-start">
-                    <span class="level-item">August 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">19</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/10/">
-                <span class="level-start">
-                    <span class="level-item">October 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/09/">
-                <span class="level-start">
-                    <span class="level-item">September 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/06/">
-                <span class="level-start">
-                    <span class="level-item">June 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">3</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2017/12/">
-                <span class="level-start">
-                    <span class="level-item">December 2017</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2017/09/">
-                <span class="level-start">
-                    <span class="level-item">September 2017</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2017/07/">
-                <span class="level-start">
-                    <span class="level-item">July 2017</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2017/06/">
-                <span class="level-start">
-                    <span class="level-item">June 2017</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2017/05/">
-                <span class="level-start">
-                    <span class="level-item">May 2017</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2017/04/">
-                <span class="level-start">
-                    <span class="level-item">April 2017</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">3</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2017/03/">
-                <span class="level-start">
-                    <span class="level-item">March 2017</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2017/02/">
-                <span class="level-start">
-                    <span class="level-item">February 2017</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2017/01/">
-                <span class="level-start">
-                    <span class="level-item">January 2017</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2016/12/">
-                <span class="level-start">
-                    <span class="level-item">December 2016</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">3</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2016/11/">
-                <span class="level-start">
-                    <span class="level-item">November 2016</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">10</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2016/10/">
-                <span class="level-start">
-                    <span class="level-item">October 2016</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">3</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
-        
-            <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Tags
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Deferred/">
-                        <span class="tag">$.Deferred()</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/3d/">
-                        <span class="tag">3d</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Angularjs/">
-                        <span class="tag">Angularjs</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/ES6/">
-                        <span class="tag">ES6</span>
-                        <span class="tag is-grey">18</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Photo/">
-                        <span class="tag">Photo</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Vue/">
-                        <span class="tag">Vue</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/cross/">
-                        <span class="tag">cross</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/css/">
-                        <span class="tag">css</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/css3/">
-                        <span class="tag">css3</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/git/">
-                        <span class="tag">git</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/github/">
-                        <span class="tag">github</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/gulp/">
-                        <span class="tag">gulp</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/hexo/">
-                        <span class="tag">hexo</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/html/">
-                        <span class="tag">html</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/http/">
-                        <span class="tag">http</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/jQuery/">
-                        <span class="tag">jQuery</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/javascript/">
-                        <span class="tag">javascript</span>
-                        <span class="tag is-grey">30</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/map/">
-                        <span class="tag">map</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/mobile/">
-                        <span class="tag">mobile</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/ng-if/">
-                        <span class="tag">ng-if</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/ng-model/">
-                        <span class="tag">ng-model</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/nodejs/">
-                        <span class="tag">nodejs</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/rem/">
-                        <span class="tag">rem</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/render/">
-                        <span class="tag">render</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/vue/">
-                        <span class="tag">vue</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/vue-cli/">
-                        <span class="tag">vue-cli</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/web/">
-                        <span class="tag">web</span>
-                        <span class="tag is-grey">7</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/webpack/">
-                        <span class="tag">webpack</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/依赖注入/">
-                        <span class="tag">依赖注入</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/模块/">
-                        <span class="tag">模块</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/路由/">
-                        <span class="tag">路由</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-        
-        </div>
-    
-</div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.9.0</div>
 
-                
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Mist</a> v6.4.2</div>
 
 
 
 
-<div class="column is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only has-order-3 column-right ">
-    
         
-<div class="card widget">
-    <div class="card-content">
-        <h3 class="menu-label">
-            Recent
-        </h3>
+
+
+
+
+
+
+
+
         
-        <article class="media">
-            
-            <a href="/2019/08/21/ES6-18-module/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Module模块化">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:09:52.000Z">2019-08-21</time></div>
-                    <a href="/2019/08/21/ES6-18-module/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Module模块化</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/08/21/ES6-17-decorators/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Decorators">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:08:31.000Z">2019-08-21</time></div>
-                    <a href="/2019/08/21/ES6-17-decorators/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Decorators</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/08/21/ES6-16-generator/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Generator">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:34.000Z">2019-08-21</time></div>
-                    <a href="/2019/08/21/ES6-16-generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Generator</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/08/21/ES6-16-Generator/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:16.734Z">2019-08-21</time></div>
-                    <a href="/2019/08/21/ES6-16-Generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
-                    <p class="is-size-7 is-uppercase">
-                        
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2019/08/21/ES6-15-iterator/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（15）- Iterator">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:02:46.000Z">2019-08-21</time></div>
-                    <a href="/2019/08/21/ES6-15-iterator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（15）- Iterator</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-    </div>
-</div>
+      </div>
+    </footer>
 
     
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-        <h3 class="menu-label">
-            Archives
-        </h3>
-        <ul class="menu-list">
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
         
-        <li>
-            <a class="level is-marginless" href="/archives/2019/08/">
-                <span class="level-start">
-                    <span class="level-item">August 2019</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">19</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/10/">
-                <span class="level-start">
-                    <span class="level-item">October 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/09/">
-                <span class="level-start">
-                    <span class="level-item">September 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2018/06/">
-                <span class="level-start">
-                    <span class="level-item">June 2018</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">3</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2017/12/">
-                <span class="level-start">
-                    <span class="level-item">December 2017</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">2</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2017/09/">
-                <span class="level-start">
-                    <span class="level-item">September 2017</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2017/07/">
-                <span class="level-start">
-                    <span class="level-item">July 2017</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2017/06/">
-                <span class="level-start">
-                    <span class="level-item">June 2017</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2017/05/">
-                <span class="level-start">
-                    <span class="level-item">May 2017</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2017/04/">
-                <span class="level-start">
-                    <span class="level-item">April 2017</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">3</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2017/03/">
-                <span class="level-start">
-                    <span class="level-item">March 2017</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2017/02/">
-                <span class="level-start">
-                    <span class="level-item">February 2017</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2017/01/">
-                <span class="level-start">
-                    <span class="level-item">January 2017</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">1</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2016/12/">
-                <span class="level-start">
-                    <span class="level-item">December 2016</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">3</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2016/11/">
-                <span class="level-start">
-                    <span class="level-item">November 2016</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">10</span>
-                </span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="level is-marginless" href="/archives/2016/10/">
-                <span class="level-start">
-                    <span class="level-item">October 2016</span>
-                </span>
-                <span class="level-end">
-                    <span class="level-item tag">3</span>
-                </span>
-            </a>
-        </li>
-        
-        </ul>
-        </div>
-    </div>
-</div>
+      </div>
     
-        <div class="card widget">
-    <div class="card-content">
-        <div class="menu">
-            <h3 class="menu-label">
-                Tags
-            </h3>
-            <div class="field is-grouped is-grouped-multiline">
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Deferred/">
-                        <span class="tag">$.Deferred()</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/3d/">
-                        <span class="tag">3d</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Angularjs/">
-                        <span class="tag">Angularjs</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/ES6/">
-                        <span class="tag">ES6</span>
-                        <span class="tag is-grey">18</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Photo/">
-                        <span class="tag">Photo</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/Vue/">
-                        <span class="tag">Vue</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/cross/">
-                        <span class="tag">cross</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/css/">
-                        <span class="tag">css</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/css3/">
-                        <span class="tag">css3</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/git/">
-                        <span class="tag">git</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/github/">
-                        <span class="tag">github</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/gulp/">
-                        <span class="tag">gulp</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/hexo/">
-                        <span class="tag">hexo</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/html/">
-                        <span class="tag">html</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/http/">
-                        <span class="tag">http</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/jQuery/">
-                        <span class="tag">jQuery</span>
-                        <span class="tag is-grey">2</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/javascript/">
-                        <span class="tag">javascript</span>
-                        <span class="tag is-grey">30</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/map/">
-                        <span class="tag">map</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/mobile/">
-                        <span class="tag">mobile</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/ng-if/">
-                        <span class="tag">ng-if</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/ng-model/">
-                        <span class="tag">ng-model</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/nodejs/">
-                        <span class="tag">nodejs</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/rem/">
-                        <span class="tag">rem</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/render/">
-                        <span class="tag">render</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/vue/">
-                        <span class="tag">vue</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/vue-cli/">
-                        <span class="tag">vue-cli</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/web/">
-                        <span class="tag">web</span>
-                        <span class="tag is-grey">7</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/webpack/">
-                        <span class="tag">webpack</span>
-                        <span class="tag is-grey">3</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/依赖注入/">
-                        <span class="tag">依赖注入</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/模块/">
-                        <span class="tag">模块</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/路由/">
-                        <span class="tag">路由</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-            </div>
-        </div>
-    </div>
-</div>
-    
-    
-</div>
 
-            </div>
-        </div>
-    </section>
-    <footer class="footer">
-    <div class="container">
-        <div class="level">
-            <div class="level-start has-text-centered-mobile">
-                <a class="footer-logo is-block has-mb-6" href="/">
-                
-                    <img src="/favicon.ico" alt="vue深度学习（6）- render 函数" height="28">
-                
-                </a>
-                <p class="is-size-7">
-                &copy; 2019 Littlombie&nbsp;
-                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
-                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
-                
-                </p>
-            </div>
-            
-            <div class="level-end">
-            
-                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
-                
-                
-                <p class="control">
-                    <a class="button is-white is-large" target="_blank" title="Creative Commons" href="https://creativecommons.org/">
-                        
-                        <i class="fab fa-creative-commons"></i>
-                        
-                    </a>
-                </p>
-                
-                <p class="control">
-                    <a class="button is-white is-large" target="_blank" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/">
-                        
-                        <i class="fab fa-creative-commons-by"></i>
-                        
-                    </a>
-                </p>
-                
-                <p class="control">
-                    <a class="button is-white is-large" target="_blank" title="Download on GitHub" href="https://github.com/Littlombie/littlombie.github.io">
-                        
-                        <i class="fab fa-github"></i>
-                        
-                    </a>
-                </p>
-                
-                </div>
-            
-            </div>
-        </div>
-        <span id="busuanzi_container_site_pv" class="theme-info"> 本站总访问量<span id="busuanzi_value_site_pv"></span>次</span>
-        <span id="busuanzi_container_site_uv" class="theme-info"> |  本站访客数<span id="busuanzi_value_site_uv"></span>人次  -   </span>
-        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
-        <script>
-            var now = new Date(); 
-            function createtime() { 
-                var grt= new Date("10/1/2016 12:49:00");//此处修改你的建站时间或者网站上线时间 
-                now.setTime(now.getTime()+250); 
-                days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
-                hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
-                if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
-                mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
-                seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
-                snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
-                document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
-                document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
-            } 
-        setInterval("createtime()",250);
-        </script>
-    </div>
     
-</footer>
-    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
-<script>moment.locale("zh-Hans");</script>
+	
+    
 
-<script>
-var IcarusThemeSettings = {
-    article: {
-        highlight: {
-            clipboard: true,
-            fold: 'unfolded'
-        }
-    }
-};
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
 </script>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
 
 
 
-    
-    
-    
-    <script src="/js/animation.js"></script>
-    
-
-    
-    
-    
-    <script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
-    <script src="/js/gallery.js" defer></script>
-    
-
-    
-    
-
-<div id="outdated">
-    <h6>Your browser is out-of-date!</h6>
-    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update
-            my browser now </a></p>
-    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        outdatedBrowser({
-            bgColor: '#f25648',
-            color: '#ffffff',
-            lowerThan: 'flex'
-        });
-    });
-</script>
 
 
-    
-    
-<script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    MathJax.Hub.Config({
-        'HTML-CSS': {
-            matchFontHeight: false
-        },
-        SVG: {
-            matchFontHeight: false
-        },
-        CommonHTML: {
-            matchFontHeight: false
-        },
-        tex2jax: {
-            inlineMath: [
-                ['$','$'],
-                ['\\(','\\)']
-            ]
-        }
-    });
-});
-</script>
-
-    
-    
-
-<a id="back-to-top" title="Back to Top" href="javascript:;">
-    <i class="fas fa-chevron-up"></i>
-</a>
-<script src="/js/back-to-top.js" defer></script>
 
 
-    
-    
-
-    
-    
-    
-    
-
-    
-    
-    
-    
-    
 
 
-<script src="/js/main.js" defer></script>
 
-    
-    <div class="searchbox ins-search">
-    <div class="searchbox-container ins-search-container">
-        <div class="searchbox-input-wrapper">
-            <input type="text" class="searchbox-input ins-search-input" placeholder="Type something..." />
-            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
-        </div>
-        <div class="searchbox-result-wrapper ins-section-wrapper">
-            <div class="ins-section-container"></div>
-        </div>
-    </div>
-</div>
-<script>
-    (function (window) {
-        var INSIGHT_CONFIG = {
-            TRANSLATION: {
-                POSTS: 'Posts',
-                PAGES: 'Pages',
-                CATEGORIES: 'Categories',
-                TAGS: 'Tags',
-                UNTITLED: '(Untitled)',
-            },
-            CONTENT_URL: '/content.json',
-        };
-        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
-    })(window);
-</script>
-<script src="/js/insight.js" defer></script>
-<link rel="stylesheet" href="/css/search.css">
-<link rel="stylesheet" href="/css/insight.css">
-    
-    <script type="text/javascript">
-        var windowWidth = $(window).width();
-        if (windowWidth > 480) {
-          document.write('<script type="text/javascript" src="/js/src/snow.js"><\/script>');
-        }
-      </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.2"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=6.4.2"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"live2d-widget-model-z16"},"display":{"position":"right","width":200,"height":400},"mobile":{"show":true}});</script></body>
-<script src="/js/src/click.js"></script>
-
 </html>
