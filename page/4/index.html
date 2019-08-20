@@ -151,17 +151,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2017-06-16T09:41:00.000Z">2017-06-16</time>
+                <time class="level-item has-text-grey" datetime="2019-08-20T16:49:05.000Z">2019-08-21</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/jQuery/">jQuery</a>
+                <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    18 minutes read (About 2663 words)
+                    3 minutes read (About 455 words)
                 </span>
                 
                 
@@ -170,18 +170,18 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2017/06/16/jQuery-Deferred/">jQuery的deferred对象使用详解</a>
+                <a class="has-link-black-ter" href="/2019/08/21/ES6-07-function/">ES6学习（7）- 函数扩展</a>
             
         </h1>
         <div class="content">
-            <h3 id="什么是deferred对象？"><a href="#什么是deferred对象？" class="headerlink" title="什么是deferred对象？"></a>什么是deferred对象？</h3><p>开发网站的过程中，我们经常遇到某些耗时很长的javascript操作。其中，既有异步的操作（比如ajax读取服务器数据），也有同步的操作（比如遍历一个大型数组），它们都不是立即能得到结果的。<br>通常的解决方法是，为它们指定回调函数（callback）。即事先规定，一旦它们运行结束，应该调用哪些函数。<br>但是，在回调函数方面，jQuery的功能非常弱。为了改变这一点，jQuery开发团队就设计了<code>deferred</code>对象。<br>简单说，<code>deferred</code>对象就是jQuery的回调函数解决方案。 在英语中，defer的意思是”延迟”，所以deferred对象的含义就是”延迟”到未来某个点再执行。<br>它解决了如何处理耗时操作的问题，对那些操作提供了更好的控制，以及统一的编程接口。它的主要功能，可以归结为四点。下面我们通过示例代码，一步步来学习。  </p>
+            <h3 id="参数默认值"><a href="#参数默认值" class="headerlink" title="参数默认值"></a>参数默认值</h3><p>函数参数里边直接赋默认值，但是可以被重新赋值<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params">x, y = <span class="hljs-string">'world'</span></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'默认值'</span>,x,y);</span><br><span class="line">  &#125;</span><br><span class="line">  test(<span class="hljs-string">'hello'</span>);</span><br><span class="line">  test(<span class="hljs-string">'hello'</span>,<span class="hljs-string">'kill'</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2017/06/16/jQuery-Deferred/#more">Read More</a>
+                <a class="button is-size-7 is-light" href="/2019/08/21/ES6-07-function/#more">Read More</a>
                 </div>
             </div>
         </div>
@@ -203,17 +203,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2017-05-07T14:28:57.000Z">2017-05-07</time>
+                <time class="level-item has-text-grey" datetime="2019-08-20T16:48:48.000Z">2019-08-21</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/javascript/">javascript</a>
+                <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    7 minutes read (About 1062 words)
+                    4 minutes read (About 566 words)
                 </span>
                 
                 
@@ -222,23 +222,19 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2017/05/07/Native-JS-imitation-jQuery/">原生js仿jquery一些常用方法</a>
+                <a class="has-link-black-ter" href="/2019/08/21/ES6-06-array/">ES6学习（6）- 数组扩展</a>
             
         </h1>
         <div class="content">
-            <blockquote>
-<p>之前在网上发现这篇文章，觉得挺不错的，现在就分享给大家，也给大家做个参考。侵删！</p>
-</blockquote>
-<p>最近迷上了原生js，能不用jquery等框架的情况都会手写一些js方法，记得刚接触前端的时候为了选择器而使用jquery。。。现在利用扩展原型的方法实现一些jquery函数：</p>
-<h3 id="显示-隐藏"><a href="#显示-隐藏" class="headerlink" title="显示/隐藏"></a>显示/隐藏</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//hide() </span></span><br><span class="line"><span class="built_in">Object</span>.prototype.hide = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; </span><br><span class="line">    <span class="keyword">this</span>.style.display=<span class="string">"none"</span>; </span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>; </span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">//show() </span></span><br><span class="line"><span class="built_in">Object</span>.prototype.show = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; </span><br><span class="line">    <span class="keyword">this</span>.style.display=<span class="string">"block"</span>; </span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>return this的好处在于链式调用。<br>
+            <h3 id="Array-of"><a href="#Array-of" class="headerlink" title="Array.of()"></a>Array.of()</h3><p>Array.of()把一组数据变量转换成数据类型,如果里边不传任何参数，那么输出的就是一个空数组<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="hljs-keyword">let</span> arr = <span class="hljs-built_in">Array</span>.of(<span class="hljs-number">3</span>,<span class="hljs-number">4</span>,<span class="hljs-number">7</span>,<span class="hljs-number">9</span>,<span class="hljs-number">11</span>);</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'arr='</span>,arr);<span class="hljs-comment">//[3,4,7,9,11]</span></span><br><span class="line"></span><br><span class="line">  <span class="hljs-keyword">let</span> empty=<span class="hljs-built_in">Array</span>.of();</span><br><span class="line">  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'empty'</span>,empty);<span class="hljs-comment">//[]</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="Array-from"><a href="#Array-from" class="headerlink" title="Array.from()"></a>Array.from()</h3><p>Array.from() 把一些伪数组、集合转换为数组；为了演示这个功能 需要在在HTML里边添加几个标签<br></p>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2017/05/07/Native-JS-imitation-jQuery/#more">Read More</a>
+                <a class="button is-size-7 is-light" href="/2019/08/21/ES6-06-array/#more">Read More</a>
                 </div>
             </div>
         </div>
@@ -260,17 +256,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2017-04-24T10:15:24.000Z">2017-04-24</time>
+                <time class="level-item has-text-grey" datetime="2019-08-20T16:47:52.000Z">2019-08-21</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/web/">web</a>
+                <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    2 minutes read (About 333 words)
+                    2 minutes read (About 264 words)
                 </span>
                 
                 
@@ -279,25 +275,18 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2017/04/24/Vue-webpack/">基于webpack和Vue搭建基础开发环境</a>
+                <a class="has-link-black-ter" href="/2019/08/21/ES6-05-numerical-expansion/">ES6学习（5）- 数值扩展</a>
             
         </h1>
         <div class="content">
-            <h3 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h3><p>  windows可以直接下载，<br>  下载链接：<a href="https://nodejs.org/zh-cn/" target="_blank" rel="noopener">https://nodejs.org/zh-cn/</a>  </p>
-<p>  下载完后查看版本：<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node --version</span><br></pre></td></tr></table></figure></p>
-<p>  确认版本在6.0以上</p>
-<p>  为了下载速度更快，可以选择安装<a href="http://npm.taobao.org/" target="_blank" rel="noopener">淘宝 NPM 镜像</a><code>cnpm</code>。</p>
-<ul>
-<li>注：以下命令有全局标志-g</li>
-</ul>
-<h3 id="安装-Vue"><a href="#安装-Vue" class="headerlink" title="安装 Vue"></a>安装 Vue</h3><p>   这里我们选择Vue版本为2.2.6<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install vue@2.2.6</span><br></pre></td></tr></table></figure></p>
+            <h2 id="ES6-的-数值扩展"><a href="#ES6-的-数值扩展" class="headerlink" title="ES6 的 数值扩展"></a>ES6 的 数值扩展</h2>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2017/04/24/Vue-webpack/#more">Read More</a>
+                <a class="button is-size-7 is-light" href="/2019/08/21/ES6-05-numerical-expansion/#more">Read More</a>
                 </div>
             </div>
         </div>
@@ -319,17 +308,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2017-04-11T02:29:03.000Z">2017-04-11</time>
+                <time class="level-item has-text-grey" datetime="2019-08-20T16:46:34.000Z">2019-08-21</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/web/">web</a>
+                <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    14 minutes read (About 2134 words)
+                    3 minutes read (About 419 words)
                 </span>
                 
                 
@@ -338,24 +327,18 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2017/04/11/webpack-2/">webpack项目流程学习（二）</a>
+                <a class="has-link-black-ter" href="/2019/08/21/ES6-04-string-extension/">ES6学习（4）- 字符串扩展</a>
             
         </h1>
         <div class="content">
-            <p><img src="/images/post/what-is-webpack.png" class="full-image" alt="webpack"></p>
-<blockquote>
-<p>本文只是作为学习webpack入门所作的笔记，仅供参考。阅读本文之前，请首先阅读<a href="https://littlombie.github.io/2017/04/10/webpack-1/" target="_blank" rel="noopener">webpack项目流程学习（一）</a>；</p>
-</blockquote>
-<h2 id="项目测试"><a href="#项目测试" class="headerlink" title="项目测试"></a>项目测试</h2><p>我们试做一个项目测试,适用<code>laoder</code> 以及其特性处理项目中的资源文件； </p>
-<h3 id="重新配置文件"><a href="#重新配置文件" class="headerlink" title="重新配置文件"></a>重新配置文件</h3><p>配置目录为下</p>
-<p><img src="http://img2.ph.126.net/xxKBMcOgvgeAuVN9Ft1b4g==/6631949574026962709.png" alt="目录"></p>
+            <h2 id="ES6的字符串扩展"><a href="#ES6的字符串扩展" class="headerlink" title="ES6的字符串扩展"></a>ES6的字符串扩展</h2>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2017/04/11/webpack-2/#more">Read More</a>
+                <a class="button is-size-7 is-light" href="/2019/08/21/ES6-04-string-extension/#more">Read More</a>
                 </div>
             </div>
         </div>
@@ -395,7 +378,7 @@
             
             <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
             
-            <li><a class="pagination-link has-text-black-ter" href="/page/9/">9</a></li>
+            <li><a class="pagination-link has-text-black-ter" href="/page/14/">14</a></li>
             
         </ul>
     </nav>
@@ -443,7 +426,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        36
+                        54
                     </p>
                 </div>
             </div>
@@ -463,7 +446,7 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        33
+                        31
                     </p>
                 </div>
             </div>
@@ -549,12 +532,12 @@
                 <span class="level-item tag">2</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/ECMAScript2015/">
+        <a class="level is-marginless" href="/categories/ES6/">
             <span class="level-start">
-                <span class="level-item">ECMAScript2015</span>
+                <span class="level-item">ES6</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">18</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/css/">
@@ -640,7 +623,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Deferred/" style="font-size: 10px;">$.Deferred()</a> <a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/Angularjs/" style="font-size: 12.5px;">Angularjs</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Photo/" style="font-size: 10px;">Photo</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/cross/" style="font-size: 10px;">cross</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/css3/" style="font-size: 15px;">css3</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 12.5px;">github</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/jQuery/" style="font-size: 12.5px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/let/" style="font-size: 10px;">let</a> <a href="/tags/map/" style="font-size: 10px;">map</a> <a href="/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/tags/ng-if/" style="font-size: 10px;">ng-if</a> <a href="/tags/ng-model/" style="font-size: 10px;">ng-model</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/rem/" style="font-size: 10px;">rem</a> <a href="/tags/render/" style="font-size: 10px;">render</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/web/" style="font-size: 17.5px;">web</a> <a href="/tags/webpack/" style="font-size: 15px;">webpack</a> <a href="/tags/依赖注入/" style="font-size: 10px;">依赖注入</a> <a href="/tags/模块/" style="font-size: 10px;">模块</a> <a href="/tags/路由/" style="font-size: 10px;">路由</a>
+        <a href="/tags/Deferred/" style="font-size: 10px;">$.Deferred()</a> <a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/Angularjs/" style="font-size: 12px;">Angularjs</a> <a href="/tags/ES6/" style="font-size: 18px;">ES6</a> <a href="/tags/Photo/" style="font-size: 10px;">Photo</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/cross/" style="font-size: 10px;">cross</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/css3/" style="font-size: 14px;">css3</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 12px;">github</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 14px;">http</a> <a href="/tags/jQuery/" style="font-size: 12px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/map/" style="font-size: 10px;">map</a> <a href="/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/tags/ng-if/" style="font-size: 10px;">ng-if</a> <a href="/tags/ng-model/" style="font-size: 10px;">ng-model</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/rem/" style="font-size: 10px;">rem</a> <a href="/tags/render/" style="font-size: 10px;">render</a> <a href="/tags/vue/" style="font-size: 14px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/web/" style="font-size: 16px;">web</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/依赖注入/" style="font-size: 10px;">依赖注入</a> <a href="/tags/模块/" style="font-size: 10px;">模块</a> <a href="/tags/路由/" style="font-size: 10px;">路由</a>
     </div>
 </div>
 
@@ -657,18 +640,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/25/render-function/" class="media-left">
+            <a href="/2019/08/21/ES6-18-module/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（6）- render 函数">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Module模块化">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-25T15:27:58.000Z">2018-10-25</time></div>
-                    <a href="/2018/10/25/render-function/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（6）- render 函数</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:09:52.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-18-module/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Module模块化</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -676,18 +659,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/20/vue-lifeCycle-2/" class="media-left">
+            <a href="/2019/08/21/ES6-17-decorators/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（2）- 生命周期">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Decorators">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-20T15:35:04.000Z">2018-10-20</time></div>
-                    <a href="/2018/10/20/vue-lifeCycle-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（2）- 生命周期</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:08:31.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-17-decorators/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Decorators</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -695,16 +678,35 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/The-HTTP-protocol/" class="media-left">
+            <a href="/2019/08/21/ES6-16-generator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="HTTP协议认识">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Generator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T15:18:24.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/The-HTTP-protocol/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HTTP协议认识</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:34.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Generator</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/21/ES6-16-Generator/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:16.734Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-Generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -714,37 +716,18 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/Cross-domain/" class="media-left">
+            <a href="/2019/08/21/ES6-15-iterator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="关于跨域的一些理解">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（15）- Iterator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T14:41:55.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/Cross-domain/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于跨域的一些理解</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:02:46.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-15-iterator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（15）- Iterator</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/http/">http</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2018/06/03/Mobile-terminal-skills/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="移动端常见技巧汇总">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-06-03T15:07:35.000Z">2018-06-03</time></div>
-                    <a href="/2018/06/03/Mobile-terminal-skills/" class="title has-link-black-ter is-size-6 has-text-weight-normal">移动端常见技巧汇总</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/web/">web</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -761,6 +744,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">19</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2018/10/">
@@ -801,7 +795,7 @@
                     <span class="level-item">December 2017</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -964,7 +958,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/ES6/">
                         <span class="tag">ES6</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">18</span>
                     </a>
                 </div>
                 
@@ -978,13 +972,6 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Vue/">
                         <span class="tag">Vue</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/const/">
-                        <span class="tag">const</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1062,14 +1049,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/javascript/">
                         <span class="tag">javascript</span>
-                        <span class="tag is-grey">12</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/let/">
-                        <span class="tag">let</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">30</span>
                     </a>
                 </div>
                 
@@ -1196,18 +1176,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/25/render-function/" class="media-left">
+            <a href="/2019/08/21/ES6-18-module/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（6）- render 函数">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Module模块化">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-25T15:27:58.000Z">2018-10-25</time></div>
-                    <a href="/2018/10/25/render-function/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（6）- render 函数</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:09:52.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-18-module/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Module模块化</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -1215,18 +1195,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/20/vue-lifeCycle-2/" class="media-left">
+            <a href="/2019/08/21/ES6-17-decorators/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（2）- 生命周期">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Decorators">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-20T15:35:04.000Z">2018-10-20</time></div>
-                    <a href="/2018/10/20/vue-lifeCycle-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（2）- 生命周期</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:08:31.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-17-decorators/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Decorators</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -1234,16 +1214,35 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/The-HTTP-protocol/" class="media-left">
+            <a href="/2019/08/21/ES6-16-generator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="HTTP协议认识">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Generator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T15:18:24.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/The-HTTP-protocol/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HTTP协议认识</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:34.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Generator</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/21/ES6-16-Generator/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:16.734Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-Generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1253,37 +1252,18 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/Cross-domain/" class="media-left">
+            <a href="/2019/08/21/ES6-15-iterator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="关于跨域的一些理解">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（15）- Iterator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T14:41:55.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/Cross-domain/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于跨域的一些理解</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:02:46.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-15-iterator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（15）- Iterator</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/http/">http</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2018/06/03/Mobile-terminal-skills/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="移动端常见技巧汇总">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-06-03T15:07:35.000Z">2018-06-03</time></div>
-                    <a href="/2018/06/03/Mobile-terminal-skills/" class="title has-link-black-ter is-size-6 has-text-weight-normal">移动端常见技巧汇总</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/web/">web</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -1300,6 +1280,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">19</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2018/10/">
@@ -1340,7 +1331,7 @@
                     <span class="level-item">December 2017</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1503,7 +1494,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/ES6/">
                         <span class="tag">ES6</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">18</span>
                     </a>
                 </div>
                 
@@ -1517,13 +1508,6 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Vue/">
                         <span class="tag">Vue</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/const/">
-                        <span class="tag">const</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1601,14 +1585,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/javascript/">
                         <span class="tag">javascript</span>
-                        <span class="tag is-grey">12</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/let/">
-                        <span class="tag">let</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">30</span>
                     </a>
                 </div>
                 

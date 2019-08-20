@@ -178,7 +178,7 @@
             <h3 id="什么是跨域"><a href="#什么是跨域" class="headerlink" title="什么是跨域"></a>什么是跨域</h3><h4 id="跨域"><a href="#跨域" class="headerlink" title="跨域:"></a>跨域:</h4><p>浏览器对于javascript的同源策略的限制,例如a.cn下面的js不能调用b.cn中的js,对象或数据(因为a.cn和b.cn是不同域),所以跨域就出现了.<br>上面提到的,同域的概念又是什么呢??? 简单的解释就是相同域名,端口相同,协议相同</p>
 <h4 id="同源策略"><a href="#同源策略" class="headerlink" title="同源策略:"></a>同源策略:</h4><p>请求的url地址,必须与浏览器上的url地址处于同域上,也就是域名,端口,协议相同.<br>比如:我在本地上的域名是xxx.cn,请求另外一个域名一段数据<br>这个时候在浏览器上会报错:</p>
 <a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Failed to load http:/xxx.cn/: No &apos;Access-Control-Allow-Origin&apos; header is present on the requested resource. Origin &apos;http://sss.com&apos; is therefore not allowed access.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Failed to load http:/xxx.cn/: No &apos;Access-Control-Allow-Origin&apos; header is present on the requested resource. Origin &apos;http://sss.com&apos; is therefore not allowed access.</span><br></pre></td></tr></table></figure>
 <p>这个就是同源策略的保护,如果浏览器对javascript没有同源策略的保护,那么一些重要的机密网站将会很危险~</p>
 <table>
 <thead>
@@ -224,32 +224,32 @@
 <h4 id="JS跨域"><a href="#JS跨域" class="headerlink" title="JS跨域"></a>JS跨域</h4><p>这里所说的JS跨域，指的是在处理跨域请求的过程中，技术面会偏浏览器端较多一些，一般是利用浏览器的一些特性进行hack处理，从而避开同源策略的限制。</p>
 <h4 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h4><p>由于同源策略不会阻止动态脚本的插入到文档中去，所以催生出了一种很常用的跨域方式： JSONP(JSON with Padding)。</p>
 <h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>创建三个文件</p>
-<p><code>server.js</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">const http = require(&apos;http&apos;);</span><br><span class="line">const fs = require(&apos;fs&apos;);</span><br><span class="line"></span><br><span class="line">http.createServer(function (request,response) &#123;</span><br><span class="line">  console.log(&apos;request come&apos;, request.url);</span><br><span class="line">  </span><br><span class="line">  const html = fs.readFileSync(&apos;test.html&apos;,&apos;utf8&apos;);</span><br><span class="line">  // response.writeHead(200, &#123;</span><br><span class="line">  //   &apos;Content-Type&apos;: &apos;test/html&apos;</span><br><span class="line">  // &#125;);</span><br><span class="line">  response.end(html);</span><br><span class="line">&#125;).listen(8888);</span><br><span class="line"></span><br><span class="line">console.log (&apos;server listening on http://localhost:8888&apos;);</span><br></pre></td></tr></table></figure></p>
-<p><code>server2.js</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const http = require(&apos;http&apos;);</span><br><span class="line"></span><br><span class="line">http.createServer(function (request,response) &#123;</span><br><span class="line">  console.log(&apos;request come&apos;, request.url);</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">&#125;).listen(8887);</span><br><span class="line"></span><br><span class="line">console.log (&apos;server listening on http://localhost:8887&apos;);</span><br></pre></td></tr></table></figure></p>
+<p><code>server.js</code><br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">const http = require(&apos;http&apos;);</span><br><span class="line">const fs = require(&apos;fs&apos;);</span><br><span class="line"></span><br><span class="line">http.createServer(function (request,response) &#123;</span><br><span class="line">  console.log(&apos;request come&apos;, request.url);</span><br><span class="line">  </span><br><span class="line">  const html = fs.readFileSync(&apos;test.html&apos;,&apos;utf8&apos;);</span><br><span class="line">  // response.writeHead(200, &#123;</span><br><span class="line">  //   &apos;Content-Type&apos;: &apos;test/html&apos;</span><br><span class="line">  // &#125;);</span><br><span class="line">  response.end(html);</span><br><span class="line">&#125;).listen(8888);</span><br><span class="line"></span><br><span class="line">console.log (&apos;server listening on http://localhost:8888&apos;);</span><br></pre></td></tr></table></figure></p>
+<p><code>server2.js</code><br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const http = require(&apos;http&apos;);</span><br><span class="line"></span><br><span class="line">http.createServer(function (request,response) &#123;</span><br><span class="line">  console.log(&apos;request come&apos;, request.url);</span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">&#125;).listen(8887);</span><br><span class="line"></span><br><span class="line">console.log (&apos;server listening on http://localhost:8887&apos;);</span><br></pre></td></tr></table></figure></p>
 <p><code>test.html</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;utf-8&quot; /&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;title&gt;Page Title&lt;/title&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    ppppp</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    var xhr = new XMLHttpRequest();</span><br><span class="line">    xhr.open(&apos;GET&apos;,&apos;http://127.0.0.1:8887/&apos;);</span><br><span class="line">    xhr.send();</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=&quot;utf-8&quot; /&gt;</span><br><span class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;</span><br><span class="line">  &lt;title&gt;Page Title&lt;/title&gt;</span><br><span class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    ppppp</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    var xhr = new XMLHttpRequest();</span><br><span class="line">    xhr.open(&apos;GET&apos;,&apos;http://127.0.0.1:8887/&apos;);</span><br><span class="line">    xhr.send();</span><br><span class="line">  &lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 <p>同时启动 <code>server.js</code> <code>server2.js</code> 服务</p>
 <p>然后按照上面代码 使用 <code>server.js</code> 启动 <code>test.html</code> 页面  但是 <code>test.htm</code>页面 发送一个<code>http请求</code> 请求的 服务器为端口<code>8887</code> ,也就是 <code>server2.js</code> 服务  </p>
-<p> 此时页面上会提示 跨域<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Failed to load http://127.0.0.1:8887/: No &apos;Access-Control-Allow-Origin&apos; header is present on the requested resource. Origin &apos;http://localhost:8888&apos; is therefore not allowed access.</span><br></pre></td></tr></table></figure></p>
+<p> 此时页面上会提示 跨域<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Failed to load http://127.0.0.1:8887/: No &apos;Access-Control-Allow-Origin&apos; header is present on the requested resource. Origin &apos;http://localhost:8888&apos; is therefore not allowed access.</span><br></pre></td></tr></table></figure></p>
 <p>我们的解决方法就是</p>
 <ul>
-<li>在server2.js 页面 http.createServer 的装添加一下页面<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">response.writeHead(200, &#123;</span><br><span class="line">   &apos;Access-Control-Allow-Origin&apos;: &apos;*&apos;</span><br><span class="line"> &#125;)</span><br><span class="line"> response.end(&apos;123&apos;);</span><br></pre></td></tr></table></figure>
+<li>在server2.js 页面 http.createServer 的装添加一下页面<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">response.writeHead(200, &#123;</span><br><span class="line">   &apos;Access-Control-Allow-Origin&apos;: &apos;*&apos;</span><br><span class="line"> &#125;)</span><br><span class="line"> response.end(&apos;123&apos;);</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p>上边的 <code>&#39;Access-Control-Allow-Origin&#39;: &#39;*&#39;</code> 表示 允许跨域的 域名 ，<code>*</code>表示 允许一切url的跨域 ，如果只是允许 某个网站访问数据 就可以直接 写网站域名 </p>
 <ul>
 <li>使用jsonp的方式解决跨域</li>
 </ul>
-<p>在HTML添加标签<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;http://localhost:8887&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
+<p>在HTML添加标签<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;http://localhost:8887&quot;&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
 <p>这样同样 可以请求到页面的数据</p>
 <p>所以 jsonp 的实现原理， 就是 把请求的数据以标签请求资源的方式请求 ，浏览器对资源请求不会做限制 ，就可以请求到数据</p>
 <h3 id="CORS跨域限制以及预请求验证"><a href="#CORS跨域限制以及预请求验证" class="headerlink" title="CORS跨域限制以及预请求验证"></a>CORS跨域限制以及预请求验证</h3><p>cors 预请求</p>
 <h4 id="允许的方法-（method）"><a href="#允许的方法-（method）" class="headerlink" title="允许的方法 （method）"></a>允许的方法 （method）</h4><p>GET HEAD POST 不需要预请求验证</p>
-<h4 id="允许的-Content-Type"><a href="#允许的-Content-Type" class="headerlink" title="允许的 Content-Type"></a>允许的 Content-Type</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">text/plan  </span><br><span class="line">multipar/form-data    </span><br><span class="line">application、x-www-form-urlencoded</span><br></pre></td></tr></table></figure>
+<h4 id="允许的-Content-Type"><a href="#允许的-Content-Type" class="headerlink" title="允许的 Content-Type"></a>允许的 Content-Type</h4><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">text/plan  </span><br><span class="line">multipar/form-data    </span><br><span class="line">application、x-www-form-urlencoded</span><br></pre></td></tr></table></figure>
 <p>以上是在form表单做element请求的时候 允许的类型</p>
 <h4 id="其他限制"><a href="#其他限制" class="headerlink" title="其他限制"></a>其他限制</h4><h5 id="请求头限制"><a href="#请求头限制" class="headerlink" title="请求头限制"></a>请求头限制</h5><p>网页 <a href="https://fetch.spec.whatwg.org/#cors-safelisted-request-header" target="_blank" rel="noopener">https://fetch.spec.whatwg.org/#cors-safelisted-request-header</a></p>
 <h5 id="xmlHttpRequestUpload-对象均没有注册任何时间监听器"><a href="#xmlHttpRequestUpload-对象均没有注册任何时间监听器" class="headerlink" title="xmlHttpRequestUpload 对象均没有注册任何时间监听器"></a>xmlHttpRequestUpload 对象均没有注册任何时间监听器</h5><h5 id="请求中没有使用ReadableStream对象"><a href="#请求中没有使用ReadableStream对象" class="headerlink" title="请求中没有使用ReadableStream对象"></a>请求中没有使用ReadableStream对象</h5><p>如果以上都允许 服务区改为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">response.writeHead(200, &#123;</span><br><span class="line">    &apos;Access-Control-Allow-Origin&apos;: &apos;*&apos;,</span><br><span class="line">    &apos;Access-Control-Allow-Headers&apos;: &apos;x-Test-Cors&apos;, //允许的请求头部</span><br><span class="line">    &apos;Access-Control-Allow-Methods&apos;: &apos;Delete,PUT,POST&apos;,//允许的请求方法</span><br><span class="line">    &apos;Access-Control-Max-Age&apos;: &apos;1000&apos; //表示多长时间内不做验证 可以直接请求数据</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">response.writeHead(200, &#123;</span><br><span class="line">    &apos;Access-Control-Allow-Origin&apos;: &apos;*&apos;,</span><br><span class="line">    &apos;Access-Control-Allow-Headers&apos;: &apos;x-Test-Cors&apos;, //允许的请求头部</span><br><span class="line">    &apos;Access-Control-Allow-Methods&apos;: &apos;Delete,PUT,POST&apos;,//允许的请求方法</span><br><span class="line">    &apos;Access-Control-Max-Age&apos;: &apos;1000&apos; //表示多长时间内不做验证 可以直接请求数据</span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
 <h3 id="http报文格式"><a href="#http报文格式" class="headerlink" title="http报文格式"></a>http报文格式</h3><h4 id="http方法"><a href="#http方法" class="headerlink" title="http方法"></a>http方法</h4><p>是用来定义对资源的操作  </p>
 <ul>
 <li>get： 获取数据</li>
@@ -270,7 +270,7 @@
 <h3 id="可缓存性"><a href="#可缓存性" class="headerlink" title="可缓存性"></a>可缓存性</h3><h4 id="public"><a href="#public" class="headerlink" title="public"></a>public</h4><p>http请求返回过程中 </p>
 <h4 id="private"><a href="#private" class="headerlink" title="private"></a>private</h4><h4 id="no-cache"><a href="#no-cache" class="headerlink" title="no-cache"></a>no-cache</h4><p>表示虽然可以缓存 ，但是下次请求还是要服务器验证</p>
 <p>设置缓存时长 </p>
-<p>可以在加载一个js的时候 设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&apos;Content-Type&apos;:&apos;text/javascript&apos;,</span><br><span class="line">&apos;Cache-Control&apos;: &apos;max-age=200, public&apos;,</span><br></pre></td></tr></table></figure></p>
+<p>可以在加载一个js的时候 设置<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&apos;Content-Type&apos;:&apos;text/javascript&apos;,</span><br><span class="line">&apos;Cache-Control&apos;: &apos;max-age=200, public&apos;,</span><br></pre></td></tr></table></figure></p>
 <p>这样的设置后 第二次加载页面时  如果在设置的事件内，会直接加载缓存中的文件<br>解决方法 就是在 js后边添加hash值 每次刷新都会改变hash值 所以就会重新加载页面</p>
 
         </div>
@@ -307,6 +307,16 @@
     </span>
     <span>Alipay</span>
     <div class="qrcode"><img src="/images/alipay.png" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/wechatpay.png" alt="Wechat"></div>
 </a>
 
                 
@@ -405,7 +415,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        36
+                        54
                     </p>
                 </div>
             </div>
@@ -425,7 +435,7 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        33
+                        31
                     </p>
                 </div>
             </div>
@@ -511,12 +521,12 @@
                 <span class="level-item tag">2</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/ECMAScript2015/">
+        <a class="level is-marginless" href="/categories/ES6/">
             <span class="level-start">
-                <span class="level-item">ECMAScript2015</span>
+                <span class="level-item">ES6</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">18</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/css/">
@@ -602,7 +612,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Deferred/" style="font-size: 10px;">$.Deferred()</a> <a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/Angularjs/" style="font-size: 12.5px;">Angularjs</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Photo/" style="font-size: 10px;">Photo</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/cross/" style="font-size: 10px;">cross</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/css3/" style="font-size: 15px;">css3</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 12.5px;">github</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/jQuery/" style="font-size: 12.5px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/let/" style="font-size: 10px;">let</a> <a href="/tags/map/" style="font-size: 10px;">map</a> <a href="/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/tags/ng-if/" style="font-size: 10px;">ng-if</a> <a href="/tags/ng-model/" style="font-size: 10px;">ng-model</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/rem/" style="font-size: 10px;">rem</a> <a href="/tags/render/" style="font-size: 10px;">render</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/web/" style="font-size: 17.5px;">web</a> <a href="/tags/webpack/" style="font-size: 15px;">webpack</a> <a href="/tags/依赖注入/" style="font-size: 10px;">依赖注入</a> <a href="/tags/模块/" style="font-size: 10px;">模块</a> <a href="/tags/路由/" style="font-size: 10px;">路由</a>
+        <a href="/tags/Deferred/" style="font-size: 10px;">$.Deferred()</a> <a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/Angularjs/" style="font-size: 12px;">Angularjs</a> <a href="/tags/ES6/" style="font-size: 18px;">ES6</a> <a href="/tags/Photo/" style="font-size: 10px;">Photo</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/cross/" style="font-size: 10px;">cross</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/css3/" style="font-size: 14px;">css3</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 12px;">github</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 14px;">http</a> <a href="/tags/jQuery/" style="font-size: 12px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/map/" style="font-size: 10px;">map</a> <a href="/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/tags/ng-if/" style="font-size: 10px;">ng-if</a> <a href="/tags/ng-model/" style="font-size: 10px;">ng-model</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/rem/" style="font-size: 10px;">rem</a> <a href="/tags/render/" style="font-size: 10px;">render</a> <a href="/tags/vue/" style="font-size: 14px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/web/" style="font-size: 16px;">web</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/依赖注入/" style="font-size: 10px;">依赖注入</a> <a href="/tags/模块/" style="font-size: 10px;">模块</a> <a href="/tags/路由/" style="font-size: 10px;">路由</a>
     </div>
 </div>
 
@@ -619,18 +629,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/25/render-function/" class="media-left">
+            <a href="/2019/08/21/ES6-18-module/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（6）- render 函数">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Module模块化">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-25T15:27:58.000Z">2018-10-25</time></div>
-                    <a href="/2018/10/25/render-function/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（6）- render 函数</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:09:52.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-18-module/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Module模块化</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -638,18 +648,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/20/vue-lifeCycle-2/" class="media-left">
+            <a href="/2019/08/21/ES6-17-decorators/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（2）- 生命周期">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Decorators">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-20T15:35:04.000Z">2018-10-20</time></div>
-                    <a href="/2018/10/20/vue-lifeCycle-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（2）- 生命周期</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:08:31.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-17-decorators/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Decorators</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -657,16 +667,35 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/The-HTTP-protocol/" class="media-left">
+            <a href="/2019/08/21/ES6-16-generator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="HTTP协议认识">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Generator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T15:18:24.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/The-HTTP-protocol/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HTTP协议认识</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:34.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Generator</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/21/ES6-16-Generator/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:16.734Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-Generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -676,37 +705,18 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/Cross-domain/" class="media-left">
+            <a href="/2019/08/21/ES6-15-iterator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="关于跨域的一些理解">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（15）- Iterator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T14:41:55.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/Cross-domain/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于跨域的一些理解</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:02:46.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-15-iterator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（15）- Iterator</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/http/">http</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2018/06/03/Mobile-terminal-skills/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="移动端常见技巧汇总">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-06-03T15:07:35.000Z">2018-06-03</time></div>
-                    <a href="/2018/06/03/Mobile-terminal-skills/" class="title has-link-black-ter is-size-6 has-text-weight-normal">移动端常见技巧汇总</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/web/">web</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -723,6 +733,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">19</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2018/10/">
@@ -763,7 +784,7 @@
                     <span class="level-item">December 2017</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -926,7 +947,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/ES6/">
                         <span class="tag">ES6</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">18</span>
                     </a>
                 </div>
                 
@@ -940,13 +961,6 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Vue/">
                         <span class="tag">Vue</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/const/">
-                        <span class="tag">const</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1024,14 +1038,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/javascript/">
                         <span class="tag">javascript</span>
-                        <span class="tag is-grey">12</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/let/">
-                        <span class="tag">let</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">30</span>
                     </a>
                 </div>
                 
@@ -1158,18 +1165,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/25/render-function/" class="media-left">
+            <a href="/2019/08/21/ES6-18-module/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（6）- render 函数">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Module模块化">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-25T15:27:58.000Z">2018-10-25</time></div>
-                    <a href="/2018/10/25/render-function/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（6）- render 函数</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:09:52.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-18-module/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Module模块化</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -1177,18 +1184,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/20/vue-lifeCycle-2/" class="media-left">
+            <a href="/2019/08/21/ES6-17-decorators/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（2）- 生命周期">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Decorators">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-20T15:35:04.000Z">2018-10-20</time></div>
-                    <a href="/2018/10/20/vue-lifeCycle-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（2）- 生命周期</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:08:31.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-17-decorators/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Decorators</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -1196,16 +1203,35 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/The-HTTP-protocol/" class="media-left">
+            <a href="/2019/08/21/ES6-16-generator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="HTTP协议认识">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Generator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T15:18:24.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/The-HTTP-protocol/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HTTP协议认识</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:34.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Generator</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/21/ES6-16-Generator/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:16.734Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-Generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1215,37 +1241,18 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/Cross-domain/" class="media-left">
+            <a href="/2019/08/21/ES6-15-iterator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="关于跨域的一些理解">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（15）- Iterator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T14:41:55.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/Cross-domain/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于跨域的一些理解</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:02:46.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-15-iterator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（15）- Iterator</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/http/">http</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2018/06/03/Mobile-terminal-skills/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="移动端常见技巧汇总">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-06-03T15:07:35.000Z">2018-06-03</time></div>
-                    <a href="/2018/06/03/Mobile-terminal-skills/" class="title has-link-black-ter is-size-6 has-text-weight-normal">移动端常见技巧汇总</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/web/">web</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -1262,6 +1269,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">19</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2018/10/">
@@ -1302,7 +1320,7 @@
                     <span class="level-item">December 2017</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1465,7 +1483,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/ES6/">
                         <span class="tag">ES6</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">18</span>
                     </a>
                 </div>
                 
@@ -1479,13 +1497,6 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Vue/">
                         <span class="tag">Vue</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/const/">
-                        <span class="tag">const</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1563,14 +1574,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/javascript/">
                         <span class="tag">javascript</span>
-                        <span class="tag is-grey">12</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/let/">
-                        <span class="tag">let</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">30</span>
                     </a>
                 </div>
                 

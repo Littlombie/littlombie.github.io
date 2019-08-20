@@ -187,60 +187,60 @@
 </ul>
 <p>官网： <a href="http://www.gulpjs.com.cn" target="_blank" rel="noopener">www.gulpjs.com.cn</a><br><a id="more"></a></p>
 <h3 id="安装gulp"><a href="#安装gulp" class="headerlink" title="安装gulp"></a>安装gulp</h3><p>全局安装gulp</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install gulp -g</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install gulp -g</span><br></pre></td></tr></table></figure>
 <p>初始化文件 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm init</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm init</span><br></pre></td></tr></table></figure>
 <p>当前目录 安装gulp</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install --save-dev gulp</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install --save-dev gulp</span><br></pre></td></tr></table></figure>
 <p>安装gulp插件   </p>
 <p><img src="http://littlombie.github.io/images/post/6632257437282781793.jpg" alt="安装gulp插件"></p>
 <p>可以 批量安装 插件之间空格   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm  install  --save-dev gulp-clean gulp-concat gulp-connect gulp-cssmin gulp-imagemin gulp-less gulp-load-plugins gulp-uglify open</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm  install  --save-dev gulp-clean gulp-concat gulp-connect gulp-cssmin gulp-imagemin gulp-less gulp-load-plugins gulp-uglify open</span><br></pre></td></tr></table></figure>
 <h4 id="gulp-js搭建环境"><a href="#gulp-js搭建环境" class="headerlink" title="gulp.js搭建环境"></a>gulp.js搭建环境</h4><p>创建文件<code>gulpfile.js</code>:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> gulp = <span class="built_in">require</span>(<span class="string">'gulp'</span>);</span><br><span class="line"><span class="keyword">var</span> $ = <span class="built_in">require</span>(<span class="string">'gulp-load-plugins'</span>)();</span><br><span class="line"><span class="keyword">var</span> open = <span class="built_in">require</span>(<span class="string">'open'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = &#123;</span><br><span class="line">    srcPath: <span class="string">'src/'</span>,</span><br><span class="line">    devPath: <span class="string">'build/'</span>,</span><br><span class="line">    prdPath: <span class="string">'dist/'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 放置依赖</span></span><br><span class="line">gulp.task(<span class="string">'lib'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 读取文件</span></span><br><span class="line">    gulp.src(<span class="string">'bower_components/**/*.js'</span>)</span><br><span class="line">        <span class="comment">// 拷贝文件到：</span></span><br><span class="line">        .pipe(gulp.dest(app.devPath + <span class="string">'vendor'</span>)) <span class="comment">//生产目录</span></span><br><span class="line">        .pipe(gulp.dest(app.prdPath + <span class="string">'vendor'</span>))<span class="comment">//代码上线发布目录</span></span><br><span class="line">        .pipe($.connect.reload()); <span class="comment">//自动刷新</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> gulp = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp'</span>);</span><br><span class="line"><span class="hljs-keyword">var</span> $ = <span class="hljs-built_in">require</span>(<span class="hljs-string">'gulp-load-plugins'</span>)();</span><br><span class="line"><span class="hljs-keyword">var</span> open = <span class="hljs-built_in">require</span>(<span class="hljs-string">'open'</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> app = &#123;</span><br><span class="line">    srcPath: <span class="hljs-string">'src/'</span>,</span><br><span class="line">    devPath: <span class="hljs-string">'build/'</span>,</span><br><span class="line">    prdPath: <span class="hljs-string">'dist/'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// 放置依赖</span></span><br><span class="line">gulp.task(<span class="hljs-string">'lib'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-comment">// 读取文件</span></span><br><span class="line">    gulp.src(<span class="hljs-string">'bower_components/**/*.js'</span>)</span><br><span class="line">        <span class="hljs-comment">// 拷贝文件到：</span></span><br><span class="line">        .pipe(gulp.dest(app.devPath + <span class="hljs-string">'vendor'</span>)) <span class="hljs-comment">//生产目录</span></span><br><span class="line">        .pipe(gulp.dest(app.prdPath + <span class="hljs-string">'vendor'</span>))<span class="hljs-comment">//代码上线发布目录</span></span><br><span class="line">        .pipe($.connect.reload()); <span class="hljs-comment">//自动刷新</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>然后运行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gulp lib</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gulp lib</span><br></pre></td></tr></table></figure>
 <p>就会出现两个文件夹 <code>build</code> <code>dist</code> ,里边是编译的文件</p>
 <h4 id="编译html："><a href="#编译html：" class="headerlink" title="编译html："></a>编译html：</h4><p>先创建个文件夹 <strong>src&gt;index.html 、 src&gt;view&gt;main.html</strong></p>
 <p>在gulpfile.js里边添加</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(<span class="string">'html'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    gulp.src(app.srcPath + <span class="string">'**/*.html'</span>)</span><br><span class="line">        .pipe(gulp.dest(app.devPath))</span><br><span class="line">        .pipe(gulp.dest(app.prdPath))</span><br><span class="line">        .pipe($.connect.reload());</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(<span class="hljs-string">'html'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    gulp.src(app.srcPath + <span class="hljs-string">'**/*.html'</span>)</span><br><span class="line">        .pipe(gulp.dest(app.devPath))</span><br><span class="line">        .pipe(gulp.dest(app.prdPath))</span><br><span class="line">        .pipe($.connect.reload());</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>然后再运行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gulp html</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gulp html</span><br></pre></td></tr></table></figure>
 <p>然后src里边的HTML文件会编译到<code>dist/buile</code>中</p>
 <h4 id="json文件"><a href="#json文件" class="headerlink" title="json文件"></a>json文件</h4><p>json 跟上边HTML一样，在src中创建一个data文件，里边书写json文件</p>
 <p><code>gulpfile.js</code>里边添加</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(<span class="string">'json'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    gulp.src(app.srcPath + <span class="string">'data/**/*.json'</span>)</span><br><span class="line">        .pipe(gulp.dest(app.devPath + <span class="string">'data'</span>))</span><br><span class="line">        .pipe(gulp.dest(app.prdPath + <span class="string">'data'</span>))</span><br><span class="line">        .pipe($.connect.reload());</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(<span class="hljs-string">'json'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    gulp.src(app.srcPath + <span class="hljs-string">'data/**/*.json'</span>)</span><br><span class="line">        .pipe(gulp.dest(app.devPath + <span class="hljs-string">'data'</span>))</span><br><span class="line">        .pipe(gulp.dest(app.prdPath + <span class="hljs-string">'data'</span>))</span><br><span class="line">        .pipe($.connect.reload());</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>在执行<code>gulp json</code>就会在build dist 里边出现json文件</p>
 <h4 id="编译less-文件"><a href="#编译less-文件" class="headerlink" title="编译less 文件"></a>编译less 文件</h4><p>首先在src下创建文件<code>src&gt;style&gt;index.less</code> ， <code>src&gt;style&gt;main.less</code><br><code>index.less</code> 为主要文件 里边引入外部需要的文件，<br>index.less:</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">@import</span> <span class="string">'main.less'</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight less hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">@import</span> <span class="hljs-string">'main.less'</span>;</span><br></pre></td></tr></table></figure>
 <p>main.less:</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@color:</span><span class="number">#fff</span>;</span><br><span class="line"><span class="selector-tag">a</span> &#123;</span><br><span class="line">   <span class="attribute">color</span>:<span class="variable">@color</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight less hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-variable">@color:</span><span class="hljs-number">#fff</span>;</span><br><span class="line"><span class="hljs-selector-tag">a</span> &#123;</span><br><span class="line">   <span class="hljs-attribute">color</span>:<span class="hljs-variable">@color</span>; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>编译的时候只编译<code>index.less</code>文件 ，<br>然后再配置文件<code>gulpfile.js</code>里边添加：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(<span class="string">'less'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    gulp.src(app.srcPath + <span class="string">'style/index.less'</span>)</span><br><span class="line">        <span class="comment">// 在此设置编译 less为css</span></span><br><span class="line">        .pipe($.less())</span><br><span class="line">        .pipe(gulp.dest(app.devPath + <span class="string">'css'</span>))</span><br><span class="line">        <span class="comment">// 在此处设置压缩css文件</span></span><br><span class="line">        .pipe($.cssmin())</span><br><span class="line">        .pipe(gulp.dest(app.prdPath + <span class="string">'css'</span>))</span><br><span class="line">        .pipe($.connect.reload());</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(<span class="hljs-string">'less'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    gulp.src(app.srcPath + <span class="hljs-string">'style/index.less'</span>)</span><br><span class="line">        <span class="hljs-comment">// 在此设置编译 less为css</span></span><br><span class="line">        .pipe($.less())</span><br><span class="line">        .pipe(gulp.dest(app.devPath + <span class="hljs-string">'css'</span>))</span><br><span class="line">        <span class="hljs-comment">// 在此处设置压缩css文件</span></span><br><span class="line">        .pipe($.cssmin())</span><br><span class="line">        .pipe(gulp.dest(app.prdPath + <span class="hljs-string">'css'</span>))</span><br><span class="line">        .pipe($.connect.reload());</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>执行命令<code>gulp less</code> 就会在build里边看到编译出来为css文件 和dist里边出现的css压缩文件</p>
 <h4 id="js文件"><a href="#js文件" class="headerlink" title="js文件"></a>js文件</h4><p>创建两个js文件 src&gt;script&gt;1.js src&gt;script&gt;2.js<br>里边写一些简单测试代码<br>在gulpfile.js里边添加</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(<span class="string">'js'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    gulp.src(app.srcPath + <span class="string">'script/**/*.js'</span>)</span><br><span class="line">        <span class="comment">// 合并js文件</span></span><br><span class="line">        .pipe($.concat(<span class="string">'index.js'</span>))</span><br><span class="line">        .pipe(gulp.dest(app.devPath + <span class="string">'js'</span>))</span><br><span class="line">        <span class="comment">//压缩js</span></span><br><span class="line">        .pipe($.uglify())</span><br><span class="line">        .pipe(gulp.dest(app.prdPath + <span class="string">'js'</span>))</span><br><span class="line">        .pipe($.connect.reload());</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(<span class="hljs-string">'js'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    gulp.src(app.srcPath + <span class="hljs-string">'script/**/*.js'</span>)</span><br><span class="line">        <span class="hljs-comment">// 合并js文件</span></span><br><span class="line">        .pipe($.concat(<span class="hljs-string">'index.js'</span>))</span><br><span class="line">        .pipe(gulp.dest(app.devPath + <span class="hljs-string">'js'</span>))</span><br><span class="line">        <span class="hljs-comment">//压缩js</span></span><br><span class="line">        .pipe($.uglify())</span><br><span class="line">        .pipe(gulp.dest(app.prdPath + <span class="hljs-string">'js'</span>))</span><br><span class="line">        .pipe($.connect.reload());</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>然后执行<code>gulp js</code>，发现在build 和dist文件家中出现了script&gt;index.js</p>
 <h4 id="image文件"><a href="#image文件" class="headerlink" title="image文件"></a>image文件</h4><p>图片的步骤跟上边的差不多，<br>最后还有个压缩图片 </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(<span class="string">'image'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    gulp.src(app.srcPath + <span class="string">'image/**/*'</span>)</span><br><span class="line">        .pipe(gulp.dest(app.devPath + <span class="string">'image'</span>))</span><br><span class="line">        <span class="comment">// 压缩图片</span></span><br><span class="line">        .pipe($.imagemin())</span><br><span class="line">        .pipe(gulp.dest(app.prdPath + <span class="string">'image'</span>))</span><br><span class="line">        .pipe($.connect.reload());</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(<span class="hljs-string">'image'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    gulp.src(app.srcPath + <span class="hljs-string">'image/**/*'</span>)</span><br><span class="line">        .pipe(gulp.dest(app.devPath + <span class="hljs-string">'image'</span>))</span><br><span class="line">        <span class="hljs-comment">// 压缩图片</span></span><br><span class="line">        .pipe($.imagemin())</span><br><span class="line">        .pipe(gulp.dest(app.prdPath + <span class="hljs-string">'image'</span>))</span><br><span class="line">        .pipe($.connect.reload());</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>执行<code>gulp image</code></p>
 <p><strong>为了不让每次的编译的文件重复硬性 ，就要配置一个清除</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 清除重复的文件</span></span><br><span class="line">gulp.task(<span class="string">'clean'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    gulp.src([app.devPath, app.prdPath])</span><br><span class="line">        .pipe($.clean())</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 清除重复的文件</span></span><br><span class="line">gulp.task(<span class="hljs-string">'clean'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    gulp.src([app.devPath, app.prdPath])</span><br><span class="line">        .pipe($.clean())</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>然后每次<code>build</code> <code>dist</code> 文件会被删除  等待重新编译  </p>
 <p>我们每次看效果都需要先清除之前的，然后在一个个打包编译，这样很麻烦，所以我们就需要一个指令，只需要每次执行一次 就可以把所有的任务都执行了  如下：</p>
-<h4 id="build"><a href="#build" class="headerlink" title="build"></a>build</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 总任务，构建任务 打包时只要执行下边就行 </span></span><br><span class="line">gulp.task(<span class="string">'build'</span>, [<span class="string">'image'</span>, <span class="string">'js'</span>, <span class="string">'less'</span>, <span class="string">'lib'</span>, <span class="string">'html'</span>, <span class="string">'json'</span>]);</span><br></pre></td></tr></table></figure>
+<h4 id="build"><a href="#build" class="headerlink" title="build"></a>build</h4><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 总任务，构建任务 打包时只要执行下边就行 </span></span><br><span class="line">gulp.task(<span class="hljs-string">'build'</span>, [<span class="hljs-string">'image'</span>, <span class="hljs-string">'js'</span>, <span class="hljs-string">'less'</span>, <span class="hljs-string">'lib'</span>, <span class="hljs-string">'html'</span>, <span class="hljs-string">'json'</span>]);</span><br></pre></td></tr></table></figure>
 <p>执行<code>gulp build</code></p>
 <h4 id="构建本地服务器，自动刷新"><a href="#构建本地服务器，自动刷新" class="headerlink" title="构建本地服务器，自动刷新"></a>构建本地服务器，自动刷新</h4><p>这样还不够 ，我们需要的是只要执行一次， 就能直接在浏览器里查看效果  而且每次更改代码自动的会编译 ，浏览器会自动刷新。</p>
 <p>首先得先创建一个本地访问的服务器 </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 启动服务器 本地环境 </span></span><br><span class="line">gulp.task(<span class="string">'serve'</span>, [<span class="string">'build'</span>], <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    $.connect.server(&#123;</span><br><span class="line">        root: [app.devPath],</span><br><span class="line">        livereload: <span class="literal">true</span>, <span class="comment">//针对高级浏览器，每次代码的更改 会自动的刷新浏览器</span></span><br><span class="line">        port: <span class="number">1234</span> <span class="comment">//端口</span></span><br><span class="line">    &#125;);</span><br><span class="line">    open(<span class="string">'http://localhost:1234'</span>); <span class="comment">//浏览url</span></span><br><span class="line"></span><br><span class="line">    gulp.watch(<span class="string">'bower_components/**/*.js'</span>, [<span class="string">'lib'</span>]);</span><br><span class="line">    gulp.watch(app.srcPath + <span class="string">'**/*.html'</span>, [<span class="string">'html'</span>]);</span><br><span class="line">    gulp.watch(app.srcPath + <span class="string">'data/**/*.json'</span>, [<span class="string">'json'</span>]);</span><br><span class="line">    gulp.watch(app.srcPath + <span class="string">'style/index.less'</span>, [<span class="string">'less'</span>]);</span><br><span class="line">    gulp.watch(app.srcPath + <span class="string">'script/**/*.js'</span>, [<span class="string">'js'</span>]);</span><br><span class="line">    gulp.watch(app.srcPath + <span class="string">'image/**/*'</span>, [<span class="string">'image'</span>]);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">// 启动服务器 本地环境 </span></span><br><span class="line">gulp.task(<span class="hljs-string">'serve'</span>, [<span class="hljs-string">'build'</span>], <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    $.connect.server(&#123;</span><br><span class="line">        root: [app.devPath],</span><br><span class="line">        livereload: <span class="hljs-literal">true</span>, <span class="hljs-comment">//针对高级浏览器，每次代码的更改 会自动的刷新浏览器</span></span><br><span class="line">        port: <span class="hljs-number">1234</span> <span class="hljs-comment">//端口</span></span><br><span class="line">    &#125;);</span><br><span class="line">    open(<span class="hljs-string">'http://localhost:1234'</span>); <span class="hljs-comment">//浏览url</span></span><br><span class="line"></span><br><span class="line">    gulp.watch(<span class="hljs-string">'bower_components/**/*.js'</span>, [<span class="hljs-string">'lib'</span>]);</span><br><span class="line">    gulp.watch(app.srcPath + <span class="hljs-string">'**/*.html'</span>, [<span class="hljs-string">'html'</span>]);</span><br><span class="line">    gulp.watch(app.srcPath + <span class="hljs-string">'data/**/*.json'</span>, [<span class="hljs-string">'json'</span>]);</span><br><span class="line">    gulp.watch(app.srcPath + <span class="hljs-string">'style/index.less'</span>, [<span class="hljs-string">'less'</span>]);</span><br><span class="line">    gulp.watch(app.srcPath + <span class="hljs-string">'script/**/*.js'</span>, [<span class="hljs-string">'js'</span>]);</span><br><span class="line">    gulp.watch(app.srcPath + <span class="hljs-string">'image/**/*'</span>, [<span class="hljs-string">'image'</span>]);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>这个服务器需要设置本地<code>url</code>,端口 还需要每次刷新的文件，它调用的<code>build</code> 来执行，这样就实现了本地的服务搭建！</p>
 <p>然后我们还可以在简单一些：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(<span class="string">'default'</span>, [<span class="string">'serve'</span>]);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gulp.task(<span class="hljs-string">'default'</span>, [<span class="hljs-string">'serve'</span>]);</span><br></pre></td></tr></table></figure>
 <p>安装gulp-plumber插件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install --save-dev gulp-plumber</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cnpm install --save-dev gulp-plumber</span><br></pre></td></tr></table></figure>
 <p>这个插件的作用一旦是 css，js编译的时候发生错误时 ，自动化不会停止</p>
 <p>然后在gulpfile.js下每个编译 的task里边都添加 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.pipe($.blumer())</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.pipe($.blumer())</span><br></pre></td></tr></table></figure>
 <p>接着直接执行<code>gulp</code>，服务器自动打开，浏览器会自动的打开页面，然后修改的文件无需刷新马上就可以在浏览器里查看，这样我们的构建环境就搭完了 ！</p>
 
         </div>
@@ -277,6 +277,16 @@
     </span>
     <span>Alipay</span>
     <div class="qrcode"><img src="/images/alipay.png" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/wechatpay.png" alt="Wechat"></div>
 </a>
 
                 
@@ -375,7 +385,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        36
+                        54
                     </p>
                 </div>
             </div>
@@ -395,7 +405,7 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        33
+                        31
                     </p>
                 </div>
             </div>
@@ -481,12 +491,12 @@
                 <span class="level-item tag">2</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/ECMAScript2015/">
+        <a class="level is-marginless" href="/categories/ES6/">
             <span class="level-start">
-                <span class="level-item">ECMAScript2015</span>
+                <span class="level-item">ES6</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">18</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/css/">
@@ -572,7 +582,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Deferred/" style="font-size: 10px;">$.Deferred()</a> <a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/Angularjs/" style="font-size: 12.5px;">Angularjs</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Photo/" style="font-size: 10px;">Photo</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/cross/" style="font-size: 10px;">cross</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/css3/" style="font-size: 15px;">css3</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 12.5px;">github</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/jQuery/" style="font-size: 12.5px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/let/" style="font-size: 10px;">let</a> <a href="/tags/map/" style="font-size: 10px;">map</a> <a href="/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/tags/ng-if/" style="font-size: 10px;">ng-if</a> <a href="/tags/ng-model/" style="font-size: 10px;">ng-model</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/rem/" style="font-size: 10px;">rem</a> <a href="/tags/render/" style="font-size: 10px;">render</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/web/" style="font-size: 17.5px;">web</a> <a href="/tags/webpack/" style="font-size: 15px;">webpack</a> <a href="/tags/依赖注入/" style="font-size: 10px;">依赖注入</a> <a href="/tags/模块/" style="font-size: 10px;">模块</a> <a href="/tags/路由/" style="font-size: 10px;">路由</a>
+        <a href="/tags/Deferred/" style="font-size: 10px;">$.Deferred()</a> <a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/Angularjs/" style="font-size: 12px;">Angularjs</a> <a href="/tags/ES6/" style="font-size: 18px;">ES6</a> <a href="/tags/Photo/" style="font-size: 10px;">Photo</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/cross/" style="font-size: 10px;">cross</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/css3/" style="font-size: 14px;">css3</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 12px;">github</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 14px;">http</a> <a href="/tags/jQuery/" style="font-size: 12px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/map/" style="font-size: 10px;">map</a> <a href="/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/tags/ng-if/" style="font-size: 10px;">ng-if</a> <a href="/tags/ng-model/" style="font-size: 10px;">ng-model</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/rem/" style="font-size: 10px;">rem</a> <a href="/tags/render/" style="font-size: 10px;">render</a> <a href="/tags/vue/" style="font-size: 14px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/web/" style="font-size: 16px;">web</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/依赖注入/" style="font-size: 10px;">依赖注入</a> <a href="/tags/模块/" style="font-size: 10px;">模块</a> <a href="/tags/路由/" style="font-size: 10px;">路由</a>
     </div>
 </div>
 
@@ -589,18 +599,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/25/render-function/" class="media-left">
+            <a href="/2019/08/21/ES6-18-module/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（6）- render 函数">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Module模块化">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-25T15:27:58.000Z">2018-10-25</time></div>
-                    <a href="/2018/10/25/render-function/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（6）- render 函数</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:09:52.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-18-module/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Module模块化</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -608,18 +618,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/20/vue-lifeCycle-2/" class="media-left">
+            <a href="/2019/08/21/ES6-17-decorators/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（2）- 生命周期">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Decorators">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-20T15:35:04.000Z">2018-10-20</time></div>
-                    <a href="/2018/10/20/vue-lifeCycle-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（2）- 生命周期</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:08:31.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-17-decorators/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Decorators</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -627,16 +637,35 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/The-HTTP-protocol/" class="media-left">
+            <a href="/2019/08/21/ES6-16-generator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="HTTP协议认识">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Generator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T15:18:24.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/The-HTTP-protocol/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HTTP协议认识</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:34.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Generator</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/21/ES6-16-Generator/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:16.734Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-Generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -646,37 +675,18 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/Cross-domain/" class="media-left">
+            <a href="/2019/08/21/ES6-15-iterator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="关于跨域的一些理解">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（15）- Iterator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T14:41:55.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/Cross-domain/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于跨域的一些理解</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:02:46.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-15-iterator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（15）- Iterator</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/http/">http</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2018/06/03/Mobile-terminal-skills/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="移动端常见技巧汇总">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-06-03T15:07:35.000Z">2018-06-03</time></div>
-                    <a href="/2018/06/03/Mobile-terminal-skills/" class="title has-link-black-ter is-size-6 has-text-weight-normal">移动端常见技巧汇总</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/web/">web</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -693,6 +703,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">19</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2018/10/">
@@ -733,7 +754,7 @@
                     <span class="level-item">December 2017</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -896,7 +917,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/ES6/">
                         <span class="tag">ES6</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">18</span>
                     </a>
                 </div>
                 
@@ -910,13 +931,6 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Vue/">
                         <span class="tag">Vue</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/const/">
-                        <span class="tag">const</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -994,14 +1008,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/javascript/">
                         <span class="tag">javascript</span>
-                        <span class="tag is-grey">12</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/let/">
-                        <span class="tag">let</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">30</span>
                     </a>
                 </div>
                 
@@ -1128,18 +1135,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/25/render-function/" class="media-left">
+            <a href="/2019/08/21/ES6-18-module/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（6）- render 函数">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Module模块化">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-25T15:27:58.000Z">2018-10-25</time></div>
-                    <a href="/2018/10/25/render-function/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（6）- render 函数</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:09:52.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-18-module/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Module模块化</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -1147,18 +1154,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/20/vue-lifeCycle-2/" class="media-left">
+            <a href="/2019/08/21/ES6-17-decorators/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（2）- 生命周期">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Decorators">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-20T15:35:04.000Z">2018-10-20</time></div>
-                    <a href="/2018/10/20/vue-lifeCycle-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（2）- 生命周期</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:08:31.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-17-decorators/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Decorators</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -1166,16 +1173,35 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/The-HTTP-protocol/" class="media-left">
+            <a href="/2019/08/21/ES6-16-generator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="HTTP协议认识">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Generator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T15:18:24.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/The-HTTP-protocol/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HTTP协议认识</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:34.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Generator</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/21/ES6-16-Generator/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:16.734Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-Generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1185,37 +1211,18 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/Cross-domain/" class="media-left">
+            <a href="/2019/08/21/ES6-15-iterator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="关于跨域的一些理解">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（15）- Iterator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T14:41:55.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/Cross-domain/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于跨域的一些理解</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:02:46.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-15-iterator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（15）- Iterator</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/http/">http</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2018/06/03/Mobile-terminal-skills/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="移动端常见技巧汇总">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-06-03T15:07:35.000Z">2018-06-03</time></div>
-                    <a href="/2018/06/03/Mobile-terminal-skills/" class="title has-link-black-ter is-size-6 has-text-weight-normal">移动端常见技巧汇总</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/web/">web</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -1232,6 +1239,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">19</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2018/10/">
@@ -1272,7 +1290,7 @@
                     <span class="level-item">December 2017</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1435,7 +1453,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/ES6/">
                         <span class="tag">ES6</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">18</span>
                     </a>
                 </div>
                 
@@ -1449,13 +1467,6 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Vue/">
                         <span class="tag">Vue</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/const/">
-                        <span class="tag">const</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1533,14 +1544,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/javascript/">
                         <span class="tag">javascript</span>
-                        <span class="tag is-grey">12</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/let/">
-                        <span class="tag">let</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">30</span>
                     </a>
                 </div>
                 

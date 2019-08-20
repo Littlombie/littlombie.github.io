@@ -176,30 +176,30 @@
         </h1>
         <div class="content">
             <h3 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h3><p>  windows可以直接下载，<br>  下载链接：<a href="https://nodejs.org/zh-cn/" target="_blank" rel="noopener">https://nodejs.org/zh-cn/</a>  </p>
-<p>  下载完后查看版本：<br>  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node --version</span><br></pre></td></tr></table></figure></p>
+<p>  下载完后查看版本：<br>  <figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node --version</span><br></pre></td></tr></table></figure></p>
 <p>  确认版本在6.0以上</p>
 <p>  为了下载速度更快，可以选择安装<a href="http://npm.taobao.org/" target="_blank" rel="noopener">淘宝 NPM 镜像</a><code>cnpm</code>。</p>
 <ul>
 <li>注：以下命令有全局标志-g</li>
 </ul>
-<h3 id="安装-Vue"><a href="#安装-Vue" class="headerlink" title="安装 Vue"></a>安装 Vue</h3><p>   这里我们选择Vue版本为2.2.6<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install vue@2.2.6</span><br></pre></td></tr></table></figure></p>
+<h3 id="安装-Vue"><a href="#安装-Vue" class="headerlink" title="安装 Vue"></a>安装 Vue</h3><p>   这里我们选择Vue版本为2.2.6<br>   <figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install vue@2.2.6</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
-<h3 id="安装vue-cli"><a href="#安装vue-cli" class="headerlink" title="安装vue-cli"></a>安装vue-cli</h3><p>   vue-cli 是vue.js的脚手架，用于自动生成vue.js模板工程的。<br>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#全局安装 vue-cli</span></span><br><span class="line">$ npm install --global vue-cli</span><br></pre></td></tr></table></figure></p>
+<h3 id="安装vue-cli"><a href="#安装vue-cli" class="headerlink" title="安装vue-cli"></a>安装vue-cli</h3><p>   vue-cli 是vue.js的脚手架，用于自动生成vue.js模板工程的。<br>   <figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#全局安装 vue-cli</span></span><br><span class="line">$ npm install --global vue-cli</span><br></pre></td></tr></table></figure></p>
 <h3 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h3><p>   创建一个基于 webpack 模板的新项目my-project</p>
-   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vue init webpack my-project</span><br></pre></td></tr></table></figure>
-<h3 id="进入项目目录"><a href="#进入项目目录" class="headerlink" title="进入项目目录"></a>进入项目目录</h3>   <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#进入项目目录</span></span><br><span class="line">$ <span class="built_in">cd</span> my-project</span><br></pre></td></tr></table></figure>
-<h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><p>  安装依赖模块<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 安装依赖</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure></p>
+   <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vue init webpack my-project</span><br></pre></td></tr></table></figure>
+<h3 id="进入项目目录"><a href="#进入项目目录" class="headerlink" title="进入项目目录"></a>进入项目目录</h3>   <figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">#进入项目目录</span></span><br><span class="line">$ <span class="hljs-built_in">cd</span> my-project</span><br></pre></td></tr></table></figure>
+<h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><p>  安装依赖模块<br>   <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 安装依赖</span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li><h4 id="给生产环境装的依赖"><a href="#给生产环境装的依赖" class="headerlink" title="给生产环境装的依赖"></a>给生产环境装的依赖</h4></li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install vuex vue-router axios qs --save</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install vuex vue-router axios qs --save</span><br></pre></td></tr></table></figure>
 <p>安装vue运行依赖<br>1.<a href="https://vuex.vuejs.org/zh-cn/intro.html" target="_blank" rel="noopener">vuex</a><br>2.<a href="https://router.vuejs.org/zh-cn/" target="_blank" rel="noopener">vue-router</a><br>3.<a href="https://github.com/imcvampire/vue-axios" target="_blank" rel="noopener">axios </a><br>4.<a href>qs</a>   </p>
 <ul>
 <li><h4 id="给开发环境安装的依赖"><a href="#给开发环境安装的依赖" class="headerlink" title="给开发环境安装的依赖"></a>给开发环境安装的依赖</h4>安装sass预编译环境</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install node-sass sass-loader --save-dev</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install node-sass sass-loader --save-dev</span><br></pre></td></tr></table></figure>
 <p>1.node-sass<br>2.sass-loader  </p>
-<h3 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h3>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 运行项目</span><br><span class="line">$ npm run dev</span><br></pre></td></tr></table></figure>
+<h3 id="运行项目"><a href="#运行项目" class="headerlink" title="运行项目"></a>运行项目</h3>   <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 运行项目</span><br><span class="line">$ npm run dev</span><br></pre></td></tr></table></figure>
 <p>之后页面会出现以下界面，恭喜你，项目环境搭建成功!</p>
 <p><img src="http://littlombie.github.io/images/post/vue-webpack.png" alt="vue">    </p>
 <p>然后就可以在这开始我们的项目了</p>
@@ -238,6 +238,16 @@
     </span>
     <span>Alipay</span>
     <div class="qrcode"><img src="/images/alipay.png" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/wechatpay.png" alt="Wechat"></div>
 </a>
 
                 
@@ -336,7 +346,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        36
+                        54
                     </p>
                 </div>
             </div>
@@ -356,7 +366,7 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        33
+                        31
                     </p>
                 </div>
             </div>
@@ -442,12 +452,12 @@
                 <span class="level-item tag">2</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/ECMAScript2015/">
+        <a class="level is-marginless" href="/categories/ES6/">
             <span class="level-start">
-                <span class="level-item">ECMAScript2015</span>
+                <span class="level-item">ES6</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">18</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/css/">
@@ -533,7 +543,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Deferred/" style="font-size: 10px;">$.Deferred()</a> <a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/Angularjs/" style="font-size: 12.5px;">Angularjs</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Photo/" style="font-size: 10px;">Photo</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/cross/" style="font-size: 10px;">cross</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/css3/" style="font-size: 15px;">css3</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 12.5px;">github</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/jQuery/" style="font-size: 12.5px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/let/" style="font-size: 10px;">let</a> <a href="/tags/map/" style="font-size: 10px;">map</a> <a href="/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/tags/ng-if/" style="font-size: 10px;">ng-if</a> <a href="/tags/ng-model/" style="font-size: 10px;">ng-model</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/rem/" style="font-size: 10px;">rem</a> <a href="/tags/render/" style="font-size: 10px;">render</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/web/" style="font-size: 17.5px;">web</a> <a href="/tags/webpack/" style="font-size: 15px;">webpack</a> <a href="/tags/依赖注入/" style="font-size: 10px;">依赖注入</a> <a href="/tags/模块/" style="font-size: 10px;">模块</a> <a href="/tags/路由/" style="font-size: 10px;">路由</a>
+        <a href="/tags/Deferred/" style="font-size: 10px;">$.Deferred()</a> <a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/Angularjs/" style="font-size: 12px;">Angularjs</a> <a href="/tags/ES6/" style="font-size: 18px;">ES6</a> <a href="/tags/Photo/" style="font-size: 10px;">Photo</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/cross/" style="font-size: 10px;">cross</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/css3/" style="font-size: 14px;">css3</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 12px;">github</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 14px;">http</a> <a href="/tags/jQuery/" style="font-size: 12px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/map/" style="font-size: 10px;">map</a> <a href="/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/tags/ng-if/" style="font-size: 10px;">ng-if</a> <a href="/tags/ng-model/" style="font-size: 10px;">ng-model</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/rem/" style="font-size: 10px;">rem</a> <a href="/tags/render/" style="font-size: 10px;">render</a> <a href="/tags/vue/" style="font-size: 14px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/web/" style="font-size: 16px;">web</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/依赖注入/" style="font-size: 10px;">依赖注入</a> <a href="/tags/模块/" style="font-size: 10px;">模块</a> <a href="/tags/路由/" style="font-size: 10px;">路由</a>
     </div>
 </div>
 
@@ -550,18 +560,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/25/render-function/" class="media-left">
+            <a href="/2019/08/21/ES6-18-module/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（6）- render 函数">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Module模块化">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-25T15:27:58.000Z">2018-10-25</time></div>
-                    <a href="/2018/10/25/render-function/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（6）- render 函数</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:09:52.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-18-module/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Module模块化</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -569,18 +579,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/20/vue-lifeCycle-2/" class="media-left">
+            <a href="/2019/08/21/ES6-17-decorators/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（2）- 生命周期">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Decorators">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-20T15:35:04.000Z">2018-10-20</time></div>
-                    <a href="/2018/10/20/vue-lifeCycle-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（2）- 生命周期</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:08:31.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-17-decorators/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Decorators</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -588,16 +598,35 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/The-HTTP-protocol/" class="media-left">
+            <a href="/2019/08/21/ES6-16-generator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="HTTP协议认识">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Generator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T15:18:24.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/The-HTTP-protocol/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HTTP协议认识</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:34.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Generator</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/21/ES6-16-Generator/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:16.734Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-Generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -607,37 +636,18 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/Cross-domain/" class="media-left">
+            <a href="/2019/08/21/ES6-15-iterator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="关于跨域的一些理解">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（15）- Iterator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T14:41:55.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/Cross-domain/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于跨域的一些理解</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:02:46.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-15-iterator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（15）- Iterator</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/http/">http</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2018/06/03/Mobile-terminal-skills/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="移动端常见技巧汇总">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-06-03T15:07:35.000Z">2018-06-03</time></div>
-                    <a href="/2018/06/03/Mobile-terminal-skills/" class="title has-link-black-ter is-size-6 has-text-weight-normal">移动端常见技巧汇总</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/web/">web</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -654,6 +664,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">19</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2018/10/">
@@ -694,7 +715,7 @@
                     <span class="level-item">December 2017</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -857,7 +878,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/ES6/">
                         <span class="tag">ES6</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">18</span>
                     </a>
                 </div>
                 
@@ -871,13 +892,6 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Vue/">
                         <span class="tag">Vue</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/const/">
-                        <span class="tag">const</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -955,14 +969,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/javascript/">
                         <span class="tag">javascript</span>
-                        <span class="tag is-grey">12</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/let/">
-                        <span class="tag">let</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">30</span>
                     </a>
                 </div>
                 
@@ -1089,18 +1096,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/25/render-function/" class="media-left">
+            <a href="/2019/08/21/ES6-18-module/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（6）- render 函数">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Module模块化">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-25T15:27:58.000Z">2018-10-25</time></div>
-                    <a href="/2018/10/25/render-function/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（6）- render 函数</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:09:52.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-18-module/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Module模块化</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -1108,18 +1115,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/20/vue-lifeCycle-2/" class="media-left">
+            <a href="/2019/08/21/ES6-17-decorators/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（2）- 生命周期">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Decorators">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-20T15:35:04.000Z">2018-10-20</time></div>
-                    <a href="/2018/10/20/vue-lifeCycle-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（2）- 生命周期</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:08:31.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-17-decorators/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Decorators</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -1127,16 +1134,35 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/The-HTTP-protocol/" class="media-left">
+            <a href="/2019/08/21/ES6-16-generator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="HTTP协议认识">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Generator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T15:18:24.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/The-HTTP-protocol/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HTTP协议认识</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:34.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Generator</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/21/ES6-16-Generator/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:16.734Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-Generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1146,37 +1172,18 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/Cross-domain/" class="media-left">
+            <a href="/2019/08/21/ES6-15-iterator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="关于跨域的一些理解">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（15）- Iterator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T14:41:55.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/Cross-domain/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于跨域的一些理解</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:02:46.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-15-iterator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（15）- Iterator</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/http/">http</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2018/06/03/Mobile-terminal-skills/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="移动端常见技巧汇总">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-06-03T15:07:35.000Z">2018-06-03</time></div>
-                    <a href="/2018/06/03/Mobile-terminal-skills/" class="title has-link-black-ter is-size-6 has-text-weight-normal">移动端常见技巧汇总</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/web/">web</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -1193,6 +1200,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">19</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2018/10/">
@@ -1233,7 +1251,7 @@
                     <span class="level-item">December 2017</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1396,7 +1414,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/ES6/">
                         <span class="tag">ES6</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">18</span>
                     </a>
                 </div>
                 
@@ -1410,13 +1428,6 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Vue/">
                         <span class="tag">Vue</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/const/">
-                        <span class="tag">const</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1494,14 +1505,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/javascript/">
                         <span class="tag">javascript</span>
-                        <span class="tag is-grey">12</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/let/">
-                        <span class="tag">let</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">30</span>
                     </a>
                 </div>
                 

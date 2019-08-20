@@ -151,7 +151,7 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2016-11-01T03:42:21.000Z">2016-11-01</time>
+                <time class="level-item has-text-grey" datetime="2017-04-24T10:15:24.000Z">2017-04-24</time>
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/web/">web</a>
@@ -161,7 +161,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 minutes read (About 537 words)
+                    2 minutes read (About 333 words)
                 </span>
                 
                 
@@ -170,83 +170,25 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2016/11/01/my-blog/">javascript基本运动框架</a>
+                <a class="has-link-black-ter" href="/2017/04/24/Vue-webpack/">基于webpack和Vue搭建基础开发环境</a>
             
         </h1>
         <div class="content">
-            <h4 id="基础的形变"><a href="#基础的形变" class="headerlink" title="基础的形变"></a>基础的形变</h4><ul>
-<li>长度、宽度</li>
-<li>字体大小</li>
-<li>边框宽度</li>
-<li>透明度</li>
+            <h3 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h3><p>  windows可以直接下载，<br>  下载链接：<a href="https://nodejs.org/zh-cn/" target="_blank" rel="noopener">https://nodejs.org/zh-cn/</a>  </p>
+<p>  下载完后查看版本：<br>  <figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node --version</span><br></pre></td></tr></table></figure></p>
+<p>  确认版本在6.0以上</p>
+<p>  为了下载速度更快，可以选择安装<a href="http://npm.taobao.org/" target="_blank" rel="noopener">淘宝 NPM 镜像</a><code>cnpm</code>。</p>
+<ul>
+<li>注：以下命令有全局标志-g</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//基本的运动动画</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getStyle</span>(<span class="params">obj, name</span>) </span>&#123;<span class="comment">//获取行内的样式 name表示获取的样式</span></span><br><span class="line">    <span class="keyword">if</span> (obj.currentStyle) &#123;</span><br><span class="line">        <span class="keyword">return</span> obj.currentStyle[name];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> getComputedStyle(obj, <span class="literal">false</span>)[name];</span><br><span class="line">   &#125; </span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="comment">//运动框架主体</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">startMove</span>(<span class="params">obj, attr, iTarget</span>) </span>&#123;<span class="comment">//attr 变化的样式；iTarget 最后变化目标</span></span><br><span class="line">    clearInterval(obj.timer);<span class="comment">//初始化 清除所有的计时器</span></span><br><span class="line">    obj.timer = setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> cur = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (attr == <span class="string">'opacity'</span>) &#123;<span class="comment">//如果变化的是透明度  执行下边</span></span><br><span class="line">            cur = <span class="built_in">parseFloat</span>(getStyle(obj, attr)) * <span class="number">100</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            cur = <span class="built_in">parseInt</span>(getStyle(obj, attr));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> speed = <span class="built_in">parseInt</span>(iTarget - cur) / <span class="number">6</span>;<span class="comment">// 动画进行的事件 6可以修改 </span></span><br><span class="line">        speed = speed &gt; <span class="number">0</span> ? <span class="built_in">Math</span>.ceil(speed) : <span class="built_in">Math</span>.floor(speed);</span><br><span class="line">        <span class="keyword">if</span> (cur == iTarget) &#123;</span><br><span class="line">            clearInterval(obj.timer);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (attr == <span class="string">'opacity'</span>) &#123;<span class="comment">//如果变化的是透明度  执行下边</span></span><br><span class="line">                obj.style.filter = <span class="string">'alpha(opacity:'</span> + (cur + speed) + <span class="string">')'</span>;</span><br><span class="line">                obj.style.opacity = (cur + speed) / <span class="number">100</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                obj.style[attr] = cur + speed + <span class="string">'px'</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, <span class="number">30</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>调用：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//改变宽度</span></span><br><span class="line">oDiv.onmouseover = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    startMove(<span class="keyword">this</span>, <span class="string">'width'</span>, <span class="number">200</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//透明度</span></span><br><span class="line">oDiv.onmouseout = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    startMove(<span class="keyword">this</span>, <span class="string">'opacity'</span>, <span class="number">30</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="颜色的渐变"><a href="#颜色的渐变" class="headerlink" title="颜色的渐变"></a>颜色的渐变</h4><ul>
-<li>通过修改元素的rgb值 来实现渐变</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//颜色的渐变动画  改变的是 rgb值</span></span><br><span class="line"><span class="comment">//所有代码的执行时间只有24毫秒左右。  </span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fadeColor</span>(<span class="params">from, to, callback, duration, totalFrames</span>) </span>&#123;<span class="comment">//form 初始颜色 to最终颜色 callback完后的回调函数  duration 动画执行时间  totalFrames总帧数，默认为持续秒数*15帧，也即每秒15帧   </span></span><br><span class="line"><span class="comment">//用一个函数来包裹setTimeout，根据帧数来确定延时     </span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">doTimeout</span>(<span class="params">color, frame</span>) </span>&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                callback(color);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">                JSLog.write(e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, (duration * <span class="number">1000</span> / totalFrames) * frame);</span><br><span class="line">        <span class="comment">//总持续秒数/每秒帧数*当前帧数=延时(秒)，再乘以1000作为延时(毫秒)      </span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 整个渐变过程的持续时间，默认为1秒     </span></span><br><span class="line">    <span class="keyword">var</span> duration = duration || <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 总帧数，默认为持续秒数*15帧，也即每秒15帧      </span></span><br><span class="line">    <span class="keyword">var</span> totalFrames = totalFrames || duration * <span class="number">15</span>;</span><br><span class="line">    <span class="keyword">var</span> r, g, b;</span><br><span class="line">    <span class="keyword">var</span> frame = <span class="number">1</span>;</span><br><span class="line">    <span class="comment">//在第0帧设置起始颜色      </span></span><br><span class="line">    doTimeout(<span class="string">'rgb('</span> + <span class="keyword">from</span>.r + <span class="string">','</span> + <span class="keyword">from</span>.g + <span class="string">','</span> + <span class="keyword">from</span>.b + <span class="string">')'</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="comment">//计算每次变化所需要改变的rgb值      </span></span><br><span class="line">    <span class="keyword">while</span> (frame &lt; totalFrames + <span class="number">1</span>) &#123;</span><br><span class="line">        r = <span class="built_in">Math</span>.ceil(<span class="keyword">from</span>.r * ((totalFrames - frame) / totalFrames) + to.r * (frame / totalFrames));</span><br><span class="line">        g = <span class="built_in">Math</span>.ceil(<span class="keyword">from</span>.g * ((totalFrames - frame) / totalFrames) + to.g * (frame / totalFrames));</span><br><span class="line">        b = <span class="built_in">Math</span>.ceil(<span class="keyword">from</span>.b * ((totalFrames - frame) / totalFrames) + to.b * (frame / totalFrames));</span><br><span class="line">        <span class="comment">// 调用本frame的doTimeout          </span></span><br><span class="line">        doTimeout(<span class="string">'rgb('</span> + r + <span class="string">','</span> + g + <span class="string">','</span> + b + <span class="string">')'</span>, frame);</span><br><span class="line">        frame++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>调用:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">oDiv.onmouseover = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    fadeColor(&#123;</span><br><span class="line">        r: <span class="number">0</span>,</span><br><span class="line">        g: <span class="number">0</span>,</span><br><span class="line">        b: <span class="number">0</span></span><br><span class="line">    &#125;, <span class="comment">//star color</span></span><br><span class="line">    &#123;</span><br><span class="line">        r: <span class="number">18</span>,</span><br><span class="line">        g: <span class="number">162</span>,</span><br><span class="line">         b: <span class="number">143</span></span><br><span class="line">    &#125;, <span class="comment">//end color</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">color</span>) </span>&#123;</span><br><span class="line">        oDiv6.style.borderColor = color;</span><br><span class="line">    &#125;, <span class="number">0.25</span>, <span class="number">10</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-
-
-
-
-
-
-
-    <div class="card">
-    
-    <div class="card-content article ">
-        
-        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
-            <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2016-10-31T10:07:47.000Z">2016-10-31</time>
-                
-                <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/web/">web</a>
-                </div>
-                
-                
-                <span class="level-item has-text-grey">
-                    
-                    
-                    3 minutes read (About 405 words)
-                </span>
-                
-                
-            </div>
-        </div>
-        
-        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
-            
-                <a class="has-link-black-ter" href="/2016/10/31/my-new-post-0/">hexo 在github上部署成功</a>
-            
-        </h1>
-        <div class="content">
-            <p>终于把本地Hexo部署到github上了，之前不知为什么 就是不成功，今天重新试了一下命令 就成功了 命令为：</p>
-<h3 id="发布新文章"><a href="#发布新文章" class="headerlink" title="发布新文章"></a>发布新文章</h3><ul>
-<li>首先打开文件夹 <code>hexo</code>，再右键打开Git Bash， 在Git Bash 上执行下列命令：</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new <span class="string">"my new post"</span> //<span class="string">"my new post"</span>为文件名</span><br></pre></td></tr></table></figure>
-<p>在hexo文件夹下 <code>source_post</code> 中打开<code>my-new-post.md</code>进行编辑</p>
-<p>或者在存放博客的目录下</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo n <span class="string">"新建博客的名字"</span></span><br></pre></td></tr></table></figure>
+<h3 id="安装-Vue"><a href="#安装-Vue" class="headerlink" title="安装 Vue"></a>安装 Vue</h3><p>   这里我们选择Vue版本为2.2.6<br>   <figure class="highlight bash hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install vue@2.2.6</span><br></pre></td></tr></table></figure></p>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2016/10/31/my-new-post-0/#more">Read More</a>
+                <a class="button is-size-7 is-light" href="/2017/04/24/Vue-webpack/#more">Read More</a>
                 </div>
             </div>
         </div>
@@ -268,17 +210,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2016-10-21T02:59:40.000Z">2016-10-21</time>
+                <time class="level-item has-text-grey" datetime="2017-04-11T02:29:03.000Z">2017-04-11</time>
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/个人随写/">个人随写</a>
+                <a class="has-link-grey -link" href="/categories/web/">web</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    a minute read (About 175 words)
+                    14 minutes read (About 2134 words)
                 </span>
                 
                 
@@ -287,24 +229,24 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2016/10/21/My-New-Post/">这是我的第一篇Hexo博客</a>
+                <a class="has-link-black-ter" href="/2017/04/11/webpack-2/">webpack项目流程学习（二）</a>
             
         </h1>
         <div class="content">
-            <!-- 标签 方式，要求版本在0.4.5或以上 -->
- <blockquote class="blockquote-center"><p>一天不独处，我就会变得虚弱。我不以孤独为荣，但我以此为生</p>
-<p>  布考斯基 </p>
+            <p><img src="/images/post/what-is-webpack.png" class="full-image" alt="webpack"></p>
+<blockquote>
+<p>本文只是作为学习webpack入门所作的笔记，仅供参考。阅读本文之前，请首先阅读<a href="https://littlombie.github.io/2017/04/10/webpack-1/" target="_blank" rel="noopener">webpack项目流程学习（一）</a>；</p>
 </blockquote>
-<p><br><br> <img src="/images/20140111004002.jpg" class="[full-image]"><br> 这是我的第一篇博客，我现在正在熟悉Hexo,所使用的主题是NexT,我觉得这个主题简洁大方，而且里边的缓动效果特别舒服。</p>
-<p> 我以后会不定时的在这上边更新一些博客，什么类型的都有，写给自己看，写给多年后的自己看。</p>
-<p> 加油， 每天进步一点，不断努力，终会取得不错的成绩！<br>
+<h2 id="项目测试"><a href="#项目测试" class="headerlink" title="项目测试"></a>项目测试</h2><p>我们试做一个项目测试,适用<code>laoder</code> 以及其特性处理项目中的资源文件； </p>
+<h3 id="重新配置文件"><a href="#重新配置文件" class="headerlink" title="重新配置文件"></a>重新配置文件</h3><p>配置目录为下</p>
+<p><img src="http://img2.ph.126.net/xxKBMcOgvgeAuVN9Ft1b4g==/6631949574026962709.png" alt="目录"></p>
         </div>
         
         
         <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                <a class="button is-size-7 is-light" href="/2016/10/21/My-New-Post/#more">Read More</a>
+                <a class="button is-size-7 is-light" href="/2017/04/11/webpack-2/#more">Read More</a>
                 </div>
             </div>
         </div>
@@ -326,13 +268,17 @@
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2016-10-20T03:42:21.000Z">2016-10-20</time>
+                <time class="level-item has-text-grey" datetime="2017-04-10T04:53:01.000Z">2017-04-10</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/web/">web</a>
+                </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    a minute read (About 121 words)
+                    8 minutes read (About 1261 words)
                 </span>
                 
                 
@@ -341,22 +287,79 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                <a class="has-link-black-ter" href="/2016/10/20/hello-world/">Hello World</a>
+                <a class="has-link-black-ter" href="/2017/04/10/webpack-1/">webpack项目流程学习（一）</a>
             
         </h1>
         <div class="content">
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
+            <p><img src="/images/post/what-is-webpack.png" class="full-image" alt="webpack"></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>前端开发和其他开发工作的主要区别，首先是前端是基于多语言、多层次的编码和组织工作，其次前端产品的交付是基于浏览器，这些资源是通过增量加载的方式运行到浏览器端，如何在开发环境组织好这些碎片化的代码和资源，并且保证他们在浏览器端快速、优雅的加载和更新，就需要一个模块化系统，这个理想中的模块化系统是前端工程师多年来一直探索的难题。</p>
+</blockquote>
+<h2 id="什么是-Webpack"><a href="#什么是-Webpack" class="headerlink" title="什么是 Webpack"></a>什么是 Webpack</h2><p>Webpack 是一个模块打包器。它将根据模块的依赖关系进行静态分析，然后将这些模块按照指定的规则生成对应的静态资源。</p>
         </div>
         
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2017/04/10/webpack-1/#more">Read More</a>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+    <div class="card">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2017-03-01T14:31:26.000Z">2017-03-01</time>
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/web/">web</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    32 minutes read (About 4798 words)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+                <a class="has-link-black-ter" href="/2017/03/01/Web-Map/">前端图谱，前端工具大全</a>
+            
+        </h1>
+        <div class="content">
+            <p><img src="/images/post/web-Map.JPG" class="full-image" alt="前端图谱，前端工具大全"></p>
+<p> <em>文章转自 <a href="http://www.vichily.com/2017/02/28/笼统的前端/" target="_blank" rel="noopener">VICHILY’S BLOG</a></em>  </p>
+<h3 id="核心-Core"><a href="#核心-Core" class="headerlink" title="核心 Core"></a>核心 Core</h3>
+        </div>
+        
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2017/03/01/Web-Map/#more">Read More</a>
+                </div>
+            </div>
+        </div>
         
         
     </div>
@@ -376,7 +379,7 @@
         <div class="pagination-previous">
             <a class="is-flex-grow has-text-black-ter" href="/page/8/">Previous</a>
         </div>
-        <div class="pagination-next is-invisible is-hidden-mobile">
+        <div class="pagination-next">
             <a class="is-flex-grow has-text-black-ter" href="/page/10/">Next</a>
         </div>
         <ul class="pagination-list is-hidden-mobile">
@@ -388,6 +391,12 @@
             <li><a class="pagination-link has-text-black-ter" href="/page/8/">8</a></li>
             
             <li><a class="pagination-link is-current" href="/page/9/">9</a></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/10/">10</a></li>
+            
+            <li><span class="pagination-ellipsis has-text-black-ter">&hellip;</span></li>
+            
+            <li><a class="pagination-link has-text-black-ter" href="/page/14/">14</a></li>
             
         </ul>
     </nav>
@@ -435,7 +444,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        36
+                        54
                     </p>
                 </div>
             </div>
@@ -455,7 +464,7 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        33
+                        31
                     </p>
                 </div>
             </div>
@@ -541,12 +550,12 @@
                 <span class="level-item tag">2</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/ECMAScript2015/">
+        <a class="level is-marginless" href="/categories/ES6/">
             <span class="level-start">
-                <span class="level-item">ECMAScript2015</span>
+                <span class="level-item">ES6</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">18</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/css/">
@@ -632,7 +641,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Deferred/" style="font-size: 10px;">$.Deferred()</a> <a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/Angularjs/" style="font-size: 12.5px;">Angularjs</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Photo/" style="font-size: 10px;">Photo</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/cross/" style="font-size: 10px;">cross</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/css3/" style="font-size: 15px;">css3</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 12.5px;">github</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/jQuery/" style="font-size: 12.5px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/let/" style="font-size: 10px;">let</a> <a href="/tags/map/" style="font-size: 10px;">map</a> <a href="/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/tags/ng-if/" style="font-size: 10px;">ng-if</a> <a href="/tags/ng-model/" style="font-size: 10px;">ng-model</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/rem/" style="font-size: 10px;">rem</a> <a href="/tags/render/" style="font-size: 10px;">render</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/web/" style="font-size: 17.5px;">web</a> <a href="/tags/webpack/" style="font-size: 15px;">webpack</a> <a href="/tags/依赖注入/" style="font-size: 10px;">依赖注入</a> <a href="/tags/模块/" style="font-size: 10px;">模块</a> <a href="/tags/路由/" style="font-size: 10px;">路由</a>
+        <a href="/tags/Deferred/" style="font-size: 10px;">$.Deferred()</a> <a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/Angularjs/" style="font-size: 12px;">Angularjs</a> <a href="/tags/ES6/" style="font-size: 18px;">ES6</a> <a href="/tags/Photo/" style="font-size: 10px;">Photo</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/cross/" style="font-size: 10px;">cross</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/css3/" style="font-size: 14px;">css3</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 12px;">github</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 14px;">http</a> <a href="/tags/jQuery/" style="font-size: 12px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/map/" style="font-size: 10px;">map</a> <a href="/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/tags/ng-if/" style="font-size: 10px;">ng-if</a> <a href="/tags/ng-model/" style="font-size: 10px;">ng-model</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/rem/" style="font-size: 10px;">rem</a> <a href="/tags/render/" style="font-size: 10px;">render</a> <a href="/tags/vue/" style="font-size: 14px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/web/" style="font-size: 16px;">web</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/依赖注入/" style="font-size: 10px;">依赖注入</a> <a href="/tags/模块/" style="font-size: 10px;">模块</a> <a href="/tags/路由/" style="font-size: 10px;">路由</a>
     </div>
 </div>
 
@@ -649,18 +658,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/25/render-function/" class="media-left">
+            <a href="/2019/08/21/ES6-18-module/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（6）- render 函数">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Module模块化">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-25T15:27:58.000Z">2018-10-25</time></div>
-                    <a href="/2018/10/25/render-function/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（6）- render 函数</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:09:52.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-18-module/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Module模块化</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -668,18 +677,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/20/vue-lifeCycle-2/" class="media-left">
+            <a href="/2019/08/21/ES6-17-decorators/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（2）- 生命周期">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Decorators">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-20T15:35:04.000Z">2018-10-20</time></div>
-                    <a href="/2018/10/20/vue-lifeCycle-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（2）- 生命周期</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:08:31.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-17-decorators/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Decorators</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -687,16 +696,35 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/The-HTTP-protocol/" class="media-left">
+            <a href="/2019/08/21/ES6-16-generator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="HTTP协议认识">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Generator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T15:18:24.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/The-HTTP-protocol/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HTTP协议认识</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:34.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Generator</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/21/ES6-16-Generator/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:16.734Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-Generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -706,37 +734,18 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/Cross-domain/" class="media-left">
+            <a href="/2019/08/21/ES6-15-iterator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="关于跨域的一些理解">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（15）- Iterator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T14:41:55.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/Cross-domain/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于跨域的一些理解</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:02:46.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-15-iterator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（15）- Iterator</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/http/">http</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2018/06/03/Mobile-terminal-skills/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="移动端常见技巧汇总">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-06-03T15:07:35.000Z">2018-06-03</time></div>
-                    <a href="/2018/06/03/Mobile-terminal-skills/" class="title has-link-black-ter is-size-6 has-text-weight-normal">移动端常见技巧汇总</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/web/">web</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -753,6 +762,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">19</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2018/10/">
@@ -793,7 +813,7 @@
                     <span class="level-item">December 2017</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -956,7 +976,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/ES6/">
                         <span class="tag">ES6</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">18</span>
                     </a>
                 </div>
                 
@@ -970,13 +990,6 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Vue/">
                         <span class="tag">Vue</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/const/">
-                        <span class="tag">const</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1054,14 +1067,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/javascript/">
                         <span class="tag">javascript</span>
-                        <span class="tag is-grey">12</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/let/">
-                        <span class="tag">let</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">30</span>
                     </a>
                 </div>
                 
@@ -1188,18 +1194,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/25/render-function/" class="media-left">
+            <a href="/2019/08/21/ES6-18-module/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（6）- render 函数">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Module模块化">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-25T15:27:58.000Z">2018-10-25</time></div>
-                    <a href="/2018/10/25/render-function/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（6）- render 函数</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:09:52.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-18-module/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Module模块化</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -1207,18 +1213,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/20/vue-lifeCycle-2/" class="media-left">
+            <a href="/2019/08/21/ES6-17-decorators/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（2）- 生命周期">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Decorators">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-20T15:35:04.000Z">2018-10-20</time></div>
-                    <a href="/2018/10/20/vue-lifeCycle-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（2）- 生命周期</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:08:31.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-17-decorators/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Decorators</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -1226,16 +1232,35 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/The-HTTP-protocol/" class="media-left">
+            <a href="/2019/08/21/ES6-16-generator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="HTTP协议认识">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Generator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T15:18:24.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/The-HTTP-protocol/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HTTP协议认识</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:34.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Generator</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/21/ES6-16-Generator/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:16.734Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-Generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1245,37 +1270,18 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/Cross-domain/" class="media-left">
+            <a href="/2019/08/21/ES6-15-iterator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="关于跨域的一些理解">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（15）- Iterator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T14:41:55.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/Cross-domain/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于跨域的一些理解</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:02:46.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-15-iterator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（15）- Iterator</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/http/">http</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2018/06/03/Mobile-terminal-skills/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="移动端常见技巧汇总">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-06-03T15:07:35.000Z">2018-06-03</time></div>
-                    <a href="/2018/06/03/Mobile-terminal-skills/" class="title has-link-black-ter is-size-6 has-text-weight-normal">移动端常见技巧汇总</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/web/">web</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -1292,6 +1298,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">19</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2018/10/">
@@ -1332,7 +1349,7 @@
                     <span class="level-item">December 2017</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1495,7 +1512,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/ES6/">
                         <span class="tag">ES6</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">18</span>
                     </a>
                 </div>
                 
@@ -1509,13 +1526,6 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Vue/">
                         <span class="tag">Vue</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/const/">
-                        <span class="tag">const</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1593,14 +1603,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/javascript/">
                         <span class="tag">javascript</span>
-                        <span class="tag is-grey">12</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/let/">
-                        <span class="tag">let</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">30</span>
                     </a>
                 </div>
                 

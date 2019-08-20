@@ -177,39 +177,39 @@
         <div class="content">
             <h3 id="什么是deferred对象？"><a href="#什么是deferred对象？" class="headerlink" title="什么是deferred对象？"></a>什么是deferred对象？</h3><p>开发网站的过程中，我们经常遇到某些耗时很长的javascript操作。其中，既有异步的操作（比如ajax读取服务器数据），也有同步的操作（比如遍历一个大型数组），它们都不是立即能得到结果的。<br>通常的解决方法是，为它们指定回调函数（callback）。即事先规定，一旦它们运行结束，应该调用哪些函数。<br>但是，在回调函数方面，jQuery的功能非常弱。为了改变这一点，jQuery开发团队就设计了<code>deferred</code>对象。<br>简单说，<code>deferred</code>对象就是jQuery的回调函数解决方案。 在英语中，defer的意思是”延迟”，所以deferred对象的含义就是”延迟”到未来某个点再执行。<br>它解决了如何处理耗时操作的问题，对那些操作提供了更好的控制，以及统一的编程接口。它的主要功能，可以归结为四点。下面我们通过示例代码，一步步来学习。  </p>
 <a id="more"></a>
-<h3 id="ajax操作的链式写法"><a href="#ajax操作的链式写法" class="headerlink" title="ajax操作的链式写法"></a>ajax操作的链式写法</h3><p>jQuery的ajax操作，传统写法是这样的：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">　　$.ajax(&#123;</span><br><span class="line"></span><br><span class="line">　　　　url: &quot;test.html&quot;,</span><br><span class="line"></span><br><span class="line">　　　　success: function()&#123; </span><br><span class="line">　　　　　　alert(&quot;哈哈，成功了！&quot;); </span><br><span class="line">　　　　&#125;,</span><br><span class="line"></span><br><span class="line">　　　　error:function()&#123; </span><br><span class="line">　　　　　　alert(&quot;出错啦！&quot;); </span><br><span class="line">　　　　&#125;</span><br><span class="line"></span><br><span class="line">　　&#125;);</span><br></pre></td></tr></table></figure></p>
+<h3 id="ajax操作的链式写法"><a href="#ajax操作的链式写法" class="headerlink" title="ajax操作的链式写法"></a>ajax操作的链式写法</h3><p>jQuery的ajax操作，传统写法是这样的：<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">　　$.ajax(&#123;</span><br><span class="line"></span><br><span class="line">　　　　url: &quot;test.html&quot;,</span><br><span class="line"></span><br><span class="line">　　　　success: function()&#123; </span><br><span class="line">　　　　　　alert(&quot;哈哈，成功了！&quot;); </span><br><span class="line">　　　　&#125;,</span><br><span class="line"></span><br><span class="line">　　　　error:function()&#123; </span><br><span class="line">　　　　　　alert(&quot;出错啦！&quot;); </span><br><span class="line">　　　　&#125;</span><br><span class="line"></span><br><span class="line">　　&#125;);</span><br></pre></td></tr></table></figure></p>
 <p>在上面的代码中，<code>$.ajax()</code>接受一个对象参数，这个对象包含两个方法：<code>success</code>方法指定操作成功后的回调函数，<code>error</code>方法指定操作失败后的回调函数。</p>
 <p><code>$.ajax()</code>操作完成后，如果高于<code>1.5.0</code>版本，返回的是<code>deferred</code>对象，可以进行链式操作。</p>
 <p>新的写法是这样的：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">　　$.ajax(&quot;test.html&quot;)</span><br><span class="line"></span><br><span class="line">　　.done(function()&#123; alert(&quot;哈哈，成功了！&quot;); &#125;)</span><br><span class="line"></span><br><span class="line">　　.fail(function()&#123; alert(&quot;出错啦！&quot;); &#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">　　$.ajax(&quot;test.html&quot;)</span><br><span class="line"></span><br><span class="line">　　.done(function()&#123; alert(&quot;哈哈，成功了！&quot;); &#125;)</span><br><span class="line"></span><br><span class="line">　　.fail(function()&#123; alert(&quot;出错啦！&quot;); &#125;);</span><br></pre></td></tr></table></figure>
 <p>可以看到，<code>done()</code>相当于success方法，<code>fail()</code>相当于error方法。采用链式写法以后，代码的可读性大大提高。</p>
 <h3 id="指定同一操作的多个回调函数"><a href="#指定同一操作的多个回调函数" class="headerlink" title="指定同一操作的多个回调函数"></a>指定同一操作的多个回调函数</h3><p><code>deferred</code>对象的一大好处，就是它允许你自由添加多个回调函数。</p>
 <p>还是以上面的代码为例，如果ajax操作成功后，除了原来的回调函数，我还想再运行一个回调函数，怎么办？</p>
 <p>很简单，直接把它加在后面就行了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">　　$.ajax(&quot;test.html&quot;)</span><br><span class="line"></span><br><span class="line">　　.done(function()&#123; alert(&quot;哈哈，成功了！&quot;);&#125; )</span><br><span class="line"></span><br><span class="line">　　.fail(function()&#123; alert(&quot;出错啦！&quot;); &#125; )</span><br><span class="line"></span><br><span class="line">　　.done(function()&#123; alert(&quot;第二个回调函数！&quot;);&#125; );</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">　　$.ajax(&quot;test.html&quot;)</span><br><span class="line"></span><br><span class="line">　　.done(function()&#123; alert(&quot;哈哈，成功了！&quot;);&#125; )</span><br><span class="line"></span><br><span class="line">　　.fail(function()&#123; alert(&quot;出错啦！&quot;); &#125; )</span><br><span class="line"></span><br><span class="line">　　.done(function()&#123; alert(&quot;第二个回调函数！&quot;);&#125; );</span><br></pre></td></tr></table></figure>
 <p>回调函数可以添加任意多个，它们按照添加顺序执行。</p>
 <h3 id="为多个操作指定回调函数"><a href="#为多个操作指定回调函数" class="headerlink" title="为多个操作指定回调函数"></a>为多个操作指定回调函数</h3><p><code>deferred</code>对象的另一大好处，就是它允许你为多个事件指定一个回调函数，这是传统写法做不到的。</p>
-<p>请看下面的代码，它用到了一个新的方法<code>$.when()</code>：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">　　$.when($.ajax(&quot;test1.html&quot;), $.ajax(&quot;test2.html&quot;))</span><br><span class="line"></span><br><span class="line">　　.done(function()&#123; alert(&quot;哈哈，成功了！&quot;); &#125;)</span><br><span class="line"></span><br><span class="line">　　.fail(function()&#123; alert(&quot;出错啦！&quot;); &#125;);</span><br></pre></td></tr></table></figure></p>
+<p>请看下面的代码，它用到了一个新的方法<code>$.when()</code>：<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">　　$.when($.ajax(&quot;test1.html&quot;), $.ajax(&quot;test2.html&quot;))</span><br><span class="line"></span><br><span class="line">　　.done(function()&#123; alert(&quot;哈哈，成功了！&quot;); &#125;)</span><br><span class="line"></span><br><span class="line">　　.fail(function()&#123; alert(&quot;出错啦！&quot;); &#125;);</span><br></pre></td></tr></table></figure></p>
 <p>这段代码的意思是，先执行两个操作<code>$.ajax(&quot;test1.html&quot;)</code>和<code>$.ajax(&quot;test2.html&quot;)</code>，如果成功了，就运行<code>done()</code>指定的回调函数；如果有一个失败或都失败了，就执行<code>fail()</code>指定的回调函数。</p>
 <h3 id="普通操作的回调函数接口（上）"><a href="#普通操作的回调函数接口（上）" class="headerlink" title="普通操作的回调函数接口（上）"></a>普通操作的回调函数接口（上）</h3><p><code>deferred</code>对象的最大优点，就是它把这一套回调函数接口，从ajax操作扩展到了所有操作。也就是说，任何一个操作—-<code>不管是ajax操作还是本地操作，也不管是异步操作还是同步操作----都可以使用deferred对象的各种方法</code>，指定回调函数。</p>
-<p>我们来看一个具体的例子。假定有一个很耗时的操作wait：<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">　　var wait = function()&#123;</span><br><span class="line"></span><br><span class="line">　　　　var tasks = function()&#123;</span><br><span class="line"></span><br><span class="line">　　　　　　alert(&quot;执行完毕！&quot;);</span><br><span class="line"></span><br><span class="line">　　　　&#125;;</span><br><span class="line"></span><br><span class="line">　　　　setTimeout(tasks,5000);</span><br><span class="line"></span><br><span class="line">　　&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>我们来看一个具体的例子。假定有一个很耗时的操作wait：<br> <figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">　　var wait = function()&#123;</span><br><span class="line"></span><br><span class="line">　　　　var tasks = function()&#123;</span><br><span class="line"></span><br><span class="line">　　　　　　alert(&quot;执行完毕！&quot;);</span><br><span class="line"></span><br><span class="line">　　　　&#125;;</span><br><span class="line"></span><br><span class="line">　　　　setTimeout(tasks,5000);</span><br><span class="line"></span><br><span class="line">　　&#125;;</span><br></pre></td></tr></table></figure></p>
 <p>我们为它指定回调函数，应该怎么做呢？</p>
-<p>很自然的，你会想到，可以使用$.when()：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">　　$.when(wait())</span><br><span class="line"></span><br><span class="line">　　.done(function()&#123; alert(&quot;哈哈，成功了！&quot;); &#125;)</span><br><span class="line"></span><br><span class="line">　　.fail(function()&#123; alert(&quot;出错啦！&quot;); &#125;);</span><br></pre></td></tr></table></figure></p>
-<p>但是，有一个问题。<code>$.when()</code>的参数只能是<code>deferred</code>对象，所以必须对wait进行改写，所以我们需要手动新建一个deferred对象：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">　　var dtd = $.Deferred(); // 新建一个deferred对象</span><br><span class="line"></span><br><span class="line">　　var wait = function(dtd)&#123;</span><br><span class="line"></span><br><span class="line">　　　　var tasks = function()&#123;</span><br><span class="line"></span><br><span class="line">　　　　　　alert(&quot;执行完毕！&quot;);</span><br><span class="line"></span><br><span class="line">　　　　　　dtd.resolve(); // 改变deferred对象的执行状态</span><br><span class="line"></span><br><span class="line">　　　　&#125;;</span><br><span class="line"></span><br><span class="line">　　　　setTimeout(tasks,5000);</span><br><span class="line"></span><br><span class="line">　　　　return dtd.promise();//返回promise对象</span><br><span class="line"></span><br><span class="line">　　&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>很自然的，你会想到，可以使用$.when()：<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">　　$.when(wait())</span><br><span class="line"></span><br><span class="line">　　.done(function()&#123; alert(&quot;哈哈，成功了！&quot;); &#125;)</span><br><span class="line"></span><br><span class="line">　　.fail(function()&#123; alert(&quot;出错啦！&quot;); &#125;);</span><br></pre></td></tr></table></figure></p>
+<p>但是，有一个问题。<code>$.when()</code>的参数只能是<code>deferred</code>对象，所以必须对wait进行改写，所以我们需要手动新建一个deferred对象：<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">　　var dtd = $.Deferred(); // 新建一个deferred对象</span><br><span class="line"></span><br><span class="line">　　var wait = function(dtd)&#123;</span><br><span class="line"></span><br><span class="line">　　　　var tasks = function()&#123;</span><br><span class="line"></span><br><span class="line">　　　　　　alert(&quot;执行完毕！&quot;);</span><br><span class="line"></span><br><span class="line">　　　　　　dtd.resolve(); // 改变deferred对象的执行状态</span><br><span class="line"></span><br><span class="line">　　　　&#125;;</span><br><span class="line"></span><br><span class="line">　　　　setTimeout(tasks,5000);</span><br><span class="line"></span><br><span class="line">　　　　return dtd.promise();//返回promise对象</span><br><span class="line"></span><br><span class="line">　　&#125;;</span><br></pre></td></tr></table></figure></p>
 <p>这里有两个地方需要注意。</p>
 <p>首先，最后一行不能直接返回<code>dtd</code>，必须返回<code>dtd.promise()</code>。原因是jQuery规定，任意一个deferred对象有三种执行状态—-未完成，已完成和已失败。如果直接返回<code>dtd</code>，<code>$.when()</code>的默认执行状态为”已完成”，立即触发后面的<code>done()</code>方法，这就失去回调函数的作用了。<code>dtd.promise()</code>的目的，就是保证目前的执行状态—-也就是”未完成”—-不变，从而确保只有操作完成后，才会触发回调函数。</p>
 <p>其次，当操作完成后，必须手动改变<code>Deferred</code>对象的执行状态，否则回调函数无法触发。<code>dtd.resolve()</code>的作用，就是将dtd的执行状态从”未完成”变成”已完成”，从而触发<code>done()</code>方法。</p>
-<p>最后别忘了，修改完<code>wait</code>之后，调用的时候就必须直接传入<code>dtd</code>参数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">　　$.when(wait(dtd))</span><br><span class="line"></span><br><span class="line">　　.done(function()&#123; alert(&quot;哈哈，成功了！&quot;); &#125;)</span><br><span class="line"></span><br><span class="line">　　.fail(function()&#123; alert(&quot;出错啦！&quot;); &#125;);</span><br></pre></td></tr></table></figure></p>
+<p>最后别忘了，修改完<code>wait</code>之后，调用的时候就必须直接传入<code>dtd</code>参数。<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">　　$.when(wait(dtd))</span><br><span class="line"></span><br><span class="line">　　.done(function()&#123; alert(&quot;哈哈，成功了！&quot;); &#125;)</span><br><span class="line"></span><br><span class="line">　　.fail(function()&#123; alert(&quot;出错啦！&quot;); &#125;);</span><br></pre></td></tr></table></figure></p>
 <p>上面的代码有一些问题，就是<code>dtd对象是暴露在全局的</code>，所以我们可以通过在全局进行<code>dtd.resolve()</code>来提前回调。</p>
 <p>为了避免这种情况，jQuery提供了deferred.promise()方法，它的作用是，在原来的deferred对象上返回另一个deferred对象，后者只开放与改变执行状态无关的方法（比如done方法和fail方法）屏蔽与改变执行状态有关的方法（比如resolve和reject方法）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">var dtd = $.Deferred(); // 新建一个Deferred对象</span><br><span class="line">var wait = function(dtd)&#123;</span><br><span class="line"></span><br><span class="line">    var tasks = function()&#123;</span><br><span class="line"></span><br><span class="line">        alert(&quot;执行完毕！&quot;);</span><br><span class="line"></span><br><span class="line">        dtd.resolve(); // 改变Deferred对象的执行状态</span><br><span class="line"></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    setTimeout(tasks,5000);</span><br><span class="line"></span><br><span class="line">    return dtd.promise(); // 返回promise对象</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var d = wait(dtd); // 新建一个d对象，改为对这个对象进行操作</span><br><span class="line"></span><br><span class="line">$.when(d)</span><br><span class="line"></span><br><span class="line">    .done(function()&#123; alert(&quot;哈哈，成功了！&quot;); &#125;)</span><br><span class="line"></span><br><span class="line">    .fail(function()&#123; alert(&quot;出错啦！&quot;); &#125;);</span><br><span class="line"></span><br><span class="line">d.resolve(); // 此时，这个语句是无效的</span><br></pre></td></tr></table></figure>
-<p>当然，我们也可以把dtd包在函数内：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var wait = function(dtd)&#123;</span><br><span class="line">    var dtd = $.Deferred(); //在函数内部，新建一个Deferred对象</span><br><span class="line">    var tasks = function()&#123;</span><br><span class="line">        alert(&quot;执行完毕！&quot;);</span><br><span class="line">        dtd.resolve(); // 改变Deferred对象的执行状态</span><br><span class="line">    &#125;;</span><br><span class="line">    setTimeout(tasks,5000);</span><br><span class="line">    return dtd.promise(); // 返回promise对象</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">$.when(wait())</span><br><span class="line">    .done(function()&#123; alert(&quot;哈哈，成功了！&quot;); &#125;)</span><br><span class="line">    .fail(function()&#123; alert(&quot;出错啦！&quot;); &#125;);</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">var dtd = $.Deferred(); // 新建一个Deferred对象</span><br><span class="line">var wait = function(dtd)&#123;</span><br><span class="line"></span><br><span class="line">    var tasks = function()&#123;</span><br><span class="line"></span><br><span class="line">        alert(&quot;执行完毕！&quot;);</span><br><span class="line"></span><br><span class="line">        dtd.resolve(); // 改变Deferred对象的执行状态</span><br><span class="line"></span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    setTimeout(tasks,5000);</span><br><span class="line"></span><br><span class="line">    return dtd.promise(); // 返回promise对象</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">var d = wait(dtd); // 新建一个d对象，改为对这个对象进行操作</span><br><span class="line"></span><br><span class="line">$.when(d)</span><br><span class="line"></span><br><span class="line">    .done(function()&#123; alert(&quot;哈哈，成功了！&quot;); &#125;)</span><br><span class="line"></span><br><span class="line">    .fail(function()&#123; alert(&quot;出错啦！&quot;); &#125;);</span><br><span class="line"></span><br><span class="line">d.resolve(); // 此时，这个语句是无效的</span><br></pre></td></tr></table></figure>
+<p>当然，我们也可以把dtd包在函数内：<br><figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">var wait = function(dtd)&#123;</span><br><span class="line">    var dtd = $.Deferred(); //在函数内部，新建一个Deferred对象</span><br><span class="line">    var tasks = function()&#123;</span><br><span class="line">        alert(&quot;执行完毕！&quot;);</span><br><span class="line">        dtd.resolve(); // 改变Deferred对象的执行状态</span><br><span class="line">    &#125;;</span><br><span class="line">    setTimeout(tasks,5000);</span><br><span class="line">    return dtd.promise(); // 返回promise对象</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">$.when(wait())</span><br><span class="line">    .done(function()&#123; alert(&quot;哈哈，成功了！&quot;); &#125;)</span><br><span class="line">    .fail(function()&#123; alert(&quot;出错啦！&quot;); &#125;);</span><br></pre></td></tr></table></figure></p>
 <h3 id="普通操作的回调函数接口（中）"><a href="#普通操作的回调函数接口（中）" class="headerlink" title="普通操作的回调函数接口（中）"></a>普通操作的回调函数接口（中）</h3><p>除了使用<code>$.when()</code>为普通操作添加回调函数，还可以使用deferred对象的建构函数<code>$.Deferred()</code>。</p>
 <p>这时，wait函数还是保持不变，我们直接把它传入$.Deferred(),完整代码：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">　　　<span class="keyword">var</span> wait = <span class="function"><span class="keyword">function</span>(<span class="params">dtd</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">　　　　<span class="keyword">var</span> tasks = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">　　　　　　alert(<span class="string">"执行完毕！"</span>);</span><br><span class="line"></span><br><span class="line">　　　　　　dtd.resolve(); <span class="comment">// 改变Deferred对象的执行状态</span></span><br><span class="line"></span><br><span class="line">　　　　&#125;;</span><br><span class="line"></span><br><span class="line">　　　　setTimeout(tasks,<span class="number">5000</span>);</span><br><span class="line"></span><br><span class="line">　　　　<span class="keyword">return</span> dtd.promise();</span><br><span class="line"></span><br><span class="line">　　&#125;;</span><br><span class="line"></span><br><span class="line">　　$.Deferred(wait)</span><br><span class="line"></span><br><span class="line">　　.done(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; alert(<span class="string">"哈哈，成功了！"</span>); &#125;)</span><br><span class="line"></span><br><span class="line">　　.fail(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; alert(<span class="string">"出错啦！"</span>); &#125;);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">　　　<span class="hljs-keyword">var</span> wait = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">dtd</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">　　　　<span class="hljs-keyword">var</span> tasks = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">　　　　　　alert(<span class="hljs-string">"执行完毕！"</span>);</span><br><span class="line"></span><br><span class="line">　　　　　　dtd.resolve(); <span class="hljs-comment">// 改变Deferred对象的执行状态</span></span><br><span class="line"></span><br><span class="line">　　　　&#125;;</span><br><span class="line"></span><br><span class="line">　　　　setTimeout(tasks,<span class="hljs-number">5000</span>);</span><br><span class="line"></span><br><span class="line">　　　　<span class="hljs-keyword">return</span> dtd.promise();</span><br><span class="line"></span><br><span class="line">　　&#125;;</span><br><span class="line"></span><br><span class="line">　　$.Deferred(wait)</span><br><span class="line"></span><br><span class="line">　　.done(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123; alert(<span class="hljs-string">"哈哈，成功了！"</span>); &#125;)</span><br><span class="line"></span><br><span class="line">　　.fail(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123; alert(<span class="hljs-string">"出错啦！"</span>); &#125;);</span><br></pre></td></tr></table></figure>
 <p>jQuery规定，<code>$.Deferred()</code>可以接受一个函数作为参数，该函数将在<code>$.Deferred()</code>返回结果之前执行。并且，<code>$.Deferred()</code>所生成的Deferred对象将作为这个函数的默认参数。</p>
 <h3 id="普通操作的回调函数接口（下）"><a href="#普通操作的回调函数接口（下）" class="headerlink" title="普通操作的回调函数接口（下）"></a>普通操作的回调函数接口（下）</h3><p>除了上面两种方法以外，我们还可以直接在wait对象上部署deferred接口。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">　　<span class="keyword">var</span> dtd = $.Deferred(); <span class="comment">// 生成Deferred对象</span></span><br><span class="line"></span><br><span class="line">　　<span class="keyword">var</span> wait = <span class="function"><span class="keyword">function</span>(<span class="params">dtd</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">　　　　<span class="keyword">var</span> tasks = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">　　　　　　alert(<span class="string">"执行完毕！"</span>);</span><br><span class="line"></span><br><span class="line">　　　　　　dtd.resolve(); <span class="comment">// 改变Deferred对象的执行状态</span></span><br><span class="line"></span><br><span class="line">　　　　&#125;;</span><br><span class="line"></span><br><span class="line">　　　　setTimeout(tasks,<span class="number">5000</span>);</span><br><span class="line"></span><br><span class="line">　　&#125;;</span><br><span class="line"></span><br><span class="line">　　dtd.promise(wait);</span><br><span class="line"></span><br><span class="line">　　wait.done(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; alert(<span class="string">"哈哈，成功了！"</span>); &#125;)</span><br><span class="line"></span><br><span class="line">　　.fail(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; alert(<span class="string">"出错啦！"</span>); &#125;);</span><br><span class="line"></span><br><span class="line">　　wait(dtd);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">　　<span class="hljs-keyword">var</span> dtd = $.Deferred(); <span class="hljs-comment">// 生成Deferred对象</span></span><br><span class="line"></span><br><span class="line">　　<span class="hljs-keyword">var</span> wait = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">dtd</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">　　　　<span class="hljs-keyword">var</span> tasks = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">　　　　　　alert(<span class="hljs-string">"执行完毕！"</span>);</span><br><span class="line"></span><br><span class="line">　　　　　　dtd.resolve(); <span class="hljs-comment">// 改变Deferred对象的执行状态</span></span><br><span class="line"></span><br><span class="line">　　　　&#125;;</span><br><span class="line"></span><br><span class="line">　　　　setTimeout(tasks,<span class="hljs-number">5000</span>);</span><br><span class="line"></span><br><span class="line">　　&#125;;</span><br><span class="line"></span><br><span class="line">　　dtd.promise(wait);</span><br><span class="line"></span><br><span class="line">　　wait.done(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123; alert(<span class="hljs-string">"哈哈，成功了！"</span>); &#125;)</span><br><span class="line"></span><br><span class="line">　　.fail(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123; alert(<span class="hljs-string">"出错啦！"</span>); &#125;);</span><br><span class="line"></span><br><span class="line">　　wait(dtd);</span><br></pre></td></tr></table></figure>
 <p>这里的关键是<code>dtd.promise(wait)</code>这一行，它的作用就是在wait对象上部署Deferred接口。正是因为有了这一行，后面才能直接在wait上面调用<code>done()</code>和<code>fail()</code>。</p>
 <h3 id="小结：deferred对象的方法"><a href="#小结：deferred对象的方法" class="headerlink" title="小结：deferred对象的方法"></a>小结：deferred对象的方法</h3><p>前面已经讲到了deferred对象的多种方法，下面做一个总结：</p>
 <ul>
@@ -228,7 +228,7 @@
 </li>
 <li><p>deferred.then()</p>
 <p>有时为了省事，可以把done()和fail()合在一起写，这就是then()方法。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">　　$.when($.ajax( &quot;/main.php&quot; ))</span><br><span class="line"></span><br><span class="line">　　.then(successFunc, failureFunc );</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">　　$.when($.ajax( &quot;/main.php&quot; ))</span><br><span class="line"></span><br><span class="line">　　.then(successFunc, failureFunc );</span><br></pre></td></tr></table></figure>
 <p> 如果then()有两个参数，那么第一个参数是done()方法的回调函数，第二个参数是fail()方法的回调方法。如果then()只有一个参数，那么等同于done()。</p>
 </li>
 <li><p>deferred.reject()</p>
@@ -238,7 +238,7 @@
 <p>这个方法也是用来指定回调函数的，它的作用是，不管调用的是deferred.resolve()还是deferred.reject()，最后总是执行。</p>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$.ajax( &quot;test.html&quot; )</span><br><span class="line"></span><br><span class="line">　　.always( function() &#123; alert(&quot;已执行！&quot;);&#125; );</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$.ajax( &quot;test.html&quot; )</span><br><span class="line"></span><br><span class="line">　　.always( function() &#123; alert(&quot;已执行！&quot;);&#125; );</span><br></pre></td></tr></table></figure>
 <ul>
 <li>本文转自网络，侵删。</li>
 </ul>
@@ -277,6 +277,16 @@
     </span>
     <span>Alipay</span>
     <div class="qrcode"><img src="/images/alipay.png" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/wechatpay.png" alt="Wechat"></div>
 </a>
 
                 
@@ -375,7 +385,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        36
+                        54
                     </p>
                 </div>
             </div>
@@ -395,7 +405,7 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        33
+                        31
                     </p>
                 </div>
             </div>
@@ -481,12 +491,12 @@
                 <span class="level-item tag">2</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/ECMAScript2015/">
+        <a class="level is-marginless" href="/categories/ES6/">
             <span class="level-start">
-                <span class="level-item">ECMAScript2015</span>
+                <span class="level-item">ES6</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">18</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/css/">
@@ -572,7 +582,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Deferred/" style="font-size: 10px;">$.Deferred()</a> <a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/Angularjs/" style="font-size: 12.5px;">Angularjs</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Photo/" style="font-size: 10px;">Photo</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/cross/" style="font-size: 10px;">cross</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/css3/" style="font-size: 15px;">css3</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 12.5px;">github</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/jQuery/" style="font-size: 12.5px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/let/" style="font-size: 10px;">let</a> <a href="/tags/map/" style="font-size: 10px;">map</a> <a href="/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/tags/ng-if/" style="font-size: 10px;">ng-if</a> <a href="/tags/ng-model/" style="font-size: 10px;">ng-model</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/rem/" style="font-size: 10px;">rem</a> <a href="/tags/render/" style="font-size: 10px;">render</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/web/" style="font-size: 17.5px;">web</a> <a href="/tags/webpack/" style="font-size: 15px;">webpack</a> <a href="/tags/依赖注入/" style="font-size: 10px;">依赖注入</a> <a href="/tags/模块/" style="font-size: 10px;">模块</a> <a href="/tags/路由/" style="font-size: 10px;">路由</a>
+        <a href="/tags/Deferred/" style="font-size: 10px;">$.Deferred()</a> <a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/Angularjs/" style="font-size: 12px;">Angularjs</a> <a href="/tags/ES6/" style="font-size: 18px;">ES6</a> <a href="/tags/Photo/" style="font-size: 10px;">Photo</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/cross/" style="font-size: 10px;">cross</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/css3/" style="font-size: 14px;">css3</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 12px;">github</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 14px;">http</a> <a href="/tags/jQuery/" style="font-size: 12px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/map/" style="font-size: 10px;">map</a> <a href="/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/tags/ng-if/" style="font-size: 10px;">ng-if</a> <a href="/tags/ng-model/" style="font-size: 10px;">ng-model</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/rem/" style="font-size: 10px;">rem</a> <a href="/tags/render/" style="font-size: 10px;">render</a> <a href="/tags/vue/" style="font-size: 14px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/web/" style="font-size: 16px;">web</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/依赖注入/" style="font-size: 10px;">依赖注入</a> <a href="/tags/模块/" style="font-size: 10px;">模块</a> <a href="/tags/路由/" style="font-size: 10px;">路由</a>
     </div>
 </div>
 
@@ -589,18 +599,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/25/render-function/" class="media-left">
+            <a href="/2019/08/21/ES6-18-module/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（6）- render 函数">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Module模块化">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-25T15:27:58.000Z">2018-10-25</time></div>
-                    <a href="/2018/10/25/render-function/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（6）- render 函数</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:09:52.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-18-module/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Module模块化</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -608,18 +618,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/20/vue-lifeCycle-2/" class="media-left">
+            <a href="/2019/08/21/ES6-17-decorators/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（2）- 生命周期">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Decorators">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-20T15:35:04.000Z">2018-10-20</time></div>
-                    <a href="/2018/10/20/vue-lifeCycle-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（2）- 生命周期</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:08:31.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-17-decorators/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Decorators</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -627,16 +637,35 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/The-HTTP-protocol/" class="media-left">
+            <a href="/2019/08/21/ES6-16-generator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="HTTP协议认识">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Generator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T15:18:24.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/The-HTTP-protocol/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HTTP协议认识</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:34.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Generator</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/21/ES6-16-Generator/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:16.734Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-Generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -646,37 +675,18 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/Cross-domain/" class="media-left">
+            <a href="/2019/08/21/ES6-15-iterator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="关于跨域的一些理解">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（15）- Iterator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T14:41:55.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/Cross-domain/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于跨域的一些理解</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:02:46.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-15-iterator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（15）- Iterator</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/http/">http</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2018/06/03/Mobile-terminal-skills/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="移动端常见技巧汇总">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-06-03T15:07:35.000Z">2018-06-03</time></div>
-                    <a href="/2018/06/03/Mobile-terminal-skills/" class="title has-link-black-ter is-size-6 has-text-weight-normal">移动端常见技巧汇总</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/web/">web</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -693,6 +703,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">19</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2018/10/">
@@ -733,7 +754,7 @@
                     <span class="level-item">December 2017</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -896,7 +917,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/ES6/">
                         <span class="tag">ES6</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">18</span>
                     </a>
                 </div>
                 
@@ -910,13 +931,6 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Vue/">
                         <span class="tag">Vue</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/const/">
-                        <span class="tag">const</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -994,14 +1008,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/javascript/">
                         <span class="tag">javascript</span>
-                        <span class="tag is-grey">12</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/let/">
-                        <span class="tag">let</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">30</span>
                     </a>
                 </div>
                 
@@ -1128,18 +1135,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/25/render-function/" class="media-left">
+            <a href="/2019/08/21/ES6-18-module/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（6）- render 函数">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Module模块化">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-25T15:27:58.000Z">2018-10-25</time></div>
-                    <a href="/2018/10/25/render-function/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（6）- render 函数</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:09:52.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-18-module/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Module模块化</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -1147,18 +1154,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/20/vue-lifeCycle-2/" class="media-left">
+            <a href="/2019/08/21/ES6-17-decorators/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（2）- 生命周期">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Decorators">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-20T15:35:04.000Z">2018-10-20</time></div>
-                    <a href="/2018/10/20/vue-lifeCycle-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（2）- 生命周期</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:08:31.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-17-decorators/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Decorators</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -1166,16 +1173,35 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/The-HTTP-protocol/" class="media-left">
+            <a href="/2019/08/21/ES6-16-generator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="HTTP协议认识">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Generator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T15:18:24.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/The-HTTP-protocol/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HTTP协议认识</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:34.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Generator</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/21/ES6-16-Generator/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:16.734Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-Generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1185,37 +1211,18 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/Cross-domain/" class="media-left">
+            <a href="/2019/08/21/ES6-15-iterator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="关于跨域的一些理解">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（15）- Iterator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T14:41:55.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/Cross-domain/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于跨域的一些理解</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:02:46.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-15-iterator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（15）- Iterator</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/http/">http</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2018/06/03/Mobile-terminal-skills/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="移动端常见技巧汇总">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-06-03T15:07:35.000Z">2018-06-03</time></div>
-                    <a href="/2018/06/03/Mobile-terminal-skills/" class="title has-link-black-ter is-size-6 has-text-weight-normal">移动端常见技巧汇总</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/web/">web</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -1232,6 +1239,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">19</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2018/10/">
@@ -1272,7 +1290,7 @@
                     <span class="level-item">December 2017</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1435,7 +1453,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/ES6/">
                         <span class="tag">ES6</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">18</span>
                     </a>
                 </div>
                 
@@ -1449,13 +1467,6 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Vue/">
                         <span class="tag">Vue</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/const/">
-                        <span class="tag">const</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1533,14 +1544,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/javascript/">
                         <span class="tag">javascript</span>
-                        <span class="tag is-grey">12</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/let/">
-                        <span class="tag">let</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">30</span>
                     </a>
                 </div>
                 

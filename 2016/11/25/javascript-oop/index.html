@@ -178,26 +178,26 @@
             <blockquote>
 <p>JavaScript中没有类的概念，只有对象。<br>在JavaScript中定义对象可以采用以下几种方式：<br>1.基于已有对象扩充其属性和方法<br>2.工厂方式<br>3.构造函数方式<br>4.原型(“prototype”)方式<br>5.动态原型方式</p>
 </blockquote>
-<h3 id="基于已有对象扩充其属性和方法"><a href="#基于已有对象扩充其属性和方法" class="headerlink" title="基于已有对象扩充其属性和方法"></a>基于已有对象扩充其属性和方法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">    <span class="keyword">var</span> object = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">    object.name = <span class="string">"zhangsan"</span>;</span><br><span class="line">    object.sayName = <span class="function"><span class="keyword">function</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        alert(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">    object.sayName(<span class="string">"lisi"</span>);</span><br><span class="line">&lt;&lt;<span class="xml"><span class="tag">&lt;&lt;&lt;&lt;&lt; <span class="attr">HEAD</span></span></span></span><br><span class="line"><span class="xml">=======</span></span><br><span class="line"><span class="xml">    </span></span><br><span class="line"><span class="xml">&gt;&gt;&gt;&gt;&gt;&gt;&gt; update hexo</span></span><br><span class="line"><span class="xml">`</span></span><br></pre></td></tr></table></figure>
+<h3 id="基于已有对象扩充其属性和方法"><a href="#基于已有对象扩充其属性和方法" class="headerlink" title="基于已有对象扩充其属性和方法"></a>基于已有对象扩充其属性和方法</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">    <span class="hljs-keyword">var</span> object = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>();</span><br><span class="line">    object.name = <span class="hljs-string">"zhangsan"</span>;</span><br><span class="line">    object.sayName = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">name</span>)</span>&#123;</span><br><span class="line">        <span class="hljs-keyword">this</span>.name = name;</span><br><span class="line">        alert(<span class="hljs-keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">    object.sayName(<span class="hljs-string">"lisi"</span>);</span><br><span class="line">&lt;&lt;<span class="hljs-xml"><span class="hljs-tag">&lt;&lt;&lt;&lt;&lt; <span class="hljs-attr">HEAD</span></span></span></span><br><span class="line"><span class="hljs-xml">=======</span></span><br><span class="line"><span class="hljs-xml">    </span></span><br><span class="line"><span class="hljs-xml">&gt;&gt;&gt;&gt;&gt;&gt;&gt; update hexo</span></span><br><span class="line"><span class="hljs-xml">`</span></span><br></pre></td></tr></table></figure>
 <p>这种方式的弊端：这种对象的可复用性不强，如果需要使用多个对象，还需要重新扩展其属性和方法。</p>
  <a id="more"></a>
-<h3 id="工厂方式"><a href="#工厂方式" class="headerlink" title="工厂方式"></a>工厂方式</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createObject</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> object = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">    object.username = <span class="string">"zhangsan"</span>;</span><br><span class="line">    object.password = <span class="string">"123"</span>;</span><br><span class="line"></span><br><span class="line">    object.get = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.username + <span class="string">", "</span> + <span class="keyword">this</span>.password);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> object;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> object1 = createObject();</span><br><span class="line"><span class="keyword">var</span> object2 = createObject();</span><br><span class="line"></span><br><span class="line">object1.get();</span><br><span class="line"><span class="string">`</span></span><br></pre></td></tr></table></figure>
+<h3 id="工厂方式"><a href="#工厂方式" class="headerlink" title="工厂方式"></a>工厂方式</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createObject</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> object = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>();</span><br><span class="line">    object.username = <span class="hljs-string">"zhangsan"</span>;</span><br><span class="line">    object.password = <span class="hljs-string">"123"</span>;</span><br><span class="line"></span><br><span class="line">    object.get = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">        alert(<span class="hljs-keyword">this</span>.username + <span class="hljs-string">", "</span> + <span class="hljs-keyword">this</span>.password);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-keyword">return</span> object;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> object1 = createObject();</span><br><span class="line"><span class="hljs-keyword">var</span> object2 = createObject();</span><br><span class="line"></span><br><span class="line">object1.get();</span><br><span class="line"><span class="hljs-string">`</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>改进一：采用带参数的构造方法：</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createObject</span>(<span class="params">username, password</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> object = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"></span><br><span class="line">    object.username = username;</span><br><span class="line">    object.password = password;</span><br><span class="line"></span><br><span class="line">    object.get = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.username + <span class="string">", "</span> + <span class="keyword">this</span>.password);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> object;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> object1 = createObject(<span class="string">"zhangsan"</span>, <span class="string">"123"</span>);</span><br><span class="line"></span><br><span class="line">object1.get();</span><br><span class="line"><span class="string">`</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createObject</span>(<span class="hljs-params">username, password</span>)</span>&#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> object = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>();</span><br><span class="line"></span><br><span class="line">    object.username = username;</span><br><span class="line">    object.password = password;</span><br><span class="line"></span><br><span class="line">    object.get = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">        alert(<span class="hljs-keyword">this</span>.username + <span class="hljs-string">", "</span> + <span class="hljs-keyword">this</span>.password);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">return</span> object;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> object1 = createObject(<span class="hljs-string">"zhangsan"</span>, <span class="hljs-string">"123"</span>);</span><br><span class="line"></span><br><span class="line">object1.get();</span><br><span class="line"><span class="hljs-string">`</span></span><br></pre></td></tr></table></figure>
 <ul>
 <li>改进二：让多个对象共享函数对象<br>这样，不用每个对象都生成一个函数对象。</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">get</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.username + <span class="string">", "</span> + <span class="keyword">this</span>.password);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//函数对象只有一份</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createObject</span>(<span class="params">username, password</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> object = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line"></span><br><span class="line">    object.username = username;</span><br><span class="line">    object.password = password;</span><br><span class="line"></span><br><span class="line">    object.get = <span class="keyword">get</span>; //每一个对象的函数对象都指向同一个函数对象return object;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var object = createObject("zhangsan", "123");</span><br><span class="line">var object2 = createObject("lisi", "456");</span><br><span class="line"></span><br><span class="line">object.<span class="keyword">get</span>();</span><br><span class="line">object2.<span class="keyword">get</span>();</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">get</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="hljs-keyword">this</span>.username + <span class="hljs-string">", "</span> + <span class="hljs-keyword">this</span>.password);</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-comment">//函数对象只有一份</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">createObject</span>(<span class="hljs-params">username, password</span>)</span>&#123;</span><br><span class="line">    <span class="hljs-keyword">var</span> object = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Object</span>();</span><br><span class="line"></span><br><span class="line">    object.username = username;</span><br><span class="line">    object.password = password;</span><br><span class="line"></span><br><span class="line">    object.get = <span class="hljs-keyword">get</span>; //每一个对象的函数对象都指向同一个函数对象return object;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var object = createObject("zhangsan", "123");</span><br><span class="line">var object2 = createObject("lisi", "456");</span><br><span class="line"></span><br><span class="line">object.<span class="hljs-keyword">get</span>();</span><br><span class="line">object2.<span class="hljs-keyword">get</span>();</span><br></pre></td></tr></table></figure>
 <p>优点：让一个函数对象被多个对象所共享，而不是每一个对象拥有一个函数对象。<br>缺点：对象和它的方法定义分开了，可能会造成误解和误用。</p>
 <h3 id="构造函数方式"><a href="#构造函数方式" class="headerlink" title="构造函数方式"></a>构造函数方式</h3><p>构造函数的定义方法其实和普通的自定义函数相同。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//在执行第一行代码前，js引擎会为我们生成一个对象this.username = "zhangsan";</span></span><br><span class="line">    <span class="keyword">this</span>.password = <span class="string">"123"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.getInfo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        alert(<span class="keyword">this</span>.username + <span class="string">", "</span> + <span class="keyword">this</span>.password);</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="comment">//此处有一个隐藏的return语句，用于将之前生成的对象返回//只有在后面用new的情况下，才会出现注释所述的这两点情况</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//生成对象var person = new Person();//用了new</span></span><br><span class="line">person.getInfo();</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-comment">//在执行第一行代码前，js引擎会为我们生成一个对象this.username = "zhangsan";</span></span><br><span class="line">    <span class="hljs-keyword">this</span>.password = <span class="hljs-string">"123"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">this</span>.getInfo = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">        alert(<span class="hljs-keyword">this</span>.username + <span class="hljs-string">", "</span> + <span class="hljs-keyword">this</span>.password);</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="hljs-comment">//此处有一个隐藏的return语句，用于将之前生成的对象返回//只有在后面用new的情况下，才会出现注释所述的这两点情况</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//生成对象var person = new Person();//用了new</span></span><br><span class="line">person.getInfo();</span><br></pre></td></tr></table></figure>
 <ul>
 <li>改进版：加上参数：</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">username, password</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.username = username;</span><br><span class="line">    <span class="keyword">this</span>.password = password;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">this</span>.getInfo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.username + <span class="string">", "</span> + <span class="keyword">this</span>.password);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person(<span class="string">"zhangsan"</span>, <span class="string">"123"</span>);</span><br><span class="line">person.getInfo();</span><br></pre></td></tr></table></figure>
-<h3 id="原型-“prototype”-方式"><a href="#原型-“prototype”-方式" class="headerlink" title="原型(“prototype”)方式"></a>原型(“prototype”)方式</h3><p>例子：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.username = <span class="string">"zhangsan"</span>;</span><br><span class="line">Person.prototype.password = <span class="string">"123"</span>;</span><br><span class="line"></span><br><span class="line">Person.prototype.getInfo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.username + <span class="string">", "</span> + <span class="keyword">this</span>.password);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="keyword">var</span> person2 = <span class="keyword">new</span> Person();</span><br><span class="line"></span><br><span class="line">person.username = <span class="string">"lisi"</span>;</span><br><span class="line"></span><br><span class="line">person.getInfo();</span><br><span class="line">person2.getInfo();</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params">username, password</span>)</span>&#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.username = username;</span><br><span class="line">    <span class="hljs-keyword">this</span>.password = password;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">this</span>.getInfo = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="hljs-keyword">this</span>.username + <span class="hljs-string">", "</span> + <span class="hljs-keyword">this</span>.password);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> person = <span class="hljs-keyword">new</span> Person(<span class="hljs-string">"zhangsan"</span>, <span class="hljs-string">"123"</span>);</span><br><span class="line">person.getInfo();</span><br></pre></td></tr></table></figure>
+<h3 id="原型-“prototype”-方式"><a href="#原型-“prototype”-方式" class="headerlink" title="原型(“prototype”)方式"></a>原型(“prototype”)方式</h3><p>例子：<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params"></span>)</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.username = <span class="hljs-string">"zhangsan"</span>;</span><br><span class="line">Person.prototype.password = <span class="hljs-string">"123"</span>;</span><br><span class="line"></span><br><span class="line">Person.prototype.getInfo = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="hljs-keyword">this</span>.username + <span class="hljs-string">", "</span> + <span class="hljs-keyword">this</span>.password);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> person = <span class="hljs-keyword">new</span> Person();</span><br><span class="line"><span class="hljs-keyword">var</span> person2 = <span class="hljs-keyword">new</span> Person();</span><br><span class="line"></span><br><span class="line">person.username = <span class="hljs-string">"lisi"</span>;</span><br><span class="line"></span><br><span class="line">person.getInfo();</span><br><span class="line">person2.getInfo();</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li>使用原型存在的缺点：<ul>
 <li>1.不能传参数；</li>
@@ -206,14 +206,14 @@
 </li>
 </ul>
 <p>如果使用原型方式来定义对象，那么生成的所有对象会共享原型中的属性，这样一个对象改变了该属性也会反映到其他对象当中。<br>单纯使用原型方式定义对象无法在构造函数中为属性赋初值，只能在对象生成后再去改变属性值。<br> 比如，username改为数组后：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.username = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">Person.prototype.password = <span class="string">"123"</span>;</span><br><span class="line"></span><br><span class="line">Person.prototype.getInfo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.username + <span class="string">", "</span> + <span class="keyword">this</span>.password);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> person = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="keyword">var</span> person2 = <span class="keyword">new</span> Person();</span><br><span class="line"></span><br><span class="line">person.username.push(<span class="string">"zhangsan"</span>);</span><br><span class="line">person.username.push(<span class="string">"lisi"</span>);</span><br><span class="line">person.password = <span class="string">"456"</span>;</span><br><span class="line"></span><br><span class="line">person.getInfo(); <span class="comment">//输出：zhangsan,lisi, 456</span></span><br><span class="line">person2.getInfo(); <span class="comment">//输出：zhangsan,lisi, 123//虽然没有对person2对象进行修改，但是它的name和person是一样的，即为zhangsan,lisi</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params"></span>)</span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.username = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>();</span><br><span class="line">Person.prototype.password = <span class="hljs-string">"123"</span>;</span><br><span class="line"></span><br><span class="line">Person.prototype.getInfo = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="hljs-keyword">this</span>.username + <span class="hljs-string">", "</span> + <span class="hljs-keyword">this</span>.password);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> person = <span class="hljs-keyword">new</span> Person();</span><br><span class="line"><span class="hljs-keyword">var</span> person2 = <span class="hljs-keyword">new</span> Person();</span><br><span class="line"></span><br><span class="line">person.username.push(<span class="hljs-string">"zhangsan"</span>);</span><br><span class="line">person.username.push(<span class="hljs-string">"lisi"</span>);</span><br><span class="line">person.password = <span class="hljs-string">"456"</span>;</span><br><span class="line"></span><br><span class="line">person.getInfo(); <span class="hljs-comment">//输出：zhangsan,lisi, 456</span></span><br><span class="line">person2.getInfo(); <span class="hljs-comment">//输出：zhangsan,lisi, 123//虽然没有对person2对象进行修改，但是它的name和person是一样的，即为zhangsan,lisi</span></span><br></pre></td></tr></table></figure>
 <p>这是因为使用原型方式，person和person2指向的是同一个原型，即对应了同样的属性对象。<br>对于引用类型(比如数组)，两个对象指向了同一个引用，所以对一个所做的更改会影响另一个。<br>而对于字符串(字面常量值)，重新赋值之后就指向了另一个引用，所以二者的修改互不影响。  </p>
 <ul>
 <li>对原型方式的改进：</li>
 </ul>
-<p>使用原型+构造函数方式来定义对象，对象之间的属性互不干扰，各个对象间共享同一个方法。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//使用原型+构造函数方式来定义对象</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.username = <span class="keyword">new</span> <span class="built_in">Array</span>();</span><br><span class="line">    <span class="keyword">this</span>.password = <span class="string">"123"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.getInfo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="keyword">this</span>.username + <span class="string">", "</span> + <span class="keyword">this</span>.password);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> Person();</span><br><span class="line"></span><br><span class="line">p.username.push(<span class="string">"zhangsan"</span>);</span><br><span class="line">p2.username.push(<span class="string">"lisi"</span>);</span><br><span class="line"></span><br><span class="line">p.getInfo();</span><br><span class="line">p2.getInfo();</span><br></pre></td></tr></table></figure></p>
+<p>使用原型+构造函数方式来定义对象，对象之间的属性互不干扰，各个对象间共享同一个方法。<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-comment">//使用原型+构造函数方式来定义对象</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.username = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Array</span>();</span><br><span class="line">    <span class="hljs-keyword">this</span>.password = <span class="hljs-string">"123"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Person.prototype.getInfo = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="hljs-keyword">this</span>.username + <span class="hljs-string">", "</span> + <span class="hljs-keyword">this</span>.password);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> p = <span class="hljs-keyword">new</span> Person();</span><br><span class="line"><span class="hljs-keyword">var</span> p2 = <span class="hljs-keyword">new</span> Person();</span><br><span class="line"></span><br><span class="line">p.username.push(<span class="hljs-string">"zhangsan"</span>);</span><br><span class="line">p2.username.push(<span class="hljs-string">"lisi"</span>);</span><br><span class="line"></span><br><span class="line">p.getInfo();</span><br><span class="line">p2.getInfo();</span><br></pre></td></tr></table></figure></p>
 <h3 id="动态原型方式"><a href="#动态原型方式" class="headerlink" title="动态原型方式"></a>动态原型方式</h3><p>在构造函数中通过标志量让所有对象共享一个方法，而每个对象拥有自己的属性。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.username = <span class="string">"zhangsan"</span>;</span><br><span class="line">    <span class="keyword">this</span>.password = <span class="string">"123"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> Person.flag == <span class="string">"undefined"</span>)&#123;</span><br><span class="line">        <span class="comment">//此块代码应该只在第一次调用的时候执行</span></span><br><span class="line">        alert(<span class="string">"invoked"</span>);</span><br><span class="line"></span><br><span class="line">        Person.prototype.getInfo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="comment">//这个方法定义在原型中，会被每一个对象所共同拥有</span></span><br><span class="line">            alert(<span class="keyword">this</span>.username + <span class="string">", "</span> + <span class="keyword">this</span>.password);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Person.flag = <span class="literal">true</span>;<span class="comment">//第一次定义完之后，之后的对象就不需要再进来这块代码了</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person();</span><br><span class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> Person();</span><br><span class="line"></span><br><span class="line">p.getInfo();</span><br><span class="line">p2.getInfo();</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.username = <span class="hljs-string">"zhangsan"</span>;</span><br><span class="line">    <span class="hljs-keyword">this</span>.password = <span class="hljs-string">"123"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="hljs-keyword">if</span>(<span class="hljs-keyword">typeof</span> Person.flag == <span class="hljs-string">"undefined"</span>)&#123;</span><br><span class="line">        <span class="hljs-comment">//此块代码应该只在第一次调用的时候执行</span></span><br><span class="line">        alert(<span class="hljs-string">"invoked"</span>);</span><br><span class="line"></span><br><span class="line">        Person.prototype.getInfo = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line">            <span class="hljs-comment">//这个方法定义在原型中，会被每一个对象所共同拥有</span></span><br><span class="line">            alert(<span class="hljs-keyword">this</span>.username + <span class="hljs-string">", "</span> + <span class="hljs-keyword">this</span>.password);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        Person.flag = <span class="hljs-literal">true</span>;<span class="hljs-comment">//第一次定义完之后，之后的对象就不需要再进来这块代码了</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-keyword">var</span> p = <span class="hljs-keyword">new</span> Person();</span><br><span class="line"><span class="hljs-keyword">var</span> p2 = <span class="hljs-keyword">new</span> Person();</span><br><span class="line"></span><br><span class="line">p.getInfo();</span><br><span class="line">p2.getInfo();</span><br></pre></td></tr></table></figure>
 <h6 id="文章来自网络，如有侵权请联系进行删除，谢谢"><a href="#文章来自网络，如有侵权请联系进行删除，谢谢" class="headerlink" title="文章来自网络，如有侵权请联系进行删除，谢谢"></a>文章来自网络，如有侵权请联系进行删除，谢谢</h6>
         </div>
         
@@ -249,6 +249,16 @@
     </span>
     <span>Alipay</span>
     <div class="qrcode"><img src="/images/alipay.png" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/wechatpay.png" alt="Wechat"></div>
 </a>
 
                 
@@ -347,7 +357,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        36
+                        54
                     </p>
                 </div>
             </div>
@@ -367,7 +377,7 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        33
+                        31
                     </p>
                 </div>
             </div>
@@ -453,12 +463,12 @@
                 <span class="level-item tag">2</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/ECMAScript2015/">
+        <a class="level is-marginless" href="/categories/ES6/">
             <span class="level-start">
-                <span class="level-item">ECMAScript2015</span>
+                <span class="level-item">ES6</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">18</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/css/">
@@ -544,7 +554,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Deferred/" style="font-size: 10px;">$.Deferred()</a> <a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/Angularjs/" style="font-size: 12.5px;">Angularjs</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Photo/" style="font-size: 10px;">Photo</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/cross/" style="font-size: 10px;">cross</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/css3/" style="font-size: 15px;">css3</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 12.5px;">github</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/jQuery/" style="font-size: 12.5px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/let/" style="font-size: 10px;">let</a> <a href="/tags/map/" style="font-size: 10px;">map</a> <a href="/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/tags/ng-if/" style="font-size: 10px;">ng-if</a> <a href="/tags/ng-model/" style="font-size: 10px;">ng-model</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/rem/" style="font-size: 10px;">rem</a> <a href="/tags/render/" style="font-size: 10px;">render</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/web/" style="font-size: 17.5px;">web</a> <a href="/tags/webpack/" style="font-size: 15px;">webpack</a> <a href="/tags/依赖注入/" style="font-size: 10px;">依赖注入</a> <a href="/tags/模块/" style="font-size: 10px;">模块</a> <a href="/tags/路由/" style="font-size: 10px;">路由</a>
+        <a href="/tags/Deferred/" style="font-size: 10px;">$.Deferred()</a> <a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/Angularjs/" style="font-size: 12px;">Angularjs</a> <a href="/tags/ES6/" style="font-size: 18px;">ES6</a> <a href="/tags/Photo/" style="font-size: 10px;">Photo</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/cross/" style="font-size: 10px;">cross</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/css3/" style="font-size: 14px;">css3</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 12px;">github</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 14px;">http</a> <a href="/tags/jQuery/" style="font-size: 12px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/map/" style="font-size: 10px;">map</a> <a href="/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/tags/ng-if/" style="font-size: 10px;">ng-if</a> <a href="/tags/ng-model/" style="font-size: 10px;">ng-model</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/rem/" style="font-size: 10px;">rem</a> <a href="/tags/render/" style="font-size: 10px;">render</a> <a href="/tags/vue/" style="font-size: 14px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/web/" style="font-size: 16px;">web</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/依赖注入/" style="font-size: 10px;">依赖注入</a> <a href="/tags/模块/" style="font-size: 10px;">模块</a> <a href="/tags/路由/" style="font-size: 10px;">路由</a>
     </div>
 </div>
 
@@ -561,18 +571,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/25/render-function/" class="media-left">
+            <a href="/2019/08/21/ES6-18-module/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（6）- render 函数">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Module模块化">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-25T15:27:58.000Z">2018-10-25</time></div>
-                    <a href="/2018/10/25/render-function/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（6）- render 函数</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:09:52.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-18-module/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Module模块化</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -580,18 +590,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/20/vue-lifeCycle-2/" class="media-left">
+            <a href="/2019/08/21/ES6-17-decorators/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（2）- 生命周期">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Decorators">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-20T15:35:04.000Z">2018-10-20</time></div>
-                    <a href="/2018/10/20/vue-lifeCycle-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（2）- 生命周期</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:08:31.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-17-decorators/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Decorators</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -599,16 +609,35 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/The-HTTP-protocol/" class="media-left">
+            <a href="/2019/08/21/ES6-16-generator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="HTTP协议认识">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Generator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T15:18:24.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/The-HTTP-protocol/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HTTP协议认识</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:34.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Generator</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/21/ES6-16-Generator/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:16.734Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-Generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -618,37 +647,18 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/Cross-domain/" class="media-left">
+            <a href="/2019/08/21/ES6-15-iterator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="关于跨域的一些理解">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（15）- Iterator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T14:41:55.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/Cross-domain/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于跨域的一些理解</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:02:46.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-15-iterator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（15）- Iterator</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/http/">http</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2018/06/03/Mobile-terminal-skills/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="移动端常见技巧汇总">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-06-03T15:07:35.000Z">2018-06-03</time></div>
-                    <a href="/2018/06/03/Mobile-terminal-skills/" class="title has-link-black-ter is-size-6 has-text-weight-normal">移动端常见技巧汇总</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/web/">web</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -665,6 +675,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">19</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2018/10/">
@@ -705,7 +726,7 @@
                     <span class="level-item">December 2017</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -868,7 +889,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/ES6/">
                         <span class="tag">ES6</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">18</span>
                     </a>
                 </div>
                 
@@ -882,13 +903,6 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Vue/">
                         <span class="tag">Vue</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/const/">
-                        <span class="tag">const</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -966,14 +980,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/javascript/">
                         <span class="tag">javascript</span>
-                        <span class="tag is-grey">12</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/let/">
-                        <span class="tag">let</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">30</span>
                     </a>
                 </div>
                 
@@ -1100,18 +1107,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/25/render-function/" class="media-left">
+            <a href="/2019/08/21/ES6-18-module/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（6）- render 函数">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Module模块化">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-25T15:27:58.000Z">2018-10-25</time></div>
-                    <a href="/2018/10/25/render-function/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（6）- render 函数</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:09:52.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-18-module/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Module模块化</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -1119,18 +1126,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/20/vue-lifeCycle-2/" class="media-left">
+            <a href="/2019/08/21/ES6-17-decorators/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（2）- 生命周期">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Decorators">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-20T15:35:04.000Z">2018-10-20</time></div>
-                    <a href="/2018/10/20/vue-lifeCycle-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（2）- 生命周期</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:08:31.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-17-decorators/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Decorators</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -1138,16 +1145,35 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/The-HTTP-protocol/" class="media-left">
+            <a href="/2019/08/21/ES6-16-generator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="HTTP协议认识">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Generator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T15:18:24.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/The-HTTP-protocol/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HTTP协议认识</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:34.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Generator</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/21/ES6-16-Generator/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:16.734Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-Generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1157,37 +1183,18 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/Cross-domain/" class="media-left">
+            <a href="/2019/08/21/ES6-15-iterator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="关于跨域的一些理解">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（15）- Iterator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T14:41:55.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/Cross-domain/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于跨域的一些理解</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:02:46.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-15-iterator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（15）- Iterator</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/http/">http</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2018/06/03/Mobile-terminal-skills/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="移动端常见技巧汇总">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-06-03T15:07:35.000Z">2018-06-03</time></div>
-                    <a href="/2018/06/03/Mobile-terminal-skills/" class="title has-link-black-ter is-size-6 has-text-weight-normal">移动端常见技巧汇总</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/web/">web</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -1204,6 +1211,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">19</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2018/10/">
@@ -1244,7 +1262,7 @@
                     <span class="level-item">December 2017</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1407,7 +1425,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/ES6/">
                         <span class="tag">ES6</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">18</span>
                     </a>
                 </div>
                 
@@ -1421,13 +1439,6 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Vue/">
                         <span class="tag">Vue</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/const/">
-                        <span class="tag">const</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1505,14 +1516,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/javascript/">
                         <span class="tag">javascript</span>
-                        <span class="tag is-grey">12</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/let/">
-                        <span class="tag">let</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">30</span>
                     </a>
                 </div>
                 

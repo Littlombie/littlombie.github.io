@@ -1,6 +1,227 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[ES6学习（16）- Module模块化]]></title>
+    <url>%2F2019%2F08%2F21%2FES6-18-module%2F</url>
+    <content type="text"><![CDATA[基本概念ES6 的模块化语法 12345678910111213141516//导出用export 变量export let A = 123;//导出函数export function test()&#123; console.log('test');&#125;//导出类export class Hello&#123; test()&#123; console.log('class'); &#125;&#125; 在需要导入文件中写法 1234//花括号中需要哪项就 导入哪项 import &#123;A,test,Hello&#125; form `./$&#123;js路径&#125;`console.log(A,test,Hello); 第二种写法12345&#123; import * as lesson form `./$&#123;js路径&#125;` console.log(lesson.A,lesson.test);&#125; 另一种写法需要导出的文件： 12345678910111213141516let A = 123;let test = function()&#123; console.log('class');&#125;class Hello&#123; test()&#123; console.log('class'); &#125;&#125;//书写需要导出的类 变量 类export default&#123; A, test, Hello&#125; 导入文件： 123import lesson form '$&#123;js路径&#125;'console.log(lesson.A,lesson.test);]]></content>
+      <categories>
+        <category>ES6</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ES6学习（16）- Decorators]]></title>
+    <url>%2F2019%2F08%2F21%2FES6-17-decorators%2F</url>
+    <content type="text"><![CDATA[Decorator修饰器 修饰函数类的行为，也可以理解为 类的扩展功能 基本用法需要安装插件 1npm install babel-plugin-transform-decorators-legacy --save-dev 修改babel文件 添加插件plugins:[babel-plugin-transform-decorators-legacy] 12345678910111213141516171819202122232425262728293031323334353637&#123; //限制某个属性是只读的 let readonly = function(target,name,descriptor)&#123; descriptor.writable = false; return decriptor &#125;; //修饰器 class Test&#123; @readonly //修改readonly 的行为 让其只读 time()&#123; return '2017-08-06'; &#125; &#125; let test = new Test(); rtest.time = function()&#123; console.log('rest time'); &#125; console.log(test.time());//Cannot assign to read only property 'time' of object '#&lt;Test&gt;'&#125;&#123; let typename = function(target,name,descriptor)&#123; target.myname = 'hello'; &#125; @typename //修饰器在类的外部 class Test&#123; &#125; console.log('类修饰符',Test.myname); //hello&#125; 第三方库 修饰器的js库：core-decortors;内置以上的方法 可以通过下载npm install core-decorators 12345678910111213141516171819202122232425&#123; let log=(type)=&gt;&#123; return function(target,name,descriptor)&#123; let src_method = descriptor.value; descriptor.value = (...arg)=&gt;&#123; src_method.apply(target,arg); console.log(`log$&#123;type&#125;`); &#125; &#125; &#125; class AD&#123; @log('show') show()&#123; console.info('ad is show'); &#125; @log('click') click()&#123; console.info('ad is click'); &#125; &#125; let ad = new AD(); ad.show();//ad is show ad.click();//ad is show&#125;]]></content>
+      <categories>
+        <category>ES6</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ES6学习（16）- Generator]]></title>
+    <url>%2F2019%2F08%2F21%2FES6-16-generator%2F</url>
+    <content type="text"><![CDATA[Generator 基本概念异步编程的总解决方案Generator 函数是 ES6 提供的一种异步编程解决方案，语法行为与传统函数完全不同。本章详细介绍 Generator 函数的语法和 API，它的异步编程应用请看《Generator 函数的异步应用》一章。 Generator 函数有多种理解角度。从语法上，首先可以把它理解成，Generator 函数是一个状态机，封装了多个内部状态。 执行 Generator 函数会返回一个遍历器对象，也就是说，Generator 函数除了状态机，还是一个遍历器对象生成函数。返回的遍历器对象，可以依次遍历 Generator 函数内部的每一个状态。 形式上，Generator 函数是一个普通函数，但是有两个特征。一是，function关键字与函数名之间有一个星号；二是，函数体内部使用yield表达式，定义不同的内部状态（yield在英语里的意思就是“产出”）。 123456789101112131415&#123; //generator基本定义 let tell = function*()&#123; yield 'a'; yield 'b'; return 'c' &#125;; let k = tell(); console.log(k.next());//Object&#123;value:'a',done:false&#125; console.log(k.next());/Object&#123;value:'b',done:false&#125; console.log(k.next());//Object&#123;value:'c',done:true&#125; console.log(k.next());//Object&#123;value:ubdefined,done:true&#125; &#125; 12345678910111213&#123; let obj=&#123;&#125;; //创建generator函数 obj[Symbol.ierator]=function*()&#123; yield 1; yield 2; yield 3; &#125; for(let value of obj)&#123; console.log('value',value); &#125;&#125; generator的最大作用 状态机 12345678910111213141516&#123; let state = function*()&#123; while(1)&#123; yield 'A'; yield 'B'; yield 'c'; &#125; &#125; let status = state(); console.log(status.next());//A console.log(status.next());//B console.log(status.next());//C console.log(status.next());//A console.log(status.next());//B&#125; next 函数用法yield*的语法抽奖次数 逻辑 1234567891011121314151617181920212223242526&#123; let draw = function(count)&#123; //具体抽奖逻辑 //输出剩余次数 console.info(`剩余$&#123;count&#125;次`); &#125; let residuce = function*(count)&#123; while(cuont&gt;0)&#123; count--; //抽奖具体逻辑 yield draw(count); &#125; &#125; let star = residue(5); let btn = document.createElement('button'); btn.id = 'start'; btn.textContent = '抽奖'; document.body.appendChild(btn); document.getElementById('start').addEventListener('click',function()&#123; star.next(); &#125;,false);&#125; 长轮询123456789101112131415161718192021222324252627&#123; //长轮询 let ajax = function* ()&#123; yield new Promise(function(resolve,reject)&#123; setTimeout(function()&#123; resolve(&#123;code:0&#125;) &#125;,200) &#125;) &#125; let pull = function()&#123; let genertaor = jax(); let step = genertaor.next(); step.value.then(function(d)&#123; if(d.code!=0)&#123; setTimeout(function()&#123; console.info('wait'); pull(); &#125;,1000); &#125;else &#123; console.info(d); &#125; &#125;) &#125; pull();//Object &#123;code:0&#125;&#125;]]></content>
+      <categories>
+        <category>ES6</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title></title>
+    <url>%2F2019%2F08%2F21%2FES6-16-Generator%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[ES6学习（15）- Iterator]]></title>
+    <url>%2F2019%2F08%2F21%2FES6-15-iterator%2F</url>
+    <content type="text"><![CDATA[Iterator接口在整个es6中，操作数据结构，数据结合的读取方式 Iterator 的基本用法调用方式 arrSymbol.iterator 12345678&#123; let arr=['hello world!']; let map= arr[Symbol.iterator](); console.log(map.next());//Object &#123;value:'hello',done:false&#125; console.log(map.next());//Object &#123;value:'world',done:false&#125; console.log(map.next());//Object &#123;value:undefined,done:false&#125;&#125; 自定义 Iterator 接口 123456789101112131415161718192021222324252627282930313233&#123; let obj=&#123; start:[1,3,2]; end:[7,9,8]; //es6新增方式 [Symbol.iterator]()&#123; let self = this; let index=0; let arr=self.start.concat(self.end); let len =arr.length; return &#123; //返回对象必须要包含next() next()&#123; //遍历的过程 if(index&lt;length)&#123; return &#123; value:arr[index++],//当前遍历 done:false//表示是否结束 &#125; &#125;else&#123; return &#123; value:arr[index++]; done:true &#125; &#125; &#125; &#125; &#125; &#125; for(let key of obj)&#123; console.log(key); &#125;&#125; for…of…123456&#123; let arr=['hello world!']; for(let value of arr)&#123; console.log('value',value);//value hello,value world! &#125;&#125;]]></content>
+      <categories>
+        <category>ES6</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ES6学习（14）- Promise]]></title>
+    <url>%2F2019%2F08%2F21%2FES6-14-promise%2F</url>
+    <content type="text"><![CDATA[Promise 概念Promise 是异步编程的解决方案 什么是异步有一个函数A ，A执行完后执行B，异步方式有： 回调方式， 事件触发 Promise 不同于以上两种方式 Promise 的作用用来解决异步操作的解决方法 Promise的基本用法之前的写法123456789101112131415&#123; //基本定义 用 计时器模拟ajax 的回调 let ajax = function(callback)&#123; console.log('执行'); setTimeout(function()&#123; callback &amp;&amp; callback.call(); &#125;,1000); &#125;; ajax(function()&#123; console.log('timeout1'); &#125;); //先输出'执行' 1s后输出timeout1&#125; 这样写影响后期维护，回调的顺序很乱 使用Promise123456789101112131415&#123; let ajax=function()&#123; console.log('执行2'); //返回new Promise实例 该实例有个then()方法 resolve 表示执行下一步 reject中断当前操作 return new Promise(function(resolve,reject)&#123; setTimeout(function()&#123; resolve(); &#125;,1000); &#125;); &#125; //then()方法 表示执行下一步 ajax().then(function()&#123; console.log('promise','timeout2'); &#125;)&#125; 串行过程 ，then()链式操作12345678910111213141516171819202122&#123; let ajax=function()&#123; console.log('执行3'); return new Promise(function(resolve,reject)&#123; setTimeout(function()&#123; resolve(); &#125;,1000); &#125;); &#125; ajax() .then(function()&#123; //继续返回Promise实例 return new Promise(function(resolve,reject)&#123; setTimeout(function()&#123; resolve(); &#125;,2000); &#125;) &#125;) .then(function()&#123; console.log('timeout3'); &#125;);&#125; catch 捕获异常错误 12345678910111213141516171819202122232425&#123; let ajax=function(num)&#123; console.log('执行4'); return new Promise(function(resolve,reject)&#123; setTimeout(function()&#123; //如果参数大于5 继续向下执行 if(num&gt;5)&#123; resolve(); &#125;else &#123;//否则 抛出错误 throw new Error('出错了'); &#125; &#125;,1000); &#125;); &#125; ajax(6).then(function()&#123; console.log('log',6);// log 6 &#125;).catch(function(err)&#123; console.log('catch',err); &#125;); ajax(3).then(function()&#123; console.log('log',3); &#125;).catch(function(err)&#123; console.log('catch',err);//catch 出错了 &#125;);&#125; Promise 高级用法fade流 今日头条、uc 新闻案例 加载新闻图片 Promise.all 所有图片加载完再添加到页面 123456789101112131415161718192021222324252627&#123; //所有图片加载完再添加到页面 function loadImg(src)&#123; return new Promise((resolve,reject)=&gt;&#123; let img = document.creatElement('img'); img.src=src; //本身就是一个Promise实例 img.onload = function()&#123; resolve(img); &#125; img.onerror=function(err)&#123; reject(err); &#125; &#125;) &#125; function showImgs(imgs)&#123; imgs.forEach(function(img)&#123; document.body.appendChild(img); &#125;) &#125; //加载图片 Promise.all返回的是一个实例 表示把多个 promise 实例当做一个promise实例来 Promise.all([ loadImg('https://img.com/1.png'), loadImg('https://img.com/2.png'), loadImg('https://img.com/3.png') ]).then(showImgs)&#125; 先到先得 Promise.race 表示有一个状态率先改变 那么这个race 状态就改变 123456789101112131415161718192021222324252627&#123; //有一个图加载完 就添加到页面中 function loadImg(src)&#123; return new Promise((resolve,reject)=&gt;&#123; let img = document.creatElement('img'); img.src=src; img.onload = function()&#123; resolve(img); &#125; img.onerror=function(err)&#123; reject(err); &#125; &#125;) &#125; function showImgs(img)&#123; let p = document.creatElement('p'); p.appendChild(img); document.body.appendChild(p); &#125; Promise.race([ loadImg('https://img.com/1.png'), loadImg('https://img.com/2.png'), loadImg('https://img.com/3.png') ]).then(showImgs)&#125;]]></content>
+      <categories>
+        <category>ES6</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ES6学习（13）- 类与对象]]></title>
+    <url>%2F2019%2F08%2F21%2FES6-13-class%2F</url>
+    <content type="text"><![CDATA[类类的概念 - - - 基本语法 类的继承 静态方法 静态属性 getter setter class 基本定义和生成实例 1234567891011&#123; //基本定义和生成实例 通过class + 关键字 类来定义类 class Parent&#123; constructor(name='mukewang')&#123; this.name = name; &#125; &#125; let v_parent = new Parent('v'); console.log('构造函数的实例',v_parent);// v_parent &#123;name 'v'&#125;&#125; 类的继承1234567891011121314&#123; //继承 class Parent&#123; constructor(name='mukewang')&#123; this.name = name; &#125; &#125; //使用 extends继承 class Child extends Parent&#123; &#125; console.log('继承', new Child());// 继承 Child &#123;name 'mukewang'&#125; &#125; 继承传递参数 修改参数12345678910111213141516171819&#123; //继承传递参数 class Parent&#123; constructor(name='mukewang')&#123; this.name = name; &#125; &#125; //使用 extends继承 class Child extends Parent&#123; constructor(name='child')&#123; super(name); //定义自己属性要用this 一定要用 super 的后边 this.type='child'; &#125; &#125; console.log('继承', new Child('hello'));// 继承 Child &#123;name： 'hello',type:'child'&#125; &#125; getter,setter12345678910111213141516171819202122&#123; //getter,setter class Parent&#123; constructor(name='mukewang')&#123; this.name = name; &#125; &#125; //属性 不是方法 get longName()&#123; return 'mk'+this.name &#125; set longName(value)&#123; this.name = value; &#125; let v= new Parent(); console.log('getter',v.longName);//getter mkmukewang v.longName='hello'; console.log('setter',v.longName); //setter mkhello&#125; 类的 静态方法使用 static 关键词 后边加 方法名称 所以 就变成静态方法 静态方法意思就是 通过 类去调用 而不是通过 类的实例去调用1234567891011121314&#123; //静态方法 class Parent&#123; constructor(name='mukewang')&#123; this.name = name; &#125; &#125; //静态方法 使用 static 关键词 后边加 方法名称 所以 就变成静态方法 静态方法意思就是 通过 类去调用 而不是通过 类的实例去调用 static tell()&#123; console.log('tell'); &#125; //调用 用类去调用 Parent.tell();//tell&#125; 类的 静态属性12345678910111213141516&#123; //静态属性 class Parent&#123; constructor(name='mukewang')&#123; this.name = name; &#125; &#125; //静态方法 static tell()&#123; console.log('tell'); &#125; //静态属性 Parent.type='test'; console.log('静态属性',Parent.type);// 静态属性 test &#125;]]></content>
+      <categories>
+        <category>ES6</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ES6学习（12）- Proxy和Reflect]]></title>
+    <url>%2F2019%2F08%2F21%2FES6-12-proxy-reflect%2F</url>
+    <content type="text"><![CDATA[Proxy和Reflect的概念Proxy对象代理 生成对象： new Proxy(); 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364&#123; let obj = &#123; time:'2017-03-11', name:'net', _r:123 &#125;; //第一个参数是需要代理的对象 ，第二个是代理的方法 let monitor = new Proxy(obj,&#123; //拦截对象属性的读取，跟代理是一个意思 target get(target,key)&#123; return target[key].replace('2017','2018'); &#125;, //拦截对象设置属性 set(target,key,value)&#123; if(key==='name')&#123; return target[key]=value; &#125;else &#123; return target[key]; &#125; &#125;, //拦截 key in object 操作 has(target,key)&#123; if(key==='name')&#123; return target[key]; &#125;else&#123; return false; &#125; &#125;, //拦截delete deleteProperty(target,key)&#123; if(key.indexOf("_"&gt;-1))&#123; delete target[key]; return true; &#125;else &#123; return target[key]; &#125; &#125;, //拦截object.keys,Object.getOwnPropertySymbols,Object.getOwnPropertyNames ownKeys(target)&#123; return Object.keys(target).filter(filter(item=&gt;item!='time'));//过滤掉time属性 ，不让返回 &#125; &#125;); console.log('get',monitor.time);//get 2018-03-11 monitor.name='mukewang'; console.log('set',monitor.time,monitor);//set 2018-03-11 Proxy&#123;time:'2017-03-11',name:'mukewang',_r:123&#125; console.log('has','name'in monitor,'time' in monitor);//has true false; delete.monitor.time; console.log('delete',monitor); //time没有被删除 还是全部 输出 Proxy&#123;time:'2017-03-11',name:'mukewang',_r:123&#125; delete.monitor._r; console.log('delete',monitor);//Proxy&#123;time:'2017-03-11',name:'mukewang',&#125; console.log('ownKeys',Object.keys(monitor));//Proxy &#123;time,_r&#125;&#125; Reflect对象反射的是Object 生成对象： 直接 Reflect 1234567891011121314&#123; let obj = &#123; time:'2017-03-11', name:'net', _r:123 &#125;; console.log('Reflect get',Reflect.get(obj,'time'));//Reflect get time:"2017-03-11", Reflect.set(obj,'name','mukewang'); console.log('Reflect set', obj);//'Reflect set' Object &#123;time:"2017-03-11",name:"mukewang",_r:123&#125; console.log('Reflect has',Reflect.has(obj,'name'));//true &#125; Proxy和Reflect的适用场景通用方式 数的校验，数据类型 格式校验 表单验证 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748&#123; function validator(target,validator)&#123; return new Proxy(target,&#123; _validator:validator, set(target,key,value,proxy)&#123; if(target.hasOwnProperty(key))&#123; let va=this._validator[key]; if(!!va(value))&#123; return Reflect.set(target,key,value,proxy) &#125;else&#123; throw Error(`不能设置$&#123;key&#125;到$&#123;value&#125;`) &#125; &#125;else&#123; throw Error(`$&#123;key&#125; 不存在`) &#125; &#125; &#125;) &#125; const personValidators=&#123; name(val)&#123; return typeof val==='tring' &#125;, age(val)&#123; return typeof val==='number' &amp;&amp; val&gt;18 &#125; &#125; class Person&#123; constructor(name,age)&#123; this.name = name; this.age = age; return validator(this,personValidators) &#125; &#125; const =person = new Person('lilei',30); console.info(person);//Proxy &#123;name,'lilei',age,30&#125; person.name = 48; console.info(person);//throw Error '不能设置name 到 48' person.name = 'Han meimei'; console.info(person);//Proxy &#123;name,'Han meimei',age,30&#125;&#125;]]></content>
+      <categories>
+        <category>ES6</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ES6学习（11）- map-set与数组和对象的比较]]></title>
+    <url>%2F2019%2F08%2F21%2FES6-11-Set-Map%2F</url>
+    <content type="text"><![CDATA[Map 与Array的对比 1234567891011121314151617181920212223242526272829303132&#123; //数据结构的横向对比 增、删、改、查 let map = new Map(); let array=[]; //增 map.set('t',1); array.push(&#123;t:1&#125;); console.info('map-array',map,array); //查 let map_exist = map.has('t'); let array_exist =array.find(item=&gt;item.t); console.info('map-array',map_exist,array_exist);//true Object&#123;t:1&#125; 第一个返回的事布尔值 第二个直接返回对象 //改 map.set('t',2); //通过数组的forEach遍历，看数组中是否存在该值 ，如果存在 ，改变其值，如果不存在 ，返回空 array.forEach(item=&gt;item.t?item.t=2:''); console.info('map-array-modify',map,array); //Map(1)&#123;'t',2&#125; //删 map.delete('t'); let idnex = array.findIndex(item=&gt;item.t); array.splice(index,1); console.info('map-array-empty',map,array);// Map(0) &#123;&#125; &#125; Set 与Array的对比12345678910111213141516171819202122232425262728293031 &#123; //set和array 的对比 let set = new Set(); let array =[]; //增 set.add(&#123;t:1&#125;); array.push(&#123;t:1&#125;); console.info('set-array',set,array); //Set(1) &#123;Object &#123;t:1&#125;&#125; //查 let set_exist = set.has(&#123;t:1&#125;); let array_exist =array.find(item=&gt;item.t); console.info('set-array',set_exist,array_exist);//false //改 set.forEach(item =&gt;item.t?item.t=2:''); array.forEach(item =&gt;item.t?item.t=2:''); console.info('set-array-modefy',set_exist,array_exist);// Set(1) Object&#123;t:2&#125; //删 set.forEach(item=&gt;item.t?set.delete(item):''); let index = array,findIndex(item=&gt;item.t); arr.splice(index,1); console.info('set-array-empty',set,array);// Set(0) &#123;&#125;&#125; Map , Set , Object 的对比123456789101112131415161718192021222324252627282930313233343536&#123; //Map,Set ,Objec 对比 let item= &#123;t:1&#125;; let map = new Map(); let set = new Set(); let obj = &#123;&#125;; //增 map.set('t':1); set.add(item); obj['t']=1; console.info('map-set-obj',map,set,obj);//Map(1)&#123;"t"=&gt;1&#125; set(1) &#123;Object&#123;t:1&#125;&#125; Object&#123;t:1&#125; //查 console.info(&#123; map_exist:map.has('t'); set_exist:set.has(item); obj_exist:'t' in obj &#125;);//map_exist:true;set_exist: true;obj_exist:true //改 map.set('t',2); item.t=2; obj['t']=2; console.info('map-set-obj-modify',map,set,obj);//Map(1)&#123;'t'=&gt;2&#125; Set(1) &#123;Object &#123;t:2&#125;&#125; Object &#123;t:2&#125; //删 map.delete('t'); set.delete(item); delete obj['t']; console.log('set-array-empty',map,set,obj);//Map(0) Set(0) Object &#123;&#125; &#125; 通过上边的对比 ，可以看出：对于复杂的数组结构，优先使用Map，如果要求 数组的唯一性，则使用Set()，在数据的存储中尽量使用 Map,而放弃使用 Object 和数组]]></content>
+      <categories>
+        <category>ES6</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ES6学习（10）- set-map数据结构]]></title>
+    <url>%2F2019%2F08%2F21%2FES6-10-Set-Map%2F</url>
+    <content type="text"><![CDATA[Set的用法当做数组去用 Set 集合中的元素是不能重复的 12345678910&#123; //声明普通的变量 let list = new Set(); //添加两个元素 list.add(5); list.add(7); //长度 .size console.log('size',list.size);//size 2&#125; Set 初始化的时候就把元素初始化进去 123456&#123; let arr = [1,2,3,4,5]; let list = new Set(arr); console.log('size',list.size);//size 5 &#125; Set 数据元素必须是唯一的,不能重复 1234567891011121314151617181920&#123; let list = new Set(); list.add(1); list.add(2); list.add(1); //添加重复的元素不会添加进去的 ，也不会报错 console.log('list',list); //list 1 ,list 2 let arr=[1,2,3,1,'2']; let list2=new Set(arr); //不会做数据类型的转化 console.log('unique',list2);//unique Set&#123;1,2,3,'2'&#125; 成功的过滤掉重复的元素 但是后边的字符串 ‘2’ 也输出了 //通过new Set（）去重，然后转换为数组 let arrs =[1,2,3,4,1,3,"tre"]; let sets = new Set(arrs); Array.from(sets) //[1,2,3,4,"tre"]&#125; Set 的使用方法 list.add()，数组中添加元素 list.deledte()， 数组中移除元素 list.clear()，数组中清空元素 list.has() ，数组中判断有无元素 123456789&#123; let arr=['add','delete','clear','has']; let list=new Set(arr); console.log('has',list.has('add')); console.log('delete',list.delete('add'),list); list.clear(); console.log('list',list);&#125; Set 实例的遍历 （读取） 12345678910111213141516171819202122&#123; let arr=['add','delete','clear','has']; let list=new Set(arr); //用 for... of... 遍历 for(let key of list.keys())&#123; console.log('keys',key);// keys add, keys delete,keys clear,keys has &#125; for(let value of list.values())&#123; console.log('value',value);// keys add, keys delete,keys clear,keys has 打印出来跟上边的一样 都是 元素的名称 &#125; for(let value of list)&#123; console.log('value',value);// keys add, keys delete,keys clear,keys has 直接遍历list也是也可的 值跟上边的一样 &#125; for(let [key,value] of list.entries())&#123; console.log('entries',key,value);//打印出了 entries and and ,entries delete delete, entries clear clear, entries has has &#125; //foreach 遍历 返回 item // and delete clear has list.forEach(function(item)&#123;console.log(item);&#125;)&#125; WeakSet的用法WeakSet 与 Set的比较 WeakSet 跟Set的支持数据类型不一样， WeakSet只是必须是对象 不能是 数值 字符串 WeakSet 是弱引用，不会检测这个对象在其他地方用过 ，不会检测器其是否在垃圾回收掉 没有clear 方法 12345678910111213&#123; //生成weakSet变量 let weakList=new WeakSet(); let arg=&#123;&#125;; weakList.add(arg); // weakList.add(2); // 不支持其他的类型 只能是对象 console.log('weakList',weakList); //weakList wekSet &#123;Object&#123;&#125;&#125;&#125; Map的用法key 可以是任意的类型 数字 字符串12345678&#123; let map = new Map(); let arr=[&apos;123&apos;]; // Map() 添加元素用 .set()不是 .add() map.set(arr,456); console.log(&apos;map&apos;,map,map.get(arr));// map Map&#123;[&quot;123&quot;]=&gt;456&#125; 456 &#125; 12345678&#123; let map = new Map([['a',123],['b',456]]); console.log('map args',map); // a=&gt;123 b=&gt;456 console.log('size',map.size);//2 console.log('delete',map.delete('a'),map);//b=&gt;456 console.log('clear',map.clear(),map); //map&#123;&#125;&#125; WeakMap的用法weakMap 与Map 跟 WeakSet 与 Set的 的区别一样12345678&#123; let weakmap=new WeakMap(); let o=&#123;&#125;; weakmap.set(o,123); console.log(weakmap.get(o));//123&#125;]]></content>
+      <categories>
+        <category>ES6</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ES6学习（9）- Symbol]]></title>
+    <url>%2F2019%2F08%2F21%2FES6-09-symbol%2F</url>
+    <content type="text"><![CDATA[Symbol 概念Symbol()声明的变量永远都是独一无二的 123456789&#123; // 声明 let a1=Symbol();//生成一个独一无二的值 let a2=Symbol(); console.log(a1===a2);//false let a3=Symbol.for('a3'); let a4=Symbol.for('a3'); console.log(a3===a4);//true&#125; Symbol 作用12345678910111213141516171819202122232425&#123; let a1=Symbol.for('abc'); let obj=&#123; [a1]:'123', 'abc':345, 'c':456 &#125;; console.log('obj',obj);//Object abc:345 c:456 Symbol(abc):"123" 这跟之前的abc不冲突 for(let [key,value] of Object.entries(obj))&#123; console.log('let of',key,value); &#125; // let of abc 345,let of c 456 拿不到a1（Symbol.for('abc')）的值 //getOwnPropertySymbols 只能拿到 Symbol.for('abc')的值 Object.getOwnPropertySymbols(obj).forEach(function(item)&#123; console.log(obj[item]);//123 &#125;) //Reflect.ownKeys(obj) 能返回了 所有的key 和value 值（包括Symbol.for('abc') 的值 ） Reflect.ownKeys(obj).forEach(function(item)&#123; console.log('ownkeys',item,obj[item]); &#125;)&#125;]]></content>
+      <categories>
+        <category>ES6</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ES6学习（8）- 对象扩展]]></title>
+    <url>%2F2019%2F08%2F21%2FES6-08-object%2F</url>
+    <content type="text"><![CDATA[简介表示法注意下列ES5，ES6代码的不同写法1234567891011121314151617181920212223242526272829&#123; // 简洁表示法 let o=1; let k=2; //es5的写法 let es5=&#123; o:o, k:k &#125;; //es6的写法 let es6=&#123; o, k &#125;; console.log(es5,es6); //es5中的方法 let es5_method=&#123; hello:function()&#123; console.log('hello'); &#125; &#125;; //es6中的方法 let es6_method=&#123; hello()&#123; console.log('hello'); &#125; &#125;; console.log(es5_method.hello(),es6_method.hello());&#125; 属性表示法123456789101112131415&#123; // 属性表达式 let a='b'; let es5_obj=&#123; a:'c', b:'c' &#125;; //key 值，表达式 let es6_obj=&#123; [a]:'c' &#125; console.log(es5_obj,es6_obj);&#125; es6_obj输出的值为 b:&#39;c&#39; 扩展运算符Object.is 判断是否相等Object.assign 浅拷贝Object.entries 对象的遍历12345678910111213&#123; // 新增API console.log('字符串',Object.is('abc','abc'),'abc'==='abc'); true true console.log('数组',Object.is([],[]),[]===[]);//false false //浅拷贝 console.log('拷贝',Object.assign(&#123;a:'a'&#125;,&#123;b:'b'&#125;)); let test=&#123;k:123,o:456&#125;; for(let [key,value] of Object.entries(test))&#123; console.log([key,value]); &#125;&#125; Object新增方法扩展运算符 12345678&#123; // 扩展运算符 // let &#123;a,b,...c&#125;=&#123;a:'test',b:'kill',c:'ddd',d:'ccc'&#125;; // c=&#123; // c:'ddd', // d:'ccc' // &#125;&#125;]]></content>
+      <categories>
+        <category>ES6</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ES6学习（7）- 函数扩展]]></title>
+    <url>%2F2019%2F08%2F21%2FES6-07-function%2F</url>
+    <content type="text"><![CDATA[参数默认值函数参数里边直接赋默认值，但是可以被重新赋值1234567&#123; function test(x, y = 'world')&#123; console.log('默认值',x,y); &#125; test('hello'); test('hello','kill');&#125; 强调：默认值的后边不能再有没有默认值的变量，比如在y = &#39;world&#39;后边添加个参数c，这样就会报错，如果写成c = &#39;www&#39;这样是可以的 作用域1234567&#123; let x='test'; function test2(x,y=x)&#123; console.log('作用域',x,y);//kill kill &#125; test2('kill');&#125; 如果test2()不赋值，那么输出为undefined undefined；但是如果把第一个参数x变为c，那么输出的值为 kill test，它会把上边x的值给y rest参数…;作用是把一系列的参数转换为一个数组 12345678&#123; function test3(...arg)&#123; for(let v of arg)&#123; console.log(&apos;rest&apos;,v);//rest 1,rest2,rest 3,rest 4,rest a, &#125; &#125; test3(1,2,3,4,&apos;a&apos;);&#125; 注意rest参数之后就不能有其他参数 扩展运算符rest的逆运算把数组拆成了离散的值 1234&#123; console.log(...[1,2,4]);//1,2,4 console.log(&apos;a&apos;,...[1,2,4]);//a,1,2,4&#125; 箭头函数 =&gt;先看下边箭头函数的代码：1234567&#123; let arrow = v =&gt; v*2; let arrow2 = () =&gt; 5; console.log(&apos;arrow&apos;,arrow(3));//arrow 6 console.log(arrow2());//5&#125; 上边第一个函数 的arrow为函数名，第二个v表示函数的参数；第三个=&gt;后边的表示执行的函数;第二个函数，如果箭头函数没有参数时 就写个() this绑定箭头函数中this的指向，指函数在定义是的指向的所在， ES5是函数在调用的时候的指向 注意作this绑定的时候要看特性，有事可用，有时勿用 尾调用尾调用存在于函数式编程的里边,主要能提升性能，主要针对函数嵌套123456789&#123; function tail(x)&#123; console.log(&apos;tail&apos;,x); &#125; function fx(x)&#123; return tail(x) &#125; fx(123)// tail 123&#125;]]></content>
+      <categories>
+        <category>ES6</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ES6学习（6）- 数组扩展]]></title>
+    <url>%2F2019%2F08%2F21%2FES6-06-array%2F</url>
+    <content type="text"><![CDATA[Array.of()Array.of()把一组数据变量转换成数据类型,如果里边不传任何参数，那么输出的就是一个空数组1234567&#123; let arr = Array.of(3,4,7,9,11); console.log('arr=',arr);//[3,4,7,9,11] let empty=Array.of(); console.log('empty',empty);//[]&#125; Array.from()Array.from() 把一些伪数组、集合转换为数组；为了演示这个功能 需要在在HTML里边添加几个标签123&lt;p&gt;张三&lt;/p&gt;&lt;p&gt;李四&lt;/p&gt;&lt;p&gt;王五&lt;/p&gt; 因为p是一个集合，需要把它转换为数组1234567891011&#123; let p=document.querySelectorAll('p'); let pArr=Array.from(p); pArr.forEach(function(item)&#123; console.log(item.textContent);//item.textContent；textContent 原生js获取dom节点文本内容的方法、属性 &#125;); //类似于Map()的映射的作用 console.log(Array.from([1,3,5],function(item)&#123;return item*2&#125;));//[2,6,10]&#125; 上边的Array.from()有两个参数，第一个为数组，第二个就相当于map 的作用，把里边每个元素都乘以2 Array.fill() 填充数组把数组内部的值全部替换成需要的值 123456&#123; console.log('fill-7',[1,'a',undefined].fill(7));//[7,7,7] //第一个参数表示替换的内容，第二个表示替换的起始位置，第三个参数为换的长度 console.log('fill,pos',['a','b','c'].fill(7,1,3));&#125; .keys()，.values()，.entries() .keys() 返回所有数组的下标（索引） .values() 返回数组的值 （现在存在兼容性问题，需要插件polylily） .entries() 既能取到索引，也能取到值 123456789101112&#123; for(let index of ['1','c','ks'].keys())&#123; console.log('keys',index);//0,1,2 &#125; for(let value of ['1','c','ks'].values())&#123; console.log('values',value);//1,c,ks &#125; for(let [index,value] of ['1','c','ks'].entries())&#123; console.log('values',index,value);// values 0 1 , values 1 c, values 2 ks &#125;&#125; .copyWithin()有三个参数；第一个参数为从那个位置开始替换，第二个值为读取数据的位置，第三个值为截至位置(使用频率不高) 123&#123; console.log([1,2,3,4,5].copyWithin(0,3,4));//[4,2,3,4,5]&#125; .find()，.findIndex()查找 .find() 内部可以写条件，只找出符合条件的第一个就停止查找了 .findIndex() 返回 找出符合条件的下标（索引） 1234&#123; console.log([1,2,3,4,5,6].find(function(item)&#123;return item&gt;3&#125;));//4 console.log([1,2,3,4,5,6].findIndex(function(item)&#123;return item&gt;3&#125;));//3&#125; .includes()判断数组中是否包含某个值 1234&#123; console.log('number',[1,2,NaN].includes(1));//number true 说明数组中包含1，也没有判断数组中有NaN console.log('number',[1,2,NaN].includes(NaN)); //number true 表示NaN也能找到 &#125;]]></content>
+      <categories>
+        <category>ES6</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ES6学习（5）- 数值扩展]]></title>
+    <url>%2F2019%2F08%2F21%2FES6-05-numerical-expansion%2F</url>
+    <content type="text"><![CDATA[ES6 的 数值扩展 123456789101112131415161718192021222324252627282930313233343536373839404142434445&#123; console.log('B',0B111110111);//503； 二进制都是以'0B'开头，大小写都可以，后边跟二进制数字 console.log(0o767);//503 ；八进制是以'0o'开头后边跟八进制数字&#125;&#123; console.log('15',Number.isFinite(15));//15 true ;isFinite 判断有无群大；有尽 console.log('NaN',Number.isFinite(NaN));//NaN false console.log('1/0',Number.isFinite('true'/0));//1/0 false console.log('NaN',Number.isNaN(NaN));//NaN ture console.log('0',Number.isNaN(0));//0 false&#125;// Number.isInteger 判断是不是整数 &#123; console.log('25',Number.isInteger(25));//25 ture console.log('25.0',Number.isInteger(25.0));//25.0 ture console.log('25.1',Number.isInteger(25.1));//25.1 false console.log('25.1',Number.isInteger('25'));//25.1 false 不是数字&#125;&#123; console.log(Number.MAX_SAFE_INTEGER,Number.MIN_SAFE_INTEGER);//9007199254740991,-9007199254740991 判断最大值 最小值 console.log('10',Number.isSafeInteger(10));//ture 判断数是否安全范围的数 console.log('a',Number.isSafeInteger('a'));//false 不为数&#125;// Math.trunc(num) 判断带小数的整数部分 并返回&#123; console.log(4.1,Math.trunc(4.1));//4 console.log(4.9,Math.trunc(4.9));//4&#125;//Math.sign(num) 判断一个数到底为正数，负数，还是0&#123; console.log('-5',Math.sign(-5));//-5 -1 console.log('0',Math.sign(0));//0 0 console.log('5',Math.sign(5));//5 1 console.log('50',Math.sign('50'));//50 1 console.log('foo',Math.sign('foo'));//foo NaN (非数字)&#125;// Math.cbrt(num)立方根的计算 &#123; console.log('-1',Math.cbrt(-1));// -1 -1 console.log('8',Math.cbrt(8));//8 2&#125;]]></content>
+      <categories>
+        <category>ES6</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ES6学习（4）- 字符串扩展]]></title>
+    <url>%2F2019%2F08%2F21%2FES6-04-string-extension%2F</url>
+    <content type="text"><![CDATA[ES6的字符串扩展 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162636465666768697071727374757677787980818283&#123; console.log('a',`\u0061`); console.log('s',`\u20BB7`); console.log('s',`\u&#123;20BB7&#125;`);&#125;&#123; let s='𠮷'; console.log('length',s.length); console.log('0',s.charAt(0)); console.log('1',s.charAt(1)); console.log('at0',s.charCodeAt(0)); console.log('at1',s.charCodeAt(1)); let s1='𠮷a'; console.log('length',s1.length); console.log('code0',s1.codePointAt(0));//取第一个字符的码值 console.log('code0',s1.codePointAt(0).toString(16));//取第一个字符的码值，转换为16进制 console.log('code1',s1.codePointAt(1)); console.log('code2',s1.codePointAt(2));&#125;&#123; console.log(String.fromCharCode("0x20bb7"));//es5 console.log(String.fromCodePoint("0x20bb7"));//es6 通过码值返回字符串&#125;&#123; let str='\u&#123;20bb7&#125;abc'; for(let i=0;i&lt;str.length;i++)&#123; console.log('es5',str[i]); &#125; for(let code of str)&#123;//遍历输出字符串 console.log('es6',code); &#125;&#125;&#123; let str="string"; console.log('includes',str.includes("c"));//查看字符串中包含‘c’字符 console.log('start',str.startsWith('str'));//判断字符串是否以'str'起始 console.log('end',str.endsWith('ng'));//判断字符串是否以'ng'结束&#125;&#123; let str="abc"; console.log(str.repeat(2));//指定重复的次数，相当于字符串的复制粘贴&#125;//*模板字符串(很重要)&#123; let name="list"; let info="hello world"; let m=`i am $&#123;name&#125;,$&#123;info&#125;`;//`` 不是单引号'' ,是 键盘上数字1左边的字符 console.log(m);&#125;// 字符串补白 （es7,需要babel-polyfill插件）&#123; console.log('1'.padStart(2,'0'));//01，补白的作用（es7），第一个参数‘2’表示两位，在前边补个0 console.log('1'.padEnd(2,'0'));//10，补白的作用（es7），在后边补个0&#125;// 标签模板 ，1防止xss攻击时用这个模板，2处理多语言转换 &#123; let user=&#123; name:'list', info:'hello world' &#125;; console.log(abc`i am $&#123;user.name&#125;,$&#123;user.info&#125;`); function abc(s,v1,v2)&#123; console.log(s,v1,v2); return s+v1+v2 &#125;&#125;//.raw 对所有的\进行了转译&#123; console.log(String.raw`Hi\n$&#123;1+2&#125;`); console.log(`Hi\n$&#123;1+2&#125;`);&#125;]]></content>
+      <categories>
+        <category>ES6</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ES6学习（3）- 正则扩展]]></title>
+    <url>%2F2019%2F08%2F20%2FES6-03-regular-extension%2F</url>
+    <content type="text"><![CDATA[在 ES5 中，RegExp构造函数的参数有两种情况。第一种情况是，参数是字符串，这时第二个参数表示正则表达式的修饰符（flag）。12345&#123; // #构造函数# let regex = new RegExp('xyz', 'i'); //第一个参数是字符串，第二个是修饰符 let regex2 = new RegExp(/xyz/i); //第一个参数是正则表达式，不接受第二个参数，否则会报错&#125; 第二种情况是，参数是一个正则表示式，这时会返回一个原有正则表达式的拷贝123456789101112var regex = new RegExp(/xyz/i);// 等价于var regex = /xyz/i;``` 但是，ES5 不允许此时使用第二个参数添加修饰符，否则会报错。```jsvar regex = new RegExp(/xyz/, 'i');// Uncaught TypeError: Cannot supply flags when constructing one RegExp from another``` ES6 改变了这种行为。如果RegExp构造函数第一个参数是一个正则对象，那么可以使用第二个参数指定修饰符。而且，返回的正则表达式会忽略原有的正则表达式的修饰符，只使用新指定的修饰符。```jsnew RegExp(/abc/ig, 'i').flags // "i" 上面代码中，原有正则对象的修饰符是ig，它会被第二个参数i覆盖。 ES61234&#123; let regex3 = new RegExp(/abc/ig, 'i'); console.log(regex3.flags); //原有正则对象的修饰符是ig，它会被第二个参数i覆盖&#125; es6 允许 第一个参数为正则表达式，也有第二个参数，为修饰符，原有正则对象的修饰符是ig，所以它会被第二个参数i覆盖 更多参考]]></content>
+      <categories>
+        <category>ES6</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ES6学习（2）- 解构赋值]]></title>
+    <url>%2F2019%2F08%2F20%2FES6-02-destructuring%2F</url>
+    <content type="text"><![CDATA[数组类的解构赋值12345&#123; let a,b,rest; [a,b]=[1,2];//等价于 let a = 1,b = 2; console.log(a,b);&#125; 上边的[a,b]=[1,2];等价于 let a = 1,b = 2 ; 12345&#123;let a,b,rest;[a,b,...rest] = [1,2,3,4,5,6];console.log(a,b,rest);//1,2,[3,4,5,6]&#125; 上边的[a,b,...rest] = [1,2,3,4,5,6];等价于 12345&#123; let a,b,c,rest; [a,b,c=3]=[1,2]; console.log(a,b,c);&#125; 如果上边的c=3改为c,那么直接就是输出的c为undefined，所以 c=3防止没有配对成功时的undefined 123456&#123; let a=1; let b=2; [a,b]=[b,a]; console.log(a,b);//2,1&#125; 通过解构赋值 可以实现变量交换，不用es5里边需要中间值存储 12345678&#123; fucntion f()&#123; return [1,2] &#125; let a,b; [a,b]=f(); console.log(a,b);//1,2&#125; 这是一个重要的场景如果我们没有解构赋值，我们想取到第一个或者第二个元素，那么我们得用一个变量来接收这个函数运行的结果，然后通过索引返回0,1两个位置返回的值，这样写比较麻烦，用ES6 写就很方便 1234567891011121314151617&#123; function f()&#123; return [1,2,3,4,5] &#125; let a,b,c; [a,,,b]=f(); console.log(a,b);//1,4&#125;&#123; function f()&#123; return [1,2,3,4,5] &#125; let a,b,c; [a,,...b]=f(); console.log(a,b);//1,[3,4,5]&#125; ,是把中间的值忽略获取 ； 对象类解构赋值新建一个块作用域12345&#123; let a,b; (&#123;a,b&#125;=&#123;a:1;b:2;&#125;) console.log(a,b);//1,2&#125; 12345&#123; let o=&#123;p:42,q:true&#125;; let &#123;p,q&#125;=o; console.log(p,q);//42,true&#125; 对象的解构赋值的左右必须为对象1234&#123; let &#123;a=10,b=5&#125;=&#123;a:3&#125;; console.log(a,b);//3,5&#125; 1234567891011&#123; let metaData=&#123; title:'abc', test:[&#123; title:'test', desc:'description' &#125;] &#125; let &#123;title:esTitle,test:[&#123;title:cnTitle&#125;]&#125;=metaData; console.log(esTitle,cnTitle);//abc,test&#125;]]></content>
+      <categories>
+        <category>ES6</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ES6学习（1）-let,const]]></title>
+    <url>%2F2019%2F08%2F20%2FES6-01-let-const%2F</url>
+    <content type="text"><![CDATA[let作用域的概念12345678910function test()&#123; //var a = 1; for(let i =1;i&lt;3;i++)&#123; console.log(i); &#125; console.log(i);&#125;test();//1,2，i is not defined 块作用域 ：如果一个方法（函数）用大括号包裹起来 ，那么这就是块级作用域；let只在块级作用域内有效； ES6 是强制启用严格模式 （’use strict’） 12let a = 1;let a = 2; 强调：以上会报错 * 使用let不能重复声明变量 constconst 用来定义成常量，常量的作用是其值不能修改 (不严谨);声明的时候必须赋值； 如：123456fucntion last()&#123; const PI = 3.1415926; PI = 8; console.log(PI);&#125;last();//报错 “PI” is read-only 上边PI 的值改变了 ，所以报错const 也是有块级作用域 123456789fucntion last()&#123; const PI = 3.1415926; const k = &#123; a:1 &#125; k.b = 3; console.log(PI,k);&#125;last(); 上边 用const声明 k 为一个对象 ；对象是引用类型，对象本身是可以变的，k只是指向的是其不变的指针]]></content>
+      <categories>
+        <category>ES6</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>ES6</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[vue深度学习（6）- render 函数]]></title>
     <url>%2F2018%2F10%2F25%2Frender-function%2F</url>
     <content type="text"><![CDATA[render 研究方向 render机制 研究方法 条件渲染、列表渲染、update、模板、服务器渲染、渲染性能，如何编译，ast是什么 渲染函数 web页面渲染分四种方式 后端模板渲染： 指使用PHP等后端语言来生成页面，通常情况下，需要后端配合，混合项目开发。以前项目都这样搞，缺点大于优点 客户端渲染： 指使用 JS 来渲染页面大部分内容，后端资源都是通过ajax请求数据来渲染。代表是现在流行的 SPA 单页面应用； node中间层： 前后端分离，但优于前端直接请求接口从而产生的一系列问题。 比如可以用PHP写后端简单的接口，Node.js封装PHP接口，前端axios请求封装后的接口，将需要的数据返回到对应的view层页面，既解决了跨域问题（Node.js作为服务端，服务端没有跨域一说），同时又不需要配后端环境，只需要一个PHP接口 详细说明 服务端渲染（ssr）： 主要指的是ssr，在准确点说就是「同构渲染」指前后端共用 JS，首次渲染时使用 Node.js 来直出 HTML。一般来说同构渲染是介于前后端中的共有部分。 什么是render函数Render函数是Vue2.x版本新增的一个函数；使用虚拟dom来渲染节点提升性能，因为它是基于JavaScript计算。通过使用createElement(h)来创建dom节点。createElement是render的核心方法。其Vue编译的时候会把template里面的节点解析成虚拟dom； vue推荐在绝大多数情况下使用template来创建我们的HTML。然而在一些场景中，我们真的需要JavaScript的完全编程的能力，这就是render函数，它比template更接近编译器。 demo 在之前的Vue1.X版本中没有Virtual DOM,Vue2.0之后添加了此功能，而Virtual DOM 最后是通过render函数来生成模板页面vue 在new Vue()最后的渲染只认render 函数 所有的东西 html,template 都会编译成render函数 createElement 参数demo：123render (h) &#123; return h(&apos;div&apos;, &#123;&#125;, this.text)&#125; render函数里面的传参h就是Vue里面的createElement方法，return返回一个createElement方法，（官方文档：返回的其实不是一个实际的 DOM 元素。它更准确的名字可能是 createNodeDescription，因为它所包含的信息会告诉 Vue 页面上需要渲染什么样的节点，及其子节点。我们把这样的节点描述为“虚拟节点 (Virtual Node)”，也常简写它为“VNode”。“虚拟 DOM”是我们对由 Vue 组件树建立起来的整个 VNode 树的称呼。） 其中可以传三个参数： 第一个参数 {String | Object | Function} 表示可以传一个 HTML 标签字符串，组件选项对象，或者解析上述任何一种的一个 async 异步函数。必需参数； 第二个参数 {Object} 一个包含模板相关属性的数据对象，对象里面可以是我们组件上面的props，或者是事件之类的东西，你可以在 template 中使用这些特性。可选参数；data的对象： 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263 &#123; // 和`v-bind:class`一样的 API // 接收一个字符串、对象或字符串和对象组成的数组 'class': &#123; foo: true, bar: false &#125;, // 和`v-bind:style`一样的 API // 接收一个字符串、对象或对象组成的数组 style: &#123; color: 'red', fontSize: '14px' &#125;, // 普通的 HTML 特性 attrs: &#123; id: 'foo' &#125;, // 组件 props props: &#123; myProp: 'bar' &#125;, // DOM 属性 domProps: &#123; innerHTML: 'baz' &#125;, // 事件监听器基于 `on` // 所以不再支持如 `v-on:keyup.enter` 修饰器 // 需要手动匹配 keyCode。 on: &#123; click: this.clickHandler &#125;, // 仅用于组件，用于监听原生事件，而不是组件内部使用 // `vm.$emit` 触发的事件。 nativeOn: &#123; click: this.nativeClickHandler &#125;, // 自定义指令。注意，你无法对 `binding` 中的 `oldValue` // 赋值，因为 Vue 已经自动为你进行了同步。 directives: [ &#123; name: 'my-custom-directive', value: '2', expression: '1 + 1', arg: 'foo', modifiers: &#123; bar: true &#125; &#125; ], // 作用域插槽格式 // &#123; name: props =&gt; VNode | Array&lt;VNode&gt; &#125; scopedSlots: &#123; default: props =&gt; createElement('span', props.text) &#125;, // 如果组件是其他组件的子组件，需为插槽指定名称 slot: 'name-of-slot', // 其他特殊顶层属性 key: 'myKey', ref: 'myRef', // 如果你在渲染函数中向多个元素都应用了相同的 ref 名， // 那么 `$refs.myRef` 会变成一个数组。 refInFor: true&#125; 第三个参数 {String | Array} 子虚拟节点 (VNodes)，由 createElement() 构建而成， 也可以使用字符串来生成“文本虚拟节点”。可选参数。如： 123456789[ '先写一些文字', createElement('h1', '一则头条'), createElement(MyComponent, &#123; props: &#123; someProp: 'foobar' &#125; &#125;)] 使用render函数的结果和我们之前使用template解析出来的结果是一样的。render函数是发生在beforeMount和mounted之间的，这也从侧面说明了，在beforeMount的时候，$el还只是我们在HTML里面写的节点，然后到mounted的时候，它就把渲染出来的内容挂载到了DOM节点上。这中间的过程其实是执行了render function的内容。 在使用.vue文件开发的过程当中，我们在里面写了template模板，在经过了vue-loader的处理之后，就变成了render function，最终放到了vue-loader解析过的文件里面。这样做有什么好处呢？原因是由于在解析template变成render function的过程，是一个非常耗时的过程，vue-loader帮我们处理了这些内容之后，当我们在页面上执行vue代码的时候，效率会变得更高。 VNodes必须唯一组件树中的所有 VNodes 必须是唯一的。这意味着，下面的 render function 是无效的：1234567render: function (createElement) &#123; var myParagraphVNode = createElement('p', 'hi') return createElement('div', [ // 错误-重复的 VNodes myParagraphVNode, myParagraphVNode ])&#125; 如果你真的需要重复很多次的元素/组件，你可以使用工厂函数来实现。例如，下面这个例子 render 函数完美有效地渲染了 20 个相同的段落：1234567 render: function (createElement) &#123; return createElement('div', Array.apply(null, &#123; length: 20 &#125;).map(function () &#123; return createElement('p', 'hi') &#125;) )&#125; 使用JavaScript 代替模板功能只要在原生的 JavaScript 中可以轻松完成的操作，Vue 的 render 函数就不会提供专有的替代方法。比如，在 template 中使用的 v-if 和 v-for：1234&lt;ul v-if="items.length"&gt; &lt;li v-for="item in items"&gt;&#123;&#123; item.name &#125;&#125;&lt;/li&gt;&lt;/ul&gt;&lt;p v-else&gt;No items found.&lt;/p&gt; 这些都会在 render 函数中被 JavaScript 的 if/else 和 map 重写：12345678910props: ['items'],render: function (createElement) &#123; if (this.items.length) &#123; return createElement('ul', this.items.map(function (item) &#123; return createElement('li', item.name) &#125;)) &#125; else &#123; return createElement('p', 'No items found.') &#125;&#125; v-modelrender 函数中没有与 v-model 的直接对应 - 你必须自己实现相应的逻辑：1234567891011121314props: ['value'],render: function (createElement) &#123; var self = this return createElement('input', &#123; domProps: &#123; value: self.value &#125;, on: &#123; input: function (event) &#123; self.$emit('input', event.target.value) &#125; &#125; &#125;)&#125; 这就是深入底层的代价，但与 v-model 相比，这可以让你更好地控制交互细节。 事件&amp;案件修饰符对于 .passive、.capture 和 .once事件修饰符, Vue 提供了相应的前缀可以用于 on：Modifier(s) | Prefix|-|-|.passive | &amp;.capture| !.once| ~.capture.once or .once.capture | ~! 例如:12345on: &#123; '!click': this.doThisInCapturingMode, '~keyup': this.doThisOnce, '~!mouseover': this.doThisOnceInCapturingMode&#125; 对于其他的修饰符，前缀不是很重要，因为你可以在事件处理函数中使用事件方法：Modifier(s) | Equivalent in Handler|-|-|.stop | event.stopPropagation().prevent| event.preventDefault().self | if (event.target !== event.currentTarget) returnKeys: .enter, .13 | if (event.keyCode !== 13) return (change 13 to another key code for other key modifiers)Modifiers Keys: .ctrl, .alt, .shift, .meta | if (!event.ctrlKey) return (change ctrlKey to altKey, shiftKey, or metaKey, respectively)这里是一个使用所有修饰符的例子：12345678910111213141516on: &#123; keyup: function (event) &#123; // 如果触发事件的元素不是事件绑定的元素 // 则返回 if (event.target !== event.currentTarget) return // 如果按下去的不是 enter 键或者 // 没有同时按下 shift 键 // 则返回 if (!event.shiftKey || event.keyCode !== 13) return // 阻止 事件冒泡 event.stopPropagation() // 阻止该元素默认的 keyup 事件 event.preventDefault() // ... &#125;&#125; 插槽你可以通过 this.$slots 访问静态插槽的内容，得到的是一个 VNodes 数组：1234render: function (createElement) &#123; // `&lt;div&gt;&lt;slot&gt;&lt;/slot&gt;&lt;/div&gt;` return createElement('div', this.$slots.default)&#125; 也可以通过 this.$scopedSlots 访问作用域插槽，得到的是一个返回 VNodes 的函123456789props: ['message'],render: function (createElement) &#123; // `&lt;div&gt;&lt;slot :text="message"&gt;&lt;/slot&gt;&lt;/div&gt;` return createElement('div', [ this.$scopedSlots.default(&#123; text: this.message &#125;) ])&#125; 如果要用渲染函数向子组件中传递作用域插槽，可以利用 VNode 数据对象中的 scopedSlots 域：12345678910111213render: function (createElement) &#123; return createElement('div', [ createElement('child', &#123; // 在数据对象中传递 `scopedSlots` // 格式：&#123; name: props =&gt; VNode | Array&lt;VNode&gt; &#125; scopedSlots: &#123; default: function (props) &#123; return createElement('span', props.text) &#125; &#125; &#125;) ])&#125; ASTAST是指抽象语法树（abstract syntax tree），或者语法树（syntax tree），是源代码的抽象语法结构的树状表现形式。Vue在mount过程中，template会被编译成AST语法树。然后，经过generate（将AST语法树转化成render function字符串的过程）得到render函数，返回VNode。 源码分析编译相关的代码都在 compiler文件中 core/instance / render.js 中 observe - 响应式_ 在js中默认为是定义的私有属性 ，建议不要多次访问 (视频2-5， 2-6)platform/util/index.js 判断是否是render 还是template new watcher() 渲染 watcher (observer/watcher.js ) # Vue 的 _render 方法是实例的一个私有方法，它用来把实例渲染成一个虚拟 Node。它的定义在 src/core/instance/render.js 文件中：12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061//再此定义一个render私有方法 返回一个vnode，通过vm.$options拿到render函数Vue.prototype._render = function (): VNode &#123; const vm: Component = this const &#123; render, _parentVnode &#125; = vm.$options // 复位_render标志在插槽上用于重复的插槽检查 if (process.env.NODE_ENV !== 'production') &#123; for (const key in vm.$slots) &#123; // $flow-disable-line vm.$slots[key]._rendered = false &#125; &#125; if (_parentVnode) &#123; vm.$scopedSlots = _parentVnode.data.scopedSlots || emptyObject &#125; // 设置父vnode。这允许呈现函数访问占位符节点上的数据。 vm.$vnode = _parentVnode // render self let vnode try &#123; //利用call的方法 参数一当前上下文，vm._renderProxy再生产环境下 就是vm，也就是this 本身，开发环境是一个proxy 对象 vnode = render.call(vm._renderProxy, vm.$createElement) &#125; catch (e) &#123; handleError(e, vm, `render`) // 返回错误呈现结果， // 或先前的vnode，以防止呈现错误导致空白组件 /* istanbul ignore else */ if (process.env.NODE_ENV !== 'production') &#123; if (vm.$options.renderError) &#123; try &#123; vnode = vm.$options.renderError.call(vm._renderProxy, vm.$createElement, e) &#125; catch (e) &#123; handleError(e, vm, `renderError`) vnode = vm._vnode &#125; &#125; else &#123; vnode = vm._vnode &#125; &#125; else &#123; vnode = vm._vnode &#125; &#125; // 上边 会返回一个 vnode ， $options 这个函数可以自己写 ，也可以通过编译生成 // 如果呈现函数出错，返回空vnode if (!(vnode instanceof VNode)) &#123; if (process.env.NODE_ENV !== 'production' &amp;&amp; Array.isArray(vnode)) &#123; warn( 'Multiple root nodes returned from render function. Render function ' + 'should return a single root node.', vm ) &#125; vnode = createEmptyVNode() &#125; // set parent vnode.parent = _parentVnode return vnode&#125; 这段代码最关键的是 render 方法的调用，我们在平时的开发工作中手写 render 方法的场景比较少，而写的比较多的是 template 模板，在之前的 mounted 方法的实现中，会把 template 编译成 render 方法，但这个编译过程是非常复杂的，我们不打算在这里展开讲，之后会专门花一个章节来分析 Vue 的编译过程。 在 Vue 的官方文档中介绍了 render 函数的第一个参数是 createElement，那么结合之前的例子： 123&lt;div id="app"&gt; &#123;&#123; message &#125;&#125;&lt;/div&gt; 相当于我们编写如下 render 函数：12345678910111213var vm = new Vue(&#123; el: '#app', render (createElement) &#123; return createElement('div', &#123; attrs: &#123; id: 'app' &#125; &#125;, this.message) &#125;, data () &#123; return message: 'Hello Vue!' &#125;&#125;) 再回到 _render 函数中的 render方法的调用： 1vnode = render.call(vm._renderProxy, vm.$createElement) 可以看到，render 函数中的 createElement 方法就是 vm.$createElement 方法：123456789export function initRender (vm: Component) &#123; // ... //将createElement fn绑定到这个实例，这样我们就可以在其中获得适当的呈现上下文。 // args顺序:标签、数据、子元素、normalizationType、alwaysNormalize内部版本由模板编译的呈现函数使用 vm._c = (a, b, c, d) =&gt; createElement(vm, a, b, c, d, false) //规范化通常应用于公共版本，用于用户编写的呈现函数。 //手写render函数 创建的方法 vm.$createElement = (a, b, c, d) =&gt; createElement(vm, a, b, c, d, true)&#125; 实际上，vm.$createElement 方法定义是在执行 initRender 方法的时候，可以看到除了 vm.$createElement 方法，还有一个 vm._c 方法，它是被模板编译成的 render 函数使用，而 vm.$createElement 是用户手写 render 方法使用的， 这俩个方法支持的参数相同，并且内部都调用了 createElement 方法。 总结 render方法的实质就是生成template模板； 通过调用一个方法来生成，而这个方法是通过render方法的参数传递给它的； 这个方法有三个参数，分别提供标签名，标签相关属性，标签内部的html内容 通过这三个参数，可以生成一个完整的模板 备注：render方法可以使用JSX语法，但需要Babel plugin插件；render方法里的第三个参数可以使用函数来生成多个组件（特别是如果他们相同的话），只要生成结果是一个数组，且数组元素都是VNode即可； 注意：render函数室友限制的，Vue.js 2.X支持，但是1.X无法使用。 vm._render最终是通过执行 createElement 方法并返回的是 vnode，它是一个虚拟 Node。Vue 2.0 相比 Vue 1.0 最大的升级就是利用了 Virtual DOM。因此在分析 createElement 的实现前，我们先了解一下 Virtual DOM 的概念。 [参考博客]vue Render函数进阶理解Vue中的Render渲染函数(一) Vue基础个人总结，条件渲染，列表渲染，组件等如何理解Vue的render函数的具体用法Vue2.x中的Render函数用jsx写vue组件]]></content>
@@ -92,19 +313,6 @@
         <tag>路由</tag>
         <tag>模块</tag>
         <tag>依赖注入</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[ES6学习【一】let,const]]></title>
-    <url>%2F2017%2F12%2F25%2Fes6-let-const%2F</url>
-    <content type="text"><![CDATA[let作用域的概念12345678function test()&#123; //var a = 1; for(let i =1;i&lt;3;i++)&#123; console.log(i); &#125; console.log(i);&#125;test();//1,2，i is not defined 块作用域 ：如果一个方法（函数）用大括号包裹起来 ，那么这就是块级作用域；let只在块级作用域内有效；ES6 是强制启用严格模式 （’use strict’） 12let a = 1;let a = 2; 强调：以上会报错 * 使用let不能重复声明变量 constconst 用来定义成常量，常量的作用是其值不能修改 (不严谨);声明的时候必须赋值； 如：123456fucntion last()&#123; const PI = 3.1415926; PI = 8; console.log(PI);&#125;last();//报错 “PI” is read-only 上边PI 的值改变了 ，所以报错const 也是有块级作用域 123456789fucntion last()&#123; const PI = 3.1415926; const k = &#123; a:1 &#125; k.b = 3; console.log(PI,k);&#125;last(); 上边 用const声明 k 为一个对象 ；对象是引用类型，对象本身是可以变的，k只是指向的是其不变的指针]]></content>
-      <categories>
-        <category>ECMAScript2015</category>
-      </categories>
-      <tags>
-        <tag>ES6</tag>
-        <tag>let</tag>
-        <tag>const</tag>
       </tags>
   </entry>
   <entry>
@@ -323,8 +531,8 @@
         <category>web</category>
       </categories>
       <tags>
-        <tag>github</tag>
         <tag>web</tag>
+        <tag>github</tag>
         <tag>git</tag>
       </tags>
   </entry>
@@ -393,15 +601,15 @@
         <category>web</category>
       </categories>
       <tags>
+        <tag>web</tag>
         <tag>hexo</tag>
         <tag>github</tag>
-        <tag>web</tag>
       </tags>
   </entry>
   <entry>
     <title><![CDATA[这是我的第一篇Hexo博客]]></title>
     <url>%2F2016%2F10%2F21%2FMy-New-Post%2F</url>
-    <content type="text"><![CDATA[一天不独处，我就会变得虚弱。我不以孤独为荣，但我以此为生 布考斯基 这是我的第一篇博客，我现在正在熟悉Hexo,所使用的主题是NexT,我觉得这个主题简洁大方，而且里边的缓动效果特别舒服。 我以后会不定时的在这上边更新一些博客，什么类型的都有，写给自己看，写给多年后的自己看。 加油， 每天进步一点，不断努力，终会取得不错的成绩！]]></content>
+    <content type="text"><![CDATA[一天不独处，我就会变得虚弱。我不以孤独为荣，但我以此为生布考斯基 这是我的第一篇博客，我现在正在熟悉Hexo,所使用的主题是NexT,我觉得这个主题简洁大方，而且里边的缓动效果特别舒服。 我以后会不定时的在这上边更新一些博客，什么类型的都有，写给自己看，写给多年后的自己看。 加油， 每天进步一点，不断努力，终会取得不错的成绩！]]></content>
       <categories>
         <category>个人随写</category>
       </categories>

@@ -182,34 +182,34 @@
 <ol>
 <li>浏览器：</li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Window &#123;speechSynthesis: SpeechSynthesis, caches: CacheStorage, localStorage: Storage, sessionStorage: Storage, webkitStorageInfo: DeprecatedStorageInfo…&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">// Window &#123;speechSynthesis: SpeechSynthesis, caches: CacheStorage, localStorage: Storage, sessionStorage: Storage, webkitStorageInfo: DeprecatedStorageInfo…&#125;</span></span><br></pre></td></tr></table></figure>
 <ol start="2">
 <li>node：</li>
 </ol>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// global</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">// global</span></span><br></pre></td></tr></table></figure>
 <p>可以看到打印出了 <code>global</code> 对象；</p>
 <p><strong> 总结 </strong>：在全局作用域中它的 <code>this</code> 执行当前的全局对象（浏览器端是 <code>Window</code>，<code>node</code> 中是 <code>global</code>）。</p>
 <a id="more"></a>
 <p>函数中执行</p>
 <blockquote>
 <h3 id="纯粹的函数调用"><a href="#纯粹的函数调用" class="headerlink" title="纯粹的函数调用"></a>纯粹的函数调用</h3></blockquote>
-<p>这是最普通的函数使用方法了：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">test();</span><br><span class="line"> </span><br><span class="line"><span class="comment">// Window &#123;speechSynthesis: SpeechSynthesis, caches: CacheStorage, localStorage: Storage, sessionStorage: Storage, webkitStorageInfo: DeprecatedStorageInfo…&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>这是最普通的函数使用方法了：<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">test();</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">// Window &#123;speechSynthesis: SpeechSynthesis, caches: CacheStorage, localStorage: Storage, sessionStorage: Storage, webkitStorageInfo: DeprecatedStorageInfo…&#125;</span></span><br></pre></td></tr></table></figure></p>
 <p>我们可以看到，一个函数被直接调用的时候，属于全局调用，这时候它的 <code>this</code> 指向 全局对象；</p>
 <blockquote>
 <h3 id="严格模式-‘use-strict’"><a href="#严格模式-‘use-strict’" class="headerlink" title="严格模式 ‘use strict’;"></a>严格模式 ‘use strict’;</h3></blockquote>
-<p>如果在严格模式的情况下执行纯粹的函数调用，那么这里的的 <code>this</code> 并不会指向全局，而是 <code>undefined</code>，这样的做法是为了消除 js 中一些不严谨的行为：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">test();</span><br><span class="line"> </span><br><span class="line"><span class="comment">// undefined</span></span><br></pre></td></tr></table></figure></p>
-<p>当然，把它放在一个立即执行函数中会更好，避免了污染全局：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="meta">    "use strict"</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;)();</span><br><span class="line"> </span><br><span class="line"><span class="comment">// undefined</span></span><br><span class="line"><span class="string">`</span></span><br></pre></td></tr></table></figure></p>
+<p>如果在严格模式的情况下执行纯粹的函数调用，那么这里的的 <code>this</code> 并不会指向全局，而是 <code>undefined</code>，这样的做法是为了消除 js 中一些不严谨的行为：<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">'use strict'</span>;</span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">test();</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">// undefined</span></span><br></pre></td></tr></table></figure></p>
+<p>当然，把它放在一个立即执行函数中会更好，避免了污染全局：<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>)</span>&#123;</span><br><span class="line"><span class="hljs-meta">    "use strict"</span>;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);</span><br><span class="line">&#125;)();</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">// undefined</span></span><br><span class="line"><span class="hljs-string">`</span></span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <h3 id="作为对象的方法调用"><a href="#作为对象的方法调用" class="headerlink" title="作为对象的方法调用"></a>作为对象的方法调用</h3></blockquote>
-<p>当一个函数被当作一个对象的方法调用的时候：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'qiutc'</span>,</span><br><span class="line">    foo: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">obj.foo();</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 'qiutc'</span></span><br></pre></td></tr></table></figure></p>
+<p>当一个函数被当作一个对象的方法调用的时候：<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="hljs-string">'qiutc'</span>,</span><br><span class="line">    foo: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">obj.foo();</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">// 'qiutc'</span></span><br></pre></td></tr></table></figure></p>
 <p>这时候，<code>this</code> 指向当前的这个对象；</p>
-<p>当然，我们还可以这么做：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'qiutc'</span>,</span><br><span class="line">    foo: test</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">obj.foo();</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 'qiutc'</span></span><br></pre></td></tr></table></figure></p>
+<p>当然，我们还可以这么做：<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>.name);</span><br><span class="line">&#125;</span><br><span class="line"><span class="hljs-keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="hljs-string">'qiutc'</span>,</span><br><span class="line">    foo: test</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">obj.foo();</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">// 'qiutc'</span></span><br></pre></td></tr></table></figure></p>
 <p>同样不变，因为在 js 中一切都是对象，函数也是一个对象，对于 <code>test</code> ，它只是一个函数名，函数的引用，它指向这个函数，当 <code>foo = test</code>，<code>foo</code> 同样也指向了这个函数。</p>
-<p>如果把对象的方法赋值给一个变量，然后直接调用这个变量呢：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'qiutc'</span>,</span><br><span class="line">    foo: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> test = obj.foo;</span><br><span class="line">test();</span><br><span class="line"> </span><br><span class="line"><span class="comment">// Window</span></span><br></pre></td></tr></table></figure></p>
+<p>如果把对象的方法赋值给一个变量，然后直接调用这个变量呢：<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="hljs-string">'qiutc'</span>,</span><br><span class="line">    foo: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-keyword">var</span> test = obj.foo;</span><br><span class="line">test();</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">// Window</span></span><br></pre></td></tr></table></figure></p>
 <p>可以看到，这时候 <code>this</code> 执行了全局，当我们把 <code>test = obj.foo</code> ，<code>test</code> 直接指向了一个函数的引用，这时候，其实和 obj 这个对象没有关系了，所以，它是被当作一个普通函数来直接调用，因此，this 指向全局对象。</p>
 <blockquote>
 <h3 id="一些坑"><a href="#一些坑" class="headerlink" title="一些坑"></a>一些坑</h3></blockquote>
-<p>我们经常在回调函数里面会遇到一些坑：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'qiutc'</span>,</span><br><span class="line">    foo: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    foo2: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">        setTimeout(<span class="keyword">this</span>.foo, <span class="number">1000</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">obj.foo2();</span><br></pre></td></tr></table></figure></p>
+<p>我们经常在回调函数里面会遇到一些坑：<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="hljs-string">'qiutc'</span>,</span><br><span class="line">    foo: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    foo2: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);</span><br><span class="line">        setTimeout(<span class="hljs-keyword">this</span>.foo, <span class="hljs-number">1000</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">obj.foo2();</span><br></pre></td></tr></table></figure></p>
 <p>执行这段代码我们会发现两次打印出来的 <code>this</code> 是不一样的：</p>
 <p>第一次是 <code>foo2</code> 中直接打印 <code>this</code>，这里指向 <code>obj</code> 这个对象，我们毋庸置疑；</p>
 <p>但是在 <code>setTimeout</code> 中执行的 <code>this.foo</code> ，却指向了全局对象，这里不是把它当作函数的方法使用吗？这一点经常让很多初学者疑惑；</p>
@@ -218,11 +218,11 @@
 <blockquote>
 <p>解决</p>
 </blockquote>
-<p>为了解决这个问题，我们可以利用 <strong> 闭包 </strong> 的特性来处理：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'qiutc'</span>,</span><br><span class="line">    foo: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    foo2: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">        <span class="keyword">var</span> _this = <span class="keyword">this</span>;</span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>);  <span class="comment">// Window</span></span><br><span class="line">            <span class="built_in">console</span>.log(_this);  <span class="comment">// Object &#123;name: "qiutc"&#125;</span></span><br><span class="line">        &#125;, <span class="number">1000</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">obj.foo2();</span><br></pre></td></tr></table></figure></p>
+<p>为了解决这个问题，我们可以利用 <strong> 闭包 </strong> 的特性来处理：<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="hljs-string">'qiutc'</span>,</span><br><span class="line">    foo: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    foo2: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);</span><br><span class="line">        <span class="hljs-keyword">var</span> _this = <span class="hljs-keyword">this</span>;</span><br><span class="line">        setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">            <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);  <span class="hljs-comment">// Window</span></span><br><span class="line">            <span class="hljs-built_in">console</span>.log(_this);  <span class="hljs-comment">// Object &#123;name: "qiutc"&#125;</span></span><br><span class="line">        &#125;, <span class="hljs-number">1000</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">obj.foo2();</span><br></pre></td></tr></table></figure></p>
 <p>可以看到直接用 <code>this</code> 仍然是 <code>Window</code>；因为 <code>foo2</code> 中的 <code>this</code> 是指向 <code>obj</code>，我们可以先用一个变量 <code>_this</code> 来储存，然后在回调函数中使用<code>_this</code>，就可以指向当前的这个对象了；</p>
 <blockquote>
 <h3 id="setTimeout-的另一个坑"><a href="#setTimeout-的另一个坑" class="headerlink" title="setTimeout 的另一个坑"></a>setTimeout 的另一个坑</h3></blockquote>
-<p>之前啊说过，如果直接执行回调函数而没有绑定作用域，那么它的 <code>this</code> 是指向全局对象(<code>window</code>)，在严格模式下会指向 <code>undefined</code>，然而在 <code>setTimeout</code> 中的回调函数在严格模式下却表现出不同：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">'use strict'</span>;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">setTimeout(foo, <span class="number">1</span>);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// window</span></span><br></pre></td></tr></table></figure></p>
+<p>之前啊说过，如果直接执行回调函数而没有绑定作用域，那么它的 <code>this</code> 是指向全局对象(<code>window</code>)，在严格模式下会指向 <code>undefined</code>，然而在 <code>setTimeout</code> 中的回调函数在严格模式下却表现出不同：<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-meta">'use strict'</span>;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">setTimeout(foo, <span class="hljs-number">1</span>);</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">// window</span></span><br></pre></td></tr></table></figure></p>
 <p>按理说我们加了严格模式，<code>foo</code> 调用也没有指定 <code>this</code>，应该是出来 <code>undefined</code>，但是这里仍然出现了全局对象，难道是严格模式失效了吗？</p>
 <p>并不，即使在严格模式下，<code>setTimeout</code> 方法在调用传入函数的时候，如果这个函数没有指定了的 <code>this</code>，那么它会做一个隐式的操作—-自动地注入全局上下文，等同于调用 <code>foo.apply(window)</code> 而非 <code>foo()</code>；</p>
 <p>当然，如果我们在传入函数的时候已经指定 this，那么就不会被注入全局对象，比如： <code>setTimeout(foo.bind(obj), 1);</code>；</p>
@@ -230,14 +230,14 @@
 <blockquote>
 <h3 id="作为一个构造函数使用"><a href="#作为一个构造函数使用" class="headerlink" title="作为一个构造函数使用"></a>作为一个构造函数使用</h3></blockquote>
 <p>在 <code>js</code> 中，为了实现类，我们需要定义一些构造函数，在调用一个构造函数的时候需要加上 <code>new</code> 这个关键字：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person(<span class="string">'qiutc'</span>);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// Person &#123;name: "qiutc"&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params">name</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.name = name;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-keyword">var</span> p = <span class="hljs-keyword">new</span> Person(<span class="hljs-string">'qiutc'</span>);</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">// Person &#123;name: "qiutc"&#125;</span></span><br></pre></td></tr></table></figure>
 <p>我们可以看到当作构造函数调用时，<code>this</code> 指向了这个构造函数调用时候实例化出来的对象；</p>
-<p>当然，构造函数其实也是一个函数，如果我们把它当作一个普通函数执行，这个 <code>this</code> 仍然执行全局：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> p = Person(<span class="string">'qiutc'</span>);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// Window</span></span><br></pre></td></tr></table></figure></p>
+<p>当然，构造函数其实也是一个函数，如果我们把它当作一个普通函数执行，这个 <code>this</code> 仍然执行全局：<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params">name</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.name = name;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-keyword">var</span> p = Person(<span class="hljs-string">'qiutc'</span>);</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">// Window</span></span><br></pre></td></tr></table></figure></p>
 <p>其区别在于，如何调用函数（<code>new</code>）。</p>
 <blockquote>
 <h3 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h3></blockquote>
 <p>在 ES6 的新规范中，加入了箭头函数，它和普通函数最不一样的一点就是<code>this</code> 的指向了，还记得在上文中（<a href="http://www.wdshare.org/article/57cce58874cf8e270b2c5346#解决" target="_blank" rel="noopener">作为对象的方法调用-一些坑-解决</a>）我们使用闭包来解决 <code>this</code> 的指向问题吗，如果用上了箭头函数就可以更完美的解决了：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'qiutc'</span>,</span><br><span class="line">    foo: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    foo2: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">        setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="keyword">this</span>);  <span class="comment">// Object &#123;name: "qiutc"&#125;</span></span><br><span class="line">        &#125;, <span class="number">1000</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">obj.foo2();</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="hljs-string">'qiutc'</span>,</span><br><span class="line">    foo: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    foo2: <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);</span><br><span class="line">        setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);  <span class="hljs-comment">// Object &#123;name: "qiutc"&#125;</span></span><br><span class="line">        &#125;, <span class="hljs-number">1000</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">obj.foo2();</span><br></pre></td></tr></table></figure>
 <p>可以看到，在 <code>setTimeout</code> 执行的函数中，本应该打印出在 <code>Window</code>，但是在这里 <code>this</code> 却指向了 <code>obj</code>，原因就在于，给 <code>setTimeout</code> 传入的函数（参数）是一个箭头函数：</p>
 <p>函数体内的<code>this</code>对象，就是定义时所在的对象，而不是使用时所在的对象。</p>
 <p>根据例子我们理解一下这句话：</p>
@@ -248,41 +248,41 @@
 <ul>
 <li>call</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fun.call(thisArg[, arg1[, arg2[, ...]]])</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fun.call(thisArg[, arg1[, arg2[, ...]]])</span><br></pre></td></tr></table></figure>
 <p>它会立即执行函数，第一个参数是指定执行函数中 <code>this</code> 的上下文，后面的参数是执行函数需要传入的参数；</p>
 <ul>
 <li>apply</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fun.apply(thisArg[, [arg1, arg2, ...]])</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fun.apply(thisArg[, [arg1, arg2, ...]])</span><br></pre></td></tr></table></figure>
 <p>它会立即执行函数，第一个参数是指定执行函数中 <code>this</code> 的上下文，第二个参数是一个数组，是传给执行函数的参数（与 <code>call</code> 的区别）；</p>
 <ul>
 <li>bind</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = fun.bind(thisArg[, arg1[, arg2[, ...]]]);</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> foo = fun.bind(thisArg[, arg1[, arg2[, ...]]]);</span><br></pre></td></tr></table></figure>
 <p>它不会执行函数，而是返回一个新的函数，这个新的函数被指定了 <code>this</code> 的上下文，后面的参数是执行函数需要传入的参数；</p>
 <p>这三个函数其实大同小异，总的目的就是去指定一个函数的上下文（<code>this</code>），我们以 <code>call</code> 函数为例；</p>
 <blockquote>
-<h3 id="为一个普通函数指定-this"><a href="#为一个普通函数指定-this" class="headerlink" title="为一个普通函数指定 this"></a>为一个普通函数指定 this</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'qiutc'</span></span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">foo.call(obj);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// Object &#123;name: "qiutc"&#125;</span></span><br></pre></td></tr></table></figure>
+<h3 id="为一个普通函数指定-this"><a href="#为一个普通函数指定-this" class="headerlink" title="为一个普通函数指定 this"></a>为一个普通函数指定 this</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="hljs-string">'qiutc'</span></span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">foo</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">foo.call(obj);</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">// Object &#123;name: "qiutc"&#125;</span></span><br></pre></td></tr></table></figure>
 </blockquote>
 <p>可以看到，在执行 <code>foo.call(obj)</code> 的时候，函数内的 <code>this</code> 指向了 <code>obj</code> 这个对象，成功；</p>
 <blockquote>
 <h3 id="为对象中的方法指定一个-this"><a href="#为对象中的方法指定一个-this" class="headerlink" title="为对象中的方法指定一个 this"></a>为对象中的方法指定一个 this</h3></blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'qiutc'</span>,</span><br><span class="line">    foo: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> obj2 = &#123;</span><br><span class="line">    name: <span class="string">'tcqiu222222'</span></span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">obj.foo.call(obj2);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// Object &#123;name: "tcqiu222222"&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="hljs-string">'qiutc'</span>,</span><br><span class="line">    foo: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">        <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-keyword">var</span> obj2 = &#123;</span><br><span class="line">    name: <span class="hljs-string">'tcqiu222222'</span></span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">obj.foo.call(obj2);</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">// Object &#123;name: "tcqiu222222"&#125;</span></span><br></pre></td></tr></table></figure>
 <p>可以看到，执行函数的时候这里的 <code>this</code> 指向了 <code>obj2</code>，成功；</p>
 <blockquote>
-<h3 id="为构造函数指定-this"><a href="#为构造函数指定-this" class="headerlink" title="为构造函数指定 this"></a>为构造函数指定 this</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'qiutc2222222'</span></span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person.call(obj, <span class="string">'qiutc'</span>);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// Uncaught TypeError: Person.call is not a constructor(…)</span></span><br></pre></td></tr></table></figure>
+<h3 id="为构造函数指定-this"><a href="#为构造函数指定-this" class="headerlink" title="为构造函数指定 this"></a>为构造函数指定 this</h3><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params">name</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.name = name;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="hljs-string">'qiutc2222222'</span></span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-keyword">var</span> p = <span class="hljs-keyword">new</span> Person.call(obj, <span class="hljs-string">'qiutc'</span>);</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">// Uncaught TypeError: Person.call is not a constructor(…)</span></span><br></pre></td></tr></table></figure>
 </blockquote>
 <p>这里报了个错，原因是我们去 <code>new</code> 了 <code>Person.call</code> 函数，而非 <code>Person</code> ，这里的函数不是一个构造函数；</p>
 <p>换成 <code>bind</code> 试试：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'qiutc2222222'</span></span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> Person2 = Person.bind(obj);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person2(<span class="string">'qiutc'</span>);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// Person &#123;name: "qiutc"&#125;</span></span><br><span class="line"> </span><br><span class="line"><span class="built_in">console</span>.log(obj);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// Object &#123;name: "qiutc2222222"&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params">name</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.name = name;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="hljs-string">'qiutc2222222'</span></span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-keyword">var</span> Person2 = Person.bind(obj);</span><br><span class="line"> </span><br><span class="line"><span class="hljs-keyword">var</span> p = <span class="hljs-keyword">new</span> Person2(<span class="hljs-string">'qiutc'</span>);</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">// Person &#123;name: "qiutc"&#125;</span></span><br><span class="line"> </span><br><span class="line"><span class="hljs-built_in">console</span>.log(obj);</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">// Object &#123;name: "qiutc2222222"&#125;</span></span><br></pre></td></tr></table></figure>
 <p>打印出来的是 <code>Person</code> 实例化出来的对象，而和 <code>obj</code> 没有关系，而 <code>obj</code> 也没有发生变化，说明，我们给 <code>Person</code> 指定 <code>this</code> 上下文并没有生效；</p>
 <p>因此可以得出：<strong>  使用 <code>bind</code> 给一个构造函数指定 <code>this</code>，在 <code>new</code> 这个构造函数的时候，<code>bind</code> 函数所指定的 <code>this</code> 并不会生效； </strong></p>
 <p>当然 <code>bind</code> 不仅可以指定<code>this</code> ，还能传入参数，我们来试试这个操作：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.name = name;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'qiutc2222222'</span></span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> Person2 = Person.bind(obj, <span class="string">'qiutc111111'</span>);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person2(<span class="string">'qiutc'</span>);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// Person &#123;name: "qiutc111111"&#125;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Person</span>(<span class="hljs-params">name</span>) </span>&#123;</span><br><span class="line">    <span class="hljs-keyword">this</span>.name = name;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="hljs-string">'qiutc2222222'</span></span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="hljs-keyword">var</span> Person2 = Person.bind(obj, <span class="hljs-string">'qiutc111111'</span>);</span><br><span class="line"> </span><br><span class="line"><span class="hljs-keyword">var</span> p = <span class="hljs-keyword">new</span> Person2(<span class="hljs-string">'qiutc'</span>);</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">// Person &#123;name: "qiutc111111"&#125;</span></span><br></pre></td></tr></table></figure>
 <p>可以看到，虽然指定 <code>this</code> 不起作用，但是传入参数还是起作用了；</p>
 <blockquote>
 <h3 id="为箭头函数指定-this"><a href="#为箭头函数指定-this" class="headerlink" title="为箭头函数指定 this"></a>为箭头函数指定 this</h3></blockquote>
-<p>我们来定义一个全局下的箭头函数，因此这个箭头函数中的 this 必然会指向全局对象，如果用 call 方法改变 this 呢：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> afoo = <span class="function">(<span class="params">a</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">afoo(<span class="number">1</span>);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 1</span></span><br><span class="line"><span class="comment">// Window</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'qiutc'</span></span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">afoo.call(obj, <span class="number">2</span>);</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 2</span></span><br><span class="line"><span class="comment">// Window</span></span><br></pre></td></tr></table></figure></p>
+<p>我们来定义一个全局下的箭头函数，因此这个箭头函数中的 this 必然会指向全局对象，如果用 call 方法改变 this 呢：<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">var</span> afoo = <span class="hljs-function">(<span class="hljs-params">a</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(a);</span><br><span class="line">    <span class="hljs-built_in">console</span>.log(<span class="hljs-keyword">this</span>);</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line">afoo(<span class="hljs-number">1</span>);</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">// 1</span></span><br><span class="line"><span class="hljs-comment">// Window</span></span><br><span class="line"> </span><br><span class="line"><span class="hljs-keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="hljs-string">'qiutc'</span></span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line">afoo.call(obj, <span class="hljs-number">2</span>);</span><br><span class="line"> </span><br><span class="line"><span class="hljs-comment">// 2</span></span><br><span class="line"><span class="hljs-comment">// Window</span></span><br></pre></td></tr></table></figure></p>
 <p>可以看到，这里的<code>call</code> 指向 <code>this</code> 的操作并没有成功，所以可以得出：<strong> 箭头函数中的 <code>this</code> 在定义它的时候已经决定了（执行定义它的作用域中的 <code>this</code>），与如何调用以及在哪里调用它无关，包括 (<code>call, apply, bind</code>) 等操作都无法改变它的 <code>this</code> </strong>。</p>
 <p>只要记住箭头函数大法好，不变的 <code>this</code>。</p>
 <h6 id="文章来源qiutc-me，如有侵权请联系进行删除，谢谢"><a href="#文章来源qiutc-me，如有侵权请联系进行删除，谢谢" class="headerlink" title="文章来源qiutc.me，如有侵权请联系进行删除，谢谢"></a>文章来源<a href="http://qiutc.me/post/this-this-this-in-javascript.html" target="_blank" rel="noopener">qiutc.me</a>，如有侵权请联系进行删除，谢谢</h6>
@@ -320,6 +320,16 @@
     </span>
     <span>Alipay</span>
     <div class="qrcode"><img src="/images/alipay.png" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/wechatpay.png" alt="Wechat"></div>
 </a>
 
                 
@@ -418,7 +428,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        36
+                        54
                     </p>
                 </div>
             </div>
@@ -438,7 +448,7 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        33
+                        31
                     </p>
                 </div>
             </div>
@@ -524,12 +534,12 @@
                 <span class="level-item tag">2</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/ECMAScript2015/">
+        <a class="level is-marginless" href="/categories/ES6/">
             <span class="level-start">
-                <span class="level-item">ECMAScript2015</span>
+                <span class="level-item">ES6</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">18</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/css/">
@@ -615,7 +625,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Deferred/" style="font-size: 10px;">$.Deferred()</a> <a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/Angularjs/" style="font-size: 12.5px;">Angularjs</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Photo/" style="font-size: 10px;">Photo</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/cross/" style="font-size: 10px;">cross</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/css3/" style="font-size: 15px;">css3</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 12.5px;">github</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/jQuery/" style="font-size: 12.5px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/let/" style="font-size: 10px;">let</a> <a href="/tags/map/" style="font-size: 10px;">map</a> <a href="/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/tags/ng-if/" style="font-size: 10px;">ng-if</a> <a href="/tags/ng-model/" style="font-size: 10px;">ng-model</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/rem/" style="font-size: 10px;">rem</a> <a href="/tags/render/" style="font-size: 10px;">render</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/web/" style="font-size: 17.5px;">web</a> <a href="/tags/webpack/" style="font-size: 15px;">webpack</a> <a href="/tags/依赖注入/" style="font-size: 10px;">依赖注入</a> <a href="/tags/模块/" style="font-size: 10px;">模块</a> <a href="/tags/路由/" style="font-size: 10px;">路由</a>
+        <a href="/tags/Deferred/" style="font-size: 10px;">$.Deferred()</a> <a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/Angularjs/" style="font-size: 12px;">Angularjs</a> <a href="/tags/ES6/" style="font-size: 18px;">ES6</a> <a href="/tags/Photo/" style="font-size: 10px;">Photo</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/cross/" style="font-size: 10px;">cross</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/css3/" style="font-size: 14px;">css3</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 12px;">github</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 14px;">http</a> <a href="/tags/jQuery/" style="font-size: 12px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/map/" style="font-size: 10px;">map</a> <a href="/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/tags/ng-if/" style="font-size: 10px;">ng-if</a> <a href="/tags/ng-model/" style="font-size: 10px;">ng-model</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/rem/" style="font-size: 10px;">rem</a> <a href="/tags/render/" style="font-size: 10px;">render</a> <a href="/tags/vue/" style="font-size: 14px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/web/" style="font-size: 16px;">web</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/依赖注入/" style="font-size: 10px;">依赖注入</a> <a href="/tags/模块/" style="font-size: 10px;">模块</a> <a href="/tags/路由/" style="font-size: 10px;">路由</a>
     </div>
 </div>
 
@@ -632,18 +642,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/25/render-function/" class="media-left">
+            <a href="/2019/08/21/ES6-18-module/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（6）- render 函数">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Module模块化">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-25T15:27:58.000Z">2018-10-25</time></div>
-                    <a href="/2018/10/25/render-function/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（6）- render 函数</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:09:52.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-18-module/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Module模块化</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -651,18 +661,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/20/vue-lifeCycle-2/" class="media-left">
+            <a href="/2019/08/21/ES6-17-decorators/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（2）- 生命周期">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Decorators">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-20T15:35:04.000Z">2018-10-20</time></div>
-                    <a href="/2018/10/20/vue-lifeCycle-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（2）- 生命周期</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:08:31.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-17-decorators/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Decorators</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -670,16 +680,35 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/The-HTTP-protocol/" class="media-left">
+            <a href="/2019/08/21/ES6-16-generator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="HTTP协议认识">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Generator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T15:18:24.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/The-HTTP-protocol/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HTTP协议认识</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:34.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Generator</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/21/ES6-16-Generator/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:16.734Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-Generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -689,37 +718,18 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/Cross-domain/" class="media-left">
+            <a href="/2019/08/21/ES6-15-iterator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="关于跨域的一些理解">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（15）- Iterator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T14:41:55.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/Cross-domain/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于跨域的一些理解</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:02:46.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-15-iterator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（15）- Iterator</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/http/">http</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2018/06/03/Mobile-terminal-skills/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="移动端常见技巧汇总">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-06-03T15:07:35.000Z">2018-06-03</time></div>
-                    <a href="/2018/06/03/Mobile-terminal-skills/" class="title has-link-black-ter is-size-6 has-text-weight-normal">移动端常见技巧汇总</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/web/">web</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -736,6 +746,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">19</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2018/10/">
@@ -776,7 +797,7 @@
                     <span class="level-item">December 2017</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -939,7 +960,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/ES6/">
                         <span class="tag">ES6</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">18</span>
                     </a>
                 </div>
                 
@@ -953,13 +974,6 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Vue/">
                         <span class="tag">Vue</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/const/">
-                        <span class="tag">const</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1037,14 +1051,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/javascript/">
                         <span class="tag">javascript</span>
-                        <span class="tag is-grey">12</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/let/">
-                        <span class="tag">let</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">30</span>
                     </a>
                 </div>
                 
@@ -1171,18 +1178,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/25/render-function/" class="media-left">
+            <a href="/2019/08/21/ES6-18-module/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（6）- render 函数">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Module模块化">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-25T15:27:58.000Z">2018-10-25</time></div>
-                    <a href="/2018/10/25/render-function/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（6）- render 函数</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:09:52.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-18-module/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Module模块化</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -1190,18 +1197,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/20/vue-lifeCycle-2/" class="media-left">
+            <a href="/2019/08/21/ES6-17-decorators/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（2）- 生命周期">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Decorators">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-20T15:35:04.000Z">2018-10-20</time></div>
-                    <a href="/2018/10/20/vue-lifeCycle-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（2）- 生命周期</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:08:31.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-17-decorators/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Decorators</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -1209,16 +1216,35 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/The-HTTP-protocol/" class="media-left">
+            <a href="/2019/08/21/ES6-16-generator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="HTTP协议认识">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Generator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T15:18:24.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/The-HTTP-protocol/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HTTP协议认识</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:34.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Generator</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/21/ES6-16-Generator/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:16.734Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-Generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1228,37 +1254,18 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/Cross-domain/" class="media-left">
+            <a href="/2019/08/21/ES6-15-iterator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="关于跨域的一些理解">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（15）- Iterator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T14:41:55.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/Cross-domain/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于跨域的一些理解</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:02:46.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-15-iterator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（15）- Iterator</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/http/">http</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2018/06/03/Mobile-terminal-skills/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="移动端常见技巧汇总">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-06-03T15:07:35.000Z">2018-06-03</time></div>
-                    <a href="/2018/06/03/Mobile-terminal-skills/" class="title has-link-black-ter is-size-6 has-text-weight-normal">移动端常见技巧汇总</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/web/">web</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -1275,6 +1282,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">19</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2018/10/">
@@ -1315,7 +1333,7 @@
                     <span class="level-item">December 2017</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1478,7 +1496,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/ES6/">
                         <span class="tag">ES6</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">18</span>
                     </a>
                 </div>
                 
@@ -1492,13 +1510,6 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Vue/">
                         <span class="tag">Vue</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/const/">
-                        <span class="tag">const</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1576,14 +1587,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/javascript/">
                         <span class="tag">javascript</span>
-                        <span class="tag is-grey">12</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/let/">
-                        <span class="tag">let</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">30</span>
                     </a>
                 </div>
                 

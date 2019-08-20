@@ -181,14 +181,14 @@
 <li>边框宽度</li>
 <li>透明度</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//基本的运动动画</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getStyle</span>(<span class="params">obj, name</span>) </span>&#123;<span class="comment">//获取行内的样式 name表示获取的样式</span></span><br><span class="line">    <span class="keyword">if</span> (obj.currentStyle) &#123;</span><br><span class="line">        <span class="keyword">return</span> obj.currentStyle[name];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> getComputedStyle(obj, <span class="literal">false</span>)[name];</span><br><span class="line">   &#125; </span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="comment">//运动框架主体</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">startMove</span>(<span class="params">obj, attr, iTarget</span>) </span>&#123;<span class="comment">//attr 变化的样式；iTarget 最后变化目标</span></span><br><span class="line">    clearInterval(obj.timer);<span class="comment">//初始化 清除所有的计时器</span></span><br><span class="line">    obj.timer = setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> cur = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span> (attr == <span class="string">'opacity'</span>) &#123;<span class="comment">//如果变化的是透明度  执行下边</span></span><br><span class="line">            cur = <span class="built_in">parseFloat</span>(getStyle(obj, attr)) * <span class="number">100</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            cur = <span class="built_in">parseInt</span>(getStyle(obj, attr));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">var</span> speed = <span class="built_in">parseInt</span>(iTarget - cur) / <span class="number">6</span>;<span class="comment">// 动画进行的事件 6可以修改 </span></span><br><span class="line">        speed = speed &gt; <span class="number">0</span> ? <span class="built_in">Math</span>.ceil(speed) : <span class="built_in">Math</span>.floor(speed);</span><br><span class="line">        <span class="keyword">if</span> (cur == iTarget) &#123;</span><br><span class="line">            clearInterval(obj.timer);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (attr == <span class="string">'opacity'</span>) &#123;<span class="comment">//如果变化的是透明度  执行下边</span></span><br><span class="line">                obj.style.filter = <span class="string">'alpha(opacity:'</span> + (cur + speed) + <span class="string">')'</span>;</span><br><span class="line">                obj.style.opacity = (cur + speed) / <span class="number">100</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                obj.style[attr] = cur + speed + <span class="string">'px'</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, <span class="number">30</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//基本的运动动画</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getStyle</span>(<span class="hljs-params">obj, name</span>) </span>&#123;<span class="hljs-comment">//获取行内的样式 name表示获取的样式</span></span><br><span class="line">    <span class="hljs-keyword">if</span> (obj.currentStyle) &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> obj.currentStyle[name];</span><br><span class="line">    &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">        <span class="hljs-keyword">return</span> getComputedStyle(obj, <span class="hljs-literal">false</span>)[name];</span><br><span class="line">   &#125; </span><br><span class="line">&#125;</span><br><span class="line">    </span><br><span class="line"><span class="hljs-comment">//运动框架主体</span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">startMove</span>(<span class="hljs-params">obj, attr, iTarget</span>) </span>&#123;<span class="hljs-comment">//attr 变化的样式；iTarget 最后变化目标</span></span><br><span class="line">    clearInterval(obj.timer);<span class="hljs-comment">//初始化 清除所有的计时器</span></span><br><span class="line">    obj.timer = setInterval(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">        <span class="hljs-keyword">var</span> cur = <span class="hljs-number">0</span>;</span><br><span class="line">        <span class="hljs-keyword">if</span> (attr == <span class="hljs-string">'opacity'</span>) &#123;<span class="hljs-comment">//如果变化的是透明度  执行下边</span></span><br><span class="line">            cur = <span class="hljs-built_in">parseFloat</span>(getStyle(obj, attr)) * <span class="hljs-number">100</span>;</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">            cur = <span class="hljs-built_in">parseInt</span>(getStyle(obj, attr));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="hljs-keyword">var</span> speed = <span class="hljs-built_in">parseInt</span>(iTarget - cur) / <span class="hljs-number">6</span>;<span class="hljs-comment">// 动画进行的事件 6可以修改 </span></span><br><span class="line">        speed = speed &gt; <span class="hljs-number">0</span> ? <span class="hljs-built_in">Math</span>.ceil(speed) : <span class="hljs-built_in">Math</span>.floor(speed);</span><br><span class="line">        <span class="hljs-keyword">if</span> (cur == iTarget) &#123;</span><br><span class="line">            clearInterval(obj.timer);</span><br><span class="line">        &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">            <span class="hljs-keyword">if</span> (attr == <span class="hljs-string">'opacity'</span>) &#123;<span class="hljs-comment">//如果变化的是透明度  执行下边</span></span><br><span class="line">                obj.style.filter = <span class="hljs-string">'alpha(opacity:'</span> + (cur + speed) + <span class="hljs-string">')'</span>;</span><br><span class="line">                obj.style.opacity = (cur + speed) / <span class="hljs-number">100</span>;</span><br><span class="line">            &#125; <span class="hljs-keyword">else</span> &#123;</span><br><span class="line">                obj.style[attr] = cur + speed + <span class="hljs-string">'px'</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, <span class="hljs-number">30</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>调用：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//改变宽度</span></span><br><span class="line">oDiv.onmouseover = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    startMove(<span class="keyword">this</span>, <span class="string">'width'</span>, <span class="number">200</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//透明度</span></span><br><span class="line">oDiv.onmouseout = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    startMove(<span class="keyword">this</span>, <span class="string">'opacity'</span>, <span class="number">30</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//改变宽度</span></span><br><span class="line">oDiv.onmouseover = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    startMove(<span class="hljs-keyword">this</span>, <span class="hljs-string">'width'</span>, <span class="hljs-number">200</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="hljs-comment">//透明度</span></span><br><span class="line">oDiv.onmouseout = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    startMove(<span class="hljs-keyword">this</span>, <span class="hljs-string">'opacity'</span>, <span class="hljs-number">30</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="颜色的渐变"><a href="#颜色的渐变" class="headerlink" title="颜色的渐变"></a>颜色的渐变</h4><ul>
 <li>通过修改元素的rgb值 来实现渐变</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//颜色的渐变动画  改变的是 rgb值</span></span><br><span class="line"><span class="comment">//所有代码的执行时间只有24毫秒左右。  </span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fadeColor</span>(<span class="params">from, to, callback, duration, totalFrames</span>) </span>&#123;<span class="comment">//form 初始颜色 to最终颜色 callback完后的回调函数  duration 动画执行时间  totalFrames总帧数，默认为持续秒数*15帧，也即每秒15帧   </span></span><br><span class="line"><span class="comment">//用一个函数来包裹setTimeout，根据帧数来确定延时     </span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">doTimeout</span>(<span class="params">color, frame</span>) </span>&#123;</span><br><span class="line">        setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                callback(color);</span><br><span class="line">            &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">                JSLog.write(e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, (duration * <span class="number">1000</span> / totalFrames) * frame);</span><br><span class="line">        <span class="comment">//总持续秒数/每秒帧数*当前帧数=延时(秒)，再乘以1000作为延时(毫秒)      </span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 整个渐变过程的持续时间，默认为1秒     </span></span><br><span class="line">    <span class="keyword">var</span> duration = duration || <span class="number">1</span>;</span><br><span class="line">    <span class="comment">// 总帧数，默认为持续秒数*15帧，也即每秒15帧      </span></span><br><span class="line">    <span class="keyword">var</span> totalFrames = totalFrames || duration * <span class="number">15</span>;</span><br><span class="line">    <span class="keyword">var</span> r, g, b;</span><br><span class="line">    <span class="keyword">var</span> frame = <span class="number">1</span>;</span><br><span class="line">    <span class="comment">//在第0帧设置起始颜色      </span></span><br><span class="line">    doTimeout(<span class="string">'rgb('</span> + <span class="keyword">from</span>.r + <span class="string">','</span> + <span class="keyword">from</span>.g + <span class="string">','</span> + <span class="keyword">from</span>.b + <span class="string">')'</span>, <span class="number">0</span>);</span><br><span class="line">    <span class="comment">//计算每次变化所需要改变的rgb值      </span></span><br><span class="line">    <span class="keyword">while</span> (frame &lt; totalFrames + <span class="number">1</span>) &#123;</span><br><span class="line">        r = <span class="built_in">Math</span>.ceil(<span class="keyword">from</span>.r * ((totalFrames - frame) / totalFrames) + to.r * (frame / totalFrames));</span><br><span class="line">        g = <span class="built_in">Math</span>.ceil(<span class="keyword">from</span>.g * ((totalFrames - frame) / totalFrames) + to.g * (frame / totalFrames));</span><br><span class="line">        b = <span class="built_in">Math</span>.ceil(<span class="keyword">from</span>.b * ((totalFrames - frame) / totalFrames) + to.b * (frame / totalFrames));</span><br><span class="line">        <span class="comment">// 调用本frame的doTimeout          </span></span><br><span class="line">        doTimeout(<span class="string">'rgb('</span> + r + <span class="string">','</span> + g + <span class="string">','</span> + b + <span class="string">')'</span>, frame);</span><br><span class="line">        frame++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>调用:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">oDiv.onmouseover = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">    fadeColor(&#123;</span><br><span class="line">        r: <span class="number">0</span>,</span><br><span class="line">        g: <span class="number">0</span>,</span><br><span class="line">        b: <span class="number">0</span></span><br><span class="line">    &#125;, <span class="comment">//star color</span></span><br><span class="line">    &#123;</span><br><span class="line">        r: <span class="number">18</span>,</span><br><span class="line">        g: <span class="number">162</span>,</span><br><span class="line">         b: <span class="number">143</span></span><br><span class="line">    &#125;, <span class="comment">//end color</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> (<span class="params">color</span>) </span>&#123;</span><br><span class="line">        oDiv6.style.borderColor = color;</span><br><span class="line">    &#125;, <span class="number">0.25</span>, <span class="number">10</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-comment">//颜色的渐变动画  改变的是 rgb值</span></span><br><span class="line"><span class="hljs-comment">//所有代码的执行时间只有24毫秒左右。  </span></span><br><span class="line"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fadeColor</span>(<span class="hljs-params">from, to, callback, duration, totalFrames</span>) </span>&#123;<span class="hljs-comment">//form 初始颜色 to最终颜色 callback完后的回调函数  duration 动画执行时间  totalFrames总帧数，默认为持续秒数*15帧，也即每秒15帧   </span></span><br><span class="line"><span class="hljs-comment">//用一个函数来包裹setTimeout，根据帧数来确定延时     </span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">doTimeout</span>(<span class="hljs-params">color, frame</span>) </span>&#123;</span><br><span class="line">        setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">            <span class="hljs-keyword">try</span> &#123;</span><br><span class="line">                callback(color);</span><br><span class="line">            &#125; <span class="hljs-keyword">catch</span> (e) &#123;</span><br><span class="line">                JSLog.write(e);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, (duration * <span class="hljs-number">1000</span> / totalFrames) * frame);</span><br><span class="line">        <span class="hljs-comment">//总持续秒数/每秒帧数*当前帧数=延时(秒)，再乘以1000作为延时(毫秒)      </span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="hljs-comment">// 整个渐变过程的持续时间，默认为1秒     </span></span><br><span class="line">    <span class="hljs-keyword">var</span> duration = duration || <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-comment">// 总帧数，默认为持续秒数*15帧，也即每秒15帧      </span></span><br><span class="line">    <span class="hljs-keyword">var</span> totalFrames = totalFrames || duration * <span class="hljs-number">15</span>;</span><br><span class="line">    <span class="hljs-keyword">var</span> r, g, b;</span><br><span class="line">    <span class="hljs-keyword">var</span> frame = <span class="hljs-number">1</span>;</span><br><span class="line">    <span class="hljs-comment">//在第0帧设置起始颜色      </span></span><br><span class="line">    doTimeout(<span class="hljs-string">'rgb('</span> + <span class="hljs-keyword">from</span>.r + <span class="hljs-string">','</span> + <span class="hljs-keyword">from</span>.g + <span class="hljs-string">','</span> + <span class="hljs-keyword">from</span>.b + <span class="hljs-string">')'</span>, <span class="hljs-number">0</span>);</span><br><span class="line">    <span class="hljs-comment">//计算每次变化所需要改变的rgb值      </span></span><br><span class="line">    <span class="hljs-keyword">while</span> (frame &lt; totalFrames + <span class="hljs-number">1</span>) &#123;</span><br><span class="line">        r = <span class="hljs-built_in">Math</span>.ceil(<span class="hljs-keyword">from</span>.r * ((totalFrames - frame) / totalFrames) + to.r * (frame / totalFrames));</span><br><span class="line">        g = <span class="hljs-built_in">Math</span>.ceil(<span class="hljs-keyword">from</span>.g * ((totalFrames - frame) / totalFrames) + to.g * (frame / totalFrames));</span><br><span class="line">        b = <span class="hljs-built_in">Math</span>.ceil(<span class="hljs-keyword">from</span>.b * ((totalFrames - frame) / totalFrames) + to.b * (frame / totalFrames));</span><br><span class="line">        <span class="hljs-comment">// 调用本frame的doTimeout          </span></span><br><span class="line">        doTimeout(<span class="hljs-string">'rgb('</span> + r + <span class="hljs-string">','</span> + g + <span class="hljs-string">','</span> + b + <span class="hljs-string">')'</span>, frame);</span><br><span class="line">        frame++;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>调用:<br><figure class="highlight javascript hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">oDiv.onmouseover = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>&#123;</span><br><span class="line">    fadeColor(&#123;</span><br><span class="line">        r: <span class="hljs-number">0</span>,</span><br><span class="line">        g: <span class="hljs-number">0</span>,</span><br><span class="line">        b: <span class="hljs-number">0</span></span><br><span class="line">    &#125;, <span class="hljs-comment">//star color</span></span><br><span class="line">    &#123;</span><br><span class="line">        r: <span class="hljs-number">18</span>,</span><br><span class="line">        g: <span class="hljs-number">162</span>,</span><br><span class="line">         b: <span class="hljs-number">143</span></span><br><span class="line">    &#125;, <span class="hljs-comment">//end color</span></span><br><span class="line">    <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">color</span>) </span>&#123;</span><br><span class="line">        oDiv6.style.borderColor = color;</span><br><span class="line">    &#125;, <span class="hljs-number">0.25</span>, <span class="hljs-number">10</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
         </div>
         
@@ -224,6 +224,16 @@
     </span>
     <span>Alipay</span>
     <div class="qrcode"><img src="/images/alipay.png" alt="Alipay"></div>
+</a>
+
+                
+                
+<a class="button is-success donate">
+    <span class="icon is-small">
+        <i class="fab fa-weixin"></i>
+    </span>
+    <span>Wechat</span>
+    <div class="qrcode"><img src="/images/wechatpay.png" alt="Wechat"></div>
 </a>
 
                 
@@ -322,7 +332,7 @@
                         Posts
                     </p>
                     <p class="title has-text-weight-normal">
-                        36
+                        54
                     </p>
                 </div>
             </div>
@@ -342,7 +352,7 @@
                         Tags
                     </p>
                     <p class="title has-text-weight-normal">
-                        33
+                        31
                     </p>
                 </div>
             </div>
@@ -428,12 +438,12 @@
                 <span class="level-item tag">2</span>
             </span>
         </a></li><li>
-        <a class="level is-marginless" href="/categories/ECMAScript2015/">
+        <a class="level is-marginless" href="/categories/ES6/">
             <span class="level-start">
-                <span class="level-item">ECMAScript2015</span>
+                <span class="level-item">ES6</span>
             </span>
             <span class="level-end">
-                <span class="level-item tag">1</span>
+                <span class="level-item tag">18</span>
             </span>
         </a></li><li>
         <a class="level is-marginless" href="/categories/css/">
@@ -519,7 +529,7 @@
         <h3 class="menu-label">
             Tag Cloud
         </h3>
-        <a href="/tags/Deferred/" style="font-size: 10px;">$.Deferred()</a> <a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/Angularjs/" style="font-size: 12.5px;">Angularjs</a> <a href="/tags/ES6/" style="font-size: 10px;">ES6</a> <a href="/tags/Photo/" style="font-size: 10px;">Photo</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/const/" style="font-size: 10px;">const</a> <a href="/tags/cross/" style="font-size: 10px;">cross</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/css3/" style="font-size: 15px;">css3</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 12.5px;">github</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/jQuery/" style="font-size: 12.5px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/let/" style="font-size: 10px;">let</a> <a href="/tags/map/" style="font-size: 10px;">map</a> <a href="/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/tags/ng-if/" style="font-size: 10px;">ng-if</a> <a href="/tags/ng-model/" style="font-size: 10px;">ng-model</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/rem/" style="font-size: 10px;">rem</a> <a href="/tags/render/" style="font-size: 10px;">render</a> <a href="/tags/vue/" style="font-size: 15px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/web/" style="font-size: 17.5px;">web</a> <a href="/tags/webpack/" style="font-size: 15px;">webpack</a> <a href="/tags/依赖注入/" style="font-size: 10px;">依赖注入</a> <a href="/tags/模块/" style="font-size: 10px;">模块</a> <a href="/tags/路由/" style="font-size: 10px;">路由</a>
+        <a href="/tags/Deferred/" style="font-size: 10px;">$.Deferred()</a> <a href="/tags/3d/" style="font-size: 10px;">3d</a> <a href="/tags/Angularjs/" style="font-size: 12px;">Angularjs</a> <a href="/tags/ES6/" style="font-size: 18px;">ES6</a> <a href="/tags/Photo/" style="font-size: 10px;">Photo</a> <a href="/tags/Vue/" style="font-size: 10px;">Vue</a> <a href="/tags/cross/" style="font-size: 10px;">cross</a> <a href="/tags/css/" style="font-size: 10px;">css</a> <a href="/tags/css3/" style="font-size: 14px;">css3</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/github/" style="font-size: 12px;">github</a> <a href="/tags/gulp/" style="font-size: 10px;">gulp</a> <a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/html/" style="font-size: 10px;">html</a> <a href="/tags/http/" style="font-size: 14px;">http</a> <a href="/tags/jQuery/" style="font-size: 12px;">jQuery</a> <a href="/tags/javascript/" style="font-size: 20px;">javascript</a> <a href="/tags/map/" style="font-size: 10px;">map</a> <a href="/tags/mobile/" style="font-size: 10px;">mobile</a> <a href="/tags/ng-if/" style="font-size: 10px;">ng-if</a> <a href="/tags/ng-model/" style="font-size: 10px;">ng-model</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/rem/" style="font-size: 10px;">rem</a> <a href="/tags/render/" style="font-size: 10px;">render</a> <a href="/tags/vue/" style="font-size: 14px;">vue</a> <a href="/tags/vue-cli/" style="font-size: 10px;">vue-cli</a> <a href="/tags/web/" style="font-size: 16px;">web</a> <a href="/tags/webpack/" style="font-size: 14px;">webpack</a> <a href="/tags/依赖注入/" style="font-size: 10px;">依赖注入</a> <a href="/tags/模块/" style="font-size: 10px;">模块</a> <a href="/tags/路由/" style="font-size: 10px;">路由</a>
     </div>
 </div>
 
@@ -536,18 +546,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/25/render-function/" class="media-left">
+            <a href="/2019/08/21/ES6-18-module/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（6）- render 函数">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Module模块化">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-25T15:27:58.000Z">2018-10-25</time></div>
-                    <a href="/2018/10/25/render-function/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（6）- render 函数</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:09:52.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-18-module/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Module模块化</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -555,18 +565,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/20/vue-lifeCycle-2/" class="media-left">
+            <a href="/2019/08/21/ES6-17-decorators/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（2）- 生命周期">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Decorators">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-20T15:35:04.000Z">2018-10-20</time></div>
-                    <a href="/2018/10/20/vue-lifeCycle-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（2）- 生命周期</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:08:31.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-17-decorators/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Decorators</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -574,16 +584,35 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/The-HTTP-protocol/" class="media-left">
+            <a href="/2019/08/21/ES6-16-generator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="HTTP协议认识">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Generator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T15:18:24.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/The-HTTP-protocol/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HTTP协议认识</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:34.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Generator</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/21/ES6-16-Generator/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:16.734Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-Generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -593,37 +622,18 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/Cross-domain/" class="media-left">
+            <a href="/2019/08/21/ES6-15-iterator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="关于跨域的一些理解">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（15）- Iterator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T14:41:55.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/Cross-domain/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于跨域的一些理解</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:02:46.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-15-iterator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（15）- Iterator</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/http/">http</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2018/06/03/Mobile-terminal-skills/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="移动端常见技巧汇总">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-06-03T15:07:35.000Z">2018-06-03</time></div>
-                    <a href="/2018/06/03/Mobile-terminal-skills/" class="title has-link-black-ter is-size-6 has-text-weight-normal">移动端常见技巧汇总</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/web/">web</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -640,6 +650,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">19</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2018/10/">
@@ -680,7 +701,7 @@
                     <span class="level-item">December 2017</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -843,7 +864,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/ES6/">
                         <span class="tag">ES6</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">18</span>
                     </a>
                 </div>
                 
@@ -857,13 +878,6 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Vue/">
                         <span class="tag">Vue</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/const/">
-                        <span class="tag">const</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -941,14 +955,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/javascript/">
                         <span class="tag">javascript</span>
-                        <span class="tag is-grey">12</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/let/">
-                        <span class="tag">let</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">30</span>
                     </a>
                 </div>
                 
@@ -1075,18 +1082,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/25/render-function/" class="media-left">
+            <a href="/2019/08/21/ES6-18-module/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（6）- render 函数">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Module模块化">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-25T15:27:58.000Z">2018-10-25</time></div>
-                    <a href="/2018/10/25/render-function/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（6）- render 函数</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:09:52.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-18-module/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Module模块化</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -1094,18 +1101,18 @@
         
         <article class="media">
             
-            <a href="/2018/10/20/vue-lifeCycle-2/" class="media-left">
+            <a href="/2019/08/21/ES6-17-decorators/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="vue深度学习（2）- 生命周期">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Decorators">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-10-20T15:35:04.000Z">2018-10-20</time></div>
-                    <a href="/2018/10/20/vue-lifeCycle-2/" class="title has-link-black-ter is-size-6 has-text-weight-normal">vue深度学习（2）- 生命周期</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:08:31.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-17-decorators/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Decorators</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/vue/">vue</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -1113,16 +1120,35 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/The-HTTP-protocol/" class="media-left">
+            <a href="/2019/08/21/ES6-16-generator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="HTTP协议认识">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（16）- Generator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T15:18:24.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/The-HTTP-protocol/" class="title has-link-black-ter is-size-6 has-text-weight-normal">HTTP协议认识</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:34.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（16）- Generator</a>
+                    <p class="is-size-7 is-uppercase">
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
+                    </p>
+                </div>
+            </div>
+        </article>
+        
+        <article class="media">
+            
+            <a href="/2019/08/21/ES6-16-Generator/" class="media-left">
+                <p class="image is-64x64">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="">
+                </p>
+            </a>
+            
+            <div class="media-content">
+                <div class="content">
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:07:16.734Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-16-Generator/" class="title has-link-black-ter is-size-6 has-text-weight-normal"></a>
                     <p class="is-size-7 is-uppercase">
                         
                     </p>
@@ -1132,37 +1158,18 @@
         
         <article class="media">
             
-            <a href="/2018/09/05/Cross-domain/" class="media-left">
+            <a href="/2019/08/21/ES6-15-iterator/" class="media-left">
                 <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="关于跨域的一些理解">
+                    <img class="thumbnail" src="/images/thumbnail.svg" alt="ES6学习（15）- Iterator">
                 </p>
             </a>
             
             <div class="media-content">
                 <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-09-05T14:41:55.000Z">2018-09-05</time></div>
-                    <a href="/2018/09/05/Cross-domain/" class="title has-link-black-ter is-size-6 has-text-weight-normal">关于跨域的一些理解</a>
+                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2019-08-20T17:02:46.000Z">2019-08-21</time></div>
+                    <a href="/2019/08/21/ES6-15-iterator/" class="title has-link-black-ter is-size-6 has-text-weight-normal">ES6学习（15）- Iterator</a>
                     <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/http/">http</a>
-                    </p>
-                </div>
-            </div>
-        </article>
-        
-        <article class="media">
-            
-            <a href="/2018/06/03/Mobile-terminal-skills/" class="media-left">
-                <p class="image is-64x64">
-                    <img class="thumbnail" src="/images/thumbnail.svg" alt="移动端常见技巧汇总">
-                </p>
-            </a>
-            
-            <div class="media-content">
-                <div class="content">
-                    <div><time class="has-text-grey is-size-7 is-uppercase" datetime="2018-06-03T15:07:35.000Z">2018-06-03</time></div>
-                    <a href="/2018/06/03/Mobile-terminal-skills/" class="title has-link-black-ter is-size-6 has-text-weight-normal">移动端常见技巧汇总</a>
-                    <p class="is-size-7 is-uppercase">
-                        <a class="has-link-grey -link" href="/categories/web/">web</a>
+                        <a class="has-link-grey -link" href="/categories/ES6/">ES6</a>
                     </p>
                 </div>
             </div>
@@ -1179,6 +1186,17 @@
             Archives
         </h3>
         <ul class="menu-list">
+        
+        <li>
+            <a class="level is-marginless" href="/archives/2019/08/">
+                <span class="level-start">
+                    <span class="level-item">August 2019</span>
+                </span>
+                <span class="level-end">
+                    <span class="level-item tag">19</span>
+                </span>
+            </a>
+        </li>
         
         <li>
             <a class="level is-marginless" href="/archives/2018/10/">
@@ -1219,7 +1237,7 @@
                     <span class="level-item">December 2017</span>
                 </span>
                 <span class="level-end">
-                    <span class="level-item tag">3</span>
+                    <span class="level-item tag">2</span>
                 </span>
             </a>
         </li>
@@ -1382,7 +1400,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/ES6/">
                         <span class="tag">ES6</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">18</span>
                     </a>
                 </div>
                 
@@ -1396,13 +1414,6 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/Vue/">
                         <span class="tag">Vue</span>
-                        <span class="tag is-grey">1</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/const/">
-                        <span class="tag">const</span>
                         <span class="tag is-grey">1</span>
                     </a>
                 </div>
@@ -1480,14 +1491,7 @@
                 <div class="control">
                     <a class="tags has-addons" href="/tags/javascript/">
                         <span class="tag">javascript</span>
-                        <span class="tag is-grey">12</span>
-                    </a>
-                </div>
-                
-                <div class="control">
-                    <a class="tags has-addons" href="/tags/let/">
-                        <span class="tag">let</span>
-                        <span class="tag is-grey">1</span>
+                        <span class="tag is-grey">30</span>
                     </a>
                 </div>
                 
