@@ -1,0 +1,1550 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="44aa8275-1b87-44e8-9838-3bb8dda81cfb" name="Default" comment="" />
+    <ignored path="hexo.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <ignored path=".idea/dataSources.local.xml" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="hexo" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+<<<<<<< HEAD
+=======
+      <file leaf-file-name="_config.yml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/themes/next/_config.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="284">
+              <caret line="211" column="23" selection-start-line="211" selection-start-column="17" selection-end-line="211" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="css-overflow.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/_posts/css-overflow.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="76">
+                <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+                <folding>
+                  <marker date="1481191064894" expanded="true" signature="150:337" ph="{...}" />
+                  <marker date="1481191064894" expanded="true" signature="474:661" ph="{...}" />
+                  <marker date="1481191064894" expanded="true" signature="837:981" ph="{...}" />
+                  <marker date="1481191064894" expanded="true" signature="996:1349" ph="{...}" />
+                </folding>
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+>>>>>>> update hexo
+      <file leaf-file-name="javascript-this.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/_posts/javascript-this.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+<<<<<<< HEAD
+              <first_editor relative-caret-position="418">
+                <caret line="22" column="8" selection-start-line="0" selection-start-column="0" selection-end-line="415" selection-end-column="92" />
+=======
+              <first_editor relative-caret-position="-5377">
+                <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="4" selection-end-column="16" />
+>>>>>>> update hexo
+                <folding>
+                  <marker date="1480047078518" expanded="true" signature="682:708" ph="{...}" />
+                  <marker date="1480047078518" expanded="true" signature="1089:1115" ph="{...}" />
+                  <marker date="1480047078518" expanded="true" signature="1202:1246" ph="{...}" />
+                  <marker date="1480047078518" expanded="true" signature="1336:1418" ph="{&quot;name&quot;: 'qiutc'...}" />
+                  <marker date="1480047078518" expanded="true" signature="1377:1416" ph="{...}" />
+                  <marker date="1480047078518" expanded="true" signature="1516:1547" ph="{...}" />
+                  <marker date="1480047078518" expanded="true" signature="1558:1594" ph="{&quot;name&quot;: 'qiutc'...}" />
+                  <marker date="1480047078518" expanded="true" signature="1776:1853" ph="{&quot;name&quot;: 'qiutc'...}" />
+                  <marker date="1480047078518" expanded="true" signature="1817:1851" ph="{...}" />
+                  <marker date="1480047078518" expanded="true" signature="2078:2248" ph="{&quot;name&quot;: 'qiutc'...}" />
+                  <marker date="1480047078518" expanded="true" signature="2119:2153" ph="{...}" />
+                  <marker date="1480047078518" expanded="true" signature="2176:2246" ph="{...}" />
+                  <marker date="1480047078518" expanded="true" signature="2753:3064" ph="{&quot;name&quot;: 'qiutc'...}" />
+                  <marker date="1480047078518" expanded="true" signature="2794:2828" ph="{...}" />
+                  <marker date="1480047078518" expanded="true" signature="2851:3062" ph="{...}" />
+                  <marker date="1480047078518" expanded="true" signature="2936:3048" ph="{...}" />
+                  <marker date="1480047078518" expanded="true" signature="3383:3409" ph="{...}" />
+                  <marker date="1480047078518" expanded="true" signature="3937:3985" ph="{...}" />
+                  <marker date="1480047078518" expanded="true" signature="4184:4232" ph="{...}" />
+                  <marker date="1480047078518" expanded="true" signature="4514:4751" ph="{&quot;name&quot;: 'qiutc'...}" />
+                  <marker date="1480047078518" expanded="true" signature="4555:4589" ph="{...}" />
+                  <marker date="1480047078518" expanded="true" signature="4612:4749" ph="{...}" />
+                  <marker date="1480047078518" expanded="true" signature="4666:4687" ph="{...}" />
+                  <marker date="1480047078518" expanded="true" signature="5823:5844" ph="{&quot;name&quot;: 'qiutc'...}" />
+                  <marker date="1480047078518" expanded="true" signature="5863:5889" ph="{...}" />
+                  <marker date="1480047078518" expanded="true" signature="6049:6127" ph="{&quot;name&quot;: 'qiutc'...}" />
+                  <marker date="1480047078518" expanded="true" signature="6091:6125" ph="{...}" />
+                  <marker date="1480047078518" expanded="true" signature="6141:6168" ph="{&quot;name&quot;: 'tcqiu222222'...}" />
+                  <marker date="1480047078518" expanded="true" signature="6324:6372" ph="{...}" />
+                  <marker date="1480047078518" expanded="true" signature="6385:6413" ph="{&quot;name&quot;: 'qiutc2222222'...}" />
+                  <marker date="1480047078518" expanded="true" signature="6640:6688" ph="{...}" />
+                  <marker date="1480047078518" expanded="true" signature="6701:6729" ph="{&quot;name&quot;: 'qiutc2222222'...}" />
+                  <marker date="1480047078518" expanded="true" signature="7143:7191" ph="{...}" />
+                  <marker date="1480047078518" expanded="true" signature="7204:7232" ph="{&quot;name&quot;: 'qiutc2222222'...}" />
+                  <marker date="1480047078518" expanded="true" signature="7506:7552" ph="{...}" />
+                  <marker date="1480047078518" expanded="true" signature="7566:7580" ph="//..." />
+                  <marker date="1480047078518" expanded="true" signature="7593:7614" ph="{&quot;name&quot;: 'qiutc'...}" />
+                  <marker date="1480047078518" expanded="true" signature="7639:7653" ph="//..." />
+                </folding>
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
+      <file leaf-file-name="javascript-oop.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/_posts/javascript-oop.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="1862">
+                <caret line="98" column="21" selection-start-line="98" selection-start-column="21" selection-end-line="98" selection-end-column="21" />
+                <folding>
+                  <marker date="1480401191884" expanded="true" signature="377:436" ph="{...}" />
+                  <marker date="1480401191884" expanded="true" signature="582:787" ph="{...}" />
+                  <marker date="1480401191884" expanded="true" signature="706:766" ph="{...}" />
+                  <marker date="1480401191884" expanded="true" signature="946:1154" ph="{...}" />
+                  <marker date="1480401191884" expanded="true" signature="1072:1132" ph="{...}" />
+                  <marker date="1480401191884" expanded="true" signature="1296:1348" ph="{...}" />
+                  <marker date="1480401191884" expanded="true" signature="1296:1680" ph="{...}" />
+                  <marker date="1480401191884" expanded="true" signature="1401:1560" ph="{...}" />
+                  <marker date="1480401191884" expanded="true" signature="1823:2069" ph="{...}" />
+                  <marker date="1480401191884" expanded="true" signature="1940:2000" ph="{...}" />
+                  <marker date="1480401191884" expanded="true" signature="2198:2348" ph="{...}" />
+                  <marker date="1480401191884" expanded="true" signature="2290:2346" ph="{...}" />
+                  <marker date="1480401191884" expanded="true" signature="2477:2479" ph="{...}" />
+                  <marker date="1480401191884" expanded="true" signature="2594:2646" ph="{...}" />
+                  <marker date="1480401191884" expanded="true" signature="2976:2978" ph="{...}" />
+                  <marker date="1480401191884" expanded="true" signature="3094:3146" ph="{...}" />
+                  <marker date="1480401191884" expanded="true" signature="3691:3701" ph="{...}" />
+                  <marker date="1480401191884" expanded="true" signature="3691:3754" ph="{...}" />
+                  <marker date="1480401191884" expanded="true" signature="3793:3845" ph="{...}" />
+                  <marker date="1480401191884" expanded="true" signature="4067:4444" ph="{...}" />
+                  <marker date="1480401191884" expanded="true" signature="4170:4442" ph="{...}" />
+                  <marker date="1480401191884" expanded="true" signature="4273:4379" ph="{...}" />
+                </folding>
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="my-blog.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/_posts/my-blog.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="266">
+                <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+                <folding>
+                  <marker date="1477976424454" expanded="true" signature="260:421" ph="{...}" />
+                  <marker date="1477976424454" expanded="true" signature="309:355" ph="{...}" />
+                  <marker date="1477976424454" expanded="true" signature="361:418" ph="{...}" />
+                  <marker date="1477976424454" expanded="true" signature="475:1308" ph="{...}" />
+                  <marker date="1477976424454" expanded="true" signature="587:1300" ph="{...}" />
+                  <marker date="1477976424454" expanded="true" signature="641:726" ph="{...}" />
+                  <marker date="1477976424454" expanded="true" signature="732:792" ph="{...}" />
+                  <marker date="1477976424454" expanded="true" signature="953:1002" ph="{...}" />
+                  <marker date="1477976424454" expanded="true" signature="1008:1294" ph="{...}" />
+                  <marker date="1477976424454" expanded="true" signature="1045:1209" ph="{...}" />
+                  <marker date="1477976424454" expanded="true" signature="1215:1284" ph="{...}" />
+                  <marker date="1477976424454" expanded="true" signature="1371:1409" ph="{...}" />
+                  <marker date="1477976424454" expanded="true" signature="1447:1486" ph="{...}" />
+                  <marker date="1477976424454" expanded="true" signature="1539:1582" ph="//..." />
+                  <marker date="1477976424454" expanded="true" signature="1645:2864" ph="{...}" />
+                  <marker date="1477976424454" expanded="true" signature="1646:1772" ph="//..." />
+                  <marker date="1477976424454" expanded="true" signature="1810:2079" ph="{...}" />
+                  <marker date="1477976424454" expanded="true" signature="1842:1976" ph="{...}" />
+                  <marker date="1477976424454" expanded="true" signature="1860:1908" ph="{...}" />
+                  <marker date="1477976424454" expanded="true" signature="1919:1966" ph="{...}" />
+                  <marker date="1477976424454" expanded="true" signature="2428:2862" ph="{...}" />
+                  <marker date="1477976424454" expanded="true" signature="2919:3153" ph="{...}" />
+                  <marker date="1477976424454" expanded="true" signature="2935:2983" ph="{...}" />
+                  <marker date="1477976424454" expanded="true" signature="3002:3056" ph="{...}" />
+                  <marker date="1477976424454" expanded="true" signature="3091:3139" ph="{...}" />
+                </folding>
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="javascript-add-Date.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/_posts/javascript-add-Date.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="228">
+                <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+                <folding>
+                  <marker date="1478083821175" expanded="true" signature="265:1054" ph="{...}" />
+                  <marker date="1478083821175" expanded="true" signature="1146:1242" ph="..." />
+=======
+      <file leaf-file-name="Rotate-the-navigation.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/_posts/Rotate-the-navigation.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="171">
+                <caret line="9" column="35" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="35" />
+                <folding>
+                  <marker date="1478689877292" expanded="true" signature="466:714" ph="..." />
+                  <marker date="1478689877292" expanded="true" signature="541:707" ph="..." />
+                  <marker date="1478689877292" expanded="true" signature="770:988" ph="{...}" />
+                  <marker date="1478689877292" expanded="true" signature="1003:1048" ph="{...}" />
+                  <marker date="1478689877292" expanded="true" signature="1055:1109" ph="{...}" />
+                  <marker date="1478689877292" expanded="true" signature="1120:1191" ph="{...}" />
+                  <marker date="1478689877292" expanded="true" signature="1255:1457" ph="{...}" />
+                  <marker date="1478689877292" expanded="true" signature="1493:1547" ph="{...}" />
+                  <marker date="1478689877292" expanded="true" signature="1583:1780" ph="{...}" />
+>>>>>>> update hexo
+                </folding>
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
+      <file leaf-file-name="My-New-Post.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/_posts/My-New-Post.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="494">
+                <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
+                <folding />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jquery.fancybox.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/themes/next/source/lib/fancybox/source/jquery.fancybox.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="456">
+              <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="upload-git-for-github.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/_posts/upload-git-for-github.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="57">
+                <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="4" selection-end-column="22" />
+                <folding />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="baidu_verify_eOMYeE1xbg.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/baidu_verify_eOMYeE1xbg.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="_config.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_config.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="380">
+              <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="javascript-Object.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/_posts/javascript-Object.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="3325">
+                <caret line="175" column="1" selection-start-line="175" selection-start-column="1" selection-end-line="175" selection-end-column="22" />
+                <folding>
+                  <marker date="1479454270923" expanded="true" signature="279:336" ph="{...}" />
+                  <marker date="1479454270923" expanded="true" signature="459:593" ph="{&quot;name&quot;: &quot;zhangSan&quot;...}" />
+                  <marker date="1479454270923" expanded="true" signature="526:591" ph="{...}" />
+                  <marker date="1479454270923" expanded="true" signature="799:965" ph="{...}" />
+                  <marker date="1479454270923" expanded="true" signature="890:949" ph="{...}" />
+                  <marker date="1479454270923" expanded="true" signature="1168:1302" ph="{...}" />
+                  <marker date="1479454270923" expanded="true" signature="1241:1300" ph="{...}" />
+                  <marker date="1479454270923" expanded="true" signature="1689:1761" ph="{...}" />
+                  <marker date="1479454270923" expanded="true" signature="1780:1831" ph="{...}" />
+                  <marker date="1479454270923" expanded="true" signature="2176:2340" ph="{...}" />
+                  <marker date="1479454270923" expanded="true" signature="2279:2338" ph="{...}" />
+                  <marker date="1479454270923" expanded="true" signature="2924:3049" ph="{&quot;name&quot;: &quot;vivian&quot;...}" />
+                  <marker date="1479454270923" expanded="true" signature="2988:3047" ph="{...}" />
+                  <marker date="1479454270923" expanded="true" signature="3489:3637" ph="{&quot;name&quot;: &quot;vivian&quot;...}" />
+                  <marker date="1479454270923" expanded="true" signature="3576:3635" ph="{...}" />
+                  <marker date="1479454270923" expanded="true" signature="3958:4003" ph="{...}" />
+                  <marker date="1479454270923" expanded="true" signature="4019:4129" ph="{&quot;constructor&quot;: Gf...}" />
+                  <marker date="1479454270923" expanded="true" signature="4068:4127" ph="{...}" />
+=======
+      <file leaf-file-name="javascript-oop.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/source/_posts/javascript-oop.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="418">
+                <caret line="26" column="3" selection-start-line="26" selection-start-column="3" selection-end-line="26" selection-end-column="3" />
+                <folding>
+                  <marker date="1481077889790" expanded="true" signature="377:436" ph="{...}" />
+                  <marker date="1481077889790" expanded="true" signature="587:792" ph="{...}" />
+                  <marker date="1481077889790" expanded="true" signature="711:771" ph="{...}" />
+                  <marker date="1481077889790" expanded="true" signature="951:1159" ph="{...}" />
+                  <marker date="1481077889790" expanded="true" signature="1077:1137" ph="{...}" />
+                  <marker date="1481077889790" expanded="true" signature="1301:1353" ph="{...}" />
+                  <marker date="1481077889790" expanded="true" signature="1301:1685" ph="{...}" />
+                  <marker date="1481077889790" expanded="true" signature="1406:1565" ph="{...}" />
+                  <marker date="1481077889790" expanded="true" signature="1828:2074" ph="{...}" />
+                  <marker date="1481077889790" expanded="true" signature="1945:2005" ph="{...}" />
+                  <marker date="1481077889790" expanded="true" signature="2203:2353" ph="{...}" />
+                  <marker date="1481077889790" expanded="true" signature="2295:2351" ph="{...}" />
+                  <marker date="1481077889790" expanded="true" signature="2482:2484" ph="{...}" />
+                  <marker date="1481077889790" expanded="true" signature="2599:2651" ph="{...}" />
+                  <marker date="1481077889790" expanded="true" signature="2981:2983" ph="{...}" />
+                  <marker date="1481077889790" expanded="true" signature="3099:3151" ph="{...}" />
+                  <marker date="1481077889790" expanded="true" signature="3696:3706" ph="{...}" />
+                  <marker date="1481077889790" expanded="true" signature="3696:3759" ph="{...}" />
+                  <marker date="1481077889790" expanded="true" signature="3798:3850" ph="{...}" />
+                  <marker date="1481077889790" expanded="true" signature="4072:4449" ph="{...}" />
+                  <marker date="1481077889790" expanded="true" signature="4175:4447" ph="{...}" />
+                  <marker date="1481077889790" expanded="true" signature="4278:4384" ph="{...}" />
+>>>>>>> update hexo
+                </folding>
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/themes/next/source/css/_my/mycss.styl" />
+        <option value="$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-expand.styl" />
+        <option value="$PROJECT_DIR$/themes/next/source/css/main.styl" />
+        <option value="$PROJECT_DIR$/source/_posts/javascript-add-Date.md" />
+        <option value="$PROJECT_DIR$/source/_posts/20161103js-Slider.md" />
+        <option value="$PROJECT_DIR$/source/_posts/my-blog.md" />
+        <option value="$PROJECT_DIR$/source/about/index.md" />
+        <option value="$PROJECT_DIR$/source/categories/index.md" />
+        <option value="$PROJECT_DIR$/source/tags/index.md" />
+        <option value="$PROJECT_DIR$/source/_posts/Loading-Page.md" />
+        <option value="$PROJECT_DIR$/source/_posts/Rotate-the-navigation.md" />
+        <option value="$PROJECT_DIR$/themes/next/source/css/_schemes/Mist/_header.styl" />
+        <option value="$PROJECT_DIR$/themes/next/source/css/_schemes/Pisces/_brand.styl" />
+        <option value="$PROJECT_DIR$/source/_posts/the-Accompanying-photograph.md" />
+        <option value="$PROJECT_DIR$/source/_posts/javascript-Object.md" />
+        <option value="$PROJECT_DIR$/_config.yml" />
+        <option value="$PROJECT_DIR$/themes/next/source/css/_common/components/header/headerband.styl" />
+        <option value="$PROJECT_DIR$/source/_posts/javascript-this.md" />
+        <option value="$PROJECT_DIR$/source/_posts/my-new-post-0.md" />
+        <option value="$PROJECT_DIR$/source/_posts/upload-github.md" />
+        <option value="$PROJECT_DIR$/source/_posts/upload-git-for-github.md" />
+<<<<<<< HEAD
+        <option value="$PROJECT_DIR$/themes/next/source/css/_variables/custom.styl" />
+        <option value="$PROJECT_DIR$/source/commonweal/404.html" />
+        <option value="$PROJECT_DIR$/themes/next/source/404.html" />
+        <option value="$PROJECT_DIR$/themes/next/_config.yml" />
+        <option value="$PROJECT_DIR$/source/_posts/javascript-oop.md" />
+        <option value="$PROJECT_DIR$/source/_posts/My-New-Post.md" />
+        <option value="$PROJECT_DIR$/themes/next/source/lib/fancybox/source/jquery.fancybox.css" />
+=======
+        <option value="$PROJECT_DIR$/source/commonweal/404.html" />
+        <option value="$PROJECT_DIR$/themes/next/source/404.html" />
+        <option value="$PROJECT_DIR$/source/_posts/My-New-Post.md" />
+        <option value="$PROJECT_DIR$/themes/next/source/lib/fancybox/source/jquery.fancybox.css" />
+        <option value="$PROJECT_DIR$/themes/next/source/css/_variables/custom.styl" />
+        <option value="$PROJECT_DIR$/source/_posts/javascript-oop.md" />
+        <option value="$PROJECT_DIR$/themes/next/_config.yml" />
+        <option value="$PROJECT_DIR$/source/_posts/css-overflow.md" />
+>>>>>>> update hexo
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="22" />
+    <option name="width" value="1932" />
+    <option name="height" value="1066" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scratches" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hexo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hexo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hexo" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hexo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hexo" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="next" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hexo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hexo" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="next" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="source" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hexo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hexo" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+<<<<<<< HEAD
+            <PATH_ELEMENT>
+              <option name="myItemId" value="next" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="source" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+=======
+>>>>>>> update hexo
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hexo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hexo" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+<<<<<<< HEAD
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="next" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="source" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fancybox" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+=======
+              <option name="myItemId" value="source" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+>>>>>>> update hexo
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hexo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hexo" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="next" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="source" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fancybox" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="source" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_posts" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hexo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hexo" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="themes" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="nodejs_interpreter_path" value="F:/Program Files/nodejs/node" />
+    <property name="js-jscs-nodeInterpreter" value="F:\Program Files\nodejs\node.exe" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Font" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui />
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="44aa8275-1b87-44e8-9838-3bb8dda81cfb" name="Default" comment="" />
+      <created>1477037027150</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1477037027150</updated>
+      <workItem from="1477037030721" duration="1133000" />
+      <workItem from="1477909310778" duration="3740000" />
+      <workItem from="1477987452428" duration="8391000" />
+      <workItem from="1478082828848" duration="2194000" />
+      <workItem from="1478137196932" duration="2664000" />
+      <workItem from="1478157861588" duration="509000" />
+      <workItem from="1478161096028" duration="5396000" />
+      <workItem from="1478225514840" duration="6946000" />
+      <workItem from="1478482025981" duration="7031000" />
+      <workItem from="1478573642069" duration="985000" />
+      <workItem from="1478686391463" duration="4080000" />
+      <workItem from="1479263249503" duration="6132000" />
+      <workItem from="1479452425151" duration="3080000" />
+      <workItem from="1479695025387" duration="723000" />
+      <workItem from="1479698487279" duration="3477000" />
+      <workItem from="1480044262327" duration="4734000" />
+      <workItem from="1480057542981" duration="3406000" />
+      <workItem from="1480069129890" duration="2198000" />
+      <workItem from="1480072107931" duration="131000" />
+      <workItem from="1480396263701" duration="1911000" />
+      <workItem from="1480575262310" duration="2273000" />
+      <workItem from="1480650632976" duration="703000" />
+<<<<<<< HEAD
+=======
+      <workItem from="1480930854528" duration="639000" />
+      <workItem from="1481075269428" duration="3245000" />
+      <workItem from="1481189457407" duration="2589000" />
+>>>>>>> update hexo
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="71837000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="22" width="1932" height="1066" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18196371" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+=======
+    <option name="totallyTimeSpent" value="78310000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="22" width="1936" height="1066" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18636848" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+>>>>>>> update hexo
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/source/_posts/Rotate-the-navigation.md">
+=======
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_common/components/header/headerband.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_common/components/header/header.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/hello-world.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/upload-github.md" />
+    <entry file="file://$PROJECT_DIR$/source/_posts/my-new-post-0.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="323">
+            <caret line="17" column="3" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/commonweal/404.html" />
+    <entry file="file://$PROJECT_DIR$/source/commonweal/index.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="76">
+            <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next/source/404.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" column="7" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/baidu_verify_eOMYeE1xbg.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/upload-git-for-github.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="57">
+            <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="4" selection-end-column="22" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/javascript-Object.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="3325">
+            <caret line="175" column="1" selection-start-line="175" selection-start-column="1" selection-end-line="175" selection-end-column="22" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/my-blog.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="266">
+            <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/javascript-add-Date.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="228">
+            <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/My-New-Post.md">
+>>>>>>> update hexo
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="494">
+            <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next/source/lib/fancybox/source/jquery.fancybox.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_custom/custom.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_variables/custom.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_my/mycss.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_mixins/Pisces.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_variables/Pisces.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_variables/base.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_schemes/Pisces/_posts.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_schemes/Pisces/index.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_schemes/Pisces/_sidebar.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_schemes/Pisces/_full-image.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_common/components/pages/categories.styl">
+=======
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_schemes/Pisces/_brand.styl">
+>>>>>>> update hexo
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_common/components/header/menu.styl">
+=======
+    <entry file="file://$PROJECT_DIR$/_config.yml">
+>>>>>>> update hexo
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="33" column="26" selection-start-line="33" selection-start-column="24" selection-end-line="33" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_common/components/header/site-meta.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_common/components/header/site-nav.styl">
+=======
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/main.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="13" column="35" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_common/scaffolding/tables.styl">
+>>>>>>> update hexo
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_variables/Muse.styl">
+=======
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_common/scaffolding/scaffolding.styl">
+>>>>>>> update hexo
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_common/components/pages/pages.styl">
+=======
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_common/scaffolding/normalize.styl">
+>>>>>>> update hexo
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1254">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/main.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/images/20161113/P61113-164941.jpg" />
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_common/components/sidebar/site-state.styl">
+=======
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_common/scaffolding/helpers.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-684">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_common/scaffolding/base.styl">
+>>>>>>> update hexo
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/source/_posts/the-Accompanying-photograph.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="361">
+            <caret line="19" column="29" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="29" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_schemes/Pisces/_brand.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_schemes/Pisces/_menu.styl">
+=======
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_common/components/post/post.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-136">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-collapse.styl">
+>>>>>>> update hexo
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_schemes/Pisces/_layout.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-26">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_schemes/Pisces/_full-image.styl">
+=======
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-eof.styl">
+>>>>>>> update hexo
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_schemes/Pisces/index.styl">
+=======
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_common/components/comments.styl">
+>>>>>>> update hexo
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_schemes/Pisces/_sidebar.styl">
+=======
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-type.styl">
+>>>>>>> update hexo
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_schemes/Pisces/_posts.styl">
+=======
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-title.styl">
+>>>>>>> update hexo
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-tags.styl">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="513">
+          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_variables/Mist.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_variables/Pisces.styl">
+=======
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-nav.styl">
+>>>>>>> update hexo
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_common/components/header/headerband.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="6" column="0" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_common/components/header/header.styl">
+=======
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-reward.styl">
+>>>>>>> update hexo
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/source/_posts/hello-world.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/upload-github.md" />
+    <entry file="file://$PROJECT_DIR$/source/_posts/my-new-post-0.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="323">
+            <caret line="17" column="3" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_variables/custom.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/commonweal/404.html" />
+    <entry file="file://$PROJECT_DIR$/source/commonweal/index.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="76">
+            <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next/source/404.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="16" column="7" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
+=======
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-more-link.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-meta.styl">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+>>>>>>> update hexo
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-gallery.styl">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="7961">
+          <caret line="419" column="14" selection-start-line="419" selection-start-column="14" selection-end-line="419" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/baidu_verify_eOMYeE1xbg.html">
+=======
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next/source/css/_common/components/post/post-expand.styl">
+>>>>>>> update hexo
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-326">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/_config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="20" column="11" selection-start-line="20" selection-start-column="11" selection-end-line="20" selection-end-column="11" />
+          <folding />
+=======
+    <entry file="file://$PROJECT_DIR$/source/_posts/javascript-oop.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="418">
+            <caret line="26" column="3" selection-start-line="26" selection-start-column="3" selection-end-line="26" selection-end-column="3" />
+            <folding>
+              <marker date="1481077889790" expanded="true" signature="377:436" ph="{...}" />
+              <marker date="1481077889790" expanded="true" signature="587:792" ph="{...}" />
+              <marker date="1481077889790" expanded="true" signature="711:771" ph="{...}" />
+              <marker date="1481077889790" expanded="true" signature="951:1159" ph="{...}" />
+              <marker date="1481077889790" expanded="true" signature="1077:1137" ph="{...}" />
+              <marker date="1481077889790" expanded="true" signature="1301:1353" ph="{...}" />
+              <marker date="1481077889790" expanded="true" signature="1301:1685" ph="{...}" />
+              <marker date="1481077889790" expanded="true" signature="1406:1565" ph="{...}" />
+              <marker date="1481077889790" expanded="true" signature="1828:2074" ph="{...}" />
+              <marker date="1481077889790" expanded="true" signature="1945:2005" ph="{...}" />
+              <marker date="1481077889790" expanded="true" signature="2203:2353" ph="{...}" />
+              <marker date="1481077889790" expanded="true" signature="2295:2351" ph="{...}" />
+              <marker date="1481077889790" expanded="true" signature="2482:2484" ph="{...}" />
+              <marker date="1481077889790" expanded="true" signature="2599:2651" ph="{...}" />
+              <marker date="1481077889790" expanded="true" signature="2981:2983" ph="{...}" />
+              <marker date="1481077889790" expanded="true" signature="3099:3151" ph="{...}" />
+              <marker date="1481077889790" expanded="true" signature="3696:3706" ph="{...}" />
+              <marker date="1481077889790" expanded="true" signature="3696:3759" ph="{...}" />
+              <marker date="1481077889790" expanded="true" signature="3798:3850" ph="{...}" />
+              <marker date="1481077889790" expanded="true" signature="4072:4449" ph="{...}" />
+              <marker date="1481077889790" expanded="true" signature="4175:4447" ph="{...}" />
+              <marker date="1481077889790" expanded="true" signature="4278:4384" ph="{...}" />
+            </folding>
+          </first_editor>
+          <second_editor />
+>>>>>>> update hexo
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/javascript-this.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+<<<<<<< HEAD
+          <first_editor relative-caret-position="418">
+            <caret line="22" column="8" selection-start-line="0" selection-start-column="0" selection-end-line="415" selection-end-column="92" />
+=======
+          <first_editor relative-caret-position="-5377">
+            <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="4" selection-end-column="16" />
+>>>>>>> update hexo
+            <folding>
+              <marker date="1480047078518" expanded="true" signature="682:708" ph="{...}" />
+              <marker date="1480047078518" expanded="true" signature="1089:1115" ph="{...}" />
+              <marker date="1480047078518" expanded="true" signature="1202:1246" ph="{...}" />
+              <marker date="1480047078518" expanded="true" signature="1336:1418" ph="{&quot;name&quot;: 'qiutc'...}" />
+              <marker date="1480047078518" expanded="true" signature="1377:1416" ph="{...}" />
+              <marker date="1480047078518" expanded="true" signature="1516:1547" ph="{...}" />
+              <marker date="1480047078518" expanded="true" signature="1558:1594" ph="{&quot;name&quot;: 'qiutc'...}" />
+              <marker date="1480047078518" expanded="true" signature="1776:1853" ph="{&quot;name&quot;: 'qiutc'...}" />
+              <marker date="1480047078518" expanded="true" signature="1817:1851" ph="{...}" />
+              <marker date="1480047078518" expanded="true" signature="2078:2248" ph="{&quot;name&quot;: 'qiutc'...}" />
+              <marker date="1480047078518" expanded="true" signature="2119:2153" ph="{...}" />
+              <marker date="1480047078518" expanded="true" signature="2176:2246" ph="{...}" />
+              <marker date="1480047078518" expanded="true" signature="2753:3064" ph="{&quot;name&quot;: 'qiutc'...}" />
+              <marker date="1480047078518" expanded="true" signature="2794:2828" ph="{...}" />
+              <marker date="1480047078518" expanded="true" signature="2851:3062" ph="{...}" />
+              <marker date="1480047078518" expanded="true" signature="2936:3048" ph="{...}" />
+              <marker date="1480047078518" expanded="true" signature="3383:3409" ph="{...}" />
+              <marker date="1480047078518" expanded="true" signature="3937:3985" ph="{...}" />
+              <marker date="1480047078518" expanded="true" signature="4184:4232" ph="{...}" />
+              <marker date="1480047078518" expanded="true" signature="4514:4751" ph="{&quot;name&quot;: 'qiutc'...}" />
+              <marker date="1480047078518" expanded="true" signature="4555:4589" ph="{...}" />
+              <marker date="1480047078518" expanded="true" signature="4612:4749" ph="{...}" />
+              <marker date="1480047078518" expanded="true" signature="4666:4687" ph="{...}" />
+              <marker date="1480047078518" expanded="true" signature="5823:5844" ph="{&quot;name&quot;: 'qiutc'...}" />
+              <marker date="1480047078518" expanded="true" signature="5863:5889" ph="{...}" />
+              <marker date="1480047078518" expanded="true" signature="6049:6127" ph="{&quot;name&quot;: 'qiutc'...}" />
+              <marker date="1480047078518" expanded="true" signature="6091:6125" ph="{...}" />
+              <marker date="1480047078518" expanded="true" signature="6141:6168" ph="{&quot;name&quot;: 'tcqiu222222'...}" />
+              <marker date="1480047078518" expanded="true" signature="6324:6372" ph="{...}" />
+              <marker date="1480047078518" expanded="true" signature="6385:6413" ph="{&quot;name&quot;: 'qiutc2222222'...}" />
+              <marker date="1480047078518" expanded="true" signature="6640:6688" ph="{...}" />
+              <marker date="1480047078518" expanded="true" signature="6701:6729" ph="{&quot;name&quot;: 'qiutc2222222'...}" />
+              <marker date="1480047078518" expanded="true" signature="7143:7191" ph="{...}" />
+              <marker date="1480047078518" expanded="true" signature="7204:7232" ph="{&quot;name&quot;: 'qiutc2222222'...}" />
+              <marker date="1480047078518" expanded="true" signature="7506:7552" ph="{...}" />
+              <marker date="1480047078518" expanded="true" signature="7566:7580" ph="//..." />
+              <marker date="1480047078518" expanded="true" signature="7593:7614" ph="{&quot;name&quot;: 'qiutc'...}" />
+              <marker date="1480047078518" expanded="true" signature="7639:7653" ph="//..." />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/source/_posts/upload-git-for-github.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="57">
+            <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="4" selection-end-column="22" />
+            <folding />
+=======
+    <entry file="file://$PROJECT_DIR$/source/_posts/Rotate-the-navigation.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="171">
+            <caret line="9" column="35" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="35" />
+            <folding>
+              <marker date="1478689877292" expanded="true" signature="466:714" ph="..." />
+              <marker date="1478689877292" expanded="true" signature="541:707" ph="..." />
+              <marker date="1478689877292" expanded="true" signature="770:988" ph="{...}" />
+              <marker date="1478689877292" expanded="true" signature="1003:1048" ph="{...}" />
+              <marker date="1478689877292" expanded="true" signature="1055:1109" ph="{...}" />
+              <marker date="1478689877292" expanded="true" signature="1120:1191" ph="{...}" />
+              <marker date="1478689877292" expanded="true" signature="1255:1457" ph="{...}" />
+              <marker date="1478689877292" expanded="true" signature="1493:1547" ph="{...}" />
+              <marker date="1478689877292" expanded="true" signature="1583:1780" ph="{...}" />
+            </folding>
+>>>>>>> update hexo
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/source/_posts/javascript-Object.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="3325">
+            <caret line="175" column="1" selection-start-line="175" selection-start-column="1" selection-end-line="175" selection-end-column="22" />
+            <folding>
+              <marker date="1479454270923" expanded="true" signature="279:336" ph="{...}" />
+              <marker date="1479454270923" expanded="true" signature="459:593" ph="{&quot;name&quot;: &quot;zhangSan&quot;...}" />
+              <marker date="1479454270923" expanded="true" signature="526:591" ph="{...}" />
+              <marker date="1479454270923" expanded="true" signature="799:965" ph="{...}" />
+              <marker date="1479454270923" expanded="true" signature="890:949" ph="{...}" />
+              <marker date="1479454270923" expanded="true" signature="1168:1302" ph="{...}" />
+              <marker date="1479454270923" expanded="true" signature="1241:1300" ph="{...}" />
+              <marker date="1479454270923" expanded="true" signature="1689:1761" ph="{...}" />
+              <marker date="1479454270923" expanded="true" signature="1780:1831" ph="{...}" />
+              <marker date="1479454270923" expanded="true" signature="2176:2340" ph="{...}" />
+              <marker date="1479454270923" expanded="true" signature="2279:2338" ph="{...}" />
+              <marker date="1479454270923" expanded="true" signature="2924:3049" ph="{&quot;name&quot;: &quot;vivian&quot;...}" />
+              <marker date="1479454270923" expanded="true" signature="2988:3047" ph="{...}" />
+              <marker date="1479454270923" expanded="true" signature="3489:3637" ph="{&quot;name&quot;: &quot;vivian&quot;...}" />
+              <marker date="1479454270923" expanded="true" signature="3576:3635" ph="{...}" />
+              <marker date="1479454270923" expanded="true" signature="3958:4003" ph="{...}" />
+              <marker date="1479454270923" expanded="true" signature="4019:4129" ph="{&quot;constructor&quot;: Gf...}" />
+              <marker date="1479454270923" expanded="true" signature="4068:4127" ph="{...}" />
+=======
+    <entry file="file://$PROJECT_DIR$/source/_posts/css-overflow.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="76">
+            <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+            <folding>
+              <marker date="1481191064894" expanded="true" signature="150:337" ph="{...}" />
+              <marker date="1481191064894" expanded="true" signature="474:661" ph="{...}" />
+              <marker date="1481191064894" expanded="true" signature="837:981" ph="{...}" />
+              <marker date="1481191064894" expanded="true" signature="996:1349" ph="{...}" />
+>>>>>>> update hexo
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/source/_posts/javascript-oop.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="1862">
+            <caret line="98" column="21" selection-start-line="98" selection-start-column="21" selection-end-line="98" selection-end-column="21" />
+            <folding>
+              <marker date="1480401191884" expanded="true" signature="377:436" ph="{...}" />
+              <marker date="1480401191884" expanded="true" signature="582:787" ph="{...}" />
+              <marker date="1480401191884" expanded="true" signature="706:766" ph="{...}" />
+              <marker date="1480401191884" expanded="true" signature="946:1154" ph="{...}" />
+              <marker date="1480401191884" expanded="true" signature="1072:1132" ph="{...}" />
+              <marker date="1480401191884" expanded="true" signature="1296:1348" ph="{...}" />
+              <marker date="1480401191884" expanded="true" signature="1296:1680" ph="{...}" />
+              <marker date="1480401191884" expanded="true" signature="1401:1560" ph="{...}" />
+              <marker date="1480401191884" expanded="true" signature="1823:2069" ph="{...}" />
+              <marker date="1480401191884" expanded="true" signature="1940:2000" ph="{...}" />
+              <marker date="1480401191884" expanded="true" signature="2198:2348" ph="{...}" />
+              <marker date="1480401191884" expanded="true" signature="2290:2346" ph="{...}" />
+              <marker date="1480401191884" expanded="true" signature="2477:2479" ph="{...}" />
+              <marker date="1480401191884" expanded="true" signature="2594:2646" ph="{...}" />
+              <marker date="1480401191884" expanded="true" signature="2976:2978" ph="{...}" />
+              <marker date="1480401191884" expanded="true" signature="3094:3146" ph="{...}" />
+              <marker date="1480401191884" expanded="true" signature="3691:3701" ph="{...}" />
+              <marker date="1480401191884" expanded="true" signature="3691:3754" ph="{...}" />
+              <marker date="1480401191884" expanded="true" signature="3793:3845" ph="{...}" />
+              <marker date="1480401191884" expanded="true" signature="4067:4444" ph="{...}" />
+              <marker date="1480401191884" expanded="true" signature="4170:4442" ph="{...}" />
+              <marker date="1480401191884" expanded="true" signature="4273:4379" ph="{...}" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/my-blog.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="266">
+            <caret line="14" column="6" selection-start-line="14" selection-start-column="6" selection-end-line="14" selection-end-column="6" />
+            <folding>
+              <marker date="1477976424454" expanded="true" signature="260:421" ph="{...}" />
+              <marker date="1477976424454" expanded="true" signature="309:355" ph="{...}" />
+              <marker date="1477976424454" expanded="true" signature="361:418" ph="{...}" />
+              <marker date="1477976424454" expanded="true" signature="475:1308" ph="{...}" />
+              <marker date="1477976424454" expanded="true" signature="587:1300" ph="{...}" />
+              <marker date="1477976424454" expanded="true" signature="641:726" ph="{...}" />
+              <marker date="1477976424454" expanded="true" signature="732:792" ph="{...}" />
+              <marker date="1477976424454" expanded="true" signature="953:1002" ph="{...}" />
+              <marker date="1477976424454" expanded="true" signature="1008:1294" ph="{...}" />
+              <marker date="1477976424454" expanded="true" signature="1045:1209" ph="{...}" />
+              <marker date="1477976424454" expanded="true" signature="1215:1284" ph="{...}" />
+              <marker date="1477976424454" expanded="true" signature="1371:1409" ph="{...}" />
+              <marker date="1477976424454" expanded="true" signature="1447:1486" ph="{...}" />
+              <marker date="1477976424454" expanded="true" signature="1539:1582" ph="//..." />
+              <marker date="1477976424454" expanded="true" signature="1645:2864" ph="{...}" />
+              <marker date="1477976424454" expanded="true" signature="1646:1772" ph="//..." />
+              <marker date="1477976424454" expanded="true" signature="1810:2079" ph="{...}" />
+              <marker date="1477976424454" expanded="true" signature="1842:1976" ph="{...}" />
+              <marker date="1477976424454" expanded="true" signature="1860:1908" ph="{...}" />
+              <marker date="1477976424454" expanded="true" signature="1919:1966" ph="{...}" />
+              <marker date="1477976424454" expanded="true" signature="2428:2862" ph="{...}" />
+              <marker date="1477976424454" expanded="true" signature="2919:3153" ph="{...}" />
+              <marker date="1477976424454" expanded="true" signature="2935:2983" ph="{...}" />
+              <marker date="1477976424454" expanded="true" signature="3002:3056" ph="{...}" />
+              <marker date="1477976424454" expanded="true" signature="3091:3139" ph="{...}" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/javascript-add-Date.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="228">
+            <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+            <folding>
+              <marker date="1478083821175" expanded="true" signature="265:1054" ph="{...}" />
+              <marker date="1478083821175" expanded="true" signature="1146:1242" ph="..." />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/_posts/My-New-Post.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="494">
+            <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
+            <folding />
+          </first_editor>
+          <second_editor />
+=======
+    <entry file="file://$PROJECT_DIR$/themes/next/_config.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="211" column="23" selection-start-line="211" selection-start-column="17" selection-end-line="211" selection-end-column="23" />
+          <folding />
+>>>>>>> update hexo
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/next/source/lib/fancybox/source/jquery.fancybox.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="24" column="1" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
