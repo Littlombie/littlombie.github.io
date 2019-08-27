@@ -1,27 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[ES6学习（16）- Module模块化]]></title>
+    <title><![CDATA[ES6学习（18）- Module模块化]]></title>
     <url>%2F2019%2F08%2F21%2FES6-18-module%2F</url>
     <content type="text"><![CDATA[基本概念ES6 的模块化语法 12345678910111213141516//导出用export 变量export let A = 123;//导出函数export function test()&#123; console.log('test');&#125;//导出类export class Hello&#123; test()&#123; console.log('class'); &#125;&#125; 在需要导入文件中写法 1234//花括号中需要哪项就 导入哪项 import &#123;A,test,Hello&#125; form `./$&#123;js路径&#125;`console.log(A,test,Hello); 第二种写法12345&#123; import * as lesson form `./$&#123;js路径&#125;` console.log(lesson.A,lesson.test);&#125; 另一种写法需要导出的文件： 12345678910111213141516let A = 123;let test = function()&#123; console.log('class');&#125;class Hello&#123; test()&#123; console.log('class'); &#125;&#125;//书写需要导出的类 变量 类export default&#123; A, test, Hello&#125; 导入文件： 123import lesson form '$&#123;js路径&#125;'console.log(lesson.A,lesson.test);]]></content>
       <categories>
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>ES6</tag>
         <tag>javascript</tag>
+        <tag>ES6</tag>
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[ES6学习（16）- Decorators]]></title>
+    <title><![CDATA[ES6学习（17）- Decorators]]></title>
     <url>%2F2019%2F08%2F21%2FES6-17-decorators%2F</url>
     <content type="text"><![CDATA[Decorator修饰器 修饰函数类的行为，也可以理解为 类的扩展功能 基本用法需要安装插件 1npm install babel-plugin-transform-decorators-legacy --save-dev 修改babel文件 添加插件plugins:[babel-plugin-transform-decorators-legacy] 12345678910111213141516171819202122232425262728293031323334353637&#123; //限制某个属性是只读的 let readonly = function(target,name,descriptor)&#123; descriptor.writable = false; return decriptor &#125;; //修饰器 class Test&#123; @readonly //修改readonly 的行为 让其只读 time()&#123; return '2017-08-06'; &#125; &#125; let test = new Test(); rtest.time = function()&#123; console.log('rest time'); &#125; console.log(test.time());//Cannot assign to read only property 'time' of object '#&lt;Test&gt;'&#125;&#123; let typename = function(target,name,descriptor)&#123; target.myname = 'hello'; &#125; @typename //修饰器在类的外部 class Test&#123; &#125; console.log('类修饰符',Test.myname); //hello&#125; 第三方库 修饰器的js库：core-decortors;内置以上的方法 可以通过下载npm install core-decorators 12345678910111213141516171819202122232425&#123; let log=(type)=&gt;&#123; return function(target,name,descriptor)&#123; let src_method = descriptor.value; descriptor.value = (...arg)=&gt;&#123; src_method.apply(target,arg); console.log(`log$&#123;type&#125;`); &#125; &#125; &#125; class AD&#123; @log('show') show()&#123; console.info('ad is show'); &#125; @log('click') click()&#123; console.info('ad is click'); &#125; &#125; let ad = new AD(); ad.show();//ad is show ad.click();//ad is show&#125;]]></content>
       <categories>
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>ES6</tag>
         <tag>javascript</tag>
+        <tag>ES6</tag>
       </tags>
   </entry>
   <entry>
@@ -32,8 +32,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>ES6</tag>
         <tag>javascript</tag>
+        <tag>ES6</tag>
       </tags>
   </entry>
   <entry>
@@ -44,8 +44,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>ES6</tag>
         <tag>javascript</tag>
+        <tag>ES6</tag>
       </tags>
   </entry>
   <entry>
@@ -56,8 +56,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>ES6</tag>
         <tag>javascript</tag>
+        <tag>ES6</tag>
       </tags>
   </entry>
   <entry>
@@ -68,8 +68,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>ES6</tag>
         <tag>javascript</tag>
+        <tag>ES6</tag>
       </tags>
   </entry>
   <entry>
@@ -80,8 +80,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>ES6</tag>
         <tag>javascript</tag>
+        <tag>ES6</tag>
       </tags>
   </entry>
   <entry>
@@ -92,8 +92,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>ES6</tag>
         <tag>javascript</tag>
+        <tag>ES6</tag>
       </tags>
   </entry>
   <entry>
@@ -104,8 +104,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>ES6</tag>
         <tag>javascript</tag>
+        <tag>ES6</tag>
       </tags>
   </entry>
   <entry>
@@ -116,8 +116,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>ES6</tag>
         <tag>javascript</tag>
+        <tag>ES6</tag>
       </tags>
   </entry>
   <entry>
@@ -128,8 +128,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>ES6</tag>
         <tag>javascript</tag>
+        <tag>ES6</tag>
       </tags>
   </entry>
   <entry>
@@ -140,8 +140,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>ES6</tag>
         <tag>javascript</tag>
+        <tag>ES6</tag>
       </tags>
   </entry>
   <entry>
@@ -152,8 +152,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>ES6</tag>
         <tag>javascript</tag>
+        <tag>ES6</tag>
       </tags>
   </entry>
   <entry>
@@ -164,8 +164,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>ES6</tag>
         <tag>javascript</tag>
+        <tag>ES6</tag>
       </tags>
   </entry>
   <entry>
@@ -176,8 +176,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>ES6</tag>
         <tag>javascript</tag>
+        <tag>ES6</tag>
       </tags>
   </entry>
   <entry>
@@ -188,8 +188,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>ES6</tag>
         <tag>javascript</tag>
+        <tag>ES6</tag>
       </tags>
   </entry>
   <entry>
@@ -200,8 +200,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>ES6</tag>
         <tag>javascript</tag>
+        <tag>ES6</tag>
       </tags>
   </entry>
   <entry>
@@ -212,8 +212,8 @@
         <category>ES6</category>
       </categories>
       <tags>
-        <tag>ES6</tag>
         <tag>javascript</tag>
+        <tag>ES6</tag>
       </tags>
   </entry>
   <entry>

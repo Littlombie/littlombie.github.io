@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2019-08-20T17:10:30.308Z</updated>
+  <updated>2019-08-27T13:44:40.822Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>ES6学习（16）- Module模块化</title>
+    <title>ES6学习（18）- Module模块化</title>
     <link href="http://yoursite.com/2019/08/21/ES6-18-module/"/>
     <id>http://yoursite.com/2019/08/21/ES6-18-module/</id>
     <published>2019-08-20T17:09:52.000Z</published>
-    <updated>2019-08-20T17:10:30.308Z</updated>
+    <updated>2019-08-27T13:44:40.822Z</updated>
     
     <content type="html"><![CDATA[<h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><h3 id="ES6-的模块化语法"><a href="#ES6-的模块化语法" class="headerlink" title="ES6 的模块化语法"></a>ES6 的模块化语法</h3><a id="more"></a><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//导出用export 变量</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">let</span> A = <span class="number">123</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//导出函数</span></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'test'</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//导出类</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">Hello</span></span>&#123;</span><br><span class="line">    test()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'class'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>在需要导入文件中写法 </p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//花括号中需要哪项就 导入哪项 </span></span><br><span class="line"><span class="keyword">import</span> &#123;A,test,Hello&#125; form <span class="string">`./<span class="subst">$&#123;js路径&#125;</span>`</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(A,test,Hello);</span><br></pre></td></tr></table></figure><p>第二种写法<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="keyword">import</span> * <span class="keyword">as</span> lesson form <span class="string">`./<span class="subst">$&#123;js路径&#125;</span>`</span></span><br><span class="line">    </span><br><span class="line">    <span class="built_in">console</span>.log(lesson.A,lesson.test);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><h3 id="另一种写法"><a href="#另一种写法" class="headerlink" title="另一种写法"></a>另一种写法</h3><p>需要导出的文件：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> A = <span class="number">123</span>;</span><br><span class="line"><span class="keyword">let</span> test = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'class'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hello</span></span>&#123;</span><br><span class="line">    test()&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'class'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//书写需要导出的类 变量  类</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;</span><br><span class="line">    A,</span><br><span class="line">    test,</span><br><span class="line">    Hello</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>导入文件：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> lesson form <span class="string">'$&#123;js路径&#125;'</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(lesson.A,lesson.test);</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -34,18 +34,18 @@
       <category term="ES6" scheme="http://yoursite.com/categories/ES6/"/>
     
     
-      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
-    
       <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
     
   </entry>
   
   <entry>
-    <title>ES6学习（16）- Decorators</title>
+    <title>ES6学习（17）- Decorators</title>
     <link href="http://yoursite.com/2019/08/21/ES6-17-decorators/"/>
     <id>http://yoursite.com/2019/08/21/ES6-17-decorators/</id>
     <published>2019-08-20T17:08:31.000Z</published>
-    <updated>2019-08-20T17:09:02.028Z</updated>
+    <updated>2019-08-27T13:44:36.104Z</updated>
     
     <content type="html"><![CDATA[<h3 id="Decorator"><a href="#Decorator" class="headerlink" title="Decorator"></a>Decorator</h3><p>修饰器  </p><p>修饰函数类的行为，也可以理解为 类的扩展功能</p><h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><p>需要安装插件<br><a id="more"></a></p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install babel-plugin-transform-decorators-legacy --save-dev</span><br></pre></td></tr></table></figure><p>修改babel文件 添加插件<br><code>plugins:[babel-plugin-transform-decorators-legacy]</code></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">&#123; </span><br><span class="line">    <span class="comment">//限制某个属性是只读的</span></span><br><span class="line">    <span class="keyword">let</span> readonly = <span class="function"><span class="keyword">function</span>(<span class="params">target,name,descriptor</span>)</span>&#123;</span><br><span class="line">        descriptor.writable = <span class="literal">false</span>;</span><br><span class="line">        <span class="keyword">return</span> decriptor</span><br><span class="line">    &#125;;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//修饰器</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">        @readonly <span class="comment">//修改readonly 的行为 让其只读  </span></span><br><span class="line">        time()&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">'2017-08-06'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> test = <span class="keyword">new</span> Test();</span><br><span class="line">    </span><br><span class="line">    rtest.time = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'rest time'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">console</span>.log(test.time());<span class="comment">//Cannot assign to read only property 'time' of object '#&lt;Test&gt;'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> typename = <span class="function"><span class="keyword">function</span>(<span class="params">target,name,descriptor</span>)</span>&#123;</span><br><span class="line">        target.myname = <span class="string">'hello'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    @typename <span class="comment">//修饰器在类的外部</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Test</span></span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'类修饰符'</span>,Test.myname); <span class="comment">//hello</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>第三方库 修饰器的js库：<strong>core-decortors</strong>;<br>内置以上的方法</p><p>可以通过下载<br><code>npm install core-decorators</code></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> log=<span class="function">(<span class="params">type</span>)=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">target,name,descriptor</span>)</span>&#123;</span><br><span class="line">            <span class="keyword">let</span> src_method = descriptor.value;</span><br><span class="line">            descriptor.value = <span class="function">(<span class="params">...arg</span>)=&gt;</span>&#123;</span><br><span class="line">                src_method.apply(target,arg);</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">`log<span class="subst">$&#123;type&#125;</span>`</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">AD</span></span>&#123;</span><br><span class="line">        @log(<span class="string">'show'</span>)</span><br><span class="line">        show()&#123;</span><br><span class="line">            <span class="built_in">console</span>.info(<span class="string">'ad is show'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        @log(<span class="string">'click'</span>)</span><br><span class="line">        click()&#123;</span><br><span class="line">            <span class="built_in">console</span>.info(<span class="string">'ad is click'</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> ad = <span class="keyword">new</span> AD();</span><br><span class="line">    ad.show();<span class="comment">//ad is show</span></span><br><span class="line">    ad.click();<span class="comment">//ad is show</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -60,9 +60,9 @@
       <category term="ES6" scheme="http://yoursite.com/categories/ES6/"/>
     
     
-      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
-    
       <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
     
   </entry>
   
@@ -87,9 +87,9 @@
       <category term="ES6" scheme="http://yoursite.com/categories/ES6/"/>
     
     
-      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
-    
       <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
     
   </entry>
   
@@ -112,9 +112,9 @@
       <category term="ES6" scheme="http://yoursite.com/categories/ES6/"/>
     
     
-      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
-    
       <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
     
   </entry>
   
@@ -143,9 +143,9 @@
       <category term="ES6" scheme="http://yoursite.com/categories/ES6/"/>
     
     
-      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
-    
       <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
     
   </entry>
   
@@ -189,9 +189,9 @@
       <category term="ES6" scheme="http://yoursite.com/categories/ES6/"/>
     
     
-      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
-    
       <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
     
   </entry>
   
@@ -214,9 +214,9 @@
       <category term="ES6" scheme="http://yoursite.com/categories/ES6/"/>
     
     
-      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
-    
       <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
     
   </entry>
   
@@ -238,9 +238,9 @@
       <category term="ES6" scheme="http://yoursite.com/categories/ES6/"/>
     
     
-      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
-    
       <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
     
   </entry>
   
@@ -263,9 +263,9 @@
       <category term="ES6" scheme="http://yoursite.com/categories/ES6/"/>
     
     
-      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
-    
       <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
     
   </entry>
   
@@ -288,9 +288,9 @@
       <category term="ES6" scheme="http://yoursite.com/categories/ES6/"/>
     
     
-      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
-    
       <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
     
   </entry>
   
@@ -312,9 +312,9 @@
       <category term="ES6" scheme="http://yoursite.com/categories/ES6/"/>
     
     
-      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
-    
       <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
     
   </entry>
   
@@ -336,9 +336,9 @@
       <category term="ES6" scheme="http://yoursite.com/categories/ES6/"/>
     
     
-      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
-    
       <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
     
   </entry>
   
@@ -361,9 +361,9 @@
       <category term="ES6" scheme="http://yoursite.com/categories/ES6/"/>
     
     
-      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
-    
       <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
     
   </entry>
   
@@ -385,9 +385,9 @@
       <category term="ES6" scheme="http://yoursite.com/categories/ES6/"/>
     
     
-      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
-    
       <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
     
   </entry>
   
@@ -409,9 +409,9 @@
       <category term="ES6" scheme="http://yoursite.com/categories/ES6/"/>
     
     
-      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
-    
       <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
     
   </entry>
   
@@ -433,9 +433,9 @@
       <category term="ES6" scheme="http://yoursite.com/categories/ES6/"/>
     
     
-      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
-    
       <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
     
   </entry>
   
@@ -459,9 +459,9 @@
       <category term="ES6" scheme="http://yoursite.com/categories/ES6/"/>
     
     
-      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
-    
       <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
     
   </entry>
   
@@ -484,9 +484,9 @@
       <category term="ES6" scheme="http://yoursite.com/categories/ES6/"/>
     
     
-      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
-    
       <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+      <category term="ES6" scheme="http://yoursite.com/tags/ES6/"/>
     
   </entry>
   
