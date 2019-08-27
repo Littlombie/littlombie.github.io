@@ -20,7 +20,8 @@
   a {
     the-transition();
     transition-property: all;
-    color: $toc-link-color;
+    // color: $toc-link-color;
+    color: #ddd;
     border-bottom-color: $toc-link-border-color;
 
     &:hover {
@@ -33,7 +34,8 @@
 .post-toc .nav-item {
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
+  //text-align: justify;
+  white-space: nowrap if !hexo-config('toc.wrap');
   line-height: 1.8;
 }
 
