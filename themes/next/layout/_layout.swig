@@ -119,7 +119,6 @@
   {% include '_third-party/copy-code.swig' %}
 
 
-   {% include '_scripts/particles.swig' %}
    {% include '_scripts/love.swig' %}
    {% include '_scripts/snow.swig' %}
 </body>
